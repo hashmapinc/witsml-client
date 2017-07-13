@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trajectorys version="1.3.1.1" xmlns="http://www.witsml.org/schemas/131">
+  <trajectory uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="%uidTraj%">
+    <trajectoryStation>
+      <md uom="" datum="" />
+      <tvd uom="" datum="" />
+      <incl uom="" />
+      <azi uom="" />
+      <mtf uom="" />
+      <gtf uom="" />
+      <dispNs uom="" />
+      <dispEw uom="" />
+      <vertSect uom="" />
+      <dls uom="" />
+      <tvdDelta uom="" datum="" />
+    </trajectoryStation>
+  </trajectory>
+</trajectorys>

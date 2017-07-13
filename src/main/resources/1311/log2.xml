@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<logs xmlns="http://www.witsml.org/schemas/131" version="1.3.1.1">
+  <log uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="%uidLog%">
+    <nameWell />
+    <nameWellbore />
+    <name />
+    <objectGrowing />
+    <dataRowCount />
+    <serviceCompany />
+    <runNumber />
+    <pass />
+    <creationDate />
+    <description />
+    <indexType />
+    <startIndex uom="">%startIndex%</startIndex>
+    <endIndex uom="">%endIndex%</endIndex>
+    <stepIncrement uom="" numerator="" denominator="" />
+    <startDateTimeIndex>%startDateTimeIndex%</startDateTimeIndex>
+    <endDateTimeIndex>%endDateTimeIndex%</endDateTimeIndex>
+    <direction />
+    <indexCurve columnIndex="" />
+    <nullValue />
+    <logParam index="" name="" uom="" description="" />
+	 %logCurveInfo%
+    <logData>
+      <data />
+    </logData>
+    <commonData>
+      <sourceName />
+      <dTimCreation />
+      <dTimLastChange />
+      <itemState />
+      <comments />
+    </commonData>
+    <customData />
+  </log>
+</logs>

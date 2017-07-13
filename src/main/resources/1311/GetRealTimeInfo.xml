@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<realtimes xmlns="http://www.witsml.org/schemas/131">
+  <realtime uidWell="%uidWell%" uidWellbore="%uidWellbore%" idSub="">
+    <dataGroup/>
+    <sequence/>
+    <realtimeHeader>
+      <serviceCompany />
+      <groupDefinition>
+        <interval>
+          <type />
+        </interval>
+      </groupDefinition>
+    </realtimeHeader>
+  </realtime>
+</realtimes>
