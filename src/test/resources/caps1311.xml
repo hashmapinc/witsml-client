@@ -1,0 +1,103 @@
+<capServers version="1.3.1" xmlns="http://www.witsml.org/api/131">
+    <capServer apiVers="1.3.1">
+        <contact>
+            <email>noreply@hashmapinc.com</email>
+            <phone>555-867-5309</phone>
+        </contact>
+        <description>Mock Server API 1.3.1 Server - Witsml data 1.3.1.1</description>
+        <name>Mock Server</name>
+        <vendor>Hashmap, Inc</vendor>
+        <version>1.0</version>
+        <schemaVersion>1.3.1.1</schemaVersion>
+        <function name="WMLS_GetFromStore">
+            <dataObject>bhaRun</dataObject>
+            <dataObject>cementJob</dataObject>
+            <dataObject>convCore</dataObject>
+            <dataObject>fluidsReport</dataObject>
+            <dataObject>formationMarker</dataObject>
+            <dataObject maxDataPoints="50000">log</dataObject>
+            <dataObject>message</dataObject>
+            <dataObject>mudLog</dataObject>
+            <dataObject>opsReport</dataObject>
+            <dataObject>rig</dataObject>
+            <dataObject>risk</dataObject>
+            <dataObject>sidewallCore</dataObject>
+            <dataObject>surveyProgram</dataObject>
+            <dataObject>target</dataObject>
+            <dataObject>trajectory</dataObject>
+            <dataObject>tubular</dataObject>
+            <dataObject>wbGeometry</dataObject>
+            <dataObject>well</dataObject>
+            <dataObject>wellbore</dataObject>
+            <dataObject>realtime</dataObject>
+            <dataObject>trajectoryStation</dataObject>
+        </function>
+        <function name="WMLS_AddToStore">
+            <dataObject>bhaRun</dataObject>
+            <dataObject>cementJob</dataObject>
+            <dataObject>convCore</dataObject>
+            <dataObject>fluidsReport</dataObject>
+            <dataObject>formationMarker</dataObject>
+            <dataObject>log</dataObject>
+            <dataObject>message</dataObject>
+            <dataObject>mudLog</dataObject>
+            <dataObject>opsReport</dataObject>
+            <dataObject>rig</dataObject>
+            <dataObject>risk</dataObject>
+            <dataObject>sidewallCore</dataObject>
+            <dataObject>surveyProgram</dataObject>
+            <dataObject>target</dataObject>
+            <dataObject>trajectory</dataObject>
+            <dataObject>tubular</dataObject>
+            <dataObject>wbGeometry</dataObject>
+            <dataObject>well</dataObject>
+            <dataObject>wellbore</dataObject>
+            <dataObject>realtime</dataObject>
+            <dataObject>trajectoryStation</dataObject>
+        </function>
+        <function name="WMLS_UpdateInStore">
+            <dataObject>bhaRun</dataObject>
+            <dataObject>cementJob</dataObject>
+            <dataObject>convCore</dataObject>
+            <dataObject>fluidsReport</dataObject>
+            <dataObject>formationMarker</dataObject>
+            <dataObject>log</dataObject>
+            <dataObject>message</dataObject>
+            <dataObject>mudLog</dataObject>
+            <dataObject>opsReport</dataObject>
+            <dataObject>rig</dataObject>
+            <dataObject>risk</dataObject>
+            <dataObject>sidewallCore</dataObject>
+            <dataObject>surveyProgram</dataObject>
+            <dataObject>target</dataObject>
+            <dataObject>trajectory</dataObject>
+            <dataObject>tubular</dataObject>
+            <dataObject>wbGeometry</dataObject>
+            <dataObject>well</dataObject>
+            <dataObject>wellbore</dataObject>
+            <dataObject>realtime</dataObject>
+            <dataObject>trajectoryStation</dataObject>
+        </function>
+        <function name="WMLS_DeleteFromStore">
+            <dataObject>bhaRun</dataObject>
+            <dataObject>cementJob</dataObject>
+            <dataObject>convCore</dataObject>
+            <dataObject>fluidsReport</dataObject>
+            <dataObject>formationMarker</dataObject>
+            <dataObject>log</dataObject>
+            <dataObject>message</dataObject>
+            <dataObject>mudLog</dataObject>
+            <dataObject>opsReport</dataObject>
+            <dataObject>rig</dataObject>
+            <dataObject>risk</dataObject>
+            <dataObject>sidewallCore</dataObject>
+            <dataObject>surveyProgram</dataObject>
+            <dataObject>target</dataObject>
+            <dataObject>trajectory</dataObject>
+            <dataObject>tubular</dataObject>
+            <dataObject>wbGeometry</dataObject>
+        </function>
+        <function name="WMLS_GetBaseMsg"/>
+        <function name="WMLS_GetVersion"/>
+    </capServer>
+</capServers>

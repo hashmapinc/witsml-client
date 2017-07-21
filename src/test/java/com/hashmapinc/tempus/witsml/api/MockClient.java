@@ -1,38 +1,35 @@
 package com.hashmapinc.tempus.witsml.api;
 
-import com.hashmapinc.tempus.witsml.client.StoreSoapBindingStub;
-import com.hashmapinc.tempus.witsml.client.WMLSLocator;
 import com.hashmapinc.tempus.WitsmlObjects.Util.WitsmlMarshal;
 import com.hashmapinc.tempus.WitsmlObjects.Util.WitsmlVersionTransformer;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjLogs;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjWellbores;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjWells;
+import com.hashmapinc.tempus.witsml.client.Client;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.xml.bind.JAXBException;
-import javax.xml.rpc.ServiceException;
-import javax.xml.rpc.holders.StringHolder;
 import javax.xml.transform.TransformerConfigurationException;
-import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.rmi.RemoteException;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Client {
+public class MockClient implements WitsmlClient {
 
     private String url;
-    private StoreSoapBindingStub witsmlClient;
     private Logger log;
-    private String version = "1.4.1.1";
+    private WitsmlVersion version = WitsmlVersion.VERSION_1411;
     private List<String> supportedVersions;
     private Boolean connected = false;
+    private String userName = "";
+    private String password = "";
+    private String supportedApiVersions = "1.3.1.1,1.4.1.1";
 
     private WitsmlVersionTransformer transform;
 
-    public Client(String url){
+    public MockClient(String url){
         log = LogManager.getLogger(Client.class);
         setupClient(url);
         try {
@@ -42,15 +39,12 @@ public class Client {
         }
     }
 
+    /**
+     * Setup client
+     * @param url
+     */
     private void setupClient(String url) {
-        WMLSLocator locator = new WMLSLocator();
         this.url = url;
-        locator.setStoreSoapPortEndpointAddress(url);
-        try {
-            witsmlClient = (StoreSoapBindingStub) locator.getStoreSoapPort();
-        } catch (ServiceException e) {
-            log.error("Error in setupClient in api.Client " + e.getMessage());
-        }
     }
 
     /**
@@ -74,7 +68,7 @@ public class Client {
      * @return  userName The user name being used to execute WITSML STORE API Requests
      */
     public String getUserName(){
-        return witsmlClient.getUsername();
+        return userName;
     }
 
     /**
@@ -82,7 +76,7 @@ public class Client {
      * @param userName The user name to use to execute WITSML STORE API Requests
      */
     public void setUserName(String userName){
-        witsmlClient.setUsername(userName);
+        this.userName = userName;
     }
 
     /**
@@ -90,14 +84,14 @@ public class Client {
      * @param password The password to use
      */
     public void setPassword(String password){
-        witsmlClient.setPassword(password);
+        this.password = password;
     }
 
     /**
      * Sets the version that will be used for querying
      * @param version The version string that will be used
      */
-    public void setVersion(String version){
+    public void setVersion(WitsmlVersion version){
         this.version = version;
     }
 
@@ -106,25 +100,13 @@ public class Client {
      * @return A comma-delimited list of supported version from the server, will return null if an error occured.
      */
     public String getVersion(){
-        try {
-            return witsmlClient.WMLS_GetVersion();
-        } catch (RemoteException e) {
-            log.error("Error in getVersion of api.Client " + e.getMessage());
-            return null;
-        }
+        return supportedApiVersions;
     }
 
     /**
      * Sets the version and validates the connection information.
      */
-    public void connect()
-    {
-        String supportedVersions = getVersion();
-        String versions[] = supportedVersions.split(",");
-        List<String> supportedVer = Arrays.asList(versions);
-        if (!supportedVer.contains(version)){
-            throw new IllegalArgumentException("Requested version not supported by the server");
-        }
+    public void connect() {
         connected = true;
     }
 
@@ -134,10 +116,16 @@ public class Client {
      * @throws RemoteException Thrown if there is an exception on the remote WITSML STORE API
      */
     public String getCapabilities() throws RemoteException {
-        StringHolder capabilities = new StringHolder();
-        StringHolder suppMsgOut = new StringHolder();
-        witsmlClient.WMLS_GetCap("", capabilities, suppMsgOut);
-        return capabilities.value;
+        try {
+            if (version == WitsmlVersion.VERSION_1311)
+                return getReturnData("caps1311.xml");
+            else if (version == WitsmlVersion.VERSION_1411)
+                return getReturnData("caps1411.xml");
+            else
+                return "";
+        } catch (IOException ex){
+            throw new RemoteException(ex.getMessage());
+        }
     }
 
     /**
@@ -147,37 +135,7 @@ public class Client {
      * @throws RemoteException Thrown if there is an exception on the remote WITSML STORE API
      */
     public String getWells() throws FileNotFoundException, RemoteException, Exception {
-        if (!connected)
-            throw new Exception("The connect method has not yet been called.");
-        String query = "";
-        try {
-            if (version.equals("1.3.1.1")) {
-                query = getQuery("/1311/GetWellDetails.xml");
-            }
-            else if (version.equals("1.4.1.1")) {
-                query = getQuery("/1411/GetAllWells.xml");
-            }
-        } catch (IOException e) {
-            String error = "Could not find or access the query template for getWells " + e.getMessage();
-            log.error(error);
-            throw new FileNotFoundException(error);
-        }
-        StringHolder xmlResponse = new StringHolder();
-        StringHolder suppMsgOut = new StringHolder();
-        try {
-            witsmlClient.WMLS_GetFromStore("well", query, "", "", xmlResponse, suppMsgOut);
-
-            if (version.equals("1.3.1.1"))
-                try {
-                    return transform.convertVersion(xmlResponse.value);
-                } catch (TransformerException e) {
-                    e.printStackTrace();
-                }
-            return xmlResponse.value;
-        } catch (RemoteException e) {
-            log.error("Error while executing open wells query " + e.getMessage());
-            throw e;
-        }
+        return "";
     }
 
     /**
@@ -200,43 +158,7 @@ public class Client {
      * @throws RemoteException Thrown if there is an exception on the remote WITSML STORE API
      */
     public String getWellboresForWell(String wellId) throws FileNotFoundException, RemoteException, Exception {
-        if (!connected)
-            throw new Exception("The connect method has not yet been called.");
-        String query = "";
-        try {
-
-            if (version.equals("1.3.1.1")) {
-                query = getQuery("/1311/GetAllWellboresForWell.xml");
-            }
-            else if (version.equals("1.4.1.1")){
-                query = getQuery("/1411/GetWellboreDetails.xml");
-            }
-
-            if (query.equals("")) {
-                throw new IllegalStateException("The current version " + version + " is not supported by the wellbore query");
-            }
-
-            query = query.replace("%uidWell%", wellId);
-        } catch (IOException e) {
-            String error = "Could not find or access the query template for getWellboresForWell " + e.getMessage();
-            log.error(error);
-            throw new FileNotFoundException(error);
-        }
-        StringHolder xmlResponse = new StringHolder();
-        StringHolder suppMsgOut = new StringHolder();
-        try {
-            witsmlClient.WMLS_GetFromStore("wellbore", query, "", "", xmlResponse, suppMsgOut);
-            if (version.equals("1.3.1.1"))
-                try {
-                    return transform.convertVersion(xmlResponse.value);
-                } catch (TransformerException e) {
-                    e.printStackTrace();
-                }
-            return xmlResponse.value;
-        } catch (RemoteException e) {
-            log.error("Error while executing open wellbores query " + e.getMessage());
-            throw e;
-        }
+        return "";
     }
 
     /**
@@ -261,38 +183,19 @@ public class Client {
      * @throws RemoteException Thrown if there is an exception on the remote WITSML STORE API
      */
     public String getLogMetadata(String wellId, String wellboreId) throws Exception {
-        if (!connected)
-            throw new Exception("The connect method has not yet been called.");
-        String query = "";
-        try {
-            if (version.equals("1.3.1.1")) {
-                query = getQuery("/1311/GetAllLogs.xml");
-            }
-            else if (version.equals("1.4.1.1")){
-                query = getQuery("/1411/GetLogs.xml");
-            }
-            query = query.replace("%uidWell%", wellId);
-            query = query.replace("%uidWellbore%", wellboreId);
-        } catch (IOException e) {
-            String error = "Could not find or access the query template for getLogMetadata " + e.getMessage();
-            log.error(error);
-            throw new FileNotFoundException(error);
-        }
-        StringHolder xmlResponse = new StringHolder();
-        StringHolder suppMsgOut = new StringHolder();
-        try {
-            witsmlClient.WMLS_GetFromStore("log", query, "", "", xmlResponse, suppMsgOut);
-            if (version.equals("1.3.1.1"))
-                try {
-                    return transform.convertVersion(xmlResponse.value);
-                } catch (TransformerException e) {
-                    e.printStackTrace();
-                }
-            return xmlResponse.value;
-        } catch (RemoteException e) {
-            log.error("Error while executing open logs query " + e.getMessage());
-            throw e;
-        }
+        return "";
+    }
+
+    /**
+     * Executes a log query in either 1.3.1.1 or 1.4.1.1
+     * @param query The query to send to the server
+     * @param optionsIn The options to send (only supported in 1.4.1.1)
+     * @param capabilitiesIn The capabilites to send (only supported in 1.4.1.1)
+     * @return a string representing the response from the server
+     * @throws RemoteException thrown on any exception encountered from the server
+     */
+    public String executeLogQuery(String query, String optionsIn, String capabilitiesIn) throws RemoteException {
+        return "";
     }
 
     /**
@@ -309,7 +212,7 @@ public class Client {
         return WitsmlMarshal.deserialize(logs, ObjLogs.class);
     }
 
-    private String getQuery(String resourcePath) throws IOException {
+    private String getReturnData(String resourcePath) throws IOException {
         InputStream stream = getClass().getResourceAsStream(resourcePath);
         BufferedReader reader = new BufferedReader(
                 new InputStreamReader(stream));

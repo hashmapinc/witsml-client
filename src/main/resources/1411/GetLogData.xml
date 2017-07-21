@@ -13,8 +13,10 @@
         <creationDate/>
         <description/>
         <indexType/>
-        <startIndex/>
-        <endIndex/>
+        <startIndex>%startDepth%</startIndex>
+        <endIndex>%endDepth%</endIndex>
+        <startDateTimeIndex>%startTime%</startDateTimeIndex>
+        <endDateTimeIndex>%endTime%</endDateTimeIndex>
         <stepIncrement/>
         <direction/>
         <indexCurve/>

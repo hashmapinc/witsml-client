@@ -1,9 +1,10 @@
 package com.hashmapinc.tempus.witsml.example;
 
-import com.hashmapinc.tempus.witsml.api.Client;
+import com.hashmapinc.tempus.witsml.client.Client;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjWells;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjLogs;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjWellbores;
+import com.hashmapinc.tempus.witsml.api.WitsmlVersion;
 import com.sun.org.apache.xml.internal.serialize.OutputFormat;
 import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
 import org.w3c.dom.Document;
@@ -20,10 +21,10 @@ import java.rmi.RemoteException;
 public class MyWitsmlClient {
 
     public static void main(String args[]){
-        Client c = new Client("https://test.europe.interact.slb.com/witsml/store/store.asmx");
-        c.setUserName("Cherrera");
-        c.setPassword("DMeeAK9119*");
-        c.setVersion("1.3.1.1");
+        Client c = new Client(args[0]);
+        c.setUserName(args[1]);
+        c.setPassword(args[2]);
+        c.setVersion(WitsmlVersion.VERSION_1411);
         c.connect();
         try {
             System.out.println("Supported Caps:");
@@ -74,6 +75,7 @@ public class MyWitsmlClient {
             e.printStackTrace();
         }
     }
+
 
     private static String prettyPrint(String xml, Boolean omitXmlDeclaration) throws IOException, SAXException, ParserConfigurationException {
 

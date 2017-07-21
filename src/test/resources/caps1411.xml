@@ -1,0 +1,122 @@
+<capServers version="1.4.1" xmlns="http://www.witsml.org/api/141">
+    <capServer apiVers="1.4.1">
+        <contact>
+            <email>noreply@hashmapinc.com</email>
+            <phone>555-867-5309</phone>
+        </contact>
+        <description>Mock Server API 1.4.1 Server - Witsml data 1.4.1.1</description>
+        <name>Mock Server</name>
+        <vendor>Schlumberger</vendor>
+        <version>1.0</version>
+        <schemaVersion>1.4.1.1</schemaVersion>
+        <changeDetectionPeriod>0</changeDetectionPeriod>
+        <growingTimeoutPeriod dataObject="log">600</growingTimeoutPeriod>
+        <growingTimeoutPeriod dataObject="mudLog">1800</growingTimeoutPeriod>
+        <growingTimeoutPeriod dataObject="trajectory">1800</growingTimeoutPeriod>
+        <maxRequestLatestValues>10</maxRequestLatestValues>
+        <cascadedDelete>false</cascadedDelete>
+        <compressionMethod>none</compressionMethod>
+        <supportUomConversion>true</supportUomConversion>
+        <function name="WMLS_GetFromStore">
+            <dataObject>attachment</dataObject>
+            <dataObject>bhaRun</dataObject>
+            <dataObject>cementJob</dataObject>
+            <dataObject>changeLog</dataObject>
+            <dataObject>convCore</dataObject>
+            <dataObject>drillReport</dataObject>
+            <dataObject>fluidsReport</dataObject>
+            <dataObject>formationMarker</dataObject>
+            <dataObject maxDataNodes="50000" maxDataPoints="50000">log</dataObject>
+            <dataObject>message</dataObject>
+            <dataObject maxDataNodes="400">mudLog</dataObject>
+            <dataObject>objectGroup</dataObject>
+            <dataObject>opsReport</dataObject>
+            <dataObject>rig</dataObject>
+            <dataObject>risk</dataObject>
+            <dataObject>sidewallCore</dataObject>
+            <dataObject>stimJob</dataObject>
+            <dataObject>surveyProgram</dataObject>
+            <dataObject>target</dataObject>
+            <dataObject maxDataNodes="1400">trajectory</dataObject>
+            <dataObject>tubular</dataObject>
+            <dataObject>wbGeometry</dataObject>
+            <dataObject>well</dataObject>
+            <dataObject>wellbore</dataObject>
+        </function>
+        <function name="WMLS_AddToStore">
+            <dataObject>attachment</dataObject>
+            <dataObject>bhaRun</dataObject>
+            <dataObject>cementJob</dataObject>
+            <dataObject>convCore</dataObject>
+            <dataObject>drillReport</dataObject>
+            <dataObject>fluidsReport</dataObject>
+            <dataObject>formationMarker</dataObject>
+            <dataObject maxDataNodes="10000" maxDataPoints="50000">log</dataObject>
+            <dataObject>message</dataObject>
+            <dataObject maxDataNodes="300">mudLog</dataObject>
+            <dataObject>objectGroup</dataObject>
+            <dataObject>opsReport</dataObject>
+            <dataObject>rig</dataObject>
+            <dataObject>risk</dataObject>
+            <dataObject>sidewallCore</dataObject>
+            <dataObject>stimJob</dataObject>
+            <dataObject>surveyProgram</dataObject>
+            <dataObject>target</dataObject>
+            <dataObject maxDataNodes="700">trajectory</dataObject>
+            <dataObject>tubular</dataObject>
+            <dataObject>wbGeometry</dataObject>
+            <dataObject>well</dataObject>
+            <dataObject>wellbore</dataObject>
+        </function>
+        <function name="WMLS_UpdateInStore">
+            <dataObject>attachment</dataObject>
+            <dataObject>bhaRun</dataObject>
+            <dataObject>cementJob</dataObject>
+            <dataObject>convCore</dataObject>
+            <dataObject>drillReport</dataObject>
+            <dataObject>fluidsReport</dataObject>
+            <dataObject>formationMarker</dataObject>
+            <dataObject maxDataNodes="10000" maxDataPoints="50000">log</dataObject>
+            <dataObject>message</dataObject>
+            <dataObject maxDataNodes="300">mudLog</dataObject>
+            <dataObject>objectGroup</dataObject>
+            <dataObject>opsReport</dataObject>
+            <dataObject>rig</dataObject>
+            <dataObject>risk</dataObject>
+            <dataObject>sidewallCore</dataObject>
+            <dataObject>stimJob</dataObject>
+            <dataObject>surveyProgram</dataObject>
+            <dataObject>target</dataObject>
+            <dataObject maxDataNodes="700">trajectory</dataObject>
+            <dataObject>tubular</dataObject>
+            <dataObject>wbGeometry</dataObject>
+            <dataObject>well</dataObject>
+            <dataObject>wellbore</dataObject>
+        </function>
+        <function name="WMLS_DeleteFromStore">
+            <dataObject>attachment</dataObject>
+            <dataObject>bhaRun</dataObject>
+            <dataObject>cementJob</dataObject>
+            <dataObject>convCore</dataObject>
+            <dataObject>drillReport</dataObject>
+            <dataObject>fluidsReport</dataObject>
+            <dataObject>formationMarker</dataObject>
+            <dataObject>log</dataObject>
+            <dataObject>message</dataObject>
+            <dataObject>mudLog</dataObject>
+            <dataObject>objectGroup</dataObject>
+            <dataObject>opsReport</dataObject>
+            <dataObject>rig</dataObject>
+            <dataObject>risk</dataObject>
+            <dataObject>sidewallCore</dataObject>
+            <dataObject>stimJob</dataObject>
+            <dataObject>surveyProgram</dataObject>
+            <dataObject>target</dataObject>
+            <dataObject>trajectory</dataObject>
+            <dataObject>tubular</dataObject>
+            <dataObject>wbGeometry</dataObject>
+        </function>
+        <function name="WMLS_GetBaseMsg"/>
+        <function name="WMLS_GetVersion"/>
+    </capServer>
+</capServers>
