@@ -9,7 +9,7 @@ import static org.junit.Assert.assertNotNull;
 
 public class LogRequestTrackerTests {
 
-    @Test
+/*    @Test
     public void testDateTracker(){
         MockClient client = new MockClient("https://test.test.com/witsml/witsml.asmx");
         LogRequestTracker tracker = new LogRequestTracker();
@@ -19,5 +19,5 @@ public class LogRequestTrackerTests {
         String caps = tracker.getCapabilitiesIn();
         assertNotNull(caps);
         assertEquals();
-    }
+    }*/
 }
