@@ -1,20 +1,20 @@
 package com.hashmapinc.tempus.witsml.api;
 
-import com.hashmapinc.tempus.WitsmlObjects.Util.WitsmlMarshal;
-import com.hashmapinc.tempus.WitsmlObjects.Util.WitsmlVersionTransformer;
-import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjLogs;
-import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjWellbores;
-import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjWells;
-import com.hashmapinc.tempus.witsml.client.Client;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import javax.xml.bind.JAXBException;
-import javax.xml.transform.TransformerConfigurationException;
-import java.io.*;
-import java.rmi.RemoteException;
-import java.util.List;
-import java.util.stream.Collectors;
+//import com.hashmapinc.tempus.WitsmlObjects.Util.WitsmlMarshal;
+//import com.hashmapinc.tempus.WitsmlObjects.Util.WitsmlVersionTransformer;
+//import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjLogs;
+//import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjWellbores;
+//import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjWells;
+//import com.hashmapinc.tempus.witsml.client.Client;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
+//
+//import javax.xml.bind.JAXBException;
+//import javax.xml.transform.TransformerConfigurationException;
+//import java.io.*;
+//import java.rmi.RemoteException;
+//import java.util.List;
+//import java.util.stream.Collectors;
 
 //public class MockClient implements WitsmlClient {
 
@@ -219,4 +219,4 @@ import java.util.stream.Collectors;
         return reader.lines().collect(Collectors.joining(
                 System.getProperty("line.separator")));
     }*/
-}
+//}
