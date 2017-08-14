@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<drillReports
+        xmlns="http://www.witsml.org/schemas/1series"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.witsml.org/schemas/1series  ../xsd_schemas/obj_drillReport.xsd"
+        version="1.4.1.1">
+    <drillReport uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="">
+        <nameWell/>
+        <nameWellbore/>
+        <name/>
+        <dTimStart/>
+        <dTimEnd/>
+        <versionKind/>
+        <createDate/>
+        <wellAlias>
+            <name/>
+            <namingSystem/>
+        </wellAlias>
+        <wellboreAlias uid="">
+            <name/>
+            <namingSystem/>
+        </wellboreAlias>
+        <wellDatum uid="">
+            <name/>
+            <code/>
+            <datumName/>
+            <datumCRS/>
+            <kind/>
+            <wellbore/>
+            <rig/>
+            <elevation uom="" datum=""/>
+            <measuredDepth/>
+            <horizontalLocation/>
+            <comment/>
+        </wellDatum>
+        <wellCRS uid="">
+            <name/>
+            <mapProjection/>
+            <geographic/>
+            <mapProjectionCRS/>
+            <geodeticCRS uidRef=""/>
+            <localCRS/>
+            <description/>
+        </wellCRS>
+        <wellboreInfo>
+            <dTimSpud/>
+            <dTimPreSpud/>
+            <dateDrillComplete/>
+            <operator/>
+            <drillContractor/>
+            <rigAlias uid="">
+                <name/>
+                <namingSystem/>
+            </rigAlias>
+        </wellboreInfo>
+        <statusInfo uid="">
+            <dTim/>
+            <md uom=""/>
+            <tvd uom=""/>
+            <mdPlugTop uom=""/>
+            <diaHole uom=""/>
+            <mdDiaHoleStart uom=""/>
+            <diaPilot uom=""/>
+            <mdDiaPilotPlan uom=""/>
+            <tvdDiaPilotPlan/>
+            <typeWellbore/>
+            <mdKickoff uom=""/>
+            <tvdKickoff/>
+            <parentWellbore/>
+            <strengthForm uom=""/>
+            <mdStrengthForm uom=""/>
+            <tvdStrengthForm/>
+            <diaCsgLast uom=""/>
+            <mdCsgLast uom=""/>
+            <tvdCsgLast/>
+            <presTestType/>
+            <mdPlanned/>
+            <distDrill uom=""/>
+            <elevKelly/>
+            <sum24Hr/>
+            <forecast24Hr/>
+            <ropCurrent uom=""/>
+            <rig/>
+            <eTimStart/>
+            <eTimSpud/>
+            <eTimLoc/>
+            <eTimDrill/>
+            <ropAv/>
+            <supervisor/>
+            <engineer/>
+            <geologist/>
+            <eTimDrillRot/>
+            <eTimDrillSlid/>
+            <eTimCirc/>
+            <eTimReam/>
+            <eTimHold/>
+            <eTimSteering/>
+            <distDrillRot/>
+            <distDrillSlid/>
+            <distReam/>
+            <distHold/>
+            <distSteering/>
+            <numPob/>
+            <numContract/>
+            <numOperator/>
+            <numService/>
+            <numAFE/>
+            <costDay/>
+            <costDayMud/>
+            <conditionHole/>
+            <tvdLot/>
+            <presLotEmw/>
+            <presKickTol/>
+            <volKickTol/>
+            <maasp/>
+            <tubular/>
+        </statusInfo>
+        <bitRecord uid="">
+            <numBit/>
+            <diaBit uom=""/>
+            <diaPassThru/>
+            <diaPilot/>
+            <manufacturer/>
+            <typeBit/>
+            <cost/>
+            <codeMfg/>
+            <codeIADC/>
+            <condInitInner/>
+            <condInitOuter/>
+            <condInitDull/>
+            <condInitLocation/>
+            <condInitBearing/>
+            <condInitGauge/>
+            <condInitOther/>
+            <condInitReason/>
+            <condFinalInner/>
+            <condFinalOuter/>
+            <condFinalDull/>
+            <condFinalLocation/>
+            <condFinalBearing/>
+            <condFinalGauge/>
+            <condFinalOther/>
+            <condFinalReason/>
+            <drive/>
+            <bitClass/>
+            <customData/>
+            <extensionAny/>
+        </bitRecord>
+        <fluid uid="">
+            <type/>
+            <locationSample/>
+            <dTim/>
+            <md/>
+            <tvd/>
+            <presBopRating/>
+            <mudClass/>
+            <density uom=""/>
+            <visFunnel uom=""/>
+            <tempVis uom="d"/>
+            <pv uom=""/>
+            <yp uom=""/>
+            <gel10Sec uom=""/>
+            <gel10Min uom=""/>
+            <gel30Min uom=""/>
+            <filterCakeLtlp uom=""/>
+            <filtrateLtlp uom=""/>
+            <tempHthp uom=""/>
+            <presHthp uom=""/>
+            <filtrateHthp uom=""/>
+            <filterCakeHthp uom=""/>
+            <solidsPc uom=""/>
+            <waterPc uom=""/>
+            <oilPc uom=""/>
+            <sandPc uom=""/>
+            <solidsLowGravPc uom=""/>
+            <solidsCalcPc uom=""/>
+            <baritePc uom=""/>
+            <lcm uom=""/>
+            <mbt uom=""/>
+            <ph/>
+            <tempPh uom=""/>
+            <pm uom=""/>
+            <pmFiltrate uom=""/>
+            <mf uom=""/>
+            <alkalinityP1 uom=""/>
+            <alkalinityP2 uom=""/>
+            <chloride uom=""/>
+            <calcium uom=""/>
+            <magnesium uom=""/>
+            <potassium uom=""/>
+            <rheometer uid="">
+                <tempRheom uom=""/>
+                <presRheom uom=""/>
+                <vis3Rpm/>
+                <vis6Rpm/>
+                <vis100Rpm/>
+                <vis200Rpm/>
+                <vis300Rpm/>
+                <vis600Rpm/>
+            </rheometer>
+            <brinePc uom=""/>
+            <lime uom=""/>
+            <electStab uom=""/>
+            <calciumChloride uom=""/>
+            <company/>
+            <engineer/>
+            <asg/>
+            <solidsHiGravPc uom=""/>
+            <polymer uom=""/>
+            <polyType/>
+            <solCorPc uom=""/>
+            <oilCtg uom=""/>
+            <hardnessCa uom=""/>
+            <sulfide uom=""/>
+            <comments/>
+        </fluid>
+        <porePressure uid="">
+            <readingKind/>
+            <equivalentMudWeight uom=""/>
+            <dTim/>
+            <md uom=""/>
+            <tvd uom=""/>
+        </porePressure>
+        <extendedReport dTim=""/>
+        <surveyStation uid="">
+            <dTim/>
+            <md uom=""/>
+            <tvd uom=""/>
+            <incl uom=""/>
+            <azi uom=""/>
+            <vertSect/>
+            <dls/>
+            <location/>
+        </surveyStation>
+        <activity uid="">
+            <dTimStart/>
+            <dTimEnd/>
+            <duration/>
+            <md uom=""/>
+            <tvd uom=""/>
+            <phase/>
+            <activityCode/>
+            <proprietaryCode/>
+            <detailActivity/>
+            <typeActivityClass/>
+            <mdHoleStart/>
+            <tvdHoleStart/>
+            <mdHoleEnd/>
+            <tvdHoleEnd/>
+            <mdBitStart/>
+            <mdBitEnd/>
+            <state/>
+            <stateDetailActivity/>
+            <operator/>
+            <tubular/>
+            <optimum/>
+            <productive/>
+            <itemState/>
+            <comments/>
+        </activity>
+        <logInfo uid="">
+            <dTim/>
+            <runNumber/>
+            <serviceCompany/>
+            <mdTop uom=""/>
+            <mdBottom uom=""/>
+            <tvdTop uom=""/>
+            <tvdBottom uom=""/>
+            <tool/>
+            <tempBHCT uom=""/>
+            <tempBHST/>
+            <eTimStatic/>
+            <mdTempTool uom=""/>
+            <tvdTempTool uom=""/>
+        </logInfo>
+        <coreInfo uid="">
+            <dTim/>
+            <coreNumber/>
+            <mdTop uom=""/>
+            <mdBottom uom=""/>
+            <tvdTop uom=""/>
+            <tvdBottom uom=""/>
+            <lenRecovered uom=""/>
+            <recoverPc uom=""/>
+            <lenBarrel uom=""/>
+            <innerBarrelType/>
+            <coreDescription/>
+        </coreInfo>
+        <wellTestInfo uid="">
+            <dTim/>
+            <testType/>
+            <testNumber/>
+            <mdTop uom=""/>
+            <mdBottom uom=""/>
+            <tvdTop uom=""/>
+            <tvdBottom uom=""/>
+            <chokeOrificeSize uom=""/>
+            <densityOil uom=""/>
+            <densityWater uom=""/>
+            <densityGas uom=""/>
+            <flowRateOil uom=""/>
+            <flowRateWater uom=""/>
+            <flowRateGas uom=""/>
+            <presShutIn uom=""/>
+            <presFlowing uom=""/>
+            <presBottom uom=""/>
+            <gasOilRatio uom=""/>
+            <waterOilRatio uom=""/>
+            <chloride uom=""/>
+            <carbonDioxide uom=""/>
+            <hydrogenSulfide uom=""/>
+            <volOilTotal uom=""/>
+            <volGasTotal uom=""/>
+            <volWaterTotal uom=""/>
+            <volOilStored uom=""/>
+        </wellTestInfo>
+        <formTestInfo uid="">
+            <dTim/>
+            <md uom=""/>
+            <tvd uom=""/>
+            <presPore uom=""/>
+            <goodSeal/>
+            <mdSample uom=""/>
+            <dominateComponent/>
+            <densityHC uom=""/>
+            <volumeSample uom=""/>
+            <description/>
+        </formTestInfo>
+        <lithShowInfo uid="">
+            <dTim/>
+            <mdTop uom=""/>
+            <mdBottom uom=""/>
+            <tvdTop uom=""/>
+            <tvdBottom uom=""/>
+            <show/>
+            <lithology/>
+        </lithShowInfo>
+        <equipFailureInfo uid="">
+            <dTim/>
+            <md uom=""/>
+            <tvd/>
+            <equipClass/>
+            <eTimMissProduction uom=""/>
+            <dTimRepair/>
+            <description/>
+        </equipFailureInfo>
+        <controlIncidentInfo uid="">
+            <dTim/>
+            <mdInflow uom=""/>
+            <tvdInflow uom=""/>
+            <phase/>
+            <activityCode/>
+            <detailActivity/>
+            <eTimLost uom=""/>
+            <dTimRegained/>
+            <diaBit uom=""/>
+            <mdBit uom=""/>
+            <wtMud uom=""/>
+            <porePressure uom=""/>
+            <diaCsgLast uom=""/>
+            <mdCsgLast uom=""/>
+            <volMudGained uom=""/>
+            <presShutInCasing uom=""/>
+            <presShutInDrill uom=""/>
+            <incidentType/>
+            <killingType/>
+            <formation/>
+            <tempBottom uom=""/>
+            <presMaxChoke uom=""/>
+            <description/>
+        </controlIncidentInfo>
+        <stratInfo uid="">
+            <dTim/>
+            <mdTop uom=""/>
+            <tvdTop uom=""/>
+            <description/>
+        </stratInfo>
+        <perfInfo uid="">
+            <dTimOpen/>
+            <dTimClose/>
+            <mdTop uom=""/>
+            <mdBottom uom=""/>
+            <tvdTop uom=""/>
+            <tvdBottom uom=""/>
+        </perfInfo>
+        <gasReadingInfo uid="">
+            <dTim/>
+            <readingType/>
+            <mdTop uom=""/>
+            <mdBottom uom=""/>
+            <tvdTop uom=""/>
+            <tvdBottom uom=""/>
+            <gasHigh uom=""/>
+            <gasLow uom=""/>
+            <meth uom=""/>
+            <eth uom=""/>
+            <prop uom=""/>
+            <ibut uom=""/>
+            <nbut uom=""/>
+            <ipent uom=""/>
+        </gasReadingInfo>
+        <commonData>
+            <defaultDatum uidRef=""/>
+        </commonData>
+    </drillReport>
+</drillReports>

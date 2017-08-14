@@ -20,24 +20,20 @@ import java.util.DoubleSummaryStatistics;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class LogRequestTracker extends AbstractRequestTracker{
+public class MudlogRequestTracker extends AbstractRequestTracker{
 
     private WitsmlClient witsmlClient;
-    private ZonedDateTime lastQueryTime = null;
-    private ZonedDateTime lastLogTime = null;
-    private LogIndexType indexType = null;
-    private double lastLogDepth = -1;
     private WitsmlVersionTransformer transformer;
     private String wellId;
     private String wellboreId;
-    private String logId;
+    private String mudlogId;
+    private ZonedDateTime lastQueryTime = null;
+    private double lastStartMd = -1;
+    private boolean fullQuery = true;
 
-    public void setLogId(String logId) { this.logId = logId; }
-    public String getLogId() { return logId; }
-
-    public double getLastLogDepth() { return lastLogDepth; }
-    public ZonedDateTime getLastLogTime() { return lastLogTime; }
-
+    public void setFullQuery(boolean fullQuery) { this.fullQuery = fullQuery; }
+    public void setMudlogId(String mudlogId) { this.mudlogId = mudlogId; }
+    public double getLastStartMd() { return  lastStartMd; }
 
 
     @Override
@@ -53,8 +49,8 @@ public class LogRequestTracker extends AbstractRequestTracker{
     }
 
     @Override
-    public ObjLogs ExecuteRequest()  {
-        ObjLogs logs = null;
+    public ObjMudLogs ExecuteRequest() {
+        ObjMudLogs mudLogs = null;
         String response;
 
         try {
@@ -68,26 +64,14 @@ public class LogRequestTracker extends AbstractRequestTracker{
                 }
             }
 
-            logs = WitsmlMarshal.deserialize(response, ObjLogs.class);
+            mudLogs = WitsmlMarshal.deserialize(response, ObjMudLogs.class);
+            lastStartMd = getMinOfMdBottom(mudLogs.getMudLog().get(0));
+            setFullQuery(false);
 
-            if (indexType == null)
-                indexType = logs.getLog().get(0).getIndexType();
-
-            switch (indexType) {
-                case MEASURED_DEPTH:
-                case VERTICAL_DEPTH: {
-                    lastLogDepth = getMinOfMaxDepth(logs.getLog().get(0));
-                    break;
-                }
-                case DATE_TIME: {
-                    lastLogTime = getMinOfMaxTime(logs.getLog().get(0));
-                }
-            }
         } catch (JAXBException | RemoteException e) {
             e.printStackTrace();
         }
-
-        return logs;
+        return mudLogs;
     }
 
     private String executeQuery() throws RemoteException {
@@ -96,9 +80,9 @@ public class LogRequestTracker extends AbstractRequestTracker{
         setOptionsIn("");
         try {
             if (getVersion().toString().equals("1.3.1.1")) {
-                query = getQuery("/1311/GetLogData.xml");
+                query = getQuery("/1311/GetMudLogsData.xml");
             } else if (getVersion().toString().equals("1.4.1.1")) {
-                query = getQuery("/1411/GetLogData.xml");
+                query = getQuery("/1411/GetMudLogsData.xml");
                 setOptionsIn("dataVersion=1.4.1.1");
             }
         } catch (Exception ex) {
@@ -106,54 +90,37 @@ public class LogRequestTracker extends AbstractRequestTracker{
         }
         query = query.replace("%uidWell%", wellId);
         query = query.replace("%uidWellbore%", wellboreId);
-        query = query.replace("%uidLog%", logId);
-        query = query.replace("%startIndex%", getQueryStartDepth());
-        query = query.replace("%startDateTimeIndex%", getQueryStartTime());
+        query = query.replace("%uidMudLog%", mudlogId);
+        query = query.replace("%startMd%", getQueryStartMd());
         setQuery(query);
         setCapabilitesIn("");
         return witsmlClient.executeLogQuery(getQuery(), getOptionsIn(), getCapabilitiesIn());
     }
 
-    private String getQueryStartDepth(){
-        if (lastLogDepth == -1)
+    private String getQueryStartMd(){
+        if (lastStartMd == -1 || fullQuery)
             return "";
-        else if (lastLogDepth > 1)
-            return String.valueOf(lastLogDepth);
+        else if (lastStartMd > 1)
+            return String.valueOf(lastStartMd);
         return "";
     }
 
-    private String getQueryStartTime(){
-        if (lastLogTime == null)
-            return "";
-        else
-            return lastLogTime.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME);
-    }
+    private double getMinOfMdBottom(ObjMudLog mudLog) {
+        List<CsGeologyInterval> geologyIntervals = mudLog.getGeologyInterval();
+        DoubleSummaryStatistics summaryStat = geologyIntervals.stream()
+                                              .map(CsGeologyInterval::getMdBottom)
+                                              .mapToDouble(MeasuredDepthCoord::getValue)
+                                              .summaryStatistics();
 
-    private double getMinOfMaxDepth(ObjLog log){
-        List<CsLogCurveInfo> curveInfos = log.getLogCurveInfo();
-        DoubleSummaryStatistics summaryStats = curveInfos.stream()
-                .map(CsLogCurveInfo::getMaxIndex)
-                .mapToDouble(GenericMeasure::getValue)
-                .summaryStatistics();
-
-        return summaryStats.getMin();
-    }
-
-    private ZonedDateTime getMinOfMaxTime(ObjLog log){
-        List<CsLogCurveInfo> curveInfos = log.getLogCurveInfo();
-
-        ZonedDateTime maxDate = null;
-        for (CsLogCurveInfo curveInfo : curveInfos) {
-
-            ZonedDateTime currentMaxDate = curveInfo.getMaxDateTimeIndex().toGregorianCalendar().toZonedDateTime();
-            if (maxDate == null)
-                maxDate = currentMaxDate;
-            else if (currentMaxDate.isBefore(maxDate))
-                maxDate = currentMaxDate;
+        double mdMax = -1;
+        for (CsGeologyInterval geologyInterval : geologyIntervals) {
+            double value = geologyInterval.getMdBottom().getValue();
+            if (mdMax < value) {
+                mdMax = value;
+            }
         }
-        return maxDate;
+        return mdMax;
     }
-
     private String getQuery(String resourcePath) throws IOException {
         InputStream stream = getClass().getResourceAsStream(resourcePath);
         BufferedReader reader = new BufferedReader(

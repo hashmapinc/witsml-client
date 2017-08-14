@@ -1,17 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<realtimes xmlns="http://www.witsml.org/schemas/131">
-  <realtime uidWell="%uidWell%" uidWellbore="%uidWellbore%" idSub="">
-    <dTim />
-    <md uom="" datum="" />
-    <dataGroup/>
-    <sequence/>
-    <realtimeHeader>
-      <serviceCompany />
-      <groupDefinition>
-        <interval>
-          <type />
-        </interval>
-      </groupDefinition>
-    </realtimeHeader>
-  </realtime>
+<realtimes
+        xmlns="http://www.witsml.org/schemas/131"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.witsml.org/schemas/131  ../obj_realtime.xsd"
+        version="1.3.1.1">
+    <realtime uidWell="%uidWell%" uidWellbore="%uidWellbore%" idSub="">
+        <dTim/>
+        <md uom=""/>
+        <sequence/>
+        <activityCode/>
+        <detailActivity/>
+        <dataGroup/>
+        <realtimeHeader>
+            <nameWell/>
+            <nameWellbore/>
+            <serviceCompany/>
+            <runNumber/>
+            <bhaRunNumber/>
+            <pass/>
+            <creationDate/>
+            <description/>
+            <groupDefinition>
+                <id/>
+                <multiplexed/>
+                <interval>
+                    <type/>
+                    <method/>
+                    <timeInterval/>
+                    <distanceInterval/>
+                </interval>
+                <persistedAsLog/>
+                <persistedAsWellLog/>
+                <comment/>
+                <channelDefinition>
+                    <mnemonic/>
+                    <dataType/>
+                    <classWitsml/>
+                    <columnIndex/>
+                    <unit/>
+                    <description/>
+                    <mnemAlias/>
+                    <sensorOffset uom=""/>
+                    <dataSource/>
+                    <interval>
+                        <type/>
+                        <method/>
+                        <timeInterval uom=""/>
+                        <distanceInterval/>
+                    </interval>
+                    <axisDefinition>
+                        <order/>
+                        <count/>
+                        <name/>
+                        <propertyType/>
+                        <uom/>
+                        <doubleValues/>
+                        <stringValues/>
+                    </axisDefinition>
+                </channelDefinition>
+            </groupDefinition>
+        </realtimeHeader>
+        <channel>
+            <id/>
+            <mnemonic/>
+            <dTim/>
+            <md uom=""/>
+            <value uom=""/>
+            <densData uom=""/>
+            <qualData/>
+            <fet uom=""/>
+        </channel>
+        <record>
+            <id/>
+            <seq/>
+            <dTim/>
+            <md uom=""/>
+            <value/>
+        </record>
+        <commonData/>
+        <customData/>
+    </realtime>
 </realtimes>

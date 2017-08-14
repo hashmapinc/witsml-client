@@ -15,9 +15,9 @@ public class LogRequestTrackerTests {
         LogRequestTracker tracker = new LogRequestTracker();
         tracker.setVersion(WitsmlVersion.VERSION_1411);
         tracker.setCapabilitesIn("");
-        tracker.initalize(client);
+        tracker.initalize(client, "", "");
         String caps = tracker.getCapabilitiesIn();
         assertNotNull(caps);
-        assertEquals();
+//        assertEquals();
     }
 }

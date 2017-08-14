@@ -1,29 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<logs
-      version="1.4.1.1"
-      xmlns="http://www.witsml.org/schemas/1series"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.witsml.org/schemas/1series  ../xsd_schemas/obj_log.xsd">
-  <log uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="">
+<logs version="1.3.1.1" xmlns="http://www.witsml.org/schemas/131">
+  <log uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="%uidLog%">
     <nameWell />
     <nameWellbore />
     <name />
     <objectGrowing />
-    <dataUpateRate/>
-    <curveSensorsAligned/>
-    <dataGroup/>
+    <dataRowCount />
     <serviceCompany />
     <runNumber />
-    <bhaRunNumber/>
     <pass />
     <creationDate />
     <description />
-    <dataDelimiter/>
     <indexType />
-    <startIndex uom="" />
+    <startIndex uom="">%startIndex%</startIndex>
     <endIndex uom="" />
     <stepIncrement uom="" numerator="" denominator="" />
-    <startDateTimeIndex />
+    <startDateTimeIndex>%startDateTimeIndex%</startDateTimeIndex>
     <endDateTimeIndex />
     <direction />
     <indexCurve columnIndex="" />
@@ -32,26 +24,20 @@
     <logCurveInfo uid="">
       <mnemonic />
       <classWitsml />
-      <classIndex/>
       <unit />
       <mnemAlias />
       <nullValue />
-      <alternateIndex/>
-      <wellDatum/>
       <minIndex uom="" />
       <maxIndex uom="" />
       <minDateTimeIndex />
       <maxDateTimeIndex />
+      <columnIndex />
       <curveDescription />
       <sensorOffset uom="" />
-      <dataSource/>
-      <densData/>
       <traceState />
       <typeLogData />
     </logCurveInfo>
     <logData>
-      <mnemonicList/>
-      <unitList/>
       <data />
     </logData>
   </log>

@@ -58,7 +58,7 @@ public abstract class AbstractRequestTracker<T> {
         return optionsIn;
     }
 
-    public void getOptionsIn(String optionsIn){
+    public void setOptionsIn(String optionsIn){
         this.optionsIn = optionsIn;
     }
 
@@ -70,7 +70,7 @@ public abstract class AbstractRequestTracker<T> {
         this.version = version;
     }
 
-    public abstract void initalize(WitsmlClient witsmlClient);
+    public abstract void initalize(WitsmlClient witsmlClient, String wellId, String wellboreId);
 
     public abstract T ExecuteRequest() throws RemoteException;
 

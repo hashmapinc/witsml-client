@@ -20,24 +20,20 @@ import java.util.DoubleSummaryStatistics;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class LogRequestTracker extends AbstractRequestTracker{
+public class TrajectoryRequestTracker extends AbstractRequestTracker{
 
     private WitsmlClient witsmlClient;
-    private ZonedDateTime lastQueryTime = null;
-    private ZonedDateTime lastLogTime = null;
-    private LogIndexType indexType = null;
-    private double lastLogDepth = -1;
     private WitsmlVersionTransformer transformer;
     private String wellId;
     private String wellboreId;
-    private String logId;
+    private String trajectoryId;
+    private ZonedDateTime lastQueryTime = null;
+    private double lastMeasuredDepth = -1;
+    private boolean fullQuery = true;
 
-    public void setLogId(String logId) { this.logId = logId; }
-    public String getLogId() { return logId; }
-
-    public double getLastLogDepth() { return lastLogDepth; }
-    public ZonedDateTime getLastLogTime() { return lastLogTime; }
-
+    public void setFullQuery(boolean fullQuery) { this.fullQuery = fullQuery; }
+    public void setTrajectoryId(String trajectoryId) { this.trajectoryId = trajectoryId; }
+    public double getLastMeasuredDepth() { return lastMeasuredDepth; }
 
 
     @Override
@@ -53,12 +49,13 @@ public class LogRequestTracker extends AbstractRequestTracker{
     }
 
     @Override
-    public ObjLogs ExecuteRequest()  {
-        ObjLogs logs = null;
-        String response;
+    public ObjTrajectorys ExecuteRequest() {
+        ObjTrajectorys trajectorys = null;
+        String response = null;
 
         try {
             response = executeQuery();
+//            System.out.println("Trajectory : " + response);
 
             if (getVersion() == WitsmlVersion.VERSION_1311) {
                 try {
@@ -68,26 +65,15 @@ public class LogRequestTracker extends AbstractRequestTracker{
                 }
             }
 
-            logs = WitsmlMarshal.deserialize(response, ObjLogs.class);
+            trajectorys = WitsmlMarshal.deserialize(response, ObjTrajectorys.class);
+            lastMeasuredDepth = getLastMeasuredDepth(trajectorys.getTrajectory().get(0));
+            setFullQuery(false);
 
-            if (indexType == null)
-                indexType = logs.getLog().get(0).getIndexType();
 
-            switch (indexType) {
-                case MEASURED_DEPTH:
-                case VERTICAL_DEPTH: {
-                    lastLogDepth = getMinOfMaxDepth(logs.getLog().get(0));
-                    break;
-                }
-                case DATE_TIME: {
-                    lastLogTime = getMinOfMaxTime(logs.getLog().get(0));
-                }
-            }
         } catch (JAXBException | RemoteException e) {
             e.printStackTrace();
         }
-
-        return logs;
+        return trajectorys;
     }
 
     private String executeQuery() throws RemoteException {
@@ -96,9 +82,9 @@ public class LogRequestTracker extends AbstractRequestTracker{
         setOptionsIn("");
         try {
             if (getVersion().toString().equals("1.3.1.1")) {
-                query = getQuery("/1311/GetLogData.xml");
+                query = getQuery("/1311/GetTrajectoryData.xml");
             } else if (getVersion().toString().equals("1.4.1.1")) {
-                query = getQuery("/1411/GetLogData.xml");
+                query = getQuery("/1411/GetTrajectoryData.xml");
                 setOptionsIn("dataVersion=1.4.1.1");
             }
         } catch (Exception ex) {
@@ -106,52 +92,31 @@ public class LogRequestTracker extends AbstractRequestTracker{
         }
         query = query.replace("%uidWell%", wellId);
         query = query.replace("%uidWellbore%", wellboreId);
-        query = query.replace("%uidLog%", logId);
-        query = query.replace("%startIndex%", getQueryStartDepth());
-        query = query.replace("%startDateTimeIndex%", getQueryStartTime());
+        query = query.replace("%uidTrajectory%", trajectoryId);
+        query = query.replace("%mdMn%", getQueryStartMd());
         setQuery(query);
         setCapabilitesIn("");
-        return witsmlClient.executeLogQuery(getQuery(), getOptionsIn(), getCapabilitiesIn());
+        return witsmlClient.executeTrajectoryQuery(getQuery(), getOptionsIn(), getCapabilitiesIn());
     }
 
-    private String getQueryStartDepth(){
-        if (lastLogDepth == -1)
+    private String getQueryStartMd(){
+        if (lastMeasuredDepth == -1 || fullQuery)
             return "";
-        else if (lastLogDepth > 1)
-            return String.valueOf(lastLogDepth);
+        else if (lastMeasuredDepth > 1 )
+            return String.valueOf(lastMeasuredDepth);
         return "";
     }
 
-    private String getQueryStartTime(){
-        if (lastLogTime == null)
-            return "";
-        else
-            return lastLogTime.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME);
-    }
-
-    private double getMinOfMaxDepth(ObjLog log){
-        List<CsLogCurveInfo> curveInfos = log.getLogCurveInfo();
-        DoubleSummaryStatistics summaryStats = curveInfos.stream()
-                .map(CsLogCurveInfo::getMaxIndex)
-                .mapToDouble(GenericMeasure::getValue)
-                .summaryStatistics();
-
-        return summaryStats.getMin();
-    }
-
-    private ZonedDateTime getMinOfMaxTime(ObjLog log){
-        List<CsLogCurveInfo> curveInfos = log.getLogCurveInfo();
-
-        ZonedDateTime maxDate = null;
-        for (CsLogCurveInfo curveInfo : curveInfos) {
-
-            ZonedDateTime currentMaxDate = curveInfo.getMaxDateTimeIndex().toGregorianCalendar().toZonedDateTime();
-            if (maxDate == null)
-                maxDate = currentMaxDate;
-            else if (currentMaxDate.isBefore(maxDate))
-                maxDate = currentMaxDate;
+    private double getLastMeasuredDepth(ObjTrajectory trajectory) {
+        List<CsTrajectoryStation> trajectoryStations = trajectory.getTrajectoryStation();
+        double maxDepth = -1;
+        for(CsTrajectoryStation station : trajectoryStations) {
+            double depth = station.getMd().getValue();
+            if (maxDepth < depth) {
+                maxDepth = depth;
+            }
         }
-        return maxDate;
+        return maxDepth;
     }
 
     private String getQuery(String resourcePath) throws IOException {
