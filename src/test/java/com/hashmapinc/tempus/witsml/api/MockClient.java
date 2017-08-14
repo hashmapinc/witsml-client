@@ -16,7 +16,7 @@ import java.rmi.RemoteException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class MockClient implements WitsmlClient {
+//public class MockClient implements WitsmlClient {
 
   /*  private String url;
     private Logger log;
