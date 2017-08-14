@@ -7,7 +7,7 @@
     <groupId>com.hashmap.tempus</groupId>
     <artifactId>witsml</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
 
     <name>WITSML Client</name>
     <description>This library assists in querying a WITSML server for 1.3.1.1 data or 1.4.1.1 data</description>
