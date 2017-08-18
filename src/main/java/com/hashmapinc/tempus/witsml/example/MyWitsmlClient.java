@@ -2,6 +2,8 @@ package com.hashmapinc.tempus.witsml.example;
 
 import com.hashmapinc.tempus.WitsmlObjects.v1311.*;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.*;
+import com.hashmapinc.tempus.WitsmlObjects.v1411.CsGeologyInterval;
+import com.hashmapinc.tempus.WitsmlObjects.v1411.CsTrajectoryStation;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjRisks;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.CsLogData;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjOpsReports;
