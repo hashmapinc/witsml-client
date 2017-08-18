@@ -31,14 +31,14 @@ public class LogRequestTracker extends AbstractRequestTracker{
     private String wellId;
     private String wellboreId;
     private String logId;
+    private boolean fullQuery = true;
 
+    public void setFullQuery(boolean fullQuery) { this.fullQuery = fullQuery; }
     public void setLogId(String logId) { this.logId = logId; }
     public String getLogId() { return logId; }
 
     public double getLastLogDepth() { return lastLogDepth; }
     public ZonedDateTime getLastLogTime() { return lastLogTime; }
-
-
 
     @Override
     public void initalize(WitsmlClient witsmlClient, String wellId, String wellboreId) {
@@ -65,10 +65,14 @@ public class LogRequestTracker extends AbstractRequestTracker{
                     response = transformer.convertVersion(response);
                 } catch (TransformerException e) {
                     e.printStackTrace();
+                    return null;
                 }
             }
 
             logs = WitsmlMarshal.deserialize(response, ObjLogs.class);
+            if (logs == null || logs.getLog().isEmpty()) {
+                return null;
+            }
 
             if (indexType == null)
                 indexType = logs.getLog().get(0).getIndexType();
@@ -83,10 +87,10 @@ public class LogRequestTracker extends AbstractRequestTracker{
                     lastLogTime = getMinOfMaxTime(logs.getLog().get(0));
                 }
             }
+            setFullQuery(false);
         } catch (JAXBException | RemoteException e) {
             e.printStackTrace();
         }
-
         return logs;
     }
 
@@ -115,7 +119,7 @@ public class LogRequestTracker extends AbstractRequestTracker{
     }
 
     private String getQueryStartDepth(){
-        if (lastLogDepth == -1)
+        if (lastLogDepth == -1 || fullQuery)
             return "";
         else if (lastLogDepth > 1)
             return String.valueOf(lastLogDepth);
@@ -123,7 +127,7 @@ public class LogRequestTracker extends AbstractRequestTracker{
     }
 
     private String getQueryStartTime(){
-        if (lastLogTime == null)
+        if (lastLogTime == null || fullQuery)
             return "";
         else
             return lastLogTime.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME);

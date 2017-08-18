@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cementJobs version="1.3.1.1" xmlns="http://www.witsml.org/schemas/131">
+    <cementJob uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="">
+        <nameWell/>
+        <nameWellbore/>
+        <name/>
+        <jobType/>
+        <jobConfig/>
+        <dTimJob/>
+        <nameCementedString/>
+        <nameWorkString/>
+        <contractor/>
+        <cementEngr/>
+        <offshoreJob/>
+        <mdWater uom=""/>
+        <returnsToSeabed/>
+        <reciprocating/>
+        <woc uom=""/>
+        <mdPlugTop uom=""/>
+        <mdPlugBot uom=""/>
+        <mdHole uom=""/>
+        <mdShoe uom=""/>
+        <tvdShoe uom=""/>
+        <mdStringSet uom=""/>
+        <tvdStringSet uom=""/>
+    </cementJob>
+</cementJobs>

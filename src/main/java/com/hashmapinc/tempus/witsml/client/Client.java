@@ -187,10 +187,10 @@ public class Client implements WitsmlClient {
         String optionsIn = "";
         try {
             if (version.toString().equals("1.3.1.1")) {
-                query = getQuery("/1311/GetWells.xml");
+                query = getQuery("/1311/GetWellsMetaData.xml");
             }
             else if (version.toString().equals("1.4.1.1")) {
-                query = getQuery("/1411/GetWells.xml");
+                query = getQuery("/1411/GetWellsMetaData.xml");
                 optionsIn = "dataVersion=1.4.1.1";
             }
         } catch (IOException e) {
@@ -226,7 +226,6 @@ public class Client implements WitsmlClient {
     @Override
     public ObjWells getWellsAsObj() throws Exception {
         String wells = getWells();
-//        System.out.println("WELLS : \n" + wells);
         return WitsmlMarshal.deserialize(wells, ObjWells.class);
     }
 
@@ -246,10 +245,10 @@ public class Client implements WitsmlClient {
         try {
 
             if (version.toString().equals("1.3.1.1")) {
-                query = getQuery("/1311/GetWellbores.xml");
+                query = getQuery("/1311/GetWellboresMetaData.xml");
             }
             else if (version.toString().equals("1.4.1.1")){
-                query = getQuery("/1411/GetWellbores.xml");
+                query = getQuery("/1411/GetWellboresMetaData.xml");
                 optionsIn = "dataVersion=1.4.1.1";
             }
 
@@ -291,7 +290,6 @@ public class Client implements WitsmlClient {
     @Override
     public ObjWellbores getWellboresForWellAsObj(String wellId) throws Exception {
         String wellbores = getWellboresForWell(wellId);
-//        System.out.println("WELLBORE : " + wellbores);
         return WitsmlMarshal.deserialize(wellbores, ObjWellbores.class);
     }
 
@@ -311,10 +309,10 @@ public class Client implements WitsmlClient {
         String optionsIn="";
         try {
             if (version.toString().equals("1.3.1.1")) {
-                query = getQuery("/1311/GetLogs.xml");
+                query = getQuery("/1311/GetLogsMetaData.xml");
             }
             else if (version.toString().equals("1.4.1.1")){
-                query = getQuery("/1411/GetLogs.xml");
+                query = getQuery("/1411/GetLogsMetaData.xml");
                 optionsIn = "dataVersion=1.4.1.1";
             }
             query = query.replace("%uidWell%", wellId);
@@ -357,10 +355,10 @@ public class Client implements WitsmlClient {
         String optionsIn = "";
         try {
             if (version.toString().equals("1.3.1.1")) {
-                query = getQuery("/1311/GetMudLogs.xml");
+                query = getQuery("/1311/GetMudLogsMetaData.xml");
             }
             else if (version.toString().equals("1.4.1.1")){
-                query = getQuery("/1411/GetMudLogs.xml");
+                query = getQuery("/1411/GetMudLogsMetaData.xml");
                 optionsIn = "dataVersion=1.4.1.1";
             }
             query = query.replace("%uidWell%", wellId);
@@ -403,10 +401,10 @@ public class Client implements WitsmlClient {
         String optionsIn="";
         try {
             if (version.toString().equals("1.3.1.1")) {
-                query = getQuery("/1311/GetTrajectorys.xml");
+                query = getQuery("/1311/GetTrajectorysMetaData.xml");
             }
             else if (version.toString().equals("1.4.1.1")){
-                query = getQuery("/1411/GetTrajectorys.xml");
+                query = getQuery("/1411/GetTrajectorysMetaData.xml");
                 optionsIn = "dataVersion=1.4.1.1";
             }
             query = query.replace("%uidWell%", wellId);
@@ -449,10 +447,10 @@ public class Client implements WitsmlClient {
         String optionsIn = "";
         try {
             if (version.toString().equals("1.3.1.1")) {
-                query = getQuery("/1311/GetBhaRuns.xml");
+                query = getQuery("/1311/GetBhaRunsMetaData.xml");
             }
             else if (version.toString().equals("1.4.1.1")){
-                query = getQuery("/1411/GetBhaRuns.xml");
+                query = getQuery("/1411/GetBhaRunsMetaData.xml");
                 optionsIn = "dataVersion=1.4.1.1";
             }
             query = query.replace("%uidWell%", wellId);
@@ -495,10 +493,10 @@ public class Client implements WitsmlClient {
         String optionsIn = "";
         try {
             if (version.toString().equals("1.3.1.1")) {
-                query = getQuery("/1311/GetCementJobs.xml");
+                query = getQuery("/1311/GetCementJobsMetaData.xml");
             }
             else if (version.toString().equals("1.4.1.1")){
-                query = getQuery("/1411/GetCementJobs.xml");
+                query = getQuery("/1411/GetCementJobsMetaData.xml");
                 optionsIn = "dataVersion=1.4.1.1";
             }
             query = query.replace("%uidWell%", wellId);
@@ -541,10 +539,10 @@ public class Client implements WitsmlClient {
         String optionsIn = "";
         try {
             if (version.toString().equals("1.3.1.1")) {
-                query = getQuery("/1311/GetConvCore.xml");
+                query = getQuery("/1311/GetConvCoreMetaData.xml");
             }
             else if (version.toString().equals("1.4.1.1")){
-                query = getQuery("/1411/GetConvCore.xml");
+                query = getQuery("/1411/GetConvCoreMetaData.xml");
                 optionsIn = "dataVersion=1.4.1.1";
             }
             query = query.replace("%uidWell%", wellId);
@@ -587,10 +585,10 @@ public class Client implements WitsmlClient {
         String optionsIn = "";
         try {
             if (version.toString().equals("1.3.1.1")) {
-                query = getQuery("/1311/GetFluidsReports.xml");
+                query = getQuery("/1311/GetFluidsReportsMetaData.xml");
             }
             else if (version.toString().equals("1.4.1.1")){
-                query = getQuery("/1411/GetFluidsReports.xml");
+                query = getQuery("/1411/GetFluidsReportsMetaData.xml");
                 optionsIn = "dataVersion=1.4.1.1";
             }
             query = query.replace("%uidWell%", wellId);
@@ -633,10 +631,10 @@ public class Client implements WitsmlClient {
         String optionsIn = "";
         try {
             if (version.toString().equals("1.3.1.1")) {
-                query = getQuery("/1311/GetFormationMarker.xml");
+                query = getQuery("/1311/GetFormationMarkerMetaData.xml");
             }
             else if (version.toString().equals("1.4.1.1")){
-                query = getQuery("/1411/GetFormationMarker.xml");
+                query = getQuery("/1411/GetFormationMarkerMetaData.xml");
                 optionsIn = "dataVersion=1.4.1.1";
             }
             query = query.replace("%uidWell%", wellId);
@@ -679,10 +677,10 @@ public class Client implements WitsmlClient {
         String optionsIn = "";
         try {
             if (version.toString().equals("1.3.1.1")) {
-                query = getQuery("/1311/GetMessages.xml");
+                query = getQuery("/1311/GetMessagesMetaData.xml");
             }
             else if (version.toString().equals("1.4.1.1")){
-                query = getQuery("/1411/GetMessages.xml");
+                query = getQuery("/1411/GetMessagesMetaData.xml");
                 optionsIn = "dataVersion=1.4.1.1";
             }
             query = query.replace("%uidWell%", wellId);
@@ -725,10 +723,10 @@ public class Client implements WitsmlClient {
         String optionsIn = "";
         try {
             if (version.toString().equals("1.3.1.1")) {
-                query = getQuery("/1311/GetOpsReports.xml");
+                query = getQuery("/1311/GetOpsReportsMetaData.xml");
             }
             else if (version.toString().equals("1.4.1.1")){
-                query = getQuery("/1411/GetOpsReports.xml");
+                query = getQuery("/1411/GetOpsReportsMetaData.xml");
                 optionsIn = "dataVersion=1.4.1.1";
             }
             query = query.replace("%uidWell%", wellId);
@@ -771,10 +769,10 @@ public class Client implements WitsmlClient {
         String optionsIn = "";
         try {
             if (version.toString().equals("1.3.1.1")) {
-                query = getQuery("/1311/GetRigs.xml");
+                query = getQuery("/1311/GetRigsMetaData.xml");
             }
             else if (version.toString().equals("1.4.1.1")){
-                query = getQuery("/1411/GetRigs.xml");
+                query = getQuery("/1411/GetRigsMetaData.xml");
                 optionsIn = "dataVersion=1.4.1.1";
             }
             query = query.replace("%uidWell%", wellId);
@@ -817,10 +815,10 @@ public class Client implements WitsmlClient {
         String optionsIn = "";
         try {
             if (version.toString().equals("1.3.1.1")) {
-                query = getQuery("/1311/GetRisks.xml");
+                query = getQuery("/1311/GetRisksMetaData.xml");
             }
             else if (version.toString().equals("1.4.1.1")){
-                query = getQuery("/1411/GetRisks.xml");
+                query = getQuery("/1411/GetRisksMetaData.xml");
                 optionsIn = "dataVersion=1.4.1.1";
             }
             query = query.replace("%uidWell%", wellId);
@@ -863,10 +861,10 @@ public class Client implements WitsmlClient {
         String optionsIn = "";
         try {
             if (version.toString().equals("1.3.1.1")) {
-                query = getQuery("/1311/GetSideWallCores.xml");
+                query = getQuery("/1311/GetSideWallCoresMetaData.xml");
             }
             else if (version.toString().equals("1.4.1.1")){
-                query = getQuery("/1411/GetSideWallCores.xml");
+                query = getQuery("/1411/GetSideWallCoresMetaData.xml");
                 optionsIn = "dataVersion=1.4.1.1";
             }
             query = query.replace("%uidWell%", wellId);
@@ -909,10 +907,10 @@ public class Client implements WitsmlClient {
         String optionsIn = "";
         try {
             if (version.toString().equals("1.3.1.1")) {
-                query = getQuery("/1311/GetSurveyPrograms.xml");
+                query = getQuery("/1311/GetSurveyProgramsMetaData.xml");
             }
             else if (version.toString().equals("1.4.1.1")){
-                query = getQuery("/1411/GetSurveyPrograms.xml");
+                query = getQuery("/1411/GetSurveyProgramsMetaData.xml");
                 optionsIn = "dataVersion=1.4.1.1";
             }
             query = query.replace("%uidWell%", wellId);
@@ -955,10 +953,10 @@ public class Client implements WitsmlClient {
         String optionsIn = "";
         try {
             if (version.toString().equals("1.3.1.1")) {
-                query = getQuery("/1311/GetTargets.xml");
+                query = getQuery("/1311/GetTargetsMetaData.xml");
             }
             else if (version.toString().equals("1.4.1.1")){
-                query = getQuery("/1411/GetTargets.xml");
+                query = getQuery("/1411/GetTargetsMetaData.xml");
                 optionsIn = "dataVersion=1.4.1.1";
             }
             query = query.replace("%uidWell%", wellId);
@@ -1001,10 +999,10 @@ public class Client implements WitsmlClient {
         String optionsIn = "";
         try {
             if (version.toString().equals("1.3.1.1")) {
-                query = getQuery("/1311/GetTubulars.xml");
+                query = getQuery("/1311/GetTubularsMetaData.xml");
             }
             else if (version.toString().equals("1.4.1.1")){
-                query = getQuery("/1411/GetTubulars.xml");
+                query = getQuery("/1411/GetTubularsMetaData.xml");
                 optionsIn = "dataVersion=1.4.1.1";
             }
             query = query.replace("%uidWell%", wellId);
@@ -1047,10 +1045,10 @@ public class Client implements WitsmlClient {
         String optionsIn = "";
         try {
             if (version.toString().equals("1.3.1.1")) {
-                query = getQuery("/1311/GetWbGeometrys.xml");
+                query = getQuery("/1311/GetWbGeometrysMetaData.xml");
             }
             else if (version.toString().equals("1.4.1.1")){
-                query = getQuery("/1411/GetWbGeometrys.xml");
+                query = getQuery("/1411/GetWbGeometrysMetaData.xml");
                 optionsIn = "dataVersion=1.4.1.1";
             }
             query = query.replace("%uidWell%", wellId);
@@ -1093,7 +1091,7 @@ public class Client implements WitsmlClient {
         String optionsIn = "";
         try {
             if (version.toString().equals("1.4.1.1")){
-                query = getQuery("/1411/GetAttachments.xml");
+                query = getQuery("/1411/GetAttachmentsMetaData.xml");
                 optionsIn = "dataVersion=1.4.1.1";
             }
             query = query.replace("%uidWell%", wellId);
@@ -1130,7 +1128,7 @@ public class Client implements WitsmlClient {
         String optionsIn = "";
         try {
             if (version.toString().equals("1.4.1.1")){
-                query = getQuery("/1411/GetChangeLogs.xml");
+                query = getQuery("/1411/GetChangeLogsMetaData.xml");
                 optionsIn = "dataVersion=1.4.1.1";
             }
             query = query.replace("%uidWell%", wellId);
@@ -1167,7 +1165,7 @@ public class Client implements WitsmlClient {
         String optionsIn = "";
         try {
             if (version.toString().equals("1.4.1.1")){
-                query = getQuery("/1411/GetDrillReports.xml");
+                query = getQuery("/1411/GetDrillReportsMetaData.xml");
                 optionsIn = "dataVersion=1.4.1.1";
             }
             query = query.replace("%uidWell%", wellId);
@@ -1204,7 +1202,7 @@ public class Client implements WitsmlClient {
         String optionsIn = "";
         try {
             if (version.toString().equals("1.4.1.1")){
-                query = getQuery("/1411/GetObjectGroups.xml");
+                query = getQuery("/1411/GetObjectGroupsMetaData.xml");
                 optionsIn = "dataVersion=1.4.1.1";
             }
             query = query.replace("%uidWell%", wellId);
@@ -1241,7 +1239,7 @@ public class Client implements WitsmlClient {
         String optionsIn = "";
         try {
             if (version.toString().equals("1.4.1.1")){
-                query = getQuery("/1411/GetStimJobs.xml");
+                query = getQuery("/1411/GetStimJobsMetaData.xml");
                 optionsIn = "dataVersion=1.4.1.1";
             }
             query = query.replace("%uidWell%", wellId);
@@ -1277,7 +1275,7 @@ public class Client implements WitsmlClient {
         String query = "";
         try {
             if (version.toString().equals("1.3.1.1")) {
-                query = getQuery("/1311/GetDtsInstalledSystems.xml");
+                query = getQuery("/1311/GetDtsInstalledSystemsMetaData.xml");
             }
             query = query.replace("%uidWell%", wellId);
             query = query.replace("%uidWellbore%", wellboreId);
@@ -1318,7 +1316,7 @@ public class Client implements WitsmlClient {
         String query = "";
         try {
             if (version.toString().equals("1.3.1.1")) {
-                query = getQuery("/1311/GetRealTimes.xml");
+                query = getQuery("/1311/GetRealTimesMetaData.xml");
             }
             query = query.replace("%uidWell%", wellId);
             query = query.replace("%uidWellbore%", wellboreId);
@@ -1359,7 +1357,7 @@ public class Client implements WitsmlClient {
         String query = "";
         try {
             if (version.toString().equals("1.3.1.1")) {
-                query = getQuery("/1311/GetDtsMeasurements.xml");
+                query = getQuery("/1311/GetDtsMeasurementsMetaData.xml");
             }
             query = query.replace("%uidWell%", wellId);
             query = query.replace("%uidWellbore%", wellboreId);
@@ -1400,7 +1398,7 @@ public class Client implements WitsmlClient {
         String query = "";
         try {
             if (version.toString().equals("1.3.1.1")) {
-                query = getQuery("/1311/GetWellLogs.xml");
+                query = getQuery("/1311/GetWellLogsMetaData.xml");
             }
             query = query.replace("%uidWell%", wellId);
             query = query.replace("%uidWellbore%", wellboreId);
@@ -1442,7 +1440,7 @@ public class Client implements WitsmlClient {
         String query = "";
         try {
             if (version.toString().equals("1.3.1.1")) {
-                query = getQuery("/1311/GetTrajectoryStations.xml");
+                query = getQuery("/1311/GetTrajectoryStationsMetaData.xml");
             }
             query = query.replace("%uidWell%", wellId);
             query = query.replace("%uidWellbore%", wellboreId);
@@ -1529,7 +1527,6 @@ public class Client implements WitsmlClient {
     @Override
     public ObjLogs getLogMetadataAsObj(String wellId, String wellboreId) throws Exception {
         String logs = getLogMetadata(wellId, wellboreId);
-//        System.out.println("LOGS : " + logs);
         return WitsmlMarshal.deserialize(logs, ObjLogs.class);
     }
 
@@ -1545,7 +1542,6 @@ public class Client implements WitsmlClient {
     @Override
     public ObjMudLogs getMudLogsAsObj(String wellId, String wellboreId) throws Exception {
         String mudLogs = getMudLogs(wellId, wellboreId);
-//        System.out.println("MUDLOGS : " + mudLogs);
         return WitsmlMarshal.deserialize(mudLogs, ObjMudLogs.class);
     }
 
@@ -1561,7 +1557,6 @@ public class Client implements WitsmlClient {
     @Override
     public ObjTrajectorys getTrajectorysAsObj(String wellId, String wellboreId) throws Exception {
         String trajectorys = getTrajectorys(wellId, wellboreId);
-//        System.out.println("Trajectorys : " + trajectorys);
         return WitsmlMarshal.deserialize(trajectorys, ObjTrajectorys.class);
     }
 
@@ -1577,7 +1572,6 @@ public class Client implements WitsmlClient {
     @Override
     public ObjBhaRuns getBhaRunsAsObj(String wellId, String wellboreId) throws Exception {
         String bhaRuns = getBhaRuns(wellId, wellboreId);
-//        System.out.println("BhaRuns : " + bhaRuns);
         return WitsmlMarshal.deserialize(bhaRuns, ObjBhaRuns.class);
     }
 
@@ -1593,7 +1587,6 @@ public class Client implements WitsmlClient {
     @Override
     public ObjCementJobs getCementJobsAsObj(String wellId, String wellboreId) throws Exception {
         String cementJobs = getCementJobs(wellId, wellboreId);
-//        System.out.println("CementJobs : " + cementJobs);
         return WitsmlMarshal.deserialize(cementJobs, ObjCementJobs.class);
     }
 
@@ -1609,7 +1602,6 @@ public class Client implements WitsmlClient {
     @Override
     public ObjConvCores getConvCoresAsObj(String wellId, String wellboreId) throws Exception {
         String convCores = getConvCores(wellId, wellboreId);
-//        System.out.println("ConvCores : " + convCores);
         return WitsmlMarshal.deserialize(convCores, ObjConvCores.class);
     }
 
@@ -1625,7 +1617,6 @@ public class Client implements WitsmlClient {
     @Override
     public ObjDtsInstalledSystems getDtsInstalledSystemsAsObj(String wellId, String wellboreId) throws Exception {
         String dtsInstalledSystems = getDtsInstalledSystems(wellId, wellboreId);
-//        System.out.println("DtsInstalledSystems : " + dtsInstalledSystems);
         return WitsmlMarshal.deserialize(dtsInstalledSystems, ObjDtsInstalledSystems.class);
     }
 
@@ -1641,7 +1632,6 @@ public class Client implements WitsmlClient {
     @Override
     public ObjFluidsReports getFluidsReportsAsObj(String wellId, String wellboreId) throws Exception {
         String fluidsReports = getFluidsReports(wellId, wellboreId);
-//        System.out.println("fluidsReport : " + fluidsReports);
         return WitsmlMarshal.deserialize(fluidsReports, ObjFluidsReports.class);
     }
 
@@ -1657,7 +1647,6 @@ public class Client implements WitsmlClient {
     @Override
     public ObjFormationMarkers getFormationMarkersAsObj(String wellId, String wellboreId) throws Exception {
         String formationMarkers = getFormationMarkers(wellId, wellboreId);
-//        System.out.println("FormationMarker : " + formationMarkers);
         return WitsmlMarshal.deserialize(formationMarkers, ObjFormationMarkers.class);
     }
 
@@ -1673,7 +1662,6 @@ public class Client implements WitsmlClient {
     @Override
     public ObjMessages getMessagesAsObj(String wellId, String wellboreId) throws Exception {
         String messages = getMessages(wellId, wellboreId);
-//        System.out.println("Messages : " + messages);
         return WitsmlMarshal.deserialize(messages, ObjMessages.class);
     }
 
@@ -1689,7 +1677,6 @@ public class Client implements WitsmlClient {
     @Override
     public ObjOpsReports getOpsReportsAsObj(String wellId, String wellboreId) throws Exception {
         String opsReports = getOpsReports(wellId, wellboreId);
-//        System.out.println("OpsReports : " + opsReports);
         return WitsmlMarshal.deserialize(opsReports, ObjOpsReports.class);
     }
 
@@ -1705,7 +1692,6 @@ public class Client implements WitsmlClient {
     @Override
     public ObjRigs getRigsAsObj(String wellId, String wellboreId) throws Exception {
         String rigs = getRigs(wellId, wellboreId);
-//        System.out.println("Rigs : " + rigs);
         return WitsmlMarshal.deserialize(rigs, ObjRigs.class);
     }
 
@@ -1721,7 +1707,6 @@ public class Client implements WitsmlClient {
     @Override
     public ObjRisks getRisksAsObj(String wellId, String wellboreId) throws Exception {
         String risks = getRisks(wellId, wellboreId);
-//        System.out.println("Risks : " + risks);
         return WitsmlMarshal.deserialize(risks, ObjRisks.class);
     }
 
@@ -1737,7 +1722,6 @@ public class Client implements WitsmlClient {
     @Override
     public ObjSidewallCores getSideWallCoresAsObj(String wellId, String wellboreId) throws Exception {
         String sideWallCores = getSideWallCores(wellId, wellboreId);
-//        System.out.println("SideWallCores : " + sideWallCores);
         return WitsmlMarshal.deserialize(sideWallCores, ObjSidewallCores.class);
     }
 
@@ -1753,7 +1737,6 @@ public class Client implements WitsmlClient {
     @Override
     public ObjSurveyPrograms getSurveyProgramsAsObj(String wellId, String wellboreId) throws Exception {
         String surveyPrograms = getSurveyPrograms(wellId, wellboreId);
-//        System.out.println("SurveyPrograms : " + surveyPrograms);
         return WitsmlMarshal.deserialize(surveyPrograms, ObjSurveyPrograms.class);
     }
 
@@ -1769,7 +1752,6 @@ public class Client implements WitsmlClient {
     @Override
     public ObjTubulars getTubularsAsObj(String wellId, String wellboreId) throws Exception {
         String tubulars = getTubulars(wellId, wellboreId);
-//        System.out.println("SurveyPrograms : " + tubulars);
         return WitsmlMarshal.deserialize(tubulars, ObjTubulars.class);
     }
 
@@ -1785,7 +1767,6 @@ public class Client implements WitsmlClient {
     @Override
     public ObjTargets getTargetsAsObj(String wellId, String wellboreId) throws Exception {
         String targets = getTargets(wellId, wellboreId);
-//        System.out.println("Targets : " + targets);
         return WitsmlMarshal.deserialize(targets, ObjTargets.class);
     }
 
@@ -1801,7 +1782,6 @@ public class Client implements WitsmlClient {
     @Override
     public ObjWbGeometrys getWbGeometrysAsObj(String wellId, String wellboreId) throws Exception {
         String wbGeometrys = getWbGeometrys(wellId, wellboreId);
-//        System.out.println("WbGeometrys : " + wbGeometrys);
         return WitsmlMarshal.deserialize(wbGeometrys, ObjWbGeometrys.class);
     }
 
@@ -1817,7 +1797,6 @@ public class Client implements WitsmlClient {
     @Override
     public ObjAttachments getAttachmentsAsObj(String wellId, String wellboreId) throws Exception {
         String attachments = getAttachments(wellId, wellboreId);
-//        System.out.println("Attachments : " + attachments);
         return WitsmlMarshal.deserialize(attachments, ObjAttachments.class);
     }
 
@@ -1833,7 +1812,6 @@ public class Client implements WitsmlClient {
     @Override
     public ObjChangeLogs getChangeLogsAsObj(String wellId, String wellboreId) throws Exception {
         String changeLogs = getChangeLogs(wellId, wellboreId);
-//        System.out.println("ChangeLogs : " + changeLogs);
         return WitsmlMarshal.deserialize(changeLogs, ObjChangeLogs.class);
     }
 
@@ -1849,7 +1827,6 @@ public class Client implements WitsmlClient {
     @Override
     public ObjDrillReports getDrillReportsAsObj(String wellId, String wellboreId) throws Exception {
         String drillReports = getDrillReports(wellId, wellboreId);
-//        System.out.println("DrillReports : " + drillReports);
         return WitsmlMarshal.deserialize(drillReports, ObjDrillReports.class);
     }
 
@@ -1865,7 +1842,6 @@ public class Client implements WitsmlClient {
     @Override
     public ObjObjectGroups getObjectGroupsAsObj(String wellId, String wellboreId) throws Exception {
         String objectGroups = getObjectGroups(wellId, wellboreId);
-//        System.out.println("ObjectGroups : " + objectGroups);
         return WitsmlMarshal.deserialize(objectGroups, ObjObjectGroups.class);
     }
 
@@ -1881,7 +1857,6 @@ public class Client implements WitsmlClient {
     @Override
     public ObjStimJobs getStimJobsAsObj(String wellId, String wellboreId) throws Exception {
         String stimJobs = getStimJobs(wellId, wellboreId);
-//        System.out.println("StimJobs : " + stimJobs);
         return WitsmlMarshal.deserialize(stimJobs, ObjStimJobs.class);
     }
 
@@ -1897,7 +1872,6 @@ public class Client implements WitsmlClient {
     @Override
     public ObjRealtimes getRealtimesAsObj(String wellId, String wellboreId) throws Exception {
         String realtimes = getRealtimes(wellId, wellboreId);
-//        System.out.println("Realtimes : " + realtimes);
         return WitsmlMarshal.deserialize(realtimes, ObjRealtimes.class);
     }
 
@@ -1913,7 +1887,6 @@ public class Client implements WitsmlClient {
     @Override
     public ObjWellLogs getWellLogsAsObj(String wellId, String wellboreId) throws Exception {
         String wellLogs = getWellLogs(wellId, wellboreId);
-//        System.out.println("WellLogs : " + wellLogs);
         return WitsmlMarshal.deserialize(wellLogs, ObjWellLogs.class);
     }
 
@@ -1929,7 +1902,6 @@ public class Client implements WitsmlClient {
     @Override
     public ObjDtsMeasurements getDtsMeasurementsAsObj(String wellId, String wellboreId) throws Exception {
         String dtsMeasurements = getDtsMeasurements(wellId, wellboreId);
-//        System.out.println("DtsMeasurements : " + dtsMeasurements);
         return WitsmlMarshal.deserialize(dtsMeasurements, ObjDtsMeasurements.class);
     }
 
@@ -1946,7 +1918,6 @@ public class Client implements WitsmlClient {
     @Override
     public ObjTrajectoryStations getTrajectoryStationsAsObj(String wellId, String wellboreId, String trajectoryId) throws Exception {
         String trajectoryStations = getTrajectoryStations(wellId, wellboreId, trajectoryId);
-//        System.out.println("TrajectoryStations : " + trajectoryStations);
         return WitsmlMarshal.deserialize(trajectoryStations, ObjTrajectoryStations.class);
     }
 

@@ -15,7 +15,6 @@ import java.rmi.RemoteException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.DoubleSummaryStatistics;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -34,7 +33,6 @@ public class MudlogRequestTracker extends AbstractRequestTracker{
     public void setFullQuery(boolean fullQuery) { this.fullQuery = fullQuery; }
     public void setMudlogId(String mudlogId) { this.mudlogId = mudlogId; }
     public double getLastStartMd() { return  lastStartMd; }
-
 
     @Override
     public void initalize(WitsmlClient witsmlClient, String wellId, String wellboreId) {
@@ -61,10 +59,14 @@ public class MudlogRequestTracker extends AbstractRequestTracker{
                     response = transformer.convertVersion(response);
                 } catch (TransformerException e) {
                     e.printStackTrace();
+                    return null;
                 }
             }
 
             mudLogs = WitsmlMarshal.deserialize(response, ObjMudLogs.class);
+            if (mudLogs == null || mudLogs.getMudLog().isEmpty()) {
+                return null;
+            }
             lastStartMd = getMinOfMdBottom(mudLogs.getMudLog().get(0));
             setFullQuery(false);
 

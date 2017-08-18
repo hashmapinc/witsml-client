@@ -39,8 +39,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
 import java.rmi.RemoteException;
-import java.time.ZonedDateTime;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -133,7 +131,7 @@ public class MyWitsmlClient {
             logs.getLog().forEach(log -> {
                 System.out.println("Log Name: " + log.getName());
                 System.out.println("Log Id: " + log.getUid());
-                PrintLogRequest(c, wellId, wellboreId, log.getUid());
+//                PrintLogRequest(c, wellId, wellboreId, log.getUid());
             });
         } catch (Exception e) {
             e.printStackTrace();
@@ -141,7 +139,6 @@ public class MyWitsmlClient {
     }
 
     private static void PrintLogRequest(Client c, String wellId, String wellboreId, String logId) {
-        ZonedDateTime lastLogTime = null;
         int count = 0;
         int sleepInterval = 0;
         Map<Integer, Integer> timeCountMap = new TreeMap<Integer, Integer>();
@@ -164,6 +161,9 @@ public class MyWitsmlClient {
             count = (int)interval.getValue();
             while (count != 0) {
                 logs = tracker.ExecuteRequest();
+                if (logs == null) {
+                    break;
+                }
                 for (int i = 0; i < logs.getLog().size(); i++) {
                     logData = logs.getLog().get(i).getLogData();
                     for (CsLogData data : logData) {
@@ -173,7 +173,7 @@ public class MyWitsmlClient {
                         } else {
                             count--;
                         }
-                        System.out.println("HASHCODE : " + hashCodeLogData);
+                        System.out.println("LOG_HASHCODE : " + hashCodeLogData);
                     }
                 }
                 System.out.println("Count : " + count + " Sleep : " + sleepInterval);
@@ -201,27 +201,51 @@ public class MyWitsmlClient {
     }
 
     private static void PrintMudLogRequest(Client c, String wellId, String wellboreId, String mudLogId) {
+        int count = 0;
+        int sleepInterval = 0;
+        Map<Integer, Integer> timeCountMap = new TreeMap<Integer, Integer>();
+        /*<TIME_SECONDS, COUNT>*/
+        timeCountMap.put(0, 5);
+        timeCountMap.put(20, 2);
+        timeCountMap.put(40, 1);
+//        timeCountMap.put(3600, 2);
+
         MudlogRequestTracker tracker = new MudlogRequestTracker();
         tracker.setVersion(WitsmlVersion.VERSION_1311);
         tracker.setMudlogId(mudLogId);
         tracker.initalize(c, wellId, wellboreId);
+
         ObjMudLogs mudLogs = null;
-        int count = 0;
-        while (true) {
-            mudLogs = tracker.ExecuteRequest();
-            mudLogs.getMudLog().forEach(mudLog -> {
-                mudLog.getGeologyInterval().forEach( geologyInterval -> {
-                    System.out.println("GeologyInterval : " + geologyInterval.getUid());
-                });
-            });
-            /*count++;
-            if (count == 5) {
-                tracker.setFullQuery(true);
-                count = 0;
-            }*/
-            /*if (tracker.getLastStartMd() == mudLogs.getMudLog().get(0).getEndMd().getValue()) {
-                break;
-            }*/
+        long hashCodeGeologyInvervalUid = 0;
+        List<CsGeologyInterval> geologyIntervals;
+        for(Map.Entry interval:timeCountMap.entrySet()) {
+            sleepInterval = (int) interval.getKey();
+            count = (int) interval.getValue();
+            while (count != 0) {
+                mudLogs = tracker.ExecuteRequest();
+                if (mudLogs == null) {
+                    break;
+                }
+                for (int i = 0; i < mudLogs.getMudLog().size(); i++) {
+                    geologyIntervals = mudLogs.getMudLog().get(i).getGeologyInterval();
+                    for (CsGeologyInterval geologyInterval : geologyIntervals) {
+                        if (hashCodeGeologyInvervalUid != geologyInterval.getUid().hashCode()) {
+                            hashCodeGeologyInvervalUid = geologyInterval.getUid().hashCode();
+                            count = (int)timeCountMap.get(0);
+                        } else {
+                            count--;
+                        }
+                        System.out.println("MUDLOG_HASHCODE : " + hashCodeGeologyInvervalUid);
+                    }
+                }
+                System.out.println("Count : " + count + " Sleep : " + sleepInterval);
+                System.out.println();
+                try {
+                    TimeUnit.SECONDS.sleep(sleepInterval);
+                } catch (InterruptedException ex ){
+                    System.out.println("Exception in Sleep : " + ex);
+                }
+            }
         }
     }
 
@@ -243,29 +267,52 @@ public class MyWitsmlClient {
     }
 
     private static void PrintTrajectoryRequest(Client c, String wellId, String wellboreId, String trajectoryId) {
+        int count = 0;
+        int sleepInterval = 0;
+        Map<Integer, Integer> timeCountMap = new TreeMap<Integer, Integer>();
+        /*<TIME_SECONDS, COUNT>*/
+        timeCountMap.put(0, 5);
+        timeCountMap.put(20, 2);
+        timeCountMap.put(40, 1);
+//        timeCountMap.put(3600, 2);
+
         TrajectoryRequestTracker tracker = new TrajectoryRequestTracker();
         tracker.setVersion(WitsmlVersion.VERSION_1311);
         tracker.setTrajectoryId(trajectoryId);
         tracker.initalize(c, wellId, wellboreId);
-        ObjTrajectorys trajectorys = null;
-        int count  = 0;
-        while (true) {
-            trajectorys = tracker.ExecuteRequest();
-            trajectorys.getTrajectory().forEach(trajectory -> {
-                trajectory.getTrajectoryStation().forEach(station -> {
-                    System.out.println("Stations : " + station.getUid());
-                });
-            });
-            count++;
-            if (count == 5) {
-                tracker.setFullQuery(true);
-                count = 0;
-            }
-            /*if (tracker.getLastMeasuredDepth() == trajectorys.getTrajectory().get(0).getMdMx().getValue()) {
-                break;
-            }*/
-        }
 
+        ObjTrajectorys trajectorys = null;
+        long hashCodeTrajectoryStationUid = 0;
+        List<CsTrajectoryStation> trajectoryStations;
+        for(Map.Entry interval:timeCountMap.entrySet()) {
+            sleepInterval = (int) interval.getKey();
+            count = (int) interval.getValue();
+            while (count != 0) {
+                trajectorys = tracker.ExecuteRequest();
+                if (trajectorys == null) {
+                    break;
+                }
+                for (int i = 0; i < trajectorys.getTrajectory().size(); i++) {
+                    trajectoryStations = trajectorys.getTrajectory().get(i).getTrajectoryStation();
+                    for (CsTrajectoryStation trajectoryStation : trajectoryStations) {
+                        if (hashCodeTrajectoryStationUid != trajectoryStation.getUid().hashCode()) {
+                            hashCodeTrajectoryStationUid = trajectoryStation.getUid().hashCode();
+                            count = (int)timeCountMap.get(0);
+                        } else {
+                            count--;
+                        }
+                        System.out.println("TRAJECTORY_HASHCODE : " + hashCodeTrajectoryStationUid);
+                    }
+                }
+                System.out.println("Count : " + count + " Sleep : " + sleepInterval);
+                System.out.println();
+                try {
+                    TimeUnit.SECONDS.sleep(sleepInterval);
+                } catch (InterruptedException ex ){
+                    System.out.println("Exception in Sleep : " + ex);
+                }
+            }
+        }
     }
 
     private static void PrintBhaRuns(Client c, String wellId, String wellboreId) {

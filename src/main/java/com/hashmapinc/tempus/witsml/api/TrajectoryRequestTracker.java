@@ -15,8 +15,6 @@ import java.rmi.RemoteException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.DoubleSummaryStatistics;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,7 +32,6 @@ public class TrajectoryRequestTracker extends AbstractRequestTracker{
     public void setFullQuery(boolean fullQuery) { this.fullQuery = fullQuery; }
     public void setTrajectoryId(String trajectoryId) { this.trajectoryId = trajectoryId; }
     public double getLastMeasuredDepth() { return lastMeasuredDepth; }
-
 
     @Override
     public void initalize(WitsmlClient witsmlClient, String wellId, String wellboreId) {
@@ -55,17 +52,20 @@ public class TrajectoryRequestTracker extends AbstractRequestTracker{
 
         try {
             response = executeQuery();
-//            System.out.println("Trajectory : " + response);
 
             if (getVersion() == WitsmlVersion.VERSION_1311) {
                 try {
                     response = transformer.convertVersion(response);
                 } catch (TransformerException e) {
                     e.printStackTrace();
+                    return null;
                 }
             }
 
             trajectorys = WitsmlMarshal.deserialize(response, ObjTrajectorys.class);
+            if (trajectorys == null || trajectorys.getTrajectory().isEmpty()) {
+                return null;
+            }
             lastMeasuredDepth = getLastMeasuredDepth(trajectorys.getTrajectory().get(0));
             setFullQuery(false);
 

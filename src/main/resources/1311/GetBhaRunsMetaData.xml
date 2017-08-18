@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bhaRuns version="1.3.1.1" xmlns="http://www.witsml.org/schemas/131">
+    <bhaRun uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="">
+        <nameWell/>
+        <nameWellbore/>
+        <name/>
+        <tubular uidRef=""/>
+        <dTimStart/>
+        <dTimStop/>
+        <dTimStartDrilling/>
+        <dTimStopDrilling/>
+        <planDogleg uom=""/>
+        <actDogleg uom=""/>
+        <actDoglegMx uom=""/>
+        <statusBha/>
+        <numBitRun/>
+        <numStringRun/>
+    </bhaRun>
+</bhaRuns>
+
