@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<toolErrorTermSets
+        xmlns="http://www.witsml.org/schemas/1series"
+        xmlns:witsml="http://www.witsml.org/schemas/1series"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.witsml.org/schemas/1series ../xsd_schemas/obj_toolErrorTermSet.xsd"
+        version="1.4.1.1">
+    <toolErrorTermSet uid="%toolErrorTermId%">
+        <name/>
+        <authorization>
+            <author/>
+            <source/>
+            <authority/>
+            <status/>
+            <version/>
+            <comment/>
+        </authorization>
+        <nomenclature>
+            <parameter uid="">
+                <name/>
+                <description/>
+            </parameter>
+            <function uid="">
+                <name/>
+                <description/>
+            </function>
+            <constant>
+                <name/>
+                <value/>
+                <unit/>
+                <description/>
+            </constant>
+        </nomenclature>
+        <errorTerm uid="">
+            <name/>
+            <type/>
+            <measureClass/>
+            <label/>
+            <description/>
+            <errorCoefficient uid="">
+                <azi/>
+                <inc/>
+                <depth/>
+                <tvd/>
+            </errorCoefficient>
+            <operatingMode/>
+        </errorTerm>
+        <commonData/>
+        <customData/>
+    </toolErrorTermSet>
+</toolErrorTermSets>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<attachments xmlns="http://www.witsml.org/schemas/1series"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.witsml.org/schemas/1series  ../xsd_schemas/obj_attachment.xsd"
+             version="1.4.1.1">
+    <attachment uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="">
+        <nameWell/>
+        <nameWellbore/>
+        <name/>
+        <objectReference/>
+        <subObjectReference/>
+        <md/>
+        <mdBit/>
+        <param/>
+        <fileName/>
+        <description/>
+        <fileType/>
+        <content/>
+        <commonData>
+            <dTimCreation/>
+            <dTimLastChange/>
+            <itemState/>
+        </commonData>
+    </attachment>
+</attachments>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<convCores version="1.4.1.1"
+           xmlns="http://www.witsml.org/schemas/1series"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://www.witsml.org/schemas/1series  ../xsd_schemas/obj_log.xsd">
+    <convCore uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="">
+        <nameWell/>
+        <nameWellbore/>
+        <name/>
+        <mdCoreTop uom=""/>
+        <mdCoreBottom uom=""/>
+        <dTimCoreStart/>
+        <dTimCoreEnd/>
+        <coreReference/>
+        <coringContractor/>
+        <analysisContractor/>
+        <coreBarrel/>
+    </convCore>
+</convCores>

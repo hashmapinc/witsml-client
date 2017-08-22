@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<surveyPrograms
+        xmlns="http://www.witsml.org/schemas/131"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.witsml.org/schemas/131  ../obj_surveyProgram.xsd"
+        version="1.3.1.1">
+    <surveyProgram uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="">
+        <nameWell/>
+        <nameWellbore/>
+        <name/>
+        <surveyVer/>
+        <dTimTrajProg/>
+        <engineer/>
+    </surveyProgram>
+</surveyPrograms>

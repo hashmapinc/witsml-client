@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wells version="1.3.1.1" xmlns="http://www.witsml.org/schemas/131">
+  <well uid="">
+    <name/>
+    <nameLegal/>
+    <numLicense/>
+    <numGovt/>
+    <dTimLicense/>
+    <field/>
+    <country/>
+    <state/>
+    <county/>
+    <region/>
+    <district/>
+    <block/>
+    <timeZone/>
+    <operator/>
+    <operatorDiv/>
+    <pcInterest uom=""/>
+    <numAPI/>
+    <statusWell/>
+    <purposeWell/>
+    <fluidWell/>
+    <directionWell/>
+    <dTimSpud/>
+    <dTimPa/>
+    <wellheadElevation uom=""/>
+    <wellDatum uid="">
+      <name/>
+      <code/>
+      <datumName/>
+      <kind/>
+      <wellbore/>
+      <rig/>
+      <measuredDepth/>
+      <elevation uom="" datum=""/>
+    </wellDatum>
+    <groundElevation uom=""/>
+    <waterDepth uom=""/>
+    <wellLocation uid="">
+      <wellCRS uidRef=""/>
+      <latitude/>
+      <longitude/>
+      <easting uom=""/>
+      <northing uom=""/>
+      <westing/>
+      <southing/>
+      <projectedX/>
+      <projectedY/>
+      <localX/>
+      <localY/>
+      <original/>
+      <description/>
+    </wellLocation>
+    <referencePoint uid="">
+      <name/>
+      <type/>
+      <elevation/>
+      <measuredDepth/>
+      <location uid="">
+          <wellCRS uidRef=""/>
+          <latitude/>
+          <longitude/>
+          <easting uom=""/>
+          <northing uom=""/>
+          <westing/>
+          <southing/>
+          <projectedX/>
+          <projectedY/>
+          <localX/>
+          <localY/>
+          <original/>
+          <description/>
+      </location>
+      <description/>
+    </referencePoint>
+    <wellCRS uid="">
+      <name/>
+      <geographic>
+        <nameCRS namingSystem="" code=""/>
+        <geodeticDatumCode/>
+        <xTranslation uom=""/>
+        <yTranslation uom=""/>
+        <zTranslation uom=""/>
+        <xRotation uom=""/>
+        <yRotation uom=""/>
+        <zRotation uom=""/>
+        <scaleFactor/>
+        <ellipsoidCode/>
+        <ellipsoidSemiMajorAxis uom=""/>
+        <ellipsoidInverseFlattening/>
+      </geographic>
+      <mapProjection>
+          <nameCRS namingSystem="" code=""/>
+          <projectionCode/>
+          <projectedFrom uidRef=""/>
+          <stdParallel1/>
+          <stdParallel2/>
+          <centralMeridian/>
+          <originLatitude/>
+          <originLongitude/>
+          <latitude1/>
+          <longitude1/>
+          <latitude2/>
+          <longitude2/>
+          <latitudeForScale/>
+          <longitudeForScale/>
+          <trueScaleLatitude/>
+          <spheroidRadius/>
+          <scaleFactor/>
+          <methodVariant/>
+          <perspectiveHeight/>
+          <zone/>
+          <nadType/>
+          <falseEasting/>
+          <falseNorthing/>
+          <bearing/>
+          <hemisphere/>
+          <description/>
+          <parameter/>
+      </mapProjection>
+      <localCRS>
+          <usesWellAsOrigin/>
+          <origin/>
+          <originDescription/>
+          <yAxisAzimuth uom="" northDirection=""/>
+          <yAxisDescription/>
+          <xRotationCounterClockwise/>
+      </localCRS>
+        <description/>
+    </wellCRS>
+    <commonData>
+      <dTimCreation/>
+      <dTimLastChange/>
+      <itemState/>
+      <comments/>
+    </commonData>
+  </well>
+</wells>
+

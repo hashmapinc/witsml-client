@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<toolErrorModels
+        xmlns="http://www.witsml.org/schemas/1series"
+        xmlns:witsml="http://www.witsml.org/schemas/1series"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.witsml.org/schemas/1series ../xsd_schemas/obj_toolErrorModel.xsd"
+        version="1.4.1.1">
+    <toolErrorModel uid="%toolErrorUid%">
+        <name/>
+        <authorization>
+            <author/>
+            <source/>
+            <authority/>
+            <status/>
+            <version/>
+        </authorization>
+        <typeSurveyTool/>
+        <operatingCondition uid="">
+            <parameter/>
+            <min/>
+            <max/>
+            <value/>
+        </operatingCondition>
+        <operatingInterval>
+            <mode/>
+            <start/>
+            <end/>
+            <speed/>
+            <sampleRate/>
+        </operatingInterval>
+        <modelParameters/>
+        <useErrorTermSet uidRef=""/>
+        <errorTermValue uid="">
+            <term uidRef=""/>
+            <prop/>
+            <bias/>
+            <value uom=""/>
+            <comment/>
+        </errorTermValue>
+    </toolErrorModel>
+</toolErrorModels>

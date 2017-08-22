@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<rigs version="1.3.1.1" xmlns="http://www.witsml.org/schemas/131">
-  <rig uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="%uidRig%">
-    <name />
-    <owner />
-  </rig>
-</rigs>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mudLogs version="1.4.1.1"
+         xmlns="http://www.witsml.org/schemas/1series"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.witsml.org/schemas/1series  ../xsd_schemas/obj_log.xsd">
+    <mudLog uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="">
+        <nameWell/>
+        <nameWellbore/>
+        <name/>
+        <objectGrowing/>
+        <dTim/>
+        <mudLogCompany/>
+        <mudLogEngineers/>
+        <startMd uom=""/>
+        <endMd uom=""/>
+    </mudLog>
+</mudLogs>

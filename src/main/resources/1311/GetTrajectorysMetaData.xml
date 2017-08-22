@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trajectorys
+        xmlns="http://www.witsml.org/schemas/131"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.witsml.org/schemas/131  ../obj_trajectory.xsd"
+        version="1.3.1.1">
+    <trajectory uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="">
+        <nameWell/>
+        <nameWellbore/>
+        <name/>
+        <dTimTrajStart/>
+        <dTimTrajEnd/>
+        <mdMn uom=""/>
+        <mdMx uom=""/>
+        <serviceCompany/>
+        <magDeclUsed uom=""/>
+        <gridCorUsed uom=""/>
+        <aziVertSect uom=""/>
+        <dispNsVertSectOrig uom=""/>
+        <dispEwVertSectOrig uom=""/>
+        <definitive/>
+        <memory/>
+        <finalTraj/>
+        <aziRef/>
+    </trajectory>
+</trajectorys>

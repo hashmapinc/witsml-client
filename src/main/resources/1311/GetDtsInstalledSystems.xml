@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dtsInstalledSystems version="1.3.1.1" xmlns="http://www.witsml.org/schemas/131">
+    <dtsInstalledSystem uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="">
+        <nameWell/>
+        <nameWellbore/>
+        <name/>
+        <isPlanned/>
+        <fiberInformation>
+            <installationDate/>
+            <installationCompany/>
+            <deInstallationDate/>
+            <capillaryTubeDiameter/>
+            <fiber uid="">
+                <name/>
+                <mode/>
+                <type classType=""/>
+                <coating/>
+                <jacket/>
+                <coreDiameter uom=""/>
+                <claddedDiameter/>
+                <outsideDiameter uom=""/>
+                <refractiveIndex uid="">
+                    <value/>
+                    <frequency/>
+                    <wavelength uom=""/>
+                </refractiveIndex>
+                <oneWayLoss uid="">
+                    <value uom=""/>
+                    <frequency/>
+                    <wavelength uom=""/>
+                </oneWayLoss>
+                <parameter/>
+                <spoolNumberTag/>
+                <spoolLength uom=""/>
+                <supplyDate/>
+                <supplier/>
+                <supplierModelNumber/>
+                <factoryCalibration uid="">
+                    <dTimCalibration/>
+                    <calibratedBy/>
+                    <calibrationProtocol/>
+                    <parameter/>
+                    <remarks/>
+                </factoryCalibration>
+                <installationHistory/>
+            </fiber>
+        </fiberInformation>
+        <instrumentBoxInformation uid="">
+            <installationDate/>
+            <installationCompany/>
+            <deInstallationDate/>
+            <instrumentBox uid="">
+                <name/>
+                <manufacturer/>
+                <manufacturingDate/>
+                <type/>
+                <nameTag>
+                    <name/>
+                    <numberingScheme/>
+                    <technology/>
+                    <location/>
+                    <installationDate/>
+                    <installationCompany/>
+                    <mountingCode/>
+                    <comment/>
+                </nameTag>
+                <softwareVersion/>
+                <factoryCalibration uid="">
+                    <dTimCalibration/>
+                    <calibratedBy/>
+                    <calibrationProtocol/>
+                    <parameter />
+                    <remarks/>
+                    <offsetTemperatureCalibration uom=""/>
+                    <slopeCalibration uom=""/>
+                </factoryCalibration>
+                <internalOvenLocationNear uom=""/>
+                <internalOvenLocationFar uom=""/>
+                <ovenSetPoint uom=""/>
+                <testCable/>
+                <offset/>
+                <differentialLossSetting uom=""/>
+                <parameter/>
+            </instrumentBox>
+        </instrumentBoxInformation>
+        <fiberConfiguration/>
+        <fiberEndPoint uid="">
+            <name/>
+            <description/>
+        </fiberEndPoint>
+        <fiberLength uom=""/>
+        <wellboreFiberSchematic>
+            <installedPoint uid="">
+                <md/>
+                <lengthAlongFiber uom=""/>
+                <type/>
+            </installedPoint>
+        </wellboreFiberSchematic>
+        <opticalBudget uom=""/>
+        <pumpActivity uid="">
+            <name/>
+            <installedFiber uidRef=""/>
+            <pumpingDate/>
+            <engineerName/>
+            <serviceCompany/>
+            <pumpFluidType/>
+            <controlLineFluid/>
+            <pumpDirection/>
+            <fiberEndSeal/>
+            <cableMeterType/>
+            <cableMeterSerialNumber/>
+            <cableMeterCalibrationDate/>
+            <wasDriftRunPerformed/>
+            <excessFiberRecovered uom=""/>
+            <pumpLog>
+                <tableRow uid="">
+                    <cableSpeed uom=""/>
+                    <fiberPumpedLength uom=""/>
+                    <pumpPressure uom=""/>
+                    <pumpFluid/>
+                    <temperatureIn uom=""/>
+                    <temperatureOut uom=""/>
+                    <remarks/>
+                </tableRow>
+            </pumpLog>
+        </pumpActivity>
+        <otdrInstallationTest uid="">
+            <reasonForRun/>
+            <dTimRun/>
+            <dataInWellLog/>
+            <fiberEndConncected/>
+            <comment/>
+        </otdrInstallationTest>
+        <installationCalibration uid="">
+            <dTimCalibration/>
+            <calibratedBy/>
+            <calibrationProtocol/>
+            <parameter/>
+            <remarks/>
+        </installationCalibration>
+        <basedOnInstalledFiber uidRef=""/>
+        <commonData>
+            <comments/>
+        </commonData>
+        <customData/>
+    </dtsInstalledSystem>
+</dtsInstalledSystems>

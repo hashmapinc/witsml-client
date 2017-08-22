@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stimJobs
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.witsml.org/schemas/1series"
+        xsi:schemaLocation="http://www.witsml.org/schemas/1series  ../xsd_schemas/obj_stimJob.xsd"
+        version="1.4.1.1" >
+    <stimJob uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="">
+        <nameWell/>
+        <nameWellbore/>
+        <name/>
+        <kind/>
+        <commodityCode/>
+        <serviceCompany/>
+        <supervisor/>
+        <apiNumber/>
+        <customerName/>
+        <dTimArrival/>
+        <dTimStart/>
+        <dTimEnd/>
+    </stimJob>
+</stimJobs>

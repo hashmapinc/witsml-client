@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wellbores
+        xmlns="http://www.witsml.org/schemas/1series"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.witsml.org/schemas/1series  ../xsd_schemas/obj_wellbore.xsd"
+        version="1.4.1.1">
+  <wellbore uidWell="%uidWell%" uid="">
+    <nameWell/>
+    <name/>
+    <parentWellbore/>
+    <number/>
+    <suffixAPI/>
+    <numGovt/>
+    <statusWellbore/>
+    <isActive/>
+    <purposeWellbore/>
+    <typeWellbore/>
+    <shape/>
+    <dTimKickoff/>
+    <achievedTD/>
+    <md/>
+    <tvd/>
+    <mdBit/>
+    <tvdBit/>
+    <mdKickoff uom=""/>
+    <tvdKickoff uom=""/>
+    <mdPlanned uom=""/>
+    <tvdPlanned uom=""/>
+    <mdSubSeaPlanned uom=""/>
+    <tvdSubSeaPlanned uom=""/>
+    <dayTarget uom=""/>
+    <commonData>
+      <dTimCreation/>
+      <dTimLastChange/>
+      <itemState/>
+      <comments/>
+    </commonData>
+  </wellbore>
+</wellbores>
