@@ -243,6 +243,11 @@ public class MockClient implements WitsmlClient {
         return "";
     }
 
+    @Override
+    public ObjLogs getLogMetadataAsObj(String wellId, String wellboreId) throws Exception {
+        return null;
+    }
+
     /**
      * This method gets all of the logs contained within a wellbore and returns the metadata (minus the <data></data> element
      * @param wellId The UID of thw well that contains the wellbore that contains the log
