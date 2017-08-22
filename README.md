@@ -6,7 +6,7 @@
 # Java WITSML 1.3.1.1 and 1.4.1.1 Client
 
 The WITSML client utilizes the WITSML Objects Library SDK to allow a Java application to query a WITSML server. It has 
-support for WITSML 1.3.1.1 and 1.4.1.1 Servers. This inital implemetnation allows for basic queries to be executed but
+support for WITSML 1.3.1.1 and 1.4.1.1 Servers. This inital implementation allows for basic queries to be executed but
 will feature a customizeable query builder and full featured growing object trackers for Logs, Trajectories, and MudLogs. 
 The intention is that this will be used within another framework such as Apache NiFi or Apache Spark to communicate with
 WITSML STORE API's. This data can then be processed by Spark, Storm, Flink or persisted in HBase or Hive. 
