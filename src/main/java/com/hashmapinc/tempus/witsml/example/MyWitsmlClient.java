@@ -230,15 +230,15 @@ public class MyWitsmlClient {
                 }
                 for (int i = 0; i < mudLogs.getMudLog().size(); i++) {
                     geologyIntervals = mudLogs.getMudLog().get(i).getGeologyInterval();
-                    for (CsGeologyInterval geologyInterval : geologyIntervals) {
-                        if (hashCodeGeologyInvervalUid != geologyInterval.getUid().hashCode()) {
-                            hashCodeGeologyInvervalUid = geologyInterval.getUid().hashCode();
-                            count = (int)timeCountMap.get(0);
-                        } else {
-                            count--;
-                        }
-                        System.out.println("MUDLOG_HASHCODE : " + hashCodeGeologyInvervalUid);
+                    String lastGeologyIntervalUid = geologyIntervals.get(geologyIntervals.size() - 1).getUid();
+                    if (hashCodeGeologyInvervalUid != lastGeologyIntervalUid.hashCode()) {
+                        hashCodeGeologyInvervalUid = lastGeologyIntervalUid.hashCode();
+                        count = (int)timeCountMap.get(0);
+                    } else {
+                        count--;
                     }
+                    System.out.println("MUDLOG_HASHCODE : " + hashCodeGeologyInvervalUid);
+
                 }
                 System.out.println("Count : " + count + " Sleep : " + sleepInterval);
                 System.out.println();
@@ -296,15 +296,14 @@ public class MyWitsmlClient {
                 }
                 for (int i = 0; i < trajectorys.getTrajectory().size(); i++) {
                     trajectoryStations = trajectorys.getTrajectory().get(i).getTrajectoryStation();
-                    for (CsTrajectoryStation trajectoryStation : trajectoryStations) {
-                        if (hashCodeTrajectoryStationUid != trajectoryStation.getUid().hashCode()) {
-                            hashCodeTrajectoryStationUid = trajectoryStation.getUid().hashCode();
-                            count = (int)timeCountMap.get(0);
-                        } else {
-                            count--;
-                        }
-                        System.out.println("TRAJECTORY_HASHCODE : " + hashCodeTrajectoryStationUid);
+                    String lastGeologIntervalUid = trajectoryStations.get(trajectoryStations.size() - 1).getUid();
+                    if (hashCodeTrajectoryStationUid != lastGeologIntervalUid.hashCode()) {
+                        hashCodeTrajectoryStationUid = lastGeologIntervalUid.hashCode();
+                        count = (int)timeCountMap.get(0);
+                    } else {
+                        count--;
                     }
+                    System.out.println("TRAJECTORY_HASHCODE : " + hashCodeTrajectoryStationUid);
                 }
                 System.out.println("Count : " + count + " Sleep : " + sleepInterval);
                 System.out.println();
