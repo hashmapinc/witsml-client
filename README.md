@@ -1,7 +1,7 @@
 <img src="https://github.com/hashmapinc/hashmap.github.io/blob/master/images/tempus/Tempus_Logo_Black_with_TagLine.png" width="950" height="245" alt="Hashmap, Inc Tempus"/>
 
 [![License](http://img.shields.io/:license-Apache%202-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.txt)
-
+[![Build Status](https://travis-ci.org/hashmapinc/witsml-client.svg?branch=master)](https://travis-ci.org/hashmapinc/witsml-client)
 
 # Java WITSML 1.3.1.1 and 1.4.1.1 Client
 
