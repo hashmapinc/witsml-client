@@ -152,7 +152,7 @@ public class Client implements WitsmlClient {
         String versions[] = supportedVersions.split(",");
         List<String> supportedVer = Arrays.asList(versions);
         if (!supportedVer.contains(version.toString())){
-            throw new IllegalArgumentException("Requested version not supported by the server");
+            throw new IllegalArgumentException("Requested version not supported by the server. The server only supports: " + supportedVersions);
         }
         connected = true;
     }
