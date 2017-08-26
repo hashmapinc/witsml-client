@@ -111,9 +111,11 @@ public class TrajectoryRequestTracker extends AbstractRequestTracker{
         List<CsTrajectoryStation> trajectoryStations = trajectory.getTrajectoryStation();
         double maxDepth = -1;
         for(CsTrajectoryStation station : trajectoryStations) {
-            double depth = station.getMd().getValue();
-            if (maxDepth < depth) {
-                maxDepth = depth;
+            if (station.getMd() != null) {
+                double depth = station.getMd().getValue();
+                if (maxDepth < depth) {
+                    maxDepth = depth;
+                }
             }
         }
         return maxDepth;

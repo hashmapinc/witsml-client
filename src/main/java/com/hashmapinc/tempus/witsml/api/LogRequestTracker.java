@@ -135,12 +135,18 @@ public class LogRequestTracker extends AbstractRequestTracker{
 
     private double getMinOfMaxDepth(ObjLog log){
         List<CsLogCurveInfo> curveInfos = log.getLogCurveInfo();
-        DoubleSummaryStatistics summaryStats = curveInfos.stream()
-                .map(CsLogCurveInfo::getMaxIndex)
-                .mapToDouble(GenericMeasure::getValue)
-                .summaryStatistics();
-
-        return summaryStats.getMin();
+        double minMaxDepth = -1;
+        for (CsLogCurveInfo info: curveInfos) {
+            if (info.getMaxIndex() != null) {
+                double depth = info.getMaxIndex().getValue();
+                if (minMaxDepth == -1) {
+                    minMaxDepth = depth;
+                } else if (minMaxDepth > depth) {
+                    minMaxDepth = depth;
+                }
+            }
+        }
+        return minMaxDepth;
     }
 
     private ZonedDateTime getMinOfMaxTime(ObjLog log){
@@ -148,12 +154,13 @@ public class LogRequestTracker extends AbstractRequestTracker{
 
         ZonedDateTime maxDate = null;
         for (CsLogCurveInfo curveInfo : curveInfos) {
-
-            ZonedDateTime currentMaxDate = curveInfo.getMaxDateTimeIndex().toGregorianCalendar().toZonedDateTime();
-            if (maxDate == null)
-                maxDate = currentMaxDate;
-            else if (currentMaxDate.isBefore(maxDate))
-                maxDate = currentMaxDate;
+            if (curveInfo.getMaxDateTimeIndex() != null) {
+                ZonedDateTime currentMaxDate = curveInfo.getMaxDateTimeIndex().toGregorianCalendar().toZonedDateTime();
+                if (maxDate == null)
+                    maxDate = currentMaxDate;
+                else if (currentMaxDate.isBefore(maxDate))
+                    maxDate = currentMaxDate;
+            }
         }
         return maxDate;
     }

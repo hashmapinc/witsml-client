@@ -116,9 +116,11 @@ public class MudlogRequestTracker extends AbstractRequestTracker{
 
         double mdMax = -1;
         for (CsGeologyInterval geologyInterval : geologyIntervals) {
-            double value = geologyInterval.getMdBottom().getValue();
-            if (mdMax < value) {
-                mdMax = value;
+            if (geologyInterval.getMdBottom() != null) {
+                double value = geologyInterval.getMdBottom().getValue();
+                if (mdMax < value) {
+                    mdMax = value;
+                }
             }
         }
         return mdMax;
