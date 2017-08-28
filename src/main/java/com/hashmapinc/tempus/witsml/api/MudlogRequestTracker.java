@@ -32,6 +32,7 @@ public class MudlogRequestTracker extends AbstractRequestTracker{
 
     public void setFullQuery(boolean fullQuery) { this.fullQuery = fullQuery; }
     public void setMudlogId(String mudlogId) { this.mudlogId = mudlogId; }
+    public void setLastStartMd(double lastStartMd) {this.lastStartMd = lastStartMd;}
     public double getLastStartMd() { return  lastStartMd; }
 
     @Override
@@ -44,6 +45,7 @@ public class MudlogRequestTracker extends AbstractRequestTracker{
         this.witsmlClient = witsmlClient;
         this.wellId = wellId;
         this.wellboreId = wellboreId;
+        this.lastStartMd = -1;
     }
 
     @Override

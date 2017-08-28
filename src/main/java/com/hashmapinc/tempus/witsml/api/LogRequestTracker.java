@@ -37,7 +37,9 @@ public class LogRequestTracker extends AbstractRequestTracker{
     public void setLogId(String logId) { this.logId = logId; }
     public String getLogId() { return logId; }
 
+    public void setLastLogDepth(double lastLogDepth) { this.lastLogDepth = lastLogDepth;}
     public double getLastLogDepth() { return lastLogDepth; }
+    public void setLastLogTime(ZonedDateTime lastLogTime) {this.lastLogTime = lastLogTime;}
     public ZonedDateTime getLastLogTime() { return lastLogTime; }
 
     @Override
@@ -50,6 +52,8 @@ public class LogRequestTracker extends AbstractRequestTracker{
         this.witsmlClient = witsmlClient;
         this.wellId = wellId;
         this.wellboreId = wellboreId;
+        this.lastLogDepth = -1;
+        this.lastLogTime = null;
     }
 
     @Override

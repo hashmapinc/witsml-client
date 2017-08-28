@@ -31,6 +31,7 @@ public class TrajectoryRequestTracker extends AbstractRequestTracker{
 
     public void setFullQuery(boolean fullQuery) { this.fullQuery = fullQuery; }
     public void setTrajectoryId(String trajectoryId) { this.trajectoryId = trajectoryId; }
+    public void setLastMeasuredDepth(double lastMeasuredDepth) {this.lastMeasuredDepth = lastMeasuredDepth;}
     public double getLastMeasuredDepth() { return lastMeasuredDepth; }
 
     @Override
@@ -43,6 +44,7 @@ public class TrajectoryRequestTracker extends AbstractRequestTracker{
         this.witsmlClient = witsmlClient;
         this.wellId = wellId;
         this.wellboreId = wellboreId;
+        this.lastMeasuredDepth = -1;
     }
 
     @Override
