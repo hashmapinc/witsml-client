@@ -44,7 +44,6 @@ public class TrajectoryRequestTracker extends AbstractRequestTracker{
         this.witsmlClient = witsmlClient;
         this.wellId = wellId;
         this.wellboreId = wellboreId;
-        this.lastMeasuredDepth = -1;
     }
 
     @Override

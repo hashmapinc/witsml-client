@@ -243,6 +243,20 @@ public class MockClient implements WitsmlClient {
         return "";
     }
 
+    /**
+     * Executes a object query in either 1.3.1.1 or 1.4.1.1
+     * @param objectType The type of WMLtypeIn object
+     * @param query The query to send to the server
+     * @param optionsIn The options to send (only supported in 1.4.1.1)
+     * @param capabilitiesIn The capabilities to send (only supported in 1.4.1.1)
+     * @return a string representing the response from the server
+     * @throws RemoteException thrown on any exception encountered from the server
+     */
+    @Override
+    public String executeObjectQuery(String objectType, String query, String optionsIn, String capabilitiesIn) throws RemoteException {
+        return "";
+    }
+
     @Override
     public ObjLogs getLogMetadataAsObj(String wellId, String wellboreId) throws Exception {
         return null;

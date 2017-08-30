@@ -110,6 +110,8 @@ public interface WitsmlClient {
 
     String executeMudlogQuery(String query, String optionsIn, String capabilitiesIn) throws RemoteException;
 
+    String executeObjectQuery(String objectType, String query, String optionsIn, String capabilitiesIn) throws RemoteException;
+
     String executeTrajectoryQuery(String query, String optionsIn, String capabilitiesIn) throws RemoteException;
 
     ObjLogs getLogMetadataAsObj(String wellId, String wellboreId) throws Exception;

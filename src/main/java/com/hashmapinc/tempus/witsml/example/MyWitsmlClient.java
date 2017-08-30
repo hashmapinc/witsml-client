@@ -24,9 +24,7 @@ import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjTubulars;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjWbGeometrys;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjWellbores;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjWells;
-import com.hashmapinc.tempus.witsml.api.LogRequestTracker;
-import com.hashmapinc.tempus.witsml.api.MudlogRequestTracker;
-import com.hashmapinc.tempus.witsml.api.TrajectoryRequestTracker;
+import com.hashmapinc.tempus.witsml.api.*;
 import com.hashmapinc.tempus.witsml.client.Client;
 import com.hashmapinc.tempus.witsml.api.WitsmlVersion;
 import com.sun.org.apache.xml.internal.serialize.OutputFormat;
@@ -622,6 +620,15 @@ public class MyWitsmlClient {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private static Object PrintObjectRequest(Client c,String wellId, String wellboreId, String objectId, String objectType) {
+        ObjectRequestTracker tracker = new ObjectRequestTracker();
+        tracker.initalize(c, wellId, wellboreId );
+        tracker.setVersion(WitsmlVersion.VERSION_1311);
+        tracker.setObjectType(objectType);
+        tracker.setObjectId(objectId);
+        return tracker.ExecuteRequest();
     }
 
     private static String prettyPrint(String xml, Boolean omitXmlDeclaration) throws IOException, SAXException, ParserConfigurationException {

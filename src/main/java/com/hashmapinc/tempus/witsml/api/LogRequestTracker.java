@@ -52,8 +52,6 @@ public class LogRequestTracker extends AbstractRequestTracker{
         this.witsmlClient = witsmlClient;
         this.wellId = wellId;
         this.wellboreId = wellboreId;
-        this.lastLogDepth = -1;
-        this.lastLogTime = null;
     }
 
     @Override

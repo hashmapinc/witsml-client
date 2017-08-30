@@ -45,7 +45,6 @@ public class MudlogRequestTracker extends AbstractRequestTracker{
         this.witsmlClient = witsmlClient;
         this.wellId = wellId;
         this.wellboreId = wellboreId;
-        this.lastStartMd = -1;
     }
 
     @Override
