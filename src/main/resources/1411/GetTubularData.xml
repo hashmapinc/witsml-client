@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="../stylesheets/tubular.xsl" type="text/xsl" media="screen"?>
+<!--   			Example of tubular data		-->
+<tubulars
+        version="1.4.1.1"
+        xmlns="http://www.witsml.org/schemas/1series"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.witsml.org/schemas/1series  ../xsd_schemas/obj_log.xsd">
+    <tubular uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="%uid%">
+        <nameWell/>
+        <nameWellbore/>
+        <name/>
+        <typeTubularAssy/>
+        <valveFloat/>
+        <sourceNuclear/>
+        <diaHoleAssy uom=""/>
+        <tubularComponent uid="">
+            <typeTubularComp/>
+            <sequence/>
+            <description/>
+            <id uom=""/>
+            <od uom=""/>
+            <odMx/>
+            <len uom=""/>
+            <lenJointAv uom=""/>
+            <numJointStand/>
+            <wtPerLen uom=""/>
+            <grade/>
+            <odDrift uom=""/>
+            <tensYield uom=""/>
+            <tqYield uom=""/>
+            <stressFatig uom=""/>
+            <lenFishneck uom=""/>
+            <idFishneck uom=""/>
+            <odFishneck uom=""/>
+            <disp uom=""/>
+            <presBurst uom=""/>
+            <presCollapse uom=""/>
+            <classService/>
+            <wearWall uom=""/>
+            <thickWall uom=""/>
+            <configCon/>
+            <bendStiffness uom=""/>
+            <axialStiffness uom=""/>
+            <torsionalStiffness uom=""/>
+            <typeMaterial/>
+            <doglegMx uom=""/>
+            <vendor/>
+            <model/>
+            <nameTag>
+                <name/>
+                <numberingScheme/>
+                <technology/>
+                <location/>
+                <installationDate/>
+                <installationCompany/>
+                <mountingCode/>
+                <comment/>
+            </nameTag>
+            <bitRecord>
+                <numBit/>
+                <diaBit uom=""/>
+                <diaPassThru uom=""/>
+                <diaPilot uom=""/>
+                <manufacturer/>
+                <typeBit/>
+                <cost currency=""/>
+                <codeIADC/>
+                <condInitInner/>
+                <condInitOuter/>
+                <condInitDull/>
+                <condInitLocation/>
+                <condInitBearing/>
+                <condInitGauge/>
+                <condInitOther/>
+                <condInitReason/>
+                <condFinalInner/>
+                <condFinalOuter/>
+                <condFinalDull/>
+                <condFinalLocation/>
+                <condFinalBearing/>
+                <condFinalGauge/>
+                <condFinalOther/>
+                <condFinalReason/>
+                <drive/>
+                <bitClass/>
+            </bitRecord>
+            <areaNozzleFlow uom=""/>
+            <nozzle uid="">
+                <index/>
+                <diaNozzle uom=""/>
+                <typeNozzle/>
+                <len uom=""/>
+                <orientation/>
+            </nozzle>
+            <holeOpener>
+                <typeHoleOpener/>
+                <numCutter/>
+                <manufacturer/>
+                <diaHoleOpener uom=""/>
+            </holeOpener>
+            <stabilizer uid="">
+                <lenBlade uom=""/>
+                <lenBladeGauge/>
+                <odBladeMx uom=""/>
+                <odBladeMn uom=""/>
+                <distBladeBot uom=""/>
+                <shapeBlade/>
+                <factFric/>
+                <typeBlade/>
+            </stabilizer>
+            <motor>
+                <offsetTool uom=""/>
+                <presLossFact/>
+                <flowrateMn uom=""/>
+                <flowrateMx uom=""/>
+                <diaRotorNozzle uom=""/>
+                <clearanceBearBox uom=""/>
+                <lobesRotor/>
+                <lobesStator/>
+                <typeBearing/>
+                <tempOpMx uom=""/>
+                <rotorCatcher/>
+                <dumpValve/>
+                <diaNozzle uom=""/>
+                <rotatable/>
+                <bendSettingsMn uom=""/>
+                <bendSettingsMx uom=""/>
+            </motor>
+            <bend uid="">
+                <angle uom=""/>
+                <distBendBot uom=""/>
+            </bend>
+            <mwdTool>
+                <flowrateMn uom=""/>
+                <flowrateMx uom=""/>
+                <tempMx uom=""/>
+                <idEquv uom=""/>
+                <sensor uid="">
+                    <typeMeasurement/>
+                    <offsetBot uom=""/>
+                    <comments/>
+                </sensor>
+            </mwdTool>
+            <connection uid="">
+                <id uom=""/>
+                <od uom=""/>
+                <len uom=""/>
+                <typeThread/>
+                <sizeThread uom=""/>
+                <tensYield uom=""/>
+                <tqYield uom=""/>
+                <position/>
+                <criticalCrossSection uom=""/>
+                <presLeak uom=""/>
+                <tqMakeup uom=""/>
+            </connection>
+            <jar>
+                <forUpSet uom=""/>
+                <forDownSet uom=""/>
+                <forUpTrip uom=""/>
+                <forDownTrip uom=""/>
+                <forPmpOpen uom=""/>
+                <forSealFric uom=""/>
+                <typeJar/>m
+                <jarAction/>
+            </jar>
+            <rotarySteerableTool>
+                <deflectionMethod/>
+                <bendAngle/>
+                <bendOffset/>
+                <holeSizeMn/>
+                <holeSizeMx/>
+                <wobMx/>
+                <operatingSpeed/>
+                <speedMx/>
+                <flowRateMn/>
+                <flowRateMx/>
+                <downLinkFlowRateMn/>
+                <downLinkFlowRateMx/>
+                <pressLossFact/>
+                <padCount/>
+                <padLen/>
+                <padWidth/>
+                <padOffset/>
+                <openPadOd/>
+                <closePadOd/>
+                <sensor uid="">
+                    <typeMeasurement/>
+                    <offsetBot uom=""/>
+                    <comments/>
+                </sensor>
+            </rotarySteerableTool>
+        </tubularComponent>
+        <commonData>
+            <itemState/>
+            <comments/>
+        </commonData>
+    </tubular>
+</tubulars>

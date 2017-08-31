@@ -1516,6 +1516,23 @@ public class Client implements WitsmlClient {
     }
 
     /**
+     * Executes a object query in either 1.3.1.1 or 1.4.1.1
+     * @param objectType The type of WMLtypeIn object
+     * @param query The query to send to the server
+     * @param optionsIn The options to send (only supported in 1.4.1.1)
+     * @param capabilitiesIn The capabilities to send (only supported in 1.4.1.1)
+     * @return a string representing the response from the server
+     * @throws RemoteException thrown on any exception encountered from the server
+     */
+    @Override
+    public String executeObjectQuery(String objectType, String query, String optionsIn, String capabilitiesIn) throws RemoteException {
+        StringHolder xmlOut = new StringHolder();
+        StringHolder suppMsgOut = new StringHolder();
+        witsmlClient.WMLS_GetFromStore(objectType.toLowerCase(), query, optionsIn, capabilitiesIn,  xmlOut, suppMsgOut);
+        return xmlOut.value;
+    }
+
+    /**
      * This method gets all of the logs contained within a wellbore
      * @param wellId The UID of the well that contains the wellbore that contains the log
      * @param wellboreId The UID of the wellbore that contains the log

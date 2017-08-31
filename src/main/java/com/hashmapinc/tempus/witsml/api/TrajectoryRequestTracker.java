@@ -31,6 +31,7 @@ public class TrajectoryRequestTracker extends AbstractRequestTracker{
 
     public void setFullQuery(boolean fullQuery) { this.fullQuery = fullQuery; }
     public void setTrajectoryId(String trajectoryId) { this.trajectoryId = trajectoryId; }
+    public void setLastMeasuredDepth(double lastMeasuredDepth) {this.lastMeasuredDepth = lastMeasuredDepth;}
     public double getLastMeasuredDepth() { return lastMeasuredDepth; }
 
     @Override
@@ -111,9 +112,11 @@ public class TrajectoryRequestTracker extends AbstractRequestTracker{
         List<CsTrajectoryStation> trajectoryStations = trajectory.getTrajectoryStation();
         double maxDepth = -1;
         for(CsTrajectoryStation station : trajectoryStations) {
-            double depth = station.getMd().getValue();
-            if (maxDepth < depth) {
-                maxDepth = depth;
+            if (station.getMd() != null) {
+                double depth = station.getMd().getValue();
+                if (maxDepth < depth) {
+                    maxDepth = depth;
+                }
             }
         }
         return maxDepth;

@@ -32,6 +32,7 @@ public class MudlogRequestTracker extends AbstractRequestTracker{
 
     public void setFullQuery(boolean fullQuery) { this.fullQuery = fullQuery; }
     public void setMudlogId(String mudlogId) { this.mudlogId = mudlogId; }
+    public void setLastStartMd(double lastStartMd) {this.lastStartMd = lastStartMd;}
     public double getLastStartMd() { return  lastStartMd; }
 
     @Override
@@ -116,9 +117,11 @@ public class MudlogRequestTracker extends AbstractRequestTracker{
 
         double mdMax = -1;
         for (CsGeologyInterval geologyInterval : geologyIntervals) {
-            double value = geologyInterval.getMdBottom().getValue();
-            if (mdMax < value) {
-                mdMax = value;
+            if (geologyInterval.getMdBottom() != null) {
+                double value = geologyInterval.getMdBottom().getValue();
+                if (mdMax < value) {
+                    mdMax = value;
+                }
             }
         }
         return mdMax;
