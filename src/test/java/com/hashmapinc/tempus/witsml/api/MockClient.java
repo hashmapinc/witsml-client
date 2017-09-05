@@ -157,6 +157,11 @@ public class MockClient implements WitsmlClient {
         return "";
     }
 
+    @Override
+    public String getWells(String uid, String status) throws FileNotFoundException, RemoteException, Exception {
+        return "";
+    }
+
     /**
      * This method gets all the wells on the server that the user has access to
      * @return Returns a POJO that represents the Obj_wells XSD
