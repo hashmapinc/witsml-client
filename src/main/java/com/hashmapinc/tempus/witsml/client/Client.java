@@ -180,7 +180,7 @@ public class Client implements WitsmlClient {
      * @throws RemoteException Thrown if there is an exception on the remote WITSML STORE API
      */
     @Override
-    public String getWells() throws FileNotFoundException, RemoteException, Exception {
+    public String getWells(String wellUid, String status) throws FileNotFoundException, RemoteException, Exception {
         if (!connected)
             throw new Exception("The connect method has not yet been called.");
         String query = "";
@@ -198,6 +198,9 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
+        query = query.replace("%uidWell%", wellUid);
+        query = query.replace("%wellStatus%", status);
+
         StringHolder xmlResponse = new StringHolder();
         StringHolder suppMsgOut = new StringHolder();
         try {
@@ -214,6 +217,11 @@ public class Client implements WitsmlClient {
             log.error("Error while executing open wells query " + e.getMessage());
             throw e;
         }
+    }
+
+    @Override
+    public String getWells() throws FileNotFoundException, RemoteException, Exception{
+        return getWells("","");
     }
 
     /**
