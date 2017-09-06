@@ -50,11 +50,15 @@ public interface WitsmlClient {
 
     ObjWells getWellsAsObj() throws Exception;
 
+    ObjWells getWellsAsObj(String uid, String status) throws Exception;
+
     String getWellboresForWell(String wellId, String wellboreUid) throws FileNotFoundException, RemoteException, Exception;
 
     String getWellboresForWell(String wellId) throws FileNotFoundException, RemoteException, Exception;
 
     ObjWellbores getWellboresForWellAsObj(String wellId) throws Exception;
+
+    ObjWellbores getWellboresForWellAsObj(String wellId, String wellboreId) throws Exception;
 
     String getLogMetadata(String wellId, String wellboreId) throws Exception;
 

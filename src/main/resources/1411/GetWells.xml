@@ -23,7 +23,7 @@
     <operatorDiv/>
     <pcInterest uom=""/>
     <numAPI/>
-    <statusWell/>
+    <statusWell>%wellStatus%</statusWell>
     <purposeWell/>
     <fluidWell/>
     <directionWell/>
