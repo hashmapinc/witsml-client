@@ -174,6 +174,11 @@ public class MockClient implements WitsmlClient {
         return WitsmlMarshal.deserialize(wells, ObjWells.class);
     }
 
+    @Override
+    public String getWellboresForWell(String wellId, String wellboreUid) throws FileNotFoundException, RemoteException, Exception {
+        return null;
+    }
+
     /**
      * This method gets all the wellbores on the server that the user has access to under the specified well
      * @param wellId The UID of the well that we want to get wellbores for

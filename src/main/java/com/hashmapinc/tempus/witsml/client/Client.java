@@ -245,7 +245,7 @@ public class Client implements WitsmlClient {
      * @throws RemoteException Thrown if there is an exception on the remote WITSML STORE API
      */
     @Override
-    public String getWellboresForWell(String wellId) throws FileNotFoundException, RemoteException, Exception {
+    public String getWellboresForWell(String wellId, String wellboreUid) throws FileNotFoundException, RemoteException, Exception {
         if (!connected)
             throw new Exception("The connect method has not yet been called.");
         String query = "";
@@ -265,6 +265,7 @@ public class Client implements WitsmlClient {
             }
 
             query = query.replace("%uidWell%", wellId);
+            query = query.replace("%uidWellbore%", wellboreUid);
         } catch (IOException e) {
             String error = "Could not find or access the query template for getWellboresForWell " + e.getMessage();
             log.error(error);
@@ -285,6 +286,11 @@ public class Client implements WitsmlClient {
             log.error("Error while executing open wellbores query " + e.getMessage());
             throw e;
         }
+    }
+
+    @Override
+    public String getWellboresForWell(String wellId) throws Exception {
+        return getWellboresForWell(wellId, "");
     }
 
     /**
