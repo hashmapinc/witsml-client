@@ -73,6 +73,7 @@ public class MyWitsmlClient {
                 System.out.println("Well Name: " + well.getName());
                 System.out.println("Well Legal: " + well.getNameLegal());
                 System.out.println("Well Id : " + well.getUid());
+                System.out.println("Well Status : " + well.getStatusWell());
                 PrintWellbores(c, well.getUid());
             });
         }

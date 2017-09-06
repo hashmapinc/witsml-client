@@ -175,6 +175,12 @@ public class MockClient implements WitsmlClient {
     }
 
     @Override
+    public ObjWells getWellsAsObj(String uid, String status) throws Exception {
+        String wells = getWells(uid, status);
+        return WitsmlMarshal.deserialize(wells, ObjWells.class);
+    }
+
+    @Override
     public String getWellboresForWell(String wellId, String wellboreUid) throws FileNotFoundException, RemoteException, Exception {
         return null;
     }
@@ -200,6 +206,11 @@ public class MockClient implements WitsmlClient {
      */
     public ObjWellbores getWellboresForWellAsObj(String wellId) throws Exception {
         String wellbores = getWellboresForWell(wellId);
+        return WitsmlMarshal.deserialize(wellbores, ObjWellbores.class);
+    }
+
+    public ObjWellbores getWellboresForWellAsObj(String wellId, String wellboreId) throws Exception {
+        String wellbores = getWellboresForWell(wellId, wellboreId);
         return WitsmlMarshal.deserialize(wellbores, ObjWellbores.class);
     }
 
