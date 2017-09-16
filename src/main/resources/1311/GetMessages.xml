@@ -17,7 +17,9 @@
         <param index="" name=""/>
         <severity/>
         <warnProbability/>
-        <commonData>
+    v    <commonData>
+            <dTimCreation/>
+            <dTimLastChange/>
             <itemState/>
             <comments/>
         </commonData>

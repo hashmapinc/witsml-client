@@ -318,6 +318,8 @@
         <gantry/>
         <flares/>
         <commonData>
+            <dTimCreation/>
+            <dTimLastChange/>
             <itemState/>
             <comments/>
         </commonData>

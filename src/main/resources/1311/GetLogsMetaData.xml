@@ -13,5 +13,11 @@
     <startDateTimeIndex />
     <endDateTimeIndex />
     <direction />
+    <commonData>
+      <dTimCreation/>
+      <dTimLastChange/>
+      <itemState/>
+      <comments/>
+    </commonData>
   </log>
 </logs>

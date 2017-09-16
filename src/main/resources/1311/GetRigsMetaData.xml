@@ -23,5 +23,11 @@
         <ratingWaterDepth uom=""/>
         <dTimStartOp/>
         <dTimEndOp/>
+        <commonData>
+            <dTimCreation/>
+            <dTimLastChange/>
+            <itemState/>
+            <comments/>
+        </commonData>
     </rig>
 </rigs>

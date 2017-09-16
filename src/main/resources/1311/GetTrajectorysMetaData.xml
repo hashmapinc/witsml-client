@@ -22,5 +22,11 @@
         <memory/>
         <finalTraj/>
         <aziRef/>
+        <commonData>
+            <dTimCreation/>
+            <dTimLastChange/>
+            <itemState/>
+            <comments/>
+        </commonData>
     </trajectory>
 </trajectorys>

@@ -22,5 +22,11 @@
   <tvdSubSeaPlanned uom=""/>
   <dayTarget uom=""/>
 </wellbore>
+  <commonData>
+    <dTimCreation/>
+    <dTimLastChange/>
+    <itemState/>
+    <comments/>
+  </commonData>
 </wellbores>
 

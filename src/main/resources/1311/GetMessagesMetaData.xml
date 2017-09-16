@@ -13,5 +13,11 @@
         <md uom=""/>
         <mdBit uom=""/>
         <typeMessage/>
+        <commonData>
+            <dTimCreation/>
+            <dTimLastChange/>
+            <itemState/>
+            <comments/>
+        </commonData>
     </message>
 </messages>

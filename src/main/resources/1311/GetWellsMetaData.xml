@@ -24,6 +24,12 @@
     <directionWell/>
     <dTimSpud/>
     <dTimPa/>
+    <commonData>
+      <dTimCreation/>
+      <dTimLastChange/>
+      <itemState/>
+      <comments/>
+    </commonData>
   </well>
 </wells>
 

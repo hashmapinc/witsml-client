@@ -40,5 +40,11 @@
     <logData>
       <data />
     </logData>
+    <commonData>
+      <dTimCreation/>
+      <dTimLastChange/>
+      <itemState/>
+      <comments/>
+    </commonData>
   </log>
 </logs>

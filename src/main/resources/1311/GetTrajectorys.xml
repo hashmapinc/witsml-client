@@ -114,6 +114,8 @@
             </location>
         </trajectoryStation>
         <commonData>
+            <dTimCreation/>
+            <dTimLastChange/>
             <itemState/>
             <comments/>
         </commonData>
