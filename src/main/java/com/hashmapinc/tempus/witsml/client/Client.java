@@ -237,6 +237,12 @@ public class Client implements WitsmlClient {
         return WitsmlMarshal.deserialize(wells, ObjWells.class);
     }
 
+    @Override
+    public ObjWells getWellsAsObj(String wellUid, String status) throws Exception {
+        String wells = getWells(wellUid, status);
+        return WitsmlMarshal.deserialize(wells, ObjWells.class);
+    }
+
     /**
      * This method gets all the wellbores on the server that the user has access to under the specified well
      * @param wellId The UID of the well that we want to get wellbores for
@@ -253,10 +259,10 @@ public class Client implements WitsmlClient {
         try {
 
             if (version.toString().equals("1.3.1.1")) {
-                query = getQuery("/1311/GetWellboresMetaData.xml");
+                query = getQuery("/1311/GetWellbores.xml");
             }
             else if (version.toString().equals("1.4.1.1")){
-                query = getQuery("/1411/GetWellboresMetaData.xml");
+                query = getQuery("/1411/GetWellbores.xml");
                 optionsIn = "dataVersion=1.4.1.1";
             }
 
@@ -304,6 +310,12 @@ public class Client implements WitsmlClient {
     @Override
     public ObjWellbores getWellboresForWellAsObj(String wellId) throws Exception {
         String wellbores = getWellboresForWell(wellId);
+        return WitsmlMarshal.deserialize(wellbores, ObjWellbores.class);
+    }
+
+    @Override
+    public ObjWellbores getWellboresForWellAsObj(String wellId, String wellboreId) throws Exception {
+        String wellbores = getWellboresForWell(wellId, wellboreId);
         return WitsmlMarshal.deserialize(wellbores, ObjWellbores.class);
     }
 

@@ -5,7 +5,7 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.witsml.org/schemas/1series  ../xsd_schemas/obj_well.xsd"
         version="1.4.1.1">
-  <well uid="">
+  <well uid="%uidWell%">
     <name/>
     <nameLegal/>
     <numLicense/>
@@ -23,8 +23,12 @@
     <operatorDiv/>
     <pcInterest uom=""/>
     <numAPI/>
-    <statusWell/>
+    <statusWell>%wellStatus%</statusWell>
     <purposeWell/>
+    <fluidWell/>
+    <directionWell/>
+    <dTimSpud/>
+    <dTimPa/>
   </well>
 </wells>
 
