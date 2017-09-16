@@ -691,10 +691,10 @@ public class Client implements WitsmlClient {
         String optionsIn = "";
         try {
             if (version.toString().equals("1.3.1.1")) {
-                query = getQuery("/1311/GetMessagesMetaData.xml");
+                query = getQuery("/1311/GetMessageData.xml");
             }
             else if (version.toString().equals("1.4.1.1")){
-                query = getQuery("/1411/GetMessagesMetaData.xml");
+                query = getQuery("/1411/GetMessageData.xml");
                 optionsIn = "dataVersion=1.4.1.1";
             }
             query = query.replace("%uidWell%", wellId);
