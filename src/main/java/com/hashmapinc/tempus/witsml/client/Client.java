@@ -45,7 +45,6 @@ public class Client implements WitsmlClient {
     private StoreSoapBindingStub witsmlClient;
     private Logger log;
     private WitsmlVersion version = WitsmlVersion.VERSION_1411;
-    private List<String> supportedVersions;
     private Boolean connected = false;
 
     private WitsmlVersionTransformer transform;
@@ -62,7 +61,7 @@ public class Client implements WitsmlClient {
 
     /**
      * Setup client
-     * @param url
+     * @param url URL for the WITSML API
      */
     private void setupClient(String url) {
         WMLSLocator locator = new WMLSLocator();
@@ -180,7 +179,7 @@ public class Client implements WitsmlClient {
      * @throws RemoteException Thrown if there is an exception on the remote WITSML STORE API
      */
     @Override
-    public String getWells(String wellUid, String status) throws FileNotFoundException, RemoteException, Exception {
+    public String getWells(String wellUid, String status) throws Exception {
         if (!connected)
             throw new Exception("The connect method has not yet been called.");
         String query = "";
@@ -201,26 +200,11 @@ public class Client implements WitsmlClient {
         query = query.replace("%uidWell%", wellUid);
         query = query.replace("%wellStatus%", status);
 
-        StringHolder xmlResponse = new StringHolder();
-        StringHolder suppMsgOut = new StringHolder();
-        try {
-            witsmlClient.WMLS_GetFromStore("well", query, optionsIn, "", xmlResponse, suppMsgOut);
-
-            if (version.toString().equals("1.3.1.1"))
-                try {
-                    return transform.convertVersion(xmlResponse.value);
-                } catch (TransformerException e) {
-                    e.printStackTrace();
-                }
-            return xmlResponse.value;
-        } catch (RemoteException e) {
-            log.error("Error while executing open wells query " + e.getMessage());
-            throw e;
-        }
+        return makeQuery("well", query, optionsIn, "");
     }
 
     @Override
-    public String getWells() throws FileNotFoundException, RemoteException, Exception{
+    public String getWells() throws Exception{
         return getWells("","");
     }
 
@@ -234,12 +218,14 @@ public class Client implements WitsmlClient {
     @Override
     public ObjWells getWellsAsObj() throws Exception {
         String wells = getWells();
+        if (wells.equals("")) return null;
         return WitsmlMarshal.deserialize(wells, ObjWells.class);
     }
 
     @Override
     public ObjWells getWellsAsObj(String wellUid, String status) throws Exception {
         String wells = getWells(wellUid, status);
+        if (wells.equals("")) return null;
         return WitsmlMarshal.deserialize(wells, ObjWells.class);
     }
 
@@ -251,7 +237,7 @@ public class Client implements WitsmlClient {
      * @throws RemoteException Thrown if there is an exception on the remote WITSML STORE API
      */
     @Override
-    public String getWellboresForWell(String wellId, String wellboreUid) throws FileNotFoundException, RemoteException, Exception {
+    public String getWellboresForWell(String wellId, String wellboreUid) throws Exception {
         if (!connected)
             throw new Exception("The connect method has not yet been called.");
         String query = "";
@@ -277,21 +263,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        StringHolder xmlResponse = new StringHolder();
-        StringHolder suppMsgOut = new StringHolder();
-        try {
-            witsmlClient.WMLS_GetFromStore("wellbore", query, optionsIn, "", xmlResponse, suppMsgOut);
-            if (version.toString().equals("1.3.1.1"))
-                try {
-                    return transform.convertVersion(xmlResponse.value);
-                } catch (TransformerException e) {
-                    e.printStackTrace();
-                }
-            return xmlResponse.value;
-        } catch (RemoteException e) {
-            log.error("Error while executing open wellbores query " + e.getMessage());
-            throw e;
-        }
+        return makeQuery("wellbore", query, optionsIn, "");
     }
 
     @Override
@@ -310,12 +282,14 @@ public class Client implements WitsmlClient {
     @Override
     public ObjWellbores getWellboresForWellAsObj(String wellId) throws Exception {
         String wellbores = getWellboresForWell(wellId);
+        if (wellbores.equals("")) return null;
         return WitsmlMarshal.deserialize(wellbores, ObjWellbores.class);
     }
 
     @Override
     public ObjWellbores getWellboresForWellAsObj(String wellId, String wellboreId) throws Exception {
         String wellbores = getWellboresForWell(wellId, wellboreId);
+        if (wellbores.equals("")) return null;
         return WitsmlMarshal.deserialize(wellbores, ObjWellbores.class);
     }
 
@@ -348,21 +322,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        StringHolder xmlResponse = new StringHolder();
-        StringHolder suppMsgOut = new StringHolder();
-        try {
-            witsmlClient.WMLS_GetFromStore("log", query, optionsIn, "", xmlResponse, suppMsgOut);
-            if (version.toString().equals("1.3.1.1"))
-                try {
-                    return transform.convertVersion(xmlResponse.value);
-                } catch (TransformerException e) {
-                    e.printStackTrace();
-                }
-            return xmlResponse.value;
-        } catch (RemoteException e) {
-            log.error("Error while executing open logs query " + e.getMessage());
-            throw e;
-        }
+        return makeQuery("log", query, optionsIn, "");
     }
 
     /**
@@ -394,21 +354,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        StringHolder xmlResponse = new StringHolder();
-        StringHolder suppMsgOut = new StringHolder();
-        try {
-            witsmlClient.WMLS_GetFromStore("mudLog", query, optionsIn, "", xmlResponse, suppMsgOut);
-            if (version.toString().equals("1.3.1.1"))
-                try {
-                    return transform.convertVersion(xmlResponse.value);
-                } catch (TransformerException e) {
-                    e.printStackTrace();
-                }
-            return xmlResponse.value;
-        } catch (RemoteException e) {
-            log.error("Error while executing open mudLog query " + e.getMessage());
-            throw e;
-        }
+        return makeQuery("mudlog", query, optionsIn, "");
     }
 
     /**
@@ -440,21 +386,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        StringHolder xmlResponse = new StringHolder();
-        StringHolder suppMsgOut = new StringHolder();
-        try {
-            witsmlClient.WMLS_GetFromStore("trajectory", query, optionsIn, "", xmlResponse, suppMsgOut);
-            if (version.toString().equals("1.3.1.1"))
-                try {
-                    return transform.convertVersion(xmlResponse.value);
-                } catch (TransformerException e) {
-                    e.printStackTrace();
-                }
-            return xmlResponse.value;
-        } catch (RemoteException e) {
-            log.error("Error while executing open trajectory query " + e.getMessage());
-            throw e;
-        }
+        return makeQuery("trajectory", query, optionsIn, "");
     }
 
     /**
@@ -486,21 +418,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        StringHolder xmlResponse = new StringHolder();
-        StringHolder suppMsgOut = new StringHolder();
-        try {
-            witsmlClient.WMLS_GetFromStore("bhaRun", query, optionsIn, "", xmlResponse, suppMsgOut);
-            if (version.toString().equals("1.3.1.1"))
-                try {
-                    return transform.convertVersion(xmlResponse.value);
-                } catch (TransformerException e) {
-                    e.printStackTrace();
-                }
-            return xmlResponse.value;
-        } catch (RemoteException e) {
-            log.error("Error while executing open bhaRuns query " + e.getMessage());
-            throw e;
-        }
+        return makeQuery("bha", query, optionsIn, "");
     }
 
     /**
@@ -532,21 +450,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        StringHolder xmlResponse = new StringHolder();
-        StringHolder suppMsgOut = new StringHolder();
-        try {
-            witsmlClient.WMLS_GetFromStore("cementJob", query, optionsIn, "", xmlResponse, suppMsgOut);
-            if (version.toString().equals("1.3.1.1"))
-                try {
-                    return transform.convertVersion(xmlResponse.value);
-                } catch (TransformerException e) {
-                    e.printStackTrace();
-                }
-            return xmlResponse.value;
-        } catch (RemoteException e) {
-            log.error("Error while executing open cementJob query " + e.getMessage());
-            throw e;
-        }
+        return makeQuery("cementjob", query, optionsIn, "");
     }
 
     /**
@@ -578,21 +482,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        StringHolder xmlResponse = new StringHolder();
-        StringHolder suppMsgOut = new StringHolder();
-        try {
-            witsmlClient.WMLS_GetFromStore("convCore", query, optionsIn, "", xmlResponse, suppMsgOut);
-            if (version.toString().equals("1.3.1.1"))
-                try {
-                    return transform.convertVersion(xmlResponse.value);
-                } catch (TransformerException e) {
-                    e.printStackTrace();
-                }
-            return xmlResponse.value;
-        } catch (RemoteException e) {
-            log.error("Error while executing open ConvCore query " + e.getMessage());
-            throw e;
-        }
+        return makeQuery("convCore", query, optionsIn, "");
     }
 
     /**
@@ -624,21 +514,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        StringHolder xmlResponse = new StringHolder();
-        StringHolder suppMsgOut = new StringHolder();
-        try {
-            witsmlClient.WMLS_GetFromStore("fluidsReport", query, optionsIn, "", xmlResponse, suppMsgOut);
-            if (version.toString().equals("1.3.1.1"))
-                try {
-                    return transform.convertVersion(xmlResponse.value);
-                } catch (TransformerException e) {
-                    e.printStackTrace();
-                }
-            return xmlResponse.value;
-        } catch (RemoteException e) {
-            log.error("Error while executing open fluidReports query " + e.getMessage());
-            throw e;
-        }
+        return makeQuery("fluidsReport", query, optionsIn, "");
     }
 
     /**
@@ -670,21 +546,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        StringHolder xmlResponse = new StringHolder();
-        StringHolder suppMsgOut = new StringHolder();
-        try {
-            witsmlClient.WMLS_GetFromStore("formationMarker", query, optionsIn, "", xmlResponse, suppMsgOut);
-            if (version.toString().equals("1.3.1.1"))
-                try {
-                    return transform.convertVersion(xmlResponse.value);
-                } catch (TransformerException e) {
-                    e.printStackTrace();
-                }
-            return xmlResponse.value;
-        } catch (RemoteException e) {
-            log.error("Error while executing open formationMarker query " + e.getMessage());
-            throw e;
-        }
+        return makeQuery("formationmarker", query, optionsIn, "");
     }
 
     /**
@@ -717,21 +579,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        StringHolder xmlResponse = new StringHolder();
-        StringHolder suppMsgOut = new StringHolder();
-        try {
-            witsmlClient.WMLS_GetFromStore("message", query, optionsIn, "", xmlResponse, suppMsgOut);
-            if (version.toString().equals("1.3.1.1"))
-                try {
-                    return transform.convertVersion(xmlResponse.value);
-                } catch (TransformerException e) {
-                    e.printStackTrace();
-                }
-            return xmlResponse.value;
-        } catch (RemoteException e) {
-            log.error("Error while executing open message query " + e.getMessage());
-            throw e;
-        }
+        return makeQuery("message", query, optionsIn, "");
     }
 
     /**
@@ -763,21 +611,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        StringHolder xmlResponse = new StringHolder();
-        StringHolder suppMsgOut = new StringHolder();
-        try {
-            witsmlClient.WMLS_GetFromStore("opsReport", query, optionsIn, "", xmlResponse, suppMsgOut);
-            if (version.toString().equals("1.3.1.1"))
-                try {
-                    return transform.convertVersion(xmlResponse.value);
-                } catch (TransformerException e) {
-                    e.printStackTrace();
-                }
-            return xmlResponse.value;
-        } catch (RemoteException e) {
-            log.error("Error while executing open opsReport query " + e.getMessage());
-            throw e;
-        }
+        return makeQuery("opsReport", query, optionsIn, "");
     }
 
     /**
@@ -809,21 +643,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        StringHolder xmlResponse = new StringHolder();
-        StringHolder suppMsgOut = new StringHolder();
-        try {
-            witsmlClient.WMLS_GetFromStore("rig", query, optionsIn, "", xmlResponse, suppMsgOut);
-            if (version.toString().equals("1.3.1.1"))
-                try {
-                    return transform.convertVersion(xmlResponse.value);
-                } catch (TransformerException e) {
-                    e.printStackTrace();
-                }
-            return xmlResponse.value;
-        } catch (RemoteException e) {
-            log.error("Error while executing open Rigs query " + e.getMessage());
-            throw e;
-        }
+        return makeQuery("rig", query, optionsIn, "");
     }
 
     /**
@@ -855,21 +675,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        StringHolder xmlResponse = new StringHolder();
-        StringHolder suppMsgOut = new StringHolder();
-        try {
-            witsmlClient.WMLS_GetFromStore("risk", query, optionsIn, "", xmlResponse, suppMsgOut);
-            if (version.toString().equals("1.3.1.1"))
-                try {
-                    return transform.convertVersion(xmlResponse.value);
-                } catch (TransformerException e) {
-                    e.printStackTrace();
-                }
-            return xmlResponse.value;
-        } catch (RemoteException e) {
-            log.error("Error while executing open Risks query " + e.getMessage());
-            throw e;
-        }
+        return makeQuery("risk", query, optionsIn, "");
     }
 
     /**
@@ -901,21 +707,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        StringHolder xmlResponse = new StringHolder();
-        StringHolder suppMsgOut = new StringHolder();
-        try {
-            witsmlClient.WMLS_GetFromStore("sidewallCore", query, optionsIn, "", xmlResponse, suppMsgOut);
-            if (version.toString().equals("1.3.1.1"))
-                try {
-                    return transform.convertVersion(xmlResponse.value);
-                } catch (TransformerException e) {
-                    e.printStackTrace();
-                }
-            return xmlResponse.value;
-        } catch (RemoteException e) {
-            log.error("Error while executing open SideWallCores query " + e.getMessage());
-            throw e;
-        }
+        return makeQuery("sidewallcore", query, optionsIn, "");
     }
 
     /**
@@ -947,21 +739,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        StringHolder xmlResponse = new StringHolder();
-        StringHolder suppMsgOut = new StringHolder();
-        try {
-            witsmlClient.WMLS_GetFromStore("surveyProgram", query, optionsIn, "", xmlResponse, suppMsgOut);
-            if (version.toString().equals("1.3.1.1"))
-                try {
-                    return transform.convertVersion(xmlResponse.value);
-                } catch (TransformerException e) {
-                    e.printStackTrace();
-                }
-            return xmlResponse.value;
-        } catch (RemoteException e) {
-            log.error("Error while executing open SurveyPrograms query " + e.getMessage());
-            throw e;
-        }
+        return makeQuery("surveyprogram", query, optionsIn, "");
     }
 
     /**
@@ -993,21 +771,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        StringHolder xmlResponse = new StringHolder();
-        StringHolder suppMsgOut = new StringHolder();
-        try {
-            witsmlClient.WMLS_GetFromStore("target", query, optionsIn, "", xmlResponse, suppMsgOut);
-            if (version.toString().equals("1.3.1.1"))
-                try {
-                    return transform.convertVersion(xmlResponse.value);
-                } catch (TransformerException e) {
-                    e.printStackTrace();
-                }
-            return xmlResponse.value;
-        } catch (RemoteException e) {
-            log.error("Error while executing open Targets query " + e.getMessage());
-            throw e;
-        }
+        return makeQuery("target", query, optionsIn, "");
     }
 
     /**
@@ -1039,21 +803,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        StringHolder xmlResponse = new StringHolder();
-        StringHolder suppMsgOut = new StringHolder();
-        try {
-            witsmlClient.WMLS_GetFromStore("tubular", query, optionsIn, "", xmlResponse, suppMsgOut);
-            if (version.toString().equals("1.3.1.1"))
-                try {
-                    return transform.convertVersion(xmlResponse.value);
-                } catch (TransformerException e) {
-                    e.printStackTrace();
-                }
-            return xmlResponse.value;
-        } catch (RemoteException e) {
-            log.error("Error while executing open Tubulars query " + e.getMessage());
-            throw e;
-        }
+        return makeQuery("tubular", query, optionsIn, "");
     }
 
     /**
@@ -1085,21 +835,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        StringHolder xmlResponse = new StringHolder();
-        StringHolder suppMsgOut = new StringHolder();
-        try {
-            witsmlClient.WMLS_GetFromStore("wbGeometry", query, optionsIn, "", xmlResponse, suppMsgOut);
-            if (version.toString().equals("1.3.1.1"))
-                try {
-                    return transform.convertVersion(xmlResponse.value);
-                } catch (TransformerException e) {
-                    e.printStackTrace();
-                }
-            return xmlResponse.value;
-        } catch (RemoteException e) {
-            log.error("Error while executing open WbGeometrys query " + e.getMessage());
-            throw e;
-        }
+        return makeQuery("wbgeometry", query, optionsIn, "");
     }
 
     /**
@@ -1128,15 +864,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        StringHolder xmlResponse = new StringHolder();
-        StringHolder suppMsgOut = new StringHolder();
-        try {
-            witsmlClient.WMLS_GetFromStore("attachment", query, optionsIn, "", xmlResponse, suppMsgOut);
-            return xmlResponse.value;
-        } catch (RemoteException e) {
-            log.error("Error while executing open Attachments query " + e.getMessage());
-            throw e;
-        }
+        return makeQuery("attachment", query, optionsIn, "");
     }
 
     /**
@@ -1165,15 +893,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        StringHolder xmlResponse = new StringHolder();
-        StringHolder suppMsgOut = new StringHolder();
-        try {
-            witsmlClient.WMLS_GetFromStore("changeLog", query, optionsIn, "", xmlResponse, suppMsgOut);
-            return xmlResponse.value;
-        } catch (RemoteException e) {
-            log.error("Error while executing open ChangeLogs query " + e.getMessage());
-            throw e;
-        }
+        return makeQuery("changelog", query, optionsIn, "");
     }
 
     /**
@@ -1202,15 +922,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        StringHolder xmlResponse = new StringHolder();
-        StringHolder suppMsgOut = new StringHolder();
-        try {
-            witsmlClient.WMLS_GetFromStore("drillReport", query, optionsIn, "", xmlResponse, suppMsgOut);
-            return xmlResponse.value;
-        } catch (RemoteException e) {
-            log.error("Error while executing open DrillReports query " + e.getMessage());
-            throw e;
-        }
+        return makeQuery("drillreport", query, optionsIn, "");
     }
 
     /**
@@ -1239,15 +951,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        StringHolder xmlResponse = new StringHolder();
-        StringHolder suppMsgOut = new StringHolder();
-        try {
-            witsmlClient.WMLS_GetFromStore("objectGroup", query, optionsIn, "", xmlResponse, suppMsgOut);
-            return xmlResponse.value;
-        } catch (RemoteException e) {
-            log.error("Error while executing open ObjectGroups query " + e.getMessage());
-            throw e;
-        }
+        return makeQuery("objectgroup", query, optionsIn, "");
     }
 
     /**
@@ -1276,15 +980,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        StringHolder xmlResponse = new StringHolder();
-        StringHolder suppMsgOut = new StringHolder();
-        try {
-            witsmlClient.WMLS_GetFromStore("stimJob", query, optionsIn, "", xmlResponse, suppMsgOut);
-            return xmlResponse.value;
-        } catch (RemoteException e) {
-            log.error("Error while executing open StimJobs query " + e.getMessage());
-            throw e;
-        }
+        return makeQuery("stimjob", query, optionsIn, "");
     }
 
     /**
@@ -1311,21 +1007,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        StringHolder xmlResponse = new StringHolder();
-        StringHolder suppMsgOut = new StringHolder();
-        try {
-            witsmlClient.WMLS_GetFromStore("dtsInstalledSystem", query, "", "", xmlResponse, suppMsgOut);
-            if (version.toString().equals("1.3.1.1"))
-                try {
-                    return transform.convertVersion(xmlResponse.value);
-                } catch (TransformerException e) {
-                    e.printStackTrace();
-                }
-            return xmlResponse.value;
-        } catch (RemoteException e) {
-            log.error("Error while executing open dtsInstalledSystem query " + e.getMessage());
-            throw e;
-        }
+        return makeQuery("dtsinstalledsystem", query, "", "");
     }
 
     /**
@@ -1352,21 +1034,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        StringHolder xmlResponse = new StringHolder();
-        StringHolder suppMsgOut = new StringHolder();
-        try {
-            witsmlClient.WMLS_GetFromStore("realtime", query, "", "", xmlResponse, suppMsgOut);
-            if (version.toString().equals("1.3.1.1"))
-                try {
-                    return transform.convertVersion(xmlResponse.value);
-                } catch (TransformerException e) {
-                    e.printStackTrace();
-                }
-            return xmlResponse.value;
-        } catch (RemoteException e) {
-            log.error("Error while executing open Realtimes query " + e.getMessage());
-            throw e;
-        }
+        return makeQuery("realtimes", query, "", "");
     }
 
     /**
@@ -1393,21 +1061,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        StringHolder xmlResponse = new StringHolder();
-        StringHolder suppMsgOut = new StringHolder();
-        try {
-            witsmlClient.WMLS_GetFromStore("dtsMeasurement", query, "", "", xmlResponse, suppMsgOut);
-            if (version.toString().equals("1.3.1.1"))
-                try {
-                    return transform.convertVersion(xmlResponse.value);
-                } catch (TransformerException e) {
-                    e.printStackTrace();
-                }
-            return xmlResponse.value;
-        } catch (RemoteException e) {
-            log.error("Error while executing open DtsMeasurements query " + e.getMessage());
-            throw e;
-        }
+        return makeQuery("dtsmesasurement", query, "", "");
     }
 
     /**
@@ -1434,21 +1088,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        StringHolder xmlResponse = new StringHolder();
-        StringHolder suppMsgOut = new StringHolder();
-        try {
-            witsmlClient.WMLS_GetFromStore("wellLog", query, "", "", xmlResponse, suppMsgOut);
-            if (version.toString().equals("1.3.1.1"))
-                try {
-                    return transform.convertVersion(xmlResponse.value);
-                } catch (TransformerException e) {
-                    e.printStackTrace();
-                }
-            return xmlResponse.value;
-        } catch (RemoteException e) {
-            log.error("Error while executing open WellLogs query " + e.getMessage());
-            throw e;
-        }
+        return makeQuery("wellLog", query, "", "");
     }
 
     /**
@@ -1477,21 +1117,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        StringHolder xmlResponse = new StringHolder();
-        StringHolder suppMsgOut = new StringHolder();
-        try {
-            witsmlClient.WMLS_GetFromStore("trajectoryStation", query, "", "", xmlResponse, suppMsgOut);
-            if (version.toString().equals("1.3.1.1"))
-                try {
-                    return transform.convertVersion(xmlResponse.value);
-                } catch (TransformerException e) {
-                    e.printStackTrace();
-                }
-            return xmlResponse.value;
-        } catch (RemoteException e) {
-            log.error("Error while executing open TrajectoryStations query " + e.getMessage());
-            throw e;
-        }
+        return makeQuery("trajectorystation", query, "", "");
     }
 
     /**
@@ -1571,6 +1197,7 @@ public class Client implements WitsmlClient {
     @Override
     public ObjLogs getLogMetadataAsObj(String wellId, String wellboreId) throws Exception {
         String logs = getLogMetadata(wellId, wellboreId);
+        if (logs.equals("")) return null;
         return WitsmlMarshal.deserialize(logs, ObjLogs.class);
     }
 
@@ -1586,6 +1213,7 @@ public class Client implements WitsmlClient {
     @Override
     public ObjMudLogs getMudLogsAsObj(String wellId, String wellboreId) throws Exception {
         String mudLogs = getMudLogs(wellId, wellboreId);
+        if (mudLogs.equals("")) return null;
         return WitsmlMarshal.deserialize(mudLogs, ObjMudLogs.class);
     }
 
@@ -1601,6 +1229,7 @@ public class Client implements WitsmlClient {
     @Override
     public ObjTrajectorys getTrajectorysAsObj(String wellId, String wellboreId) throws Exception {
         String trajectorys = getTrajectorys(wellId, wellboreId);
+        if (trajectorys.equals("")) return null;
         return WitsmlMarshal.deserialize(trajectorys, ObjTrajectorys.class);
     }
 
@@ -1616,6 +1245,7 @@ public class Client implements WitsmlClient {
     @Override
     public ObjBhaRuns getBhaRunsAsObj(String wellId, String wellboreId) throws Exception {
         String bhaRuns = getBhaRuns(wellId, wellboreId);
+        if (bhaRuns.equals("")) return null;
         return WitsmlMarshal.deserialize(bhaRuns, ObjBhaRuns.class);
     }
 
@@ -1631,6 +1261,7 @@ public class Client implements WitsmlClient {
     @Override
     public ObjCementJobs getCementJobsAsObj(String wellId, String wellboreId) throws Exception {
         String cementJobs = getCementJobs(wellId, wellboreId);
+        if (cementJobs.equals("")) return null;
         return WitsmlMarshal.deserialize(cementJobs, ObjCementJobs.class);
     }
 
@@ -1646,6 +1277,7 @@ public class Client implements WitsmlClient {
     @Override
     public ObjConvCores getConvCoresAsObj(String wellId, String wellboreId) throws Exception {
         String convCores = getConvCores(wellId, wellboreId);
+        if (convCores.equals("")) return null;
         return WitsmlMarshal.deserialize(convCores, ObjConvCores.class);
     }
 
@@ -1661,6 +1293,7 @@ public class Client implements WitsmlClient {
     @Override
     public ObjDtsInstalledSystems getDtsInstalledSystemsAsObj(String wellId, String wellboreId) throws Exception {
         String dtsInstalledSystems = getDtsInstalledSystems(wellId, wellboreId);
+        if (dtsInstalledSystems.equals("")) return null;
         return WitsmlMarshal.deserialize(dtsInstalledSystems, ObjDtsInstalledSystems.class);
     }
 
@@ -1676,6 +1309,7 @@ public class Client implements WitsmlClient {
     @Override
     public ObjFluidsReports getFluidsReportsAsObj(String wellId, String wellboreId) throws Exception {
         String fluidsReports = getFluidsReports(wellId, wellboreId);
+        if (fluidsReports.equals("")) return null;
         return WitsmlMarshal.deserialize(fluidsReports, ObjFluidsReports.class);
     }
 
@@ -1691,6 +1325,7 @@ public class Client implements WitsmlClient {
     @Override
     public ObjFormationMarkers getFormationMarkersAsObj(String wellId, String wellboreId) throws Exception {
         String formationMarkers = getFormationMarkers(wellId, wellboreId);
+        if (formationMarkers.equals("")) return null;
         return WitsmlMarshal.deserialize(formationMarkers, ObjFormationMarkers.class);
     }
 
@@ -1706,6 +1341,7 @@ public class Client implements WitsmlClient {
     @Override
     public ObjMessages getMessagesAsObj(String wellId, String wellboreId) throws Exception {
         String messages = getMessages(wellId, wellboreId);
+        if (messages.equals("")) return null;
         return WitsmlMarshal.deserialize(messages, ObjMessages.class);
     }
 
@@ -1721,6 +1357,7 @@ public class Client implements WitsmlClient {
     @Override
     public ObjOpsReports getOpsReportsAsObj(String wellId, String wellboreId) throws Exception {
         String opsReports = getOpsReports(wellId, wellboreId);
+        if (opsReports.equals("")) return null;
         return WitsmlMarshal.deserialize(opsReports, ObjOpsReports.class);
     }
 
@@ -1736,6 +1373,7 @@ public class Client implements WitsmlClient {
     @Override
     public ObjRigs getRigsAsObj(String wellId, String wellboreId) throws Exception {
         String rigs = getRigs(wellId, wellboreId);
+        if (rigs.equals("")) return null;
         return WitsmlMarshal.deserialize(rigs, ObjRigs.class);
     }
 
@@ -1751,6 +1389,7 @@ public class Client implements WitsmlClient {
     @Override
     public ObjRisks getRisksAsObj(String wellId, String wellboreId) throws Exception {
         String risks = getRisks(wellId, wellboreId);
+        if (risks.equals("")) return null;
         return WitsmlMarshal.deserialize(risks, ObjRisks.class);
     }
 
@@ -1766,6 +1405,7 @@ public class Client implements WitsmlClient {
     @Override
     public ObjSidewallCores getSideWallCoresAsObj(String wellId, String wellboreId) throws Exception {
         String sideWallCores = getSideWallCores(wellId, wellboreId);
+        if (sideWallCores.equals("")) return null;
         return WitsmlMarshal.deserialize(sideWallCores, ObjSidewallCores.class);
     }
 
@@ -1781,6 +1421,7 @@ public class Client implements WitsmlClient {
     @Override
     public ObjSurveyPrograms getSurveyProgramsAsObj(String wellId, String wellboreId) throws Exception {
         String surveyPrograms = getSurveyPrograms(wellId, wellboreId);
+        if (surveyPrograms.equals("")) return null;
         return WitsmlMarshal.deserialize(surveyPrograms, ObjSurveyPrograms.class);
     }
 
@@ -1796,6 +1437,7 @@ public class Client implements WitsmlClient {
     @Override
     public ObjTubulars getTubularsAsObj(String wellId, String wellboreId) throws Exception {
         String tubulars = getTubulars(wellId, wellboreId);
+        if (tubulars.equals("")) return null;
         return WitsmlMarshal.deserialize(tubulars, ObjTubulars.class);
     }
 
@@ -1811,6 +1453,7 @@ public class Client implements WitsmlClient {
     @Override
     public ObjTargets getTargetsAsObj(String wellId, String wellboreId) throws Exception {
         String targets = getTargets(wellId, wellboreId);
+        if (targets.equals("")) return null;
         return WitsmlMarshal.deserialize(targets, ObjTargets.class);
     }
 
@@ -1826,6 +1469,7 @@ public class Client implements WitsmlClient {
     @Override
     public ObjWbGeometrys getWbGeometrysAsObj(String wellId, String wellboreId) throws Exception {
         String wbGeometrys = getWbGeometrys(wellId, wellboreId);
+        if (wbGeometrys.equals("")) return null;
         return WitsmlMarshal.deserialize(wbGeometrys, ObjWbGeometrys.class);
     }
 
@@ -1841,6 +1485,7 @@ public class Client implements WitsmlClient {
     @Override
     public ObjAttachments getAttachmentsAsObj(String wellId, String wellboreId) throws Exception {
         String attachments = getAttachments(wellId, wellboreId);
+        if (attachments.equals("")) return null;
         return WitsmlMarshal.deserialize(attachments, ObjAttachments.class);
     }
 
@@ -1856,6 +1501,7 @@ public class Client implements WitsmlClient {
     @Override
     public ObjChangeLogs getChangeLogsAsObj(String wellId, String wellboreId) throws Exception {
         String changeLogs = getChangeLogs(wellId, wellboreId);
+        if (changeLogs.equals("")) return null;
         return WitsmlMarshal.deserialize(changeLogs, ObjChangeLogs.class);
     }
 
@@ -1871,6 +1517,7 @@ public class Client implements WitsmlClient {
     @Override
     public ObjDrillReports getDrillReportsAsObj(String wellId, String wellboreId) throws Exception {
         String drillReports = getDrillReports(wellId, wellboreId);
+        if (drillReports.equals("")) return null;
         return WitsmlMarshal.deserialize(drillReports, ObjDrillReports.class);
     }
 
@@ -1886,6 +1533,7 @@ public class Client implements WitsmlClient {
     @Override
     public ObjObjectGroups getObjectGroupsAsObj(String wellId, String wellboreId) throws Exception {
         String objectGroups = getObjectGroups(wellId, wellboreId);
+        if (objectGroups.equals("")) return null;
         return WitsmlMarshal.deserialize(objectGroups, ObjObjectGroups.class);
     }
 
@@ -1901,6 +1549,7 @@ public class Client implements WitsmlClient {
     @Override
     public ObjStimJobs getStimJobsAsObj(String wellId, String wellboreId) throws Exception {
         String stimJobs = getStimJobs(wellId, wellboreId);
+        if (stimJobs.equals("")) return null;
         return WitsmlMarshal.deserialize(stimJobs, ObjStimJobs.class);
     }
 
@@ -1916,6 +1565,7 @@ public class Client implements WitsmlClient {
     @Override
     public ObjRealtimes getRealtimesAsObj(String wellId, String wellboreId) throws Exception {
         String realtimes = getRealtimes(wellId, wellboreId);
+        if (realtimes.equals("")) return null;
         return WitsmlMarshal.deserialize(realtimes, ObjRealtimes.class);
     }
 
@@ -1931,6 +1581,7 @@ public class Client implements WitsmlClient {
     @Override
     public ObjWellLogs getWellLogsAsObj(String wellId, String wellboreId) throws Exception {
         String wellLogs = getWellLogs(wellId, wellboreId);
+        if (wellLogs.equals("")) return null;
         return WitsmlMarshal.deserialize(wellLogs, ObjWellLogs.class);
     }
 
@@ -1946,6 +1597,7 @@ public class Client implements WitsmlClient {
     @Override
     public ObjDtsMeasurements getDtsMeasurementsAsObj(String wellId, String wellboreId) throws Exception {
         String dtsMeasurements = getDtsMeasurements(wellId, wellboreId);
+        if (dtsMeasurements.equals("")) return null;
         return WitsmlMarshal.deserialize(dtsMeasurements, ObjDtsMeasurements.class);
     }
 
@@ -1962,6 +1614,7 @@ public class Client implements WitsmlClient {
     @Override
     public ObjTrajectoryStations getTrajectoryStationsAsObj(String wellId, String wellboreId, String trajectoryId) throws Exception {
         String trajectoryStations = getTrajectoryStations(wellId, wellboreId, trajectoryId);
+        if (trajectoryStations.equals("")) return null;
         return WitsmlMarshal.deserialize(trajectoryStations, ObjTrajectoryStations.class);
     }
 
@@ -1971,5 +1624,29 @@ public class Client implements WitsmlClient {
                 new InputStreamReader(stream));
         return reader.lines().collect(Collectors.joining(
                 System.getProperty("line.separator")));
+    }
+
+    private String makeQuery(String witsmlType, String query, String optionsIn, String capsIn) throws RemoteException {
+        StringHolder xmlResponse = new StringHolder();
+        StringHolder suppMsgOut = new StringHolder();
+        try {
+            witsmlClient.WMLS_GetFromStore(witsmlType, query, optionsIn, "", xmlResponse, suppMsgOut);
+            if (xmlResponse == null){
+                return "";
+            }
+            if (xmlResponse.value.equals("")) {
+                return "";
+            }
+            if (version.toString().equals("1.3.1.1"))
+                try {
+                    return transform.convertVersion(xmlResponse.value);
+                } catch (TransformerException e) {
+                    log.error("error transforming the WITSML from 1.3.1.1 to 1.4.1.1: " + e.getMessage());
+                }
+            return xmlResponse.value;
+        } catch (RemoteException e) {
+            log.error("Error while executing open logs query " + e.getMessage());
+            throw e;
+        }
     }
 }
