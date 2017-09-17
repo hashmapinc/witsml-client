@@ -18,6 +18,8 @@
         <severity/>
         <warnProbability/>
         <commonData>
+            <dTimCreation/>
+            <dTimLastChange/>
             <itemState/>
             <comments/>
         </commonData>

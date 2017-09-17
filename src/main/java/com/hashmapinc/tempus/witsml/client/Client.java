@@ -711,6 +711,7 @@ public class Client implements WitsmlClient {
             }
             query = query.replace("%uidWell%", wellId);
             query = query.replace("%uidWellbore%", wellboreId);
+            query = query.replace("%uid%", "");
         } catch (IOException e) {
             String error = "Could not find or access the query template for getMessages " + e.getMessage();
             log.error(error);
