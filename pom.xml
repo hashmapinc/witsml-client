@@ -6,7 +6,7 @@
 
     <groupId>com.hashmapinc.tempus</groupId>
     <artifactId>witsml-client</artifactId>
-    <version>1.0.8</version>
+    <version>1.0.10</version>
     <packaging>jar</packaging>
 
     <name>WITSML Client</name>
@@ -186,7 +186,7 @@
         <dependency>
             <groupId>com.hashmapinc.tempus</groupId>
             <artifactId>WitsmlObjects</artifactId>
-            <version>1.0</version>
+            <version>1.0.1</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
