@@ -45,7 +45,6 @@ public class Client implements WitsmlClient {
     private StoreSoapBindingStub witsmlClient;
     private Logger log;
     private WitsmlVersion version = WitsmlVersion.VERSION_1411;
-    private Boolean connected = false;
 
     private WitsmlVersionTransformer transform;
 
@@ -153,7 +152,6 @@ public class Client implements WitsmlClient {
         if (!supportedVer.contains(version.toString())){
             throw new IllegalArgumentException("Requested version (" + version + ") not supported by the server. The server only supports: " + supportedVersions);
         }
-        connected = true;
     }
 
     /**
@@ -180,8 +178,6 @@ public class Client implements WitsmlClient {
      */
     @Override
     public String getWells(String wellUid, String status) throws Exception {
-        if (!connected)
-            throw new Exception("The connect method has not yet been called.");
         String query = "";
         String optionsIn = "";
         try {
@@ -238,8 +234,6 @@ public class Client implements WitsmlClient {
      */
     @Override
     public String getWellboresForWell(String wellId, String wellboreUid) throws Exception {
-        if (!connected)
-            throw new Exception("The connect method has not yet been called.");
         String query = "";
         String optionsIn = "";
         try {
@@ -303,8 +297,6 @@ public class Client implements WitsmlClient {
      */
     @Override
     public String getLogMetadata(String wellId, String wellboreId) throws Exception {
-        if (!connected)
-            throw new Exception("The connect method has not yet been called.");
         String query = "";
         String optionsIn="";
         try {
@@ -335,8 +327,6 @@ public class Client implements WitsmlClient {
      */
     @Override
     public String getMudLogs(String wellId, String wellboreId) throws Exception {
-        if (!connected)
-            throw new Exception("The connect method has not yet been called.");
         String query = "";
         String optionsIn = "";
         try {
@@ -367,8 +357,6 @@ public class Client implements WitsmlClient {
      */
     @Override
     public String getTrajectorys(String wellId, String wellboreId) throws Exception {
-        if (!connected)
-            throw new Exception("The connect method has not yet been called.");
         String query = "";
         String optionsIn="";
         try {
@@ -399,8 +387,6 @@ public class Client implements WitsmlClient {
      */
     @Override
     public String getBhaRuns(String wellId, String wellboreId) throws Exception {
-        if (!connected)
-            throw new Exception("The connect method has not yet been called.");
         String query = "";
         String optionsIn = "";
         try {
@@ -431,8 +417,6 @@ public class Client implements WitsmlClient {
      */
     @Override
     public String getCementJobs(String wellId, String wellboreId) throws Exception {
-        if (!connected)
-            throw new Exception("The connect method has not yet been called.");
         String query = "";
         String optionsIn = "";
         try {
@@ -463,8 +447,6 @@ public class Client implements WitsmlClient {
      */
     @Override
     public String getConvCores(String wellId, String wellboreId) throws Exception {
-        if (!connected)
-            throw new Exception("The connect method has not yet been called.");
         String query = "";
         String optionsIn = "";
         try {
@@ -495,8 +477,6 @@ public class Client implements WitsmlClient {
      */
     @Override
     public String getFluidsReports(String wellId, String wellboreId) throws Exception {
-        if (!connected)
-            throw new Exception("The connect method has not yet been called.");
         String query = "";
         String optionsIn = "";
         try {
@@ -527,8 +507,6 @@ public class Client implements WitsmlClient {
      */
     @Override
     public String getFormationMarkers(String wellId, String wellboreId) throws Exception {
-        if (!connected)
-            throw new Exception("The connect method has not yet been called.");
         String query = "";
         String optionsIn = "";
         try {
@@ -559,8 +537,6 @@ public class Client implements WitsmlClient {
      */
     @Override
     public String getMessages(String wellId, String wellboreId) throws Exception {
-        if (!connected)
-            throw new Exception("The connect method has not yet been called.");
         String query = "";
         String optionsIn = "";
         try {
@@ -592,8 +568,6 @@ public class Client implements WitsmlClient {
      */
     @Override
     public String getOpsReports(String wellId, String wellboreId) throws Exception {
-        if (!connected)
-            throw new Exception("The connect method has not yet been called.");
         String query = "";
         String optionsIn = "";
         try {
@@ -624,8 +598,6 @@ public class Client implements WitsmlClient {
      */
     @Override
     public String getRigs(String wellId, String wellboreId) throws Exception {
-        if (!connected)
-            throw new Exception("The connect method has not yet been called.");
         String query = "";
         String optionsIn = "";
         try {
@@ -656,8 +628,6 @@ public class Client implements WitsmlClient {
      */
     @Override
     public String getRisks(String wellId, String wellboreId) throws Exception {
-        if (!connected)
-            throw new Exception("The connect method has not yet been called.");
         String query = "";
         String optionsIn = "";
         try {
@@ -688,8 +658,6 @@ public class Client implements WitsmlClient {
      */
     @Override
     public String getSideWallCores(String wellId, String wellboreId) throws Exception {
-        if (!connected)
-            throw new Exception("The connect method has not yet been called.");
         String query = "";
         String optionsIn = "";
         try {
@@ -720,8 +688,6 @@ public class Client implements WitsmlClient {
      */
     @Override
     public String getSurveyPrograms(String wellId, String wellboreId) throws Exception {
-        if (!connected)
-            throw new Exception("The connect method has not yet been called.");
         String query = "";
         String optionsIn = "";
         try {
@@ -752,8 +718,6 @@ public class Client implements WitsmlClient {
      */
     @Override
     public String getTargets(String wellId, String wellboreId) throws Exception {
-        if (!connected)
-            throw new Exception("The connect method has not yet been called.");
         String query = "";
         String optionsIn = "";
         try {
@@ -784,8 +748,6 @@ public class Client implements WitsmlClient {
      */
     @Override
     public String getTubulars(String wellId, String wellboreId) throws Exception {
-        if (!connected)
-            throw new Exception("The connect method has not yet been called.");
         String query = "";
         String optionsIn = "";
         try {
@@ -816,8 +778,6 @@ public class Client implements WitsmlClient {
      */
     @Override
     public String getWbGeometrys(String wellId, String wellboreId) throws Exception {
-        if (!connected)
-            throw new Exception("The connect method has not yet been called.");
         String query = "";
         String optionsIn = "";
         try {
@@ -848,8 +808,6 @@ public class Client implements WitsmlClient {
      */
     @Override
     public String getAttachments(String wellId, String wellboreId) throws Exception {
-        if (!connected)
-            throw new Exception("The connect method has not yet been called.");
         String query = "";
         String optionsIn = "";
         try {
@@ -877,8 +835,6 @@ public class Client implements WitsmlClient {
      */
     @Override
     public String getChangeLogs(String wellId, String wellboreId) throws Exception {
-        if (!connected)
-            throw new Exception("The connect method has not yet been called.");
         String query = "";
         String optionsIn = "";
         try {
@@ -906,8 +862,6 @@ public class Client implements WitsmlClient {
      */
     @Override
     public String getDrillReports(String wellId, String wellboreId) throws Exception {
-        if (!connected)
-            throw new Exception("The connect method has not yet been called.");
         String query = "";
         String optionsIn = "";
         try {
@@ -935,8 +889,6 @@ public class Client implements WitsmlClient {
      */
     @Override
     public String getObjectGroups(String wellId, String wellboreId) throws Exception {
-        if (!connected)
-            throw new Exception("The connect method has not yet been called.");
         String query = "";
         String optionsIn = "";
         try {
@@ -964,8 +916,6 @@ public class Client implements WitsmlClient {
      */
     @Override
     public String getStimJobs(String wellId, String wellboreId) throws Exception {
-        if (!connected)
-            throw new Exception("The connect method has not yet been called.");
         String query = "";
         String optionsIn = "";
         try {
@@ -993,8 +943,6 @@ public class Client implements WitsmlClient {
      */
     @Override
     public String getDtsInstalledSystems(String wellId, String wellboreId) throws Exception {
-        if (!connected)
-            throw new Exception("The connect method has not yet been called.");
         String query = "";
         try {
             if (version.toString().equals("1.3.1.1")) {
@@ -1020,8 +968,6 @@ public class Client implements WitsmlClient {
      */
     @Override
     public String getRealtimes(String wellId, String wellboreId) throws Exception {
-        if (!connected)
-            throw new Exception("The connect method has not yet been called.");
         String query = "";
         try {
             if (version.toString().equals("1.3.1.1")) {
@@ -1047,8 +993,6 @@ public class Client implements WitsmlClient {
      */
     @Override
     public String getDtsMeasurements(String wellId, String wellboreId) throws Exception {
-        if (!connected)
-            throw new Exception("The connect method has not yet been called.");
         String query = "";
         try {
             if (version.toString().equals("1.3.1.1")) {
@@ -1074,8 +1018,6 @@ public class Client implements WitsmlClient {
      */
     @Override
     public String getWellLogs(String wellId, String wellboreId) throws Exception {
-        if (!connected)
-            throw new Exception("The connect method has not yet been called.");
         String query = "";
         try {
             if (version.toString().equals("1.3.1.1")) {
@@ -1102,8 +1044,6 @@ public class Client implements WitsmlClient {
      */
     @Override
     public String getTrajectoryStations(String wellId, String wellboreId, String trajectoryId) throws Exception {
-        if (!connected)
-            throw new Exception("The connect method has not yet been called.");
         String query = "";
         try {
             if (version.toString().equals("1.3.1.1")) {
@@ -1631,9 +1571,6 @@ public class Client implements WitsmlClient {
         StringHolder suppMsgOut = new StringHolder();
         try {
             witsmlClient.WMLS_GetFromStore(witsmlType, query, optionsIn, "", xmlResponse, suppMsgOut);
-            if (xmlResponse == null){
-                return "";
-            }
             if (xmlResponse.value.equals("")) {
                 return "";
             }
