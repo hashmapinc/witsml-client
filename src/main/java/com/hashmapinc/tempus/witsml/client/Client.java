@@ -196,7 +196,7 @@ public class Client implements WitsmlClient {
         query = query.replace("%uidWell%", wellUid);
         query = query.replace("%wellStatus%", status);
 
-        return makeQuery("well", query, optionsIn, "");
+        return executeObjectQuery("well", query, optionsIn, "");
     }
 
     @Override
@@ -257,7 +257,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        return makeQuery("wellbore", query, optionsIn, "");
+        return executeObjectQuery("wellbore", query, optionsIn, "");
     }
 
     @Override
@@ -314,7 +314,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        return makeQuery("log", query, optionsIn, "");
+        return executeObjectQuery("log", query, optionsIn, "");
     }
 
     /**
@@ -344,7 +344,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        return makeQuery("mudlog", query, optionsIn, "");
+        return executeObjectQuery("mudlog", query, optionsIn, "");
     }
 
     /**
@@ -374,7 +374,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        return makeQuery("trajectory", query, optionsIn, "");
+        return executeObjectQuery("trajectory", query, optionsIn, "");
     }
 
     /**
@@ -404,7 +404,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        return makeQuery("bha", query, optionsIn, "");
+        return executeObjectQuery("bha", query, optionsIn, "");
     }
 
     /**
@@ -434,7 +434,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        return makeQuery("cementjob", query, optionsIn, "");
+        return executeObjectQuery("cementjob", query, optionsIn, "");
     }
 
     /**
@@ -464,7 +464,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        return makeQuery("convCore", query, optionsIn, "");
+        return executeObjectQuery("convCore", query, optionsIn, "");
     }
 
     /**
@@ -494,7 +494,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        return makeQuery("fluidsReport", query, optionsIn, "");
+        return executeObjectQuery("fluidsReport", query, optionsIn, "");
     }
 
     /**
@@ -524,7 +524,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        return makeQuery("formationmarker", query, optionsIn, "");
+        return executeObjectQuery("formationmarker", query, optionsIn, "");
     }
 
     /**
@@ -555,7 +555,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        return makeQuery("message", query, optionsIn, "");
+        return executeObjectQuery("message", query, optionsIn, "");
     }
 
     /**
@@ -585,7 +585,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        return makeQuery("opsReport", query, optionsIn, "");
+        return executeObjectQuery("opsReport", query, optionsIn, "");
     }
 
     /**
@@ -615,7 +615,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        return makeQuery("rig", query, optionsIn, "");
+        return executeObjectQuery("rig", query, optionsIn, "");
     }
 
     /**
@@ -645,7 +645,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        return makeQuery("risk", query, optionsIn, "");
+        return executeObjectQuery("risk", query, optionsIn, "");
     }
 
     /**
@@ -675,7 +675,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        return makeQuery("sidewallcore", query, optionsIn, "");
+        return executeObjectQuery("sidewallcore", query, optionsIn, "");
     }
 
     /**
@@ -705,7 +705,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        return makeQuery("surveyprogram", query, optionsIn, "");
+        return executeObjectQuery("surveyprogram", query, optionsIn, "");
     }
 
     /**
@@ -735,7 +735,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        return makeQuery("target", query, optionsIn, "");
+        return executeObjectQuery("target", query, optionsIn, "");
     }
 
     /**
@@ -765,7 +765,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        return makeQuery("tubular", query, optionsIn, "");
+        return executeObjectQuery("tubular", query, optionsIn, "");
     }
 
     /**
@@ -795,7 +795,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        return makeQuery("wbgeometry", query, optionsIn, "");
+        return executeObjectQuery("wbgeometry", query, optionsIn, "");
     }
 
     /**
@@ -822,7 +822,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        return makeQuery("attachment", query, optionsIn, "");
+        return executeObjectQuery("attachment", query, optionsIn, "");
     }
 
     /**
@@ -849,7 +849,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        return makeQuery("changelog", query, optionsIn, "");
+        return executeObjectQuery("changelog", query, optionsIn, "");
     }
 
     /**
@@ -876,7 +876,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        return makeQuery("drillreport", query, optionsIn, "");
+        return executeObjectQuery("drillreport", query, optionsIn, "");
     }
 
     /**
@@ -903,7 +903,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        return makeQuery("objectgroup", query, optionsIn, "");
+        return executeObjectQuery("objectgroup", query, optionsIn, "");
     }
 
     /**
@@ -930,7 +930,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        return makeQuery("stimjob", query, optionsIn, "");
+        return executeObjectQuery("stimjob", query, optionsIn, "");
     }
 
     /**
@@ -955,7 +955,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        return makeQuery("dtsinstalledsystem", query, "", "");
+        return executeObjectQuery("dtsinstalledsystem", query, "", "");
     }
 
     /**
@@ -980,7 +980,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        return makeQuery("realtimes", query, "", "");
+        return executeObjectQuery("realtimes", query, "", "");
     }
 
     /**
@@ -1005,7 +1005,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        return makeQuery("dtsmesasurement", query, "", "");
+        return executeObjectQuery("dtsmesasurement", query, "", "");
     }
 
     /**
@@ -1030,7 +1030,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        return makeQuery("wellLog", query, "", "");
+        return executeObjectQuery("wellLog", query, "", "");
     }
 
     /**
@@ -1057,7 +1057,7 @@ public class Client implements WitsmlClient {
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        return makeQuery("trajectorystation", query, "", "");
+        return executeObjectQuery("trajectorystation", query, "", "");
     }
 
     /**
@@ -1137,7 +1137,8 @@ public class Client implements WitsmlClient {
     @Override
     public ObjLogs getLogMetadataAsObj(String wellId, String wellboreId) throws Exception {
         String logs = getLogMetadata(wellId, wellboreId);
-        if (logs.equals("")) return null;
+        logs = convertVersion(logs);
+        if (logs == null) return null;
         return WitsmlMarshal.deserialize(logs, ObjLogs.class);
     }
 
@@ -1153,7 +1154,8 @@ public class Client implements WitsmlClient {
     @Override
     public ObjMudLogs getMudLogsAsObj(String wellId, String wellboreId) throws Exception {
         String mudLogs = getMudLogs(wellId, wellboreId);
-        if (mudLogs.equals("")) return null;
+        mudLogs = convertVersion(mudLogs);
+        if (mudLogs == null) return null;
         return WitsmlMarshal.deserialize(mudLogs, ObjMudLogs.class);
     }
 
@@ -1169,7 +1171,8 @@ public class Client implements WitsmlClient {
     @Override
     public ObjTrajectorys getTrajectorysAsObj(String wellId, String wellboreId) throws Exception {
         String trajectorys = getTrajectorys(wellId, wellboreId);
-        if (trajectorys.equals("")) return null;
+        trajectorys = convertVersion(trajectorys);
+        if (trajectorys == null) return null;
         return WitsmlMarshal.deserialize(trajectorys, ObjTrajectorys.class);
     }
 
@@ -1185,7 +1188,8 @@ public class Client implements WitsmlClient {
     @Override
     public ObjBhaRuns getBhaRunsAsObj(String wellId, String wellboreId) throws Exception {
         String bhaRuns = getBhaRuns(wellId, wellboreId);
-        if (bhaRuns.equals("")) return null;
+        bhaRuns = convertVersion(bhaRuns);
+        if (bhaRuns == null) return null;
         return WitsmlMarshal.deserialize(bhaRuns, ObjBhaRuns.class);
     }
 
@@ -1201,7 +1205,8 @@ public class Client implements WitsmlClient {
     @Override
     public ObjCementJobs getCementJobsAsObj(String wellId, String wellboreId) throws Exception {
         String cementJobs = getCementJobs(wellId, wellboreId);
-        if (cementJobs.equals("")) return null;
+        cementJobs = convertVersion(cementJobs);
+        if (cementJobs == null) return null;
         return WitsmlMarshal.deserialize(cementJobs, ObjCementJobs.class);
     }
 
@@ -1217,7 +1222,8 @@ public class Client implements WitsmlClient {
     @Override
     public ObjConvCores getConvCoresAsObj(String wellId, String wellboreId) throws Exception {
         String convCores = getConvCores(wellId, wellboreId);
-        if (convCores.equals("")) return null;
+        convCores = convertVersion(convCores);
+        if (convCores == null) return null;
         return WitsmlMarshal.deserialize(convCores, ObjConvCores.class);
     }
 
@@ -1233,7 +1239,8 @@ public class Client implements WitsmlClient {
     @Override
     public ObjDtsInstalledSystems getDtsInstalledSystemsAsObj(String wellId, String wellboreId) throws Exception {
         String dtsInstalledSystems = getDtsInstalledSystems(wellId, wellboreId);
-        if (dtsInstalledSystems.equals("")) return null;
+        dtsInstalledSystems = convertVersion(dtsInstalledSystems);
+        if (dtsInstalledSystems == null) return null;
         return WitsmlMarshal.deserialize(dtsInstalledSystems, ObjDtsInstalledSystems.class);
     }
 
@@ -1249,7 +1256,8 @@ public class Client implements WitsmlClient {
     @Override
     public ObjFluidsReports getFluidsReportsAsObj(String wellId, String wellboreId) throws Exception {
         String fluidsReports = getFluidsReports(wellId, wellboreId);
-        if (fluidsReports.equals("")) return null;
+        fluidsReports = convertVersion(fluidsReports);
+        if (fluidsReports == null) return null;
         return WitsmlMarshal.deserialize(fluidsReports, ObjFluidsReports.class);
     }
 
@@ -1265,7 +1273,8 @@ public class Client implements WitsmlClient {
     @Override
     public ObjFormationMarkers getFormationMarkersAsObj(String wellId, String wellboreId) throws Exception {
         String formationMarkers = getFormationMarkers(wellId, wellboreId);
-        if (formationMarkers.equals("")) return null;
+        formationMarkers = convertVersion(formationMarkers);
+        if (formationMarkers == null) return null;
         return WitsmlMarshal.deserialize(formationMarkers, ObjFormationMarkers.class);
     }
 
@@ -1281,7 +1290,8 @@ public class Client implements WitsmlClient {
     @Override
     public ObjMessages getMessagesAsObj(String wellId, String wellboreId) throws Exception {
         String messages = getMessages(wellId, wellboreId);
-        if (messages.equals("")) return null;
+        messages = convertVersion(messages);
+        if (messages == null) return null;
         return WitsmlMarshal.deserialize(messages, ObjMessages.class);
     }
 
@@ -1297,7 +1307,8 @@ public class Client implements WitsmlClient {
     @Override
     public ObjOpsReports getOpsReportsAsObj(String wellId, String wellboreId) throws Exception {
         String opsReports = getOpsReports(wellId, wellboreId);
-        if (opsReports.equals("")) return null;
+        opsReports = convertVersion(opsReports);
+        if (opsReports == null) return null;
         return WitsmlMarshal.deserialize(opsReports, ObjOpsReports.class);
     }
 
@@ -1313,7 +1324,8 @@ public class Client implements WitsmlClient {
     @Override
     public ObjRigs getRigsAsObj(String wellId, String wellboreId) throws Exception {
         String rigs = getRigs(wellId, wellboreId);
-        if (rigs.equals("")) return null;
+        rigs = convertVersion(rigs);
+        if (rigs == null) return null;
         return WitsmlMarshal.deserialize(rigs, ObjRigs.class);
     }
 
@@ -1329,7 +1341,8 @@ public class Client implements WitsmlClient {
     @Override
     public ObjRisks getRisksAsObj(String wellId, String wellboreId) throws Exception {
         String risks = getRisks(wellId, wellboreId);
-        if (risks.equals("")) return null;
+        risks = convertVersion(risks);
+        if (risks == null) return null;
         return WitsmlMarshal.deserialize(risks, ObjRisks.class);
     }
 
@@ -1345,7 +1358,8 @@ public class Client implements WitsmlClient {
     @Override
     public ObjSidewallCores getSideWallCoresAsObj(String wellId, String wellboreId) throws Exception {
         String sideWallCores = getSideWallCores(wellId, wellboreId);
-        if (sideWallCores.equals("")) return null;
+        sideWallCores = convertVersion(sideWallCores);
+        if (sideWallCores == null) return null;
         return WitsmlMarshal.deserialize(sideWallCores, ObjSidewallCores.class);
     }
 
@@ -1361,7 +1375,8 @@ public class Client implements WitsmlClient {
     @Override
     public ObjSurveyPrograms getSurveyProgramsAsObj(String wellId, String wellboreId) throws Exception {
         String surveyPrograms = getSurveyPrograms(wellId, wellboreId);
-        if (surveyPrograms.equals("")) return null;
+        surveyPrograms = convertVersion(surveyPrograms);
+        if (surveyPrograms == null) return null;
         return WitsmlMarshal.deserialize(surveyPrograms, ObjSurveyPrograms.class);
     }
 
@@ -1377,7 +1392,8 @@ public class Client implements WitsmlClient {
     @Override
     public ObjTubulars getTubularsAsObj(String wellId, String wellboreId) throws Exception {
         String tubulars = getTubulars(wellId, wellboreId);
-        if (tubulars.equals("")) return null;
+        tubulars = convertVersion(tubulars);
+        if (tubulars == null) return null;
         return WitsmlMarshal.deserialize(tubulars, ObjTubulars.class);
     }
 
@@ -1393,7 +1409,8 @@ public class Client implements WitsmlClient {
     @Override
     public ObjTargets getTargetsAsObj(String wellId, String wellboreId) throws Exception {
         String targets = getTargets(wellId, wellboreId);
-        if (targets.equals("")) return null;
+        targets = convertVersion(targets);
+        if (targets == null) return null;
         return WitsmlMarshal.deserialize(targets, ObjTargets.class);
     }
 
@@ -1409,7 +1426,8 @@ public class Client implements WitsmlClient {
     @Override
     public ObjWbGeometrys getWbGeometrysAsObj(String wellId, String wellboreId) throws Exception {
         String wbGeometrys = getWbGeometrys(wellId, wellboreId);
-        if (wbGeometrys.equals("")) return null;
+        wbGeometrys = convertVersion(wbGeometrys);
+        if (wbGeometrys == null) return null;
         return WitsmlMarshal.deserialize(wbGeometrys, ObjWbGeometrys.class);
     }
 
@@ -1425,7 +1443,8 @@ public class Client implements WitsmlClient {
     @Override
     public ObjAttachments getAttachmentsAsObj(String wellId, String wellboreId) throws Exception {
         String attachments = getAttachments(wellId, wellboreId);
-        if (attachments.equals("")) return null;
+        attachments = convertVersion(attachments);
+        if (attachments == null) return null;
         return WitsmlMarshal.deserialize(attachments, ObjAttachments.class);
     }
 
@@ -1441,7 +1460,8 @@ public class Client implements WitsmlClient {
     @Override
     public ObjChangeLogs getChangeLogsAsObj(String wellId, String wellboreId) throws Exception {
         String changeLogs = getChangeLogs(wellId, wellboreId);
-        if (changeLogs.equals("")) return null;
+        changeLogs = convertVersion(changeLogs);
+        if (changeLogs == null) return null;
         return WitsmlMarshal.deserialize(changeLogs, ObjChangeLogs.class);
     }
 
@@ -1457,7 +1477,8 @@ public class Client implements WitsmlClient {
     @Override
     public ObjDrillReports getDrillReportsAsObj(String wellId, String wellboreId) throws Exception {
         String drillReports = getDrillReports(wellId, wellboreId);
-        if (drillReports.equals("")) return null;
+        drillReports = convertVersion(drillReports);
+        if (drillReports == null) return null;
         return WitsmlMarshal.deserialize(drillReports, ObjDrillReports.class);
     }
 
@@ -1473,7 +1494,8 @@ public class Client implements WitsmlClient {
     @Override
     public ObjObjectGroups getObjectGroupsAsObj(String wellId, String wellboreId) throws Exception {
         String objectGroups = getObjectGroups(wellId, wellboreId);
-        if (objectGroups.equals("")) return null;
+        objectGroups = convertVersion(objectGroups);
+        if (objectGroups == null) return null;
         return WitsmlMarshal.deserialize(objectGroups, ObjObjectGroups.class);
     }
 
@@ -1489,7 +1511,8 @@ public class Client implements WitsmlClient {
     @Override
     public ObjStimJobs getStimJobsAsObj(String wellId, String wellboreId) throws Exception {
         String stimJobs = getStimJobs(wellId, wellboreId);
-        if (stimJobs.equals("")) return null;
+        stimJobs = convertVersion(stimJobs);
+        if (stimJobs == null) return null;
         return WitsmlMarshal.deserialize(stimJobs, ObjStimJobs.class);
     }
 
@@ -1505,7 +1528,8 @@ public class Client implements WitsmlClient {
     @Override
     public ObjRealtimes getRealtimesAsObj(String wellId, String wellboreId) throws Exception {
         String realtimes = getRealtimes(wellId, wellboreId);
-        if (realtimes.equals("")) return null;
+        realtimes = convertVersion(realtimes);
+        if (realtimes == null) return null;
         return WitsmlMarshal.deserialize(realtimes, ObjRealtimes.class);
     }
 
@@ -1521,7 +1545,8 @@ public class Client implements WitsmlClient {
     @Override
     public ObjWellLogs getWellLogsAsObj(String wellId, String wellboreId) throws Exception {
         String wellLogs = getWellLogs(wellId, wellboreId);
-        if (wellLogs.equals("")) return null;
+        wellLogs = convertVersion(wellLogs);
+        if (wellLogs == null) return null;
         return WitsmlMarshal.deserialize(wellLogs, ObjWellLogs.class);
     }
 
@@ -1537,7 +1562,8 @@ public class Client implements WitsmlClient {
     @Override
     public ObjDtsMeasurements getDtsMeasurementsAsObj(String wellId, String wellboreId) throws Exception {
         String dtsMeasurements = getDtsMeasurements(wellId, wellboreId);
-        if (dtsMeasurements.equals("")) return null;
+        dtsMeasurements = convertVersion(dtsMeasurements);
+        if (dtsMeasurements == null) return null;
         return WitsmlMarshal.deserialize(dtsMeasurements, ObjDtsMeasurements.class);
     }
 
@@ -1554,7 +1580,8 @@ public class Client implements WitsmlClient {
     @Override
     public ObjTrajectoryStations getTrajectoryStationsAsObj(String wellId, String wellboreId, String trajectoryId) throws Exception {
         String trajectoryStations = getTrajectoryStations(wellId, wellboreId, trajectoryId);
-        if (trajectoryStations.equals("")) return null;
+        trajectoryStations = convertVersion(trajectoryStations);
+        if (trajectoryStations == null) return null;
         return WitsmlMarshal.deserialize(trajectoryStations, ObjTrajectoryStations.class);
     }
 
@@ -1566,24 +1593,16 @@ public class Client implements WitsmlClient {
                 System.getProperty("line.separator")));
     }
 
-    private String makeQuery(String witsmlType, String query, String optionsIn, String capsIn) throws RemoteException {
-        StringHolder xmlResponse = new StringHolder();
-        StringHolder suppMsgOut = new StringHolder();
-        try {
-            witsmlClient.WMLS_GetFromStore(witsmlType, query, optionsIn, "", xmlResponse, suppMsgOut);
-            if (xmlResponse.value.equals("")) {
-                return "";
+    private String convertVersion(String original){
+        String converted = null;
+        if (version.toString().equals("1.3.1.1"))
+            try {
+                converted = transform.convertVersion(original);
+            } catch (TransformerException e) {
+                log.error("error transforming the WITSML from 1.3.1.1 to 1.4.1.1: " + e.getMessage());
             }
-            if (version.toString().equals("1.3.1.1"))
-                try {
-                    return transform.convertVersion(xmlResponse.value);
-                } catch (TransformerException e) {
-                    log.error("error transforming the WITSML from 1.3.1.1 to 1.4.1.1: " + e.getMessage());
-                }
-            return xmlResponse.value;
-        } catch (RemoteException e) {
-            log.error("Error while executing open logs query " + e.getMessage());
-            throw e;
-        }
+        if (converted == null) return null;
+        if (converted.equals("")) return null;
+        return converted;
     }
 }
