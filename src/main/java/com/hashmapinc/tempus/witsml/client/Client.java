@@ -214,6 +214,7 @@ public class Client implements WitsmlClient {
     @Override
     public ObjWells getWellsAsObj() throws Exception {
         String wells = getWells();
+        wells = convertVersion(wells);
         if (wells.equals("")) return null;
         return WitsmlMarshal.deserialize(wells, ObjWells.class);
     }
@@ -221,6 +222,7 @@ public class Client implements WitsmlClient {
     @Override
     public ObjWells getWellsAsObj(String wellUid, String status) throws Exception {
         String wells = getWells(wellUid, status);
+        wells = convertVersion(wells);
         if (wells.equals("")) return null;
         return WitsmlMarshal.deserialize(wells, ObjWells.class);
     }
@@ -276,6 +278,7 @@ public class Client implements WitsmlClient {
     @Override
     public ObjWellbores getWellboresForWellAsObj(String wellId) throws Exception {
         String wellbores = getWellboresForWell(wellId);
+        wellbores = convertVersion(wellbores);
         if (wellbores.equals("")) return null;
         return WitsmlMarshal.deserialize(wellbores, ObjWellbores.class);
     }
@@ -283,6 +286,7 @@ public class Client implements WitsmlClient {
     @Override
     public ObjWellbores getWellboresForWellAsObj(String wellId, String wellboreId) throws Exception {
         String wellbores = getWellboresForWell(wellId, wellboreId);
+        wellbores = convertVersion(wellbores);
         if (wellbores.equals("")) return null;
         return WitsmlMarshal.deserialize(wellbores, ObjWellbores.class);
     }
@@ -1595,12 +1599,15 @@ public class Client implements WitsmlClient {
 
     private String convertVersion(String original){
         String converted = null;
-        if (version.toString().equals("1.3.1.1"))
+        if (version.toString().equals("1.3.1.1")) {
             try {
                 converted = transform.convertVersion(original);
             } catch (TransformerException e) {
                 log.error("error transforming the WITSML from 1.3.1.1 to 1.4.1.1: " + e.getMessage());
             }
+        } else {
+            return original;
+        }
         if (converted == null) return null;
         if (converted.equals("")) return null;
         return converted;
