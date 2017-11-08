@@ -3,7 +3,7 @@
                xmlns="http://www.witsml.org/schemas/1series"
                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                xsi:schemaLocation="http://www.witsml.org/schemas/1series  ../xsd_schemas/obj_log.xsd">
-    <fluidsReport uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="">
+    <fluidsReport uidWell="" uidWellbore="" uid="">
         <nameWell/>
         <nameWellbore/>
         <name/>

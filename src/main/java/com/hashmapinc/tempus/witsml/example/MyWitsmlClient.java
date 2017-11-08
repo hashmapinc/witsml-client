@@ -27,6 +27,7 @@ import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjWells;
 import com.hashmapinc.tempus.witsml.api.*;
 import com.hashmapinc.tempus.witsml.client.Client;
 import com.hashmapinc.tempus.witsml.api.WitsmlVersion;
+import com.hashmapinc.tempus.witsml.client.WitsmlQuery;
 import com.sun.org.apache.xml.internal.serialize.OutputFormat;
 import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
 import org.w3c.dom.Document;
@@ -52,6 +53,7 @@ public class MyWitsmlClient {
         c.setPassword(args[2]);
         c.setVersion(WitsmlVersion.VERSION_1411);
         c.connect();
+
         try {
             System.out.println("Supported Caps:");
             System.out.println(prettyPrint(c.getCapabilities(), true));
@@ -59,9 +61,15 @@ public class MyWitsmlClient {
         catch (SAXException | ParserConfigurationException | IOException e) {
             System.out.println("Error executing get capabilities: " + e.getMessage());
         }
+
+        WitsmlQuery witsmlQuery = new WitsmlQuery();
+        witsmlQuery.includeElement("uid");
+        witsmlQuery.includeElement("name");
+        witsmlQuery.includeElement("statusWell");
+        witsmlQuery.setObjectType("well");
         ObjWells wells = null;
         try {
-            wells = c.getWellsAsObj();
+            wells = c.getWellsAsObj(witsmlQuery);
         } catch (FileNotFoundException | RemoteException | JAXBException e) {
             System.out.println("Error executing get wells as obj: " + e.getMessage());
         } catch (Exception e) {
@@ -80,8 +88,13 @@ public class MyWitsmlClient {
     }
 
     private static void PrintWellbores(Client c, String wellId){
+        WitsmlQuery witsmlQuery = new WitsmlQuery();
+        witsmlQuery.includeElement("uid");
+        witsmlQuery.includeElement("name");
+        witsmlQuery.addAttributeConstraint("wellbore", "uidWell", wellId);
+        witsmlQuery.setObjectType("wellbore");
         try {
-            ObjWellbores wellbores = c.getWellboresForWellAsObj(wellId);
+            ObjWellbores wellbores = c.getWellboresForWellAsObj(witsmlQuery);
             System.out.println("Found " + wellbores.getWellbore().size() + " WellBore");
             wellbores.getWellbore().forEach(wellbore -> {
                 System.out.println("Wellbore Name: " + wellbore.getName());
@@ -126,8 +139,15 @@ public class MyWitsmlClient {
     }
 
     private static void PrintLogs(Client c, String wellId, String wellboreId){
+        WitsmlQuery witsmlQuery = new WitsmlQuery();
+        witsmlQuery.setBulkData(false);
+        witsmlQuery.setObjectType("log");
+        witsmlQuery.includeElement("uid");
+        witsmlQuery.includeElement("name");
+        witsmlQuery.addAttributeConstraint("log","uidWell", wellId);
+        witsmlQuery.addAttributeConstraint("log", "uidWellbore", wellboreId);
         try {
-            ObjLogs logs = c.getLogMetadataAsObj(wellId, wellboreId);
+            ObjLogs logs = c.getLogsAsObj(witsmlQuery);
             System.out.println("Found " + logs.getLog().size() + " Logs");
             logs.getLog().forEach(log -> {
                 System.out.println("Log Name: " + log.getName());
@@ -144,13 +164,13 @@ public class MyWitsmlClient {
         int sleepInterval = 0;
         Map<Integer, Integer> timeCountMap = new TreeMap<Integer, Integer>();
         /*<TIME_SECONDS, COUNT>*/
-        timeCountMap.put(0, 5);
-        timeCountMap.put(20, 2);
-        timeCountMap.put(40, 1);
+        timeCountMap.put(0, 3);
+//        timeCountMap.put(20, 2);
+//        timeCountMap.put(40, 1);
 //        timeCountMap.put(3600, 2);
 
         LogRequestTracker tracker = new LogRequestTracker();
-        tracker.setVersion(WitsmlVersion.VERSION_1311);
+        tracker.setVersion(WitsmlVersion.VERSION_1411);
         tracker.setLogId(logId);
         tracker.initalize(c, wellId, wellboreId);
 
@@ -188,8 +208,15 @@ public class MyWitsmlClient {
     }
 
     private static void PrintMudLogs(Client c, String wellId, String wellboreId) {
+        WitsmlQuery witsmlQuery = new WitsmlQuery();
+        witsmlQuery.setBulkData(false);
+        witsmlQuery.setObjectType("mudLog");
+        witsmlQuery.includeElement("uid");
+        witsmlQuery.includeElement("name");
+        witsmlQuery.addAttributeConstraint("mudLog","uidWell", wellId);
+        witsmlQuery.addAttributeConstraint("mudLog", "uidWellbore", wellboreId);
         try {
-            ObjMudLogs mudLogs = c.getMudLogsAsObj(wellId, wellboreId);
+            ObjMudLogs mudLogs = c.getMudLogsAsObj(witsmlQuery);
             System.out.println("Found " + mudLogs.getMudLog().size() + " MudLogs");
             mudLogs.getMudLog().forEach(mudLog -> {
                 System.out.println("MudLog Name : " + mudLog.getName());
@@ -251,8 +278,15 @@ public class MyWitsmlClient {
     }
 
     private static void PrintTrajectories(Client c, String wellId, String wellboreId) {
+        WitsmlQuery witsmlQuery = new WitsmlQuery();
+        witsmlQuery.setBulkData(false);
+        witsmlQuery.setObjectType("trajectory");
+        witsmlQuery.includeElement("uid");
+        witsmlQuery.includeElement("name");
+        witsmlQuery.addAttributeConstraint("trajectory","uidWell", wellId);
+        witsmlQuery.addAttributeConstraint("trajectory", "uidWellbore", wellboreId);
         try {
-            ObjTrajectorys trajectorys = c.getTrajectorysAsObj(wellId, wellboreId);
+            ObjTrajectorys trajectorys = c.getTrajectorysAsObj(witsmlQuery);
             System.out.println("Found " + trajectorys.getTrajectory().size() + " Trajectory");
             trajectorys.getTrajectory().forEach(trajectory -> {
                 System.out.println("Trajectory Name : " + trajectory.getName());
@@ -316,8 +350,14 @@ public class MyWitsmlClient {
     }
 
     private static void PrintBhaRuns(Client c, String wellId, String wellboreId) {
+        WitsmlQuery witsmlQuery = new WitsmlQuery();
+        witsmlQuery.includeElement("uid");
+        witsmlQuery.includeElement("name");
+        witsmlQuery.addAttributeConstraint("bhaRun","uidWell", wellId);
+        witsmlQuery.addAttributeConstraint("bhaRun", "uidWellbore", wellboreId);
+        witsmlQuery.setObjectType("bhaRun");
         try {
-            ObjBhaRuns bhaRuns = c.getBhaRunsAsObj(wellId, wellboreId);
+            ObjBhaRuns bhaRuns = c.getBhaRunsAsObj(witsmlQuery);
             System.out.println("Found " + bhaRuns.getBhaRun().size() + " BhaRuns");
             bhaRuns.getBhaRun().forEach(bhaRun -> {
                 System.out.println("BhaRun Name : " + bhaRun.getName());
@@ -329,8 +369,14 @@ public class MyWitsmlClient {
     }
 
     private static void PrintCementJobs(Client c, String wellId, String wellboreId) {
+        WitsmlQuery witsmlQuery = new WitsmlQuery();
+        witsmlQuery.includeElement("uid");
+        witsmlQuery.includeElement("name");
+        witsmlQuery.addAttributeConstraint("cementJob","uidWell", wellId);
+        witsmlQuery.addAttributeConstraint("cementJob", "uidWellbore", wellboreId);
+        witsmlQuery.setObjectType("cementJob");
         try {
-            ObjCementJobs cementJobs = c.getCementJobsAsObj(wellId, wellboreId);
+            ObjCementJobs cementJobs = c.getCementJobsAsObj(witsmlQuery);
             System.out.println("Found " + cementJobs.getCementJob().size() + " CementJobs");
             cementJobs.getCementJob().forEach(cementJob -> {
                 System.out.println("CementJob Name : " + cementJob.getName());
@@ -342,8 +388,14 @@ public class MyWitsmlClient {
     }
 
     private static void PrintConvCores(Client c, String wellId, String wellboreId) {
+        WitsmlQuery witsmlQuery = new WitsmlQuery();
+        witsmlQuery.includeElement("uid");
+        witsmlQuery.includeElement("name");
+        witsmlQuery.addAttributeConstraint("convCore","uidWell", wellId);
+        witsmlQuery.addAttributeConstraint("convCore", "uidWellbore", wellboreId);
+        witsmlQuery.setObjectType("convCore");
         try {
-            ObjConvCores convCores = c.getConvCoresAsObj(wellId, wellboreId);
+            ObjConvCores convCores = c.getConvCoresAsObj(witsmlQuery);
             System.out.println("Found " + convCores.getConvCore().size() + " ConvCores");
             convCores.getConvCore().forEach(convCore -> {
                 System.out.println("ConvCore Name : " + convCore.getName());
@@ -355,8 +407,14 @@ public class MyWitsmlClient {
     }
 
     private static void PrintDtsInstalledSystems(Client c, String wellId, String wellboreId) {
+        WitsmlQuery witsmlQuery = new WitsmlQuery();
+        witsmlQuery.includeElement("uid");
+        witsmlQuery.includeElement("name");
+        witsmlQuery.addAttributeConstraint("dtsInstalledSystem","uidWell", wellId);
+        witsmlQuery.addAttributeConstraint("dtsInstalledSystem", "uidWellbore", wellboreId);
+        witsmlQuery.setObjectType("dtsInstalledSystem");
         try {
-            ObjDtsInstalledSystems dtsInstalledSystems = c.getDtsInstalledSystemsAsObj(wellId, wellboreId);
+            ObjDtsInstalledSystems dtsInstalledSystems = c.getDtsInstalledSystemsAsObj(witsmlQuery);
             System.out.println("Found " + dtsInstalledSystems.getDtsInstalledSystem().size() + " DtsInstalledSystems");
             dtsInstalledSystems.getDtsInstalledSystem().forEach(dtsInstalledSystem -> {
                 System.out.println("DtsInstalledSystem Name : " + dtsInstalledSystem.getName());
@@ -368,8 +426,14 @@ public class MyWitsmlClient {
     }
 
     private static void PrintFluidsReports(Client c, String wellId, String wellboreId) {
+        WitsmlQuery witsmlQuery = new WitsmlQuery();
+        witsmlQuery.includeElement("uid");
+        witsmlQuery.includeElement("name");
+        witsmlQuery.addAttributeConstraint("fluidsReport","uidWell", wellId);
+        witsmlQuery.addAttributeConstraint("fluidsReport", "uidWellbore", wellboreId);
+        witsmlQuery.setObjectType("fluidsReport");
         try {
-            ObjFluidsReports fluidsReports = c.getFluidsReportsAsObj(wellId, wellboreId);
+            ObjFluidsReports fluidsReports = c.getFluidsReportsAsObj(witsmlQuery);
             System.out.println("Found " + fluidsReports.getFluidsReport().size() + " FluidsReports");
             fluidsReports.getFluidsReport().forEach(fluidsReport -> {
                 System.out.println("FluidsReports Name : " + fluidsReport.getName());
@@ -381,8 +445,14 @@ public class MyWitsmlClient {
     }
 
     private static void PrintFormationMarker(Client c, String wellId, String wellboreId) {
+        WitsmlQuery witsmlQuery = new WitsmlQuery();
+        witsmlQuery.includeElement("uid");
+        witsmlQuery.includeElement("name");
+        witsmlQuery.addAttributeConstraint("formationMarker","uidWell", wellId);
+        witsmlQuery.addAttributeConstraint("formationMarker", "uidWellbore", wellboreId);
+        witsmlQuery.setObjectType("formationMarker");
         try {
-            ObjFormationMarkers formationMarkers = c.getFormationMarkersAsObj(wellId, wellboreId);
+            ObjFormationMarkers formationMarkers = c.getFormationMarkersAsObj(witsmlQuery);
             System.out.println("Found " + formationMarkers.getFormationMarker().size() + " FormationMarker");
             formationMarkers.getFormationMarker().forEach(formationMarker -> {
                 System.out.println("FormationMarker Name : " + formationMarker.getName());
@@ -394,8 +464,14 @@ public class MyWitsmlClient {
     }
 
     private static void PrintMessages(Client c, String wellId, String wellboreId) {
+        WitsmlQuery witsmlQuery = new WitsmlQuery();
+        witsmlQuery.includeElement("uid");
+        witsmlQuery.includeElement("name");
+        witsmlQuery.addAttributeConstraint("message","uidWell", wellId);
+        witsmlQuery.addAttributeConstraint("message", "uidWellbore", wellboreId);
+        witsmlQuery.setObjectType("message");
         try {
-            ObjMessages messages = c.getMessagesAsObj(wellId, wellboreId);
+            ObjMessages messages = c.getMessagesAsObj(witsmlQuery);
             System.out.println("Found " + messages.getMessage().size() + " Messages");
             messages.getMessage().forEach(message -> {
                 System.out.println("Message Name : " + message.getName());
@@ -407,8 +483,14 @@ public class MyWitsmlClient {
     }
 
     private static void PrintOpsReports(Client c, String wellId, String wellboreId) {
+        WitsmlQuery witsmlQuery = new WitsmlQuery();
+        witsmlQuery.includeElement("uid");
+        witsmlQuery.includeElement("name");
+        witsmlQuery.addAttributeConstraint("opsReport","uidWell", wellId);
+        witsmlQuery.addAttributeConstraint("opsReport", "uidWellbore", wellboreId);
+        witsmlQuery.setObjectType("opsReport");
         try {
-            ObjOpsReports opsReports = c.getOpsReportsAsObj(wellId, wellboreId);
+            ObjOpsReports opsReports = c.getOpsReportsAsObj(witsmlQuery);
             System.out.println("Found " + opsReports.getOpsReport().size() + " OpsReports");
             opsReports.getOpsReport().forEach(opsReport -> {
                 System.out.println("OpsReports Name : " + opsReport.getName());
@@ -420,8 +502,14 @@ public class MyWitsmlClient {
     }
 
     private static void PrintRigs(Client c, String wellId, String wellboreId) {
+        WitsmlQuery witsmlQuery = new WitsmlQuery();
+        witsmlQuery.includeElement("uid");
+        witsmlQuery.includeElement("name");
+        witsmlQuery.addAttributeConstraint("rig","uidWell", wellId);
+        witsmlQuery.addAttributeConstraint("rig", "uidWellbore", wellboreId);
+        witsmlQuery.setObjectType("rig");
         try {
-            ObjRigs rigs = c.getRigsAsObj(wellId, wellboreId);
+            ObjRigs rigs = c.getRigsAsObj(witsmlQuery);
             System.out.println("Found " + rigs.getRig().size() + " Rigs");
             rigs.getRig().forEach(rig -> {
                 System.out.println("Rigs Name : " + rig.getName());
@@ -433,8 +521,14 @@ public class MyWitsmlClient {
     }
 
     private static void PrintRisks(Client c, String wellId, String wellboreId) {
+        WitsmlQuery witsmlQuery = new WitsmlQuery();
+        witsmlQuery.includeElement("uid");
+        witsmlQuery.includeElement("name");
+        witsmlQuery.addAttributeConstraint("risk","uidWell", wellId);
+        witsmlQuery.addAttributeConstraint("risk", "uidWellbore", wellboreId);
+        witsmlQuery.setObjectType("risk");
         try {
-            ObjRisks risks = c.getRisksAsObj(wellId, wellboreId);
+            ObjRisks risks = c.getRisksAsObj(witsmlQuery);
             System.out.println("Found " + risks.getRisk().size() + " Risks");
             risks.getRisk().forEach(risk -> {
                 System.out.println("Risk Name : " + risk.getName());
@@ -446,8 +540,14 @@ public class MyWitsmlClient {
     }
 
     private static void PrintSideWallCores(Client c, String wellId, String wellboreId) {
+        WitsmlQuery witsmlQuery = new WitsmlQuery();
+        witsmlQuery.includeElement("uid");
+        witsmlQuery.includeElement("name");
+        witsmlQuery.addAttributeConstraint("sidewallCore","uidWell", wellId);
+        witsmlQuery.addAttributeConstraint("sidewallCore", "uidWellbore", wellboreId);
+        witsmlQuery.setObjectType("sidewallCore");
         try {
-            ObjSidewallCores sidewallCores = c.getSideWallCoresAsObj(wellId, wellboreId);
+            ObjSidewallCores sidewallCores = c.getSideWallCoresAsObj(witsmlQuery);
             System.out.println("Found " + sidewallCores.getSidewallCore().size() + " SideWallCores");
             sidewallCores.getSidewallCore().forEach(sidewallCore -> {
                 System.out.println("SideWallCore Name : " + sidewallCore.getName());
@@ -459,8 +559,14 @@ public class MyWitsmlClient {
     }
 
     private static void PrintSurveyPrograms(Client c, String wellId, String wellboreId) {
+        WitsmlQuery witsmlQuery = new WitsmlQuery();
+        witsmlQuery.includeElement("uid");
+        witsmlQuery.includeElement("name");
+        witsmlQuery.addAttributeConstraint("surveyProgram","uidWell", wellId);
+        witsmlQuery.addAttributeConstraint("surveyProgram", "uidWellbore", wellboreId);
+        witsmlQuery.setObjectType("surveyProgram");
         try {
-            ObjSurveyPrograms surveyPrograms = c.getSurveyProgramsAsObj(wellId, wellboreId);
+            ObjSurveyPrograms surveyPrograms = c.getSurveyProgramsAsObj(witsmlQuery);
             System.out.println("Found " + surveyPrograms.getSurveyProgram().size() + " SurveyPrograms");
             surveyPrograms.getSurveyProgram().forEach(surveyProgram -> {
                 System.out.println("SurveyProgram Name : " + surveyProgram.getName());
@@ -472,8 +578,14 @@ public class MyWitsmlClient {
     }
 
     private static void PrintTargets(Client c, String wellId, String wellboreId) {
+        WitsmlQuery witsmlQuery = new WitsmlQuery();
+        witsmlQuery.includeElement("uid");
+        witsmlQuery.includeElement("name");
+        witsmlQuery.addAttributeConstraint("target","uidWell", wellId);
+        witsmlQuery.addAttributeConstraint("target", "uidWellbore", wellboreId);
+        witsmlQuery.setObjectType("target");
         try {
-            ObjTargets targets = c.getTargetsAsObj(wellId, wellboreId);
+            ObjTargets targets = c.getTargetsAsObj(witsmlQuery);
             System.out.println("Found " + targets.getTarget().size() + " Targets");
             targets.getTarget().forEach(target -> {
                 System.out.println("Target Name : " + target.getName());
@@ -485,8 +597,14 @@ public class MyWitsmlClient {
     }
 
     private static void PrintTubulars(Client c, String wellId, String wellboreId) {
+        WitsmlQuery witsmlQuery = new WitsmlQuery();
+        witsmlQuery.includeElement("uid");
+        witsmlQuery.includeElement("name");
+        witsmlQuery.addAttributeConstraint("tubular","uidWell", wellId);
+        witsmlQuery.addAttributeConstraint("tubular", "uidWellbore", wellboreId);
+        witsmlQuery.setObjectType("tubular");
         try {
-            ObjTubulars tubulars = c.getTubularsAsObj(wellId, wellboreId);
+            ObjTubulars tubulars = c.getTubularsAsObj(witsmlQuery);
             System.out.println("Found " + tubulars.getTubular().size() + " Tubulars");
             tubulars.getTubular().forEach(tubular -> {
                 System.out.println("Tubulars Name : " + tubular.getName());
@@ -498,8 +616,14 @@ public class MyWitsmlClient {
     }
 
     private static void PrintWbGeometrys(Client c, String wellId, String wellboreId) {
+        WitsmlQuery witsmlQuery = new WitsmlQuery();
+        witsmlQuery.includeElement("uid");
+        witsmlQuery.includeElement("name");
+        witsmlQuery.addAttributeConstraint("wbGeometry","uidWell", wellId);
+        witsmlQuery.addAttributeConstraint("wbGeometry", "uidWellbore", wellboreId);
+        witsmlQuery.setObjectType("wbGeometry");
         try {
-            ObjWbGeometrys wbGeometrys = c.getWbGeometrysAsObj(wellId, wellboreId);
+            ObjWbGeometrys wbGeometrys = c.getWbGeometrysAsObj(witsmlQuery);
             System.out.println("Found " + wbGeometrys.getWbGeometry().size() + " WbGeometrys");
             wbGeometrys.getWbGeometry().forEach(geometry -> {
                 System.out.println("WbGeometry Name : " + geometry.getName());
@@ -511,8 +635,14 @@ public class MyWitsmlClient {
     }
 
     private static void PrintAttachments(Client c, String wellId, String wellboreId) {
+        WitsmlQuery witsmlQuery = new WitsmlQuery();
+        witsmlQuery.includeElement("uid");
+        witsmlQuery.includeElement("name");
+        witsmlQuery.addAttributeConstraint("attachment","uidWell", wellId);
+        witsmlQuery.addAttributeConstraint("attachment", "uidWellbore", wellboreId);
+        witsmlQuery.setObjectType("attachment");
         try {
-            ObjAttachments attachments = c.getAttachmentsAsObj(wellId, wellboreId);
+            ObjAttachments attachments = c.getAttachmentsAsObj(witsmlQuery);
             System.out.println("Found " + attachments.getAttachment().size() + " Attachments");
             attachments.getAttachment().forEach(attachment -> {
                 System.out.println("Attachment Name : " + attachment.getName());
@@ -524,8 +654,14 @@ public class MyWitsmlClient {
     }
 
     private static void PrintChangeLogs(Client c, String wellId, String wellboreId) {
+        WitsmlQuery witsmlQuery = new WitsmlQuery();
+        witsmlQuery.includeElement("uid");
+        witsmlQuery.includeElement("nameObject");
+        witsmlQuery.addAttributeConstraint("changeLog","uidWell", wellId);
+        witsmlQuery.addAttributeConstraint("changeLog", "uidWellbore", wellboreId);
+        witsmlQuery.setObjectType("changeLog");
         try {
-            ObjChangeLogs changeLogs = c.getChangeLogsAsObj(wellId, wellboreId);
+            ObjChangeLogs changeLogs = c.getChangeLogsAsObj(witsmlQuery);
             System.out.println("Found " + changeLogs.getChangeLog().size() + " ChangeLogs");
             changeLogs.getChangeLog().forEach(changeLog -> {
                 System.out.println("ChangeLogs Name : " + changeLog.getNameObject());
@@ -537,8 +673,14 @@ public class MyWitsmlClient {
     }
 
     private static void PrintDrillReports(Client c, String wellId, String wellboreId) {
+        WitsmlQuery witsmlQuery = new WitsmlQuery();
+        witsmlQuery.includeElement("uid");
+        witsmlQuery.includeElement("name");
+        witsmlQuery.addAttributeConstraint("drillReport","uidWell", wellId);
+        witsmlQuery.addAttributeConstraint("drillReport", "uidWellbore", wellboreId);
+        witsmlQuery.setObjectType("drillReport");
         try {
-            ObjDrillReports drillReports = c.getDrillReportsAsObj(wellId, wellboreId);
+            ObjDrillReports drillReports = c.getDrillReportsAsObj(witsmlQuery);
             System.out.println("Found " + drillReports.getDrillReport().size() + " DrillReports");
             drillReports.getDrillReport().forEach(drillReport -> {
                 System.out.println("DrillReport Name : " + drillReport.getName());
@@ -550,8 +692,14 @@ public class MyWitsmlClient {
     }
 
     private static void PrintObjectGroups(Client c, String wellId, String wellboreId) {
+        WitsmlQuery witsmlQuery = new WitsmlQuery();
+        witsmlQuery.includeElement("uid");
+        witsmlQuery.includeElement("name");
+        witsmlQuery.addAttributeConstraint("objectGroup","uidWell", wellId);
+        witsmlQuery.addAttributeConstraint("objectGroup", "uidWellbore", wellboreId);
+        witsmlQuery.setObjectType("objectGroup");
         try {
-            ObjObjectGroups objObjectGroups = c.getObjectGroupsAsObj(wellId, wellboreId);
+            ObjObjectGroups objObjectGroups = c.getObjectGroupsAsObj(witsmlQuery);
             System.out.println("Found " + objObjectGroups.getObjectGroup().size() + " ObjectGroups");
             objObjectGroups.getObjectGroup().forEach(objectGroup -> {
                 System.out.println("DrillReport Name : " + objectGroup.getName());
@@ -563,8 +711,14 @@ public class MyWitsmlClient {
     }
 
     private static void PrintStimJobs(Client c, String wellId, String wellboreId) {
+        WitsmlQuery witsmlQuery = new WitsmlQuery();
+        witsmlQuery.includeElement("uid");
+        witsmlQuery.includeElement("name");
+        witsmlQuery.addAttributeConstraint("stimJob","uidWell", wellId);
+        witsmlQuery.addAttributeConstraint("stimJob","uidWellbore", wellboreId);
+        witsmlQuery.setObjectType("stimJob");
         try {
-            ObjStimJobs stimJobs = c.getStimJobsAsObj(wellId, wellboreId);
+            ObjStimJobs stimJobs = c.getStimJobsAsObj(witsmlQuery);
             System.out.println("Found " + stimJobs.getStimJob().size() + " StimJobs");
             stimJobs.getStimJob().forEach(stimJob -> {
                 System.out.println("StimJob Name : " + stimJob.getName());
@@ -576,8 +730,14 @@ public class MyWitsmlClient {
     }
 
     private static void PrintRealtimes(Client c, String wellId, String wellboreId) {
+        WitsmlQuery witsmlQuery = new WitsmlQuery();
+        witsmlQuery.includeElement("uid");
+        witsmlQuery.includeElement("name");
+        witsmlQuery.addAttributeConstraint("realtime","uidWell", wellId);
+        witsmlQuery.addAttributeConstraint("realtime", "uidWellbore", wellboreId);
+        witsmlQuery.setObjectType("realtime");
         try {
-            ObjRealtimes realtimes = c.getRealtimesAsObj(wellId, wellboreId);
+            ObjRealtimes realtimes = c.getRealtimesAsObj(witsmlQuery);
             System.out.println("Found " + realtimes.getRealtime().size() + " Realtimes");
             realtimes.getRealtime().forEach(realtime -> {
                 System.out.println("Realtimes Id : " + realtime.getIdSub());
@@ -588,8 +748,14 @@ public class MyWitsmlClient {
     }
 
     private static void PrintWellLogs(Client c, String wellId, String wellboreId) {
+        WitsmlQuery witsmlQuery = new WitsmlQuery();
+        witsmlQuery.includeElement("uid");
+        witsmlQuery.includeElement("name");
+        witsmlQuery.addAttributeConstraint("wellLog","uidWell", wellId);
+        witsmlQuery.addAttributeConstraint("wellLog", "uidWellbore", wellboreId);
+        witsmlQuery.setObjectType("wellLog");
         try {
-            ObjWellLogs wellLogs = c.getWellLogsAsObj(wellId, wellboreId);
+            ObjWellLogs wellLogs = c.getWellLogsAsObj(witsmlQuery);
             System.out.println("Found " + wellLogs.getWellLog().size() + " WellLogs");
             wellLogs.getWellLog().forEach(wellLog -> {
                 System.out.println("WellLogs Id : " + wellLog.getUid());
@@ -600,8 +766,14 @@ public class MyWitsmlClient {
     }
 
     private static void PrintDtsMeasurements(Client c, String wellId, String wellboreId) {
+        WitsmlQuery witsmlQuery = new WitsmlQuery();
+        witsmlQuery.includeElement("uid");
+        witsmlQuery.includeElement("name");
+        witsmlQuery.addAttributeConstraint("dtsMeasurement","uidWell", wellId);
+        witsmlQuery.addAttributeConstraint("dtsMeasurement", "uidWellbore", wellboreId);
+        witsmlQuery.setObjectType("dtsMeasurement");
         try {
-            ObjDtsMeasurements dtsMeasurements = c.getDtsMeasurementsAsObj(wellId, wellboreId);
+            ObjDtsMeasurements dtsMeasurements = c.getDtsMeasurementsAsObj(witsmlQuery);
             System.out.println("Found " + dtsMeasurements.getDtsMeasurement().size() + " DtsMeasurements");
             dtsMeasurements.getDtsMeasurement().forEach(dtsMeasurement -> {
                 System.out.println("DtsMeasurements Id : " + dtsMeasurement.getUid());
@@ -612,8 +784,15 @@ public class MyWitsmlClient {
     }
 
     private static void PrintTrajectoryStations(Client c, String wellId, String wellboreId, String trajectoryId) {
+        WitsmlQuery witsmlQuery = new WitsmlQuery();
+        witsmlQuery.includeElement("uid");
+        witsmlQuery.includeElement("name");
+        witsmlQuery.addAttributeConstraint("trajectoryStation","uidWell", wellId);
+        witsmlQuery.addAttributeConstraint("trajectoryStation", "uidWellbore", wellboreId);
+        witsmlQuery.addAttributeConstraint("trajectoryStation", "uidTrajectory", trajectoryId);
+        witsmlQuery.setObjectType("trajectoryStation");
         try {
-            ObjTrajectoryStations trajectoryStations = c.getTrajectoryStationsAsObj(wellId, wellboreId, trajectoryId);
+            ObjTrajectoryStations trajectoryStations = c.getTrajectoryStationsAsObj(witsmlQuery);
             System.out.println("Found " + trajectoryStations.getTrajectoryStation().size() + " TrajectoryStations");
             trajectoryStations.getTrajectoryStation().forEach(trajectoryStation -> {
                 System.out.println("TrajectoryStations Id : " + trajectoryStation.getUid());

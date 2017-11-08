@@ -4,7 +4,7 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.witsml.org/schemas/131  ../obj_trajectory.xsd"
         version="1.3.1.1">
-    <trajectory uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="%uidTrajectory%">
+    <trajectory uidWell="" uidWellbore="" uid="">
         <nameWell/>
         <nameWellbore/>
         <name/>
@@ -15,7 +15,7 @@
         </parentTrajectory>
         <dTimTrajStart/>
         <dTimTrajEnd/>
-        <mdMn uom="">%mdMn%</mdMn>
+        <mdMn uom=""/>
         <mdMx uom=""/>
         <serviceCompany/>
         <magDeclUsed uom=""/>

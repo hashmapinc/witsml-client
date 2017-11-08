@@ -3,6 +3,7 @@ package com.hashmapinc.tempus.witsml.api;
 import com.hashmapinc.tempus.WitsmlObjects.Util.WitsmlMarshal;
 import com.hashmapinc.tempus.WitsmlObjects.Util.WitsmlVersionTransformer;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.*;
+import com.hashmapinc.tempus.witsml.client.WitsmlQuery;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.transform.TransformerConfigurationException;
@@ -49,10 +50,12 @@ public class TrajectoryRequestTracker extends AbstractRequestTracker{
     @Override
     public ObjTrajectorys ExecuteRequest() {
         ObjTrajectorys trajectorys = null;
+        WitsmlResponse trajectoryResponse;
         String response = null;
 
         try {
-            response = executeQuery();
+            trajectoryResponse = executeQuery();
+            response = trajectoryResponse.getXmlOut();
 
             if (getVersion() == WitsmlVersion.VERSION_1311) {
                 try {
@@ -77,7 +80,7 @@ public class TrajectoryRequestTracker extends AbstractRequestTracker{
         return trajectorys;
     }
 
-    private String executeQuery() throws RemoteException {
+    private WitsmlResponse executeQuery() throws RemoteException {
         lastQueryTime = LocalDateTime.now().atZone(ZoneId.systemDefault());
         String query = "";
         setOptionsIn("");
@@ -91,13 +94,17 @@ public class TrajectoryRequestTracker extends AbstractRequestTracker{
         } catch (Exception ex) {
             System.out.println("Error in getQuery ex : " + ex);
         }
-        query = query.replace("%uidWell%", wellId);
-        query = query.replace("%uidWellbore%", wellboreId);
-        query = query.replace("%uidTrajectory%", trajectoryId);
-        query = query.replace("%mdMn%", getQueryStartMd());
+        WitsmlQuery witsmlQuery = new WitsmlQuery();
+        witsmlQuery.setBulkData(true);
+        witsmlQuery.setObjectType("trajectory");
+        witsmlQuery.addAttributeConstraint("trajectory", "uidWell", wellId);
+        witsmlQuery.addAttributeConstraint("trajectory", "uidWellbore", wellboreId);
+        witsmlQuery.addAttributeConstraint("trajectory", "uid", trajectoryId);
+        witsmlQuery.addElementConstraint("mdMn", getQueryStartMd());
+        query = witsmlQuery.apply(query);
         setQuery(query);
         setCapabilitesIn("");
-        return witsmlClient.executeTrajectoryQuery(getQuery(), getOptionsIn(), getCapabilitiesIn());
+        return witsmlClient.executeObjectQuery(witsmlQuery.getObjectType(), getQuery(), getOptionsIn(), getCapabilitiesIn());
     }
 
     private String getQueryStartMd(){

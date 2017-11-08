@@ -43,8 +43,10 @@ public class ObjectRequestTracker extends AbstractRequestTracker {
     @Override
     public Object ExecuteRequest() {
         String response;
+        WitsmlResponse objResponse;
         try {
-            response = executeQuery();
+            objResponse = executeQuery();
+            response = objResponse.getXmlOut();
 
             if (response == null) {
                 return null;
@@ -111,7 +113,7 @@ public class ObjectRequestTracker extends AbstractRequestTracker {
         return null;
     }
 
-    private String executeQuery() throws RemoteException {
+    private WitsmlResponse executeQuery() throws RemoteException {
         String query = "";
         setOptionsIn("");
         switch (getObjectType().toUpperCase()) {
