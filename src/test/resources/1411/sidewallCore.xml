@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="./stylesheets/generic.xsl" type="text/xsl" media="screen"?>
+<!--    		Example of Sidewall Core data 		  -->
+<sidewallCores 
+	xmlns="http://www.witsml.org/schemas/1series" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.witsml.org/schemas/1series  ../xsd_schemas/obj_sidewallCore.xsd" 
+	version="1.4.1.1">
+<!-- 
+These examples are only intended to demonstrate the type of data that can be exchanged.
+They totally artificial and are not intended to demonstrate best practices. 
+-->
+	<documentInfo>
+		<documentName>sidewallCore</documentName>
+		<fileCreationInformation>
+			<fileCreationDate>2001-10-31T08:15:00.00Z</fileCreationDate> 
+			<fileCreator>John Smith</fileCreator>
+		</fileCreationInformation>
+	</documentInfo>
+	<sidewallCore uidWell="W-12" uidWellbore="B-01" uid="fr7">
+		<nameWell>6507/7-A-42</nameWell>
+		<nameWellbore>A-42</nameWellbore>
+		<name>Deep Drill #5</name>
+		<dTimToolRun>2001-08-31T08:15:00.000Z</dTimToolRun>
+		<dTimToolPull>2001-08-01T13:20:00.000Z</dTimToolPull>
+		<mdToolReference uom="ft">5000</mdToolReference>
+		<coreReferenceLog>GR</coreReferenceLog>
+		<mdCore uom="ft">6700</mdCore>
+		<serviceCompany>Schlumberger</serviceCompany>
+		<analysisContractor>Corelab</analysisContractor>
+		<analysisBy>John Smith</analysisBy>
+		<sidewallCoringTool>SCT</sidewallCoringTool>
+		<diaHole uom="in">8.5</diaHole>
+		<diaPlug uom="in">1</diaPlug>
+		<numPlugsShot>30</numPlugsShot>
+		<numRecPlugs>26</numRecPlugs>
+		<numMisfiredPlugs>2</numMisfiredPlugs>
+		<numEmptyPlugs>1</numEmptyPlugs>
+		<numLostPlugs>1</numLostPlugs>
+		<numPaidPlugs>27</numPaidPlugs>
+		<swcSample uid="SWC-Sample-#1">
+			<md uom="ft">5001</md>
+			<lithology uid="Lith001">
+				<type>Sandstone</type>
+				<codeLith>SS</codeLith>
+				<lithPc uom="%">100</lithPc>
+				<description>Sandstone: vf -f, clr-frost, mod srt, gd vis por</description>
+				<lithClass>Quartz Arenite</lithClass>
+				<grainType>Quartz</grainType>
+				<dunhamClass>NA</dunhamClass>
+				<color>Lt. Pale Yel</color>
+				<texture>Friable</texture>
+				<hardness>Mod Soft</hardness>
+				<sizeGrain>Fine-Med</sizeGrain>
+				<roundness>Mod Rnd</roundness>
+				<sorting>Fair</sorting>
+				<matrixCement>Quartz</matrixCement>
+				<porosityVisible>Mod Vis Por</porosityVisible>
+				<permeability>Low</permeability>
+				<densShale uom="lbm/ft3">2.65</densShale>
+				<qualifier uid="MLQ-001">
+					<type>Pyrite</type>
+					<abundance uom="%">10</abundance>
+					<abundanceCode>sparse</abundanceCode>
+					<description>lg crystals</description>
+				</qualifier>
+			</lithology>
+			<show>
+				<showRat>good</showRat>
+				<stainColor>brown</stainColor>
+				<stainDistr>even</stainDistr>
+				<stainPc uom="%">50</stainPc>
+				<natFlorColor>white</natFlorColor>
+				<natFlorPc uom="%">25</natFlorPc>
+				<natFlorLevel>faint</natFlorLevel>
+				<natFlorDesc>Nat Flor Desc</natFlorDesc>
+				<cutColor>white</cutColor>
+				<cutSpeed>fast</cutSpeed>
+				<cutStrength>strong</cutStrength>
+				<cutForm>streaming</cutForm>
+				<cutLevel>bright</cutLevel>
+				<cutFlorColor>bright white</cutFlorColor>
+				<cutFlorSpeed>instantaneous</cutFlorSpeed>
+				<cutFlorStrength>strong</cutFlorStrength>
+				<cutFlorForm>streaming</cutFlorForm>
+				<cutFlorLevel>bright</cutFlorLevel>
+				<residueColor>brown</residueColor>
+				<showDesc>Good show, lt-dk brown  even stn, inst bright lt blue-white streaming cut fluor</showDesc>
+				<impregnatedLitho>None</impregnatedLitho>
+				<odor>Petroliferous</odor>
+			</show>
+			<nameFormation>Rotliegende</nameFormation>
+			<comments>Good sample, no fragments</comments>
+		</swcSample>
+		<commonData>
+			<itemState>plan</itemState>
+			<comments>Good sample, no fragments</comments>
+		</commonData>
+	</sidewallCore>
+</sidewallCores>

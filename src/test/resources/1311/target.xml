@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="../stylesheets/target.xsl" type="text/xsl" media="screen"?>
+<!--   		Example of Target data 		-->
+<targets 
+	xmlns="http://www.witsml.org/schemas/131" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.witsml.org/schemas/131  ../obj_target.xsd" 
+	version="1.3.1.1">
+	<documentInfo>
+		<DocumentName>target</DocumentName>
+		<FileCreationInformation>
+			<FileCreationDate>2001-10-31T08:15:00.000Z</FileCreationDate>
+			<SoftwareName>WITSML 1.3.0.0 Server</SoftwareName>
+			<FileCreator>John Smith</FileCreator>
+		</FileCreationInformation>
+	</documentInfo>
+	<target uidWell="W-12" uidWellbore="B-01" uid="tg3e">
+		<nameWell>6507/7-A-42</nameWell>
+		<nameWellbore>A-42</nameWellbore>
+  		<name>Target #2</name>
+		<parentTarget uidRef="tg3d">Target #1</parentTarget>
+		<dispNsCenter uom="ft">1935.15</dispNsCenter>
+		<dispEwCenter uom="ft">3731.05</dispEwCenter>
+		<tvd uom="ft">3731.05</tvd>
+		<dispNsOffset uom="ft">1935.15</dispNsOffset>
+		<dispEwOffset uom="ft">3731.05</dispEwOffset>
+		<thickAbove uom="ft">5</thickAbove>
+		<thickBelow uom="ft">5</thickBelow>
+		<dip uom="dega">0</dip>
+		<strike uom="dega">0</strike>
+		<rotation uom="dega">0</rotation>
+		<lenMajorAxis uom="ft">50</lenMajorAxis>
+		<widMinorAxis uom="ft">50</widMinorAxis>
+		<typeTargetScope>irregular</typeTargetScope>
+		<dispNsSectOrig uom="ft">4</dispNsSectOrig>
+		<dispEwSectOrig uom="ft">5</dispEwSectOrig>
+		<aziRef>grid north</aziRef>
+		<catTarg>geological</catTarg>
+		<location uid="loc-1">
+			<wellCRS uidRef="crs2">Adindian</wellCRS>
+			<latitude uom="dega">93</latitude>
+			<longitude uom="dega">42</longitude>
+		</location>
+		<location uid="loc-2">
+			<wellCRS uidRef="crs1">AlbersEqualArea</wellCRS>
+			<projectedX uom="ft">500</projectedX>
+			<projectedY uom="ft">300</projectedY>
+		</location>
+		<targetSection uid="ts-1">
+			<sectNumber>1</sectNumber>
+			<typeTargetSectionScope>line</typeTargetSectionScope>
+			<lenRadius uom="ft">100</lenRadius>
+			<angleArc uom="dega">90</angleArc>
+			<thickAbove uom="ft">0</thickAbove>
+			<thickBelow uom="ft">0</thickBelow>
+			<location uid="loc-1">
+				<wellCRS uidRef="crs2">Adindian</wellCRS>
+				<latitude uom="dega">93</latitude>
+				<longitude uom="dega">42</longitude>
+			</location>
+			<location uid="loc-2">
+				<wellCRS uidRef="crs1">AlbersEqualArea</wellCRS>
+				<projectedX uom="ft">500</projectedX>
+				<projectedY uom="ft">300</projectedY>
+			</location>
+		</targetSection>
+		<targetSection uid="ts-2">
+			<sectNumber>2</sectNumber>
+			<typeTargetSectionScope>arc</typeTargetSectionScope>
+			<lenRadius uom="ft">100</lenRadius>
+			<angleArc uom="dega">90</angleArc>
+			<thickAbove uom="ft">0</thickAbove>
+			<thickBelow uom="ft">0</thickBelow>
+			<location uid="loc-1">
+				<wellCRS uidRef="crs2">Adindian</wellCRS>
+				<latitude uom="dega">93</latitude>
+				<longitude uom="dega">42</longitude>
+			</location>
+			<location uid="loc-2">
+				<wellCRS uidRef="crs1">AlbersEqualArea</wellCRS>
+				<projectedX uom="ft">500</projectedX>
+				<projectedY uom="ft">300</projectedY>
+			</location>
+		</targetSection>
+		<targetSection uid="ts-3">
+			<sectNumber>3</sectNumber>
+			<typeTargetSectionScope>line</typeTargetSectionScope>
+			<lenRadius uom="ft">100</lenRadius>
+			<angleArc uom="dega">0</angleArc>
+			<thickAbove uom="ft">0</thickAbove>
+			<thickBelow uom="ft">0</thickBelow>
+			<location uid="loc-1">
+				<wellCRS uidRef="crs2">Adindian</wellCRS>
+				<latitude uom="dega">93</latitude>
+				<longitude uom="dega">42</longitude>
+			</location>
+			<location uid="loc-2">
+				<wellCRS uidRef="crs1">AlbersEqualArea</wellCRS>
+				<projectedX uom="ft">500</projectedX>
+				<projectedY uom="ft">300</projectedY>
+			</location>
+		</targetSection>
+		<commonData>
+			<itemState>plan</itemState>
+			<comments>These are the comments associated with the Target data object.</comments>
+		</commonData>
+	</target>
+</targets>
+

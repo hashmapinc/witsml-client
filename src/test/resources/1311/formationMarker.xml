@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="../stylesheets/formationMarker.xsl" type="text/xsl" media="screen"?>
+<!--   		Example of Formation Marker data 	-->
+<formationMarkers 
+	xmlns="http://www.witsml.org/schemas/131" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.witsml.org/schemas/131  ../obj_formationMarker.xsd" 
+	version="1.3.1.1">
+	<documentInfo>
+		<DocumentName>formationMarker</DocumentName>
+		<FileCreationInformation>
+			<FileCreationDate>2001-10-31T08:15:00.000Z</FileCreationDate>
+			<SoftwareName>WITSML 1.3.0.0 Server</SoftwareName>
+			<FileCreator>John Smith</FileCreator>
+		</FileCreationInformation>
+	</documentInfo>
+	<formationMarker uidWell="W-12" uidWellbore="B-01" uid="m67">
+		<nameWell>6507/7-A-42</nameWell>
+		<nameWellbore>A-42</nameWellbore>
+		<name>Rotliegende</name>
+		<mdPrognosed uom="ft">4990</mdPrognosed>
+		<tvdPrognosed uom="ft">4685</tvdPrognosed>
+		<mdTopSample uom="ft">5000</mdTopSample>
+		<tvdTopSample uom="ft">4695</tvdTopSample>
+		<thicknessBed uom="ft">200</thicknessBed>
+		<thicknessApparent uom="ft">260</thicknessApparent>
+		<thicknessPerpen uom="ft">185</thicknessPerpen>
+		<mdLogSample uom="ft">4997</mdLogSample>
+		<tvdLogSample uom="ft">4692</tvdLogSample>
+		<dip uom="dega">10</dip>
+		<dipDirection uom="dega">200</dipDirection>
+		<chronostratigraphic>Permian</chronostratigraphic>
+		<nameFormation>Rotliegende</nameFormation>
+		<description>Top Reservior</description>
+		<commonData>
+			<itemState>actual</itemState>
+			<comments>Waiting on wireline GR to confirm pick</comments>
+		</commonData>
+	</formationMarker>
+</formationMarkers>

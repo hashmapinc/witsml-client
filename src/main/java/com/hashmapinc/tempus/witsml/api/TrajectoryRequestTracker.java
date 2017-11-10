@@ -86,9 +86,9 @@ public class TrajectoryRequestTracker extends AbstractRequestTracker{
         setOptionsIn("");
         try {
             if (getVersion().toString().equals("1.3.1.1")) {
-                query = getQuery("/1311/GetTrajectoryData.xml");
+                query = getQuery("/1311/GetTrajectorys.xml");
             } else if (getVersion().toString().equals("1.4.1.1")) {
-                query = getQuery("/1411/GetTrajectoryData.xml");
+                query = getQuery("/1411/GetTrajectorys.xml");
                 setOptionsIn("dataVersion=1.4.1.1");
             }
         } catch (Exception ex) {

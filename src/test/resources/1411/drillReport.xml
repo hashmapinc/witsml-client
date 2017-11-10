@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="./stylesheets/generic.xsl" type="text/xsl" media="screen"?>
+<drillReports 
+	xmlns="http://www.witsml.org/schemas/1series" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.witsml.org/schemas/1series  ../xsd_schemas/obj_drillReport.xsd"
+	version="1.4.1.1">
+<!-- 
+These examples are only intended to demonstrate the type of data that can be exchanged.
+They totally artificial and are not intended to demonstrate best practices. 
+-->
+  <documentInfo>
+  	<documentName>Drill Report</documentName>
+  	<owner>IIP</owner>
+  </documentInfo>
+  <drillReport uidWell="W-12" uidWellbore="B-01" uid="243ef">
+    <nameWell>6507/7-A-42</nameWell>
+    <nameWellbore>A-42</nameWellbore>
+    <name>2006-06-06 prelim</name>
+    <dTimStart>2006-06-06T00:00:00.000Z</dTimStart>
+    <dTimEnd>2006-06-06T24:00:00.000Z</dTimEnd>
+    <versionKind>preliminary</versionKind>
+    <createDate>2006-06-06T13:15:00.000Z</createDate>
+    <wellAlias>
+    	<name>99/99-A-99</name>
+    	<namingSystem>NPD code</namingSystem>
+    </wellAlias>
+    <wellboreAlias uid="1">
+    	<name>99/99-A-99 T1</name>
+    	<namingSystem>NPD code</namingSystem>
+    </wellboreAlias>
+    <wellboreAlias uid="2">
+    	<name>123</name>
+    	<namingSystem>NPD number</namingSystem>
+    </wellboreAlias>
+    <wellDatum uid="KB">
+    	<name>Kelly Bushing</name>
+    	<code>KB</code>
+    	<elevation uom="m" datum="SL">23.55</elevation>
+    </wellDatum>
+    <wellDatum uid="SL">
+    	<name>Sea Level</name>
+    	<code>SL</code>
+    </wellDatum>
+    <wellCRS uid="ED50">
+    	<name>ED50</name>
+    	<geodeticCRS uidRef="crs4230">ED50</geodeticCRS >
+    	<description>ED50 system with EPSG code 4230.</description>
+    </wellCRS>
+    <wellboreInfo>
+    	<dTimSpud>1986-06-06T13:15:00.000Z</dTimSpud>
+    	<dTimPreSpud>1982-06-06T13:15:00.000Z</dTimPreSpud>
+    	<operator>Big operator Inc</operator>
+    	<rigAlias uid="1">
+    		<name>Offshore Rig</name>
+    		<namingSystem>NPD Name</namingSystem>
+    	</rigAlias>
+    	<rigAlias uid="2">
+    		<name>4321</name>
+    		<namingSystem>NPD code</namingSystem>
+    	</rigAlias>
+    </wellboreInfo>
+    <statusInfo uid="1">
+    	<dTim>2001-12-31T12:00:00Z</dTim>
+    	<md uom="m">6898</md>
+    	<tvd uom="m">4561</tvd>
+    	<mdPlugTop uom="m">3564.22</mdPlugTop>
+    	<diaHole uom="in">43.33</diaHole>
+    	<mdDiaHoleStart uom="m">5935.7</mdDiaHoleStart>
+    	<diaPilot uom="in">45.55</diaPilot>    	
+    	<mdDiaPilotPlan uom="m">5866.66</mdDiaPilotPlan>
+    	<mdKickoff uom="m">1233.22</mdKickoff>
+    	<strengthForm uom="g/cm3">123</strengthForm>
+    	<mdStrengthForm uom="m">1234</mdStrengthForm>
+    	<diaCsgLast uom="in">16.6</diaCsgLast>
+    	<mdCsgLast uom="m">1234.56</mdCsgLast>
+    	<presTestType>leak off test</presTestType>
+    	<distDrill uom="m">78.9</distDrill>
+    	<sum24Hr>Yada yada yada</sum24Hr>
+    	<forecast24Hr>Bla bla bla</forecast24Hr>
+    	<ropCurrent uom="m/h">2.1</ropCurrent>
+    </statusInfo>
+    <bitRecord uid="1">
+    	<numBit>1</numBit>
+    	<diaBit uom="in">46.6</diaBit>
+    	<manufacturer>Small Bit Builder Inc</manufacturer>
+    	<codeMfg>SBB</codeMfg>
+    </bitRecord>
+    <fluid uid="A">
+    	<type>XH5</type>
+    	<dTim>2001-12-31T12:00:00Z</dTim>
+    	<md uom="m">1235.6</md>
+    	<tvd uom="m">986.6</tvd>
+    	<presBopRating uom="bar">77.7</presBopRating>
+    	<mudClass>oil based</mudClass>
+    	<density uom="kg/m3">1.85</density>
+    	<tempVis uom="degC">33</tempVis>
+    	<pv uom="mPa.s">33</pv>
+    </fluid>
+    <fluid uid="B">
+    	<type>YYY5</type>
+    	<dTim>2001-12-31T12:00:00Z</dTim>
+    	<md uom="m">1235.6</md>
+    	<tvd uom="m">986.6</tvd>
+    	<presBopRating uom="bar">177.7</presBopRating>
+    	<mudClass>water based</mudClass>
+    	<density uom="kg/m3">1.85</density>
+    	<tempVis uom="degC">33</tempVis>
+    	<pv uom="mPa.s">33</pv>
+    </fluid>
+    <porePressure uid="90">
+    	<readingKind>estimated</readingKind>
+    	<equivalentMudWeight uom="g/cm3">23.1</equivalentMudWeight>
+    	<dTim>2001-12-31T12:00:00Z</dTim>
+    	<md uom="m">321.1</md>
+    	<tvd uom="m">123.4</tvd>
+    </porePressure>
+    <porePressure uid="91">
+    	<readingKind>measured</readingKind>
+    	<equivalentMudWeight uom="g/cm3">23.5</equivalentMudWeight>
+    	<dTim>2001-12-31T22:00:00Z</dTim>
+    	<md uom="m">321.1</md>
+    	<tvd uom="m">123.4</tvd>
+    </porePressure>
+    <extendedReport dTim="2006-06-07T00:00:00.000Z">Bla bla bla</extendedReport>
+    <surveyStation uid="1">
+    	<dTim>2001-12-31T22:00:00Z</dTim>
+    	<md uom="m">123.4</md>
+    	<tvd uom="m">123.4</tvd>
+    	<incl uom="dega">66.6</incl>
+    	<azi uom="dega">55.5</azi>
+    </surveyStation>
+    <activity uid="123">
+    	<dTimStart>2001-12-31T22:00:00Z</dTimStart>
+    	<dTimEnd>2001-12-31T23:00:00Z</dTimEnd>
+    	<md uom="m">123.4</md>
+    	<tvd uom="m">100.0</tvd>
+    	<phase>FIXED</phase>
+    	<activityCode>DRILLING</activityCode>
+    	<detailActivity>HOLE OPEN</detailActivity>
+    	<state>OK</state>
+    	<stateDetailActivity>stuck equipment</stateDetailActivity>
+    	<comments>Bla bla bla</comments>
+    </activity>
+    <activity uid="456">
+    	<dTimStart>2001-12-31T02:00:00Z</dTimStart>
+    	<dTimEnd>2001-12-31T06:00:00Z</dTimEnd>
+    	<md uom="m">123.4</md>
+    	<tvd uom="m">100.0</tvd>
+    	<phase>FIXED</phase>
+    	<activityCode>MOVING</activityCode>
+    	<detailActivity>TRANSIT</detailActivity>
+    	<state>FAIL</state>
+    	<stateDetailActivity>equipment failure</stateDetailActivity>
+    	<comments>Bla bla bla</comments>
+    </activity>
+    <logInfo uid="1">
+    	<dTim>2001-12-31T02:00:00Z</dTim>
+    	<runNumber>1</runNumber>
+    	<serviceCompany>Small Service Inc</serviceCompany>
+    	<mdTop uom="m">4567.6</mdTop>
+    	<mdBottom uom="m">4668.9</mdBottom>
+    	<tvdTop uom="m">333.3</tvdTop>
+    	<tvdBottom uom="m">444.4</tvdBottom>
+    	<tool>Hammer</tool>
+    	<tempBHCT uom="degC">85.6</tempBHCT>
+    	<mdTempTool uom="m">6666.6</mdTempTool>
+    	<tvdTempTool uom="m">6666.5</tvdTempTool>
+    </logInfo>
+    <logInfo uid="2">
+    	<dTim>2001-12-31T02:00:00Z</dTim>
+    	<runNumber>1</runNumber>
+    	<serviceCompany>Small Service Inc</serviceCompany>
+    	<mdTop uom="m">4567.6</mdTop>
+    	<mdBottom uom="m">4668.9</mdBottom>
+    	<tvdTop uom="m">333.3</tvdTop>
+    	<tvdBottom uom="m">444.4</tvdBottom>
+    	<tool>Hammer</tool>
+    	<tempBHST uom="degC">85.6</tempBHST>
+    	<eTimStatic uom="h">2.3</eTimStatic>   	
+    	<mdTempTool uom="m">6666.6</mdTempTool>
+    	<tvdTempTool uom="m">6666.5</tvdTempTool>
+    </logInfo>
+    <coreInfo uid="1">
+    	<dTim>2001-12-31T02:00:00Z</dTim>
+    	<coreNumber>1</coreNumber>
+    	<mdTop uom="m">1234</mdTop>
+    	<mdBottom uom="m">1234</mdBottom>
+    	<tvdTop uom="m">1233</tvdTop>
+    	<tvdBottom uom="m">1233</tvdBottom>
+    	<lenRecovered uom="m">123</lenRecovered>
+    	<recoverPc uom="%">89.9</recoverPc>
+    	<lenBarrel uom="m">33.3</lenBarrel>
+    	<innerBarrelType>aluminum</innerBarrelType>
+    	<coreDescription>bla bla bla</coreDescription>
+    </coreInfo>
+    <wellTestInfo uid="test-1">
+    	<dTim>2001-12-31T02:00:00Z</dTim>
+    	<testType>production test</testType>
+    	<testNumber>1</testNumber>
+    	<mdTop uom="m">1234.5</mdTop>
+    	<mdBottom uom="m">2345.6</mdBottom>
+    	<tvdTop uom="m">1234.5</tvdTop>
+    	<tvdBottom uom="m">2345.5</tvdBottom>
+    	<chokeOrificeSize uom="mm">32.1</chokeOrificeSize>
+    	<densityOil uom="g/cm3">0.86</densityOil>
+    	<densityWater uom="g/cm3">1.03</densityWater>
+    	<densityGas uom="g/cm3">0.06</densityGas>
+    	<flowRateOil uom="m3/d">77.7</flowRateOil>
+    	<flowRateWater uom="m3/d">7.7</flowRateWater>
+    	<flowRateGas uom="M(m3)/d">88.8</flowRateGas>
+    	<presShutIn uom="MPa">44.4</presShutIn>
+    	<presFlowing uom="MPa">33.3</presFlowing>
+    	<presBottom uom="MPa">22.2</presBottom>
+    	<gasOilRatio uom="m3/m3">23</gasOilRatio>
+    	<waterOilRatio uom="m3/m3">0.33</waterOilRatio>
+    	<chloride uom="%">.1</chloride>
+    	<carbonDioxide uom="ppm">11.1</carbonDioxide>
+    	<hydrogenSulfide uom="ppm">7.3</hydrogenSulfide>
+    	<volOilTotal uom="m3">9999</volOilTotal>
+    	<volGasTotal uom="M(m3)">666</volGasTotal>
+    	<volWaterTotal uom="M(m3)">55</volWaterTotal>
+    	<volOilStored uom="m3">1365</volOilStored>
+    </wellTestInfo>
+    <formTestInfo uid="fti-1">
+    	<dTim>2001-12-31T02:00:00Z</dTim>
+    	<md uom="m">1234.5</md>
+    	<tvd uom="m">1234.5</tvd>
+    	<presPore uom="MPa">66.5</presPore>
+    	<goodSeal>true</goodSeal>
+    	<mdSample uom="m">1224.3</mdSample>
+    	<dominateComponent>bla bla</dominateComponent>
+    	<densityHC uom="g/cm3">0.33</densityHC>
+    	<volumeSample uom="dm3">11</volumeSample>
+    	<description>Yada yada yada</description>
+    </formTestInfo>
+    <lithShowInfo uid="1">
+    	<dTim>2001-12-31T02:00:00Z</dTim>
+    	<mdTop uom="m">1234.5</mdTop>
+    	<mdBottom uom="m">1234.5</mdBottom>
+    	<tvdTop uom="m">1234.5</tvdTop>
+    	<tvdBottom uom="m">1234.5</tvdBottom>
+    	<show>Bla bla bla</show>
+    	<lithology>Bla bla bla</lithology>
+    </lithShowInfo>
+    <equipFailureInfo uid="9">
+    	<dTim>2001-12-31T02:00:00Z</dTim>
+    	<md uom="m">1234.5</md>
+    	<equipClass>Equipment</equipClass>
+    	<eTimMissProduction uom="min">180</eTimMissProduction>
+    	<dTimRepair>2002-01-31T02:00:00Z</dTimRepair>
+    	<description>Bla bla bla</description>
+    </equipFailureInfo>
+    <controlIncidentInfo uid="1">
+    	<dTim>2001-12-31T02:00:00Z</dTim>
+    	<mdInflow uom="m">1234.5</mdInflow>
+    	<tvdInflow uom="m">1234</tvdInflow>
+    	<phase>bla</phase>
+    	<activityCode>bla</activityCode>
+    	<detailActivity>bla</detailActivity>
+    	<eTimLost uom="min">16</eTimLost>
+    	<dTimRegained>2001-12-31T02:16:00Z</dTimRegained>
+    	<diaBit uom="in">21</diaBit>
+    	<mdBit uom="m">123</mdBit>
+    	<wtMud uom="g/cm3">1.23</wtMud>
+    	<porePressure uom="g/cm3">1.12</porePressure>
+    	<diaCsgLast uom="in">33</diaCsgLast>
+    	<mdCsgLast uom="m">123</mdCsgLast>
+    	<volMudGained uom="m3">112</volMudGained>
+    	<presShutInCasing uom="bar">44</presShutInCasing>
+    	<presShutInDrill uom="bar">33</presShutInDrill>
+    	<incidentType>oil kick</incidentType>
+    	<killingType>lubricate and bleed</killingType>
+    	<formation>jura</formation>
+    	<tempBottom uom="degC">258</tempBottom>
+    	<presMaxChoke uom="bar">66.3</presMaxChoke>
+    	<description>Bla bla bal</description>
+    </controlIncidentInfo>
+    <stratInfo uid="1">
+    	<dTim>2001-12-31T02:00:00Z</dTim>
+    	<mdTop uom="m">1234.5</mdTop>
+    	<tvdTop uom="m">1234</tvdTop>
+    	<description>bla bla bla</description>
+    </stratInfo>
+    <perfInfo uid="perfInfo-1">
+    	<dTimOpen>2001-12-31T02:00:00Z</dTimOpen>
+    	<dTimClose>2001-12-31T18:00:00Z</dTimClose>
+    	<mdTop uom="m">1033</mdTop>
+    	<mdBottom uom="m">1234</mdBottom>
+    	<tvdTop uom="m">999</tvdTop>
+    	<tvdBottom uom="m">1100</tvdBottom>
+    </perfInfo>
+    <gasReadingInfo uid="1">
+    	<dTim>2001-12-31T02:00:00Z</dTim>
+    	<readingType>connection gas</readingType>
+    	<mdTop uom="m">1234</mdTop>
+    	<mdBottom uom="m">1256</mdBottom>
+    	<tvdTop uom="m">999</tvdTop>
+    	<tvdBottom uom="m">1120</tvdBottom>
+    	<gasHigh uom="%">77.7</gasHigh>
+    	<gasLow uom="%">44.4</gasLow>
+    	<meth uom="ppm">55</meth>
+    	<eth uom="ppm">55</eth>
+    	<prop uom="ppm">55</prop>
+    	<ibut uom="ppm">55</ibut>
+    	<nbut uom="ppm">55</nbut>
+    	<ipent uom="ppm">55</ipent>
+    </gasReadingInfo>
+    <commonData>
+    	<defaultDatum uidRef="KB">Kelly Bushing</defaultDatum>
+    </commonData>
+  </drillReport>
+</drillReports>

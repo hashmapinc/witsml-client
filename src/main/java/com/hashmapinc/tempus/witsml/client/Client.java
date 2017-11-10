@@ -21,6 +21,7 @@ import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjTubulars;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjWbGeometrys;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjWellbores;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjWells;
+import com.hashmapinc.tempus.witsml.api.ObjectType;
 import com.hashmapinc.tempus.witsml.api.WitsmlClient;
 import com.hashmapinc.tempus.witsml.api.WitsmlVersion;
 import com.hashmapinc.tempus.WitsmlObjects.Util.WitsmlMarshal;
@@ -179,67 +180,7 @@ public class Client implements WitsmlClient {
             resourceStr.append("/1411/");
         }
 
-        switch (objectType.toLowerCase()) {
-            case "well" :
-                return getQuery(resourceStr.append("GetWells.xml").toString());
-            case "wellbore" :
-                return getQuery(resourceStr.append("GetWellbores.xml").toString());
-            case "log" :
-                return getQuery(resourceStr.append("GetLogs.xml").toString());
-            case "mudlog":
-                return getQuery(resourceStr.append("GetMudLogs.xml").toString());
-            case "trajectory":
-                return getQuery(resourceStr.append("GetTrajectorys.xml").toString());
-            case "bharun":
-                return getQuery(resourceStr.append("GetBhaRuns.xml").toString());
-            case "cementjob":
-                return getQuery(resourceStr.append("GetCementJobs.xml").toString());
-            case "convcore":
-                return getQuery(resourceStr.append("GetConvCore.xml").toString());
-            case "fluidsreport":
-                return getQuery(resourceStr.append("GetFluidsReports.xml").toString());
-            case "formationmarker":
-                return getQuery(resourceStr.append("GetFormationMarker.xml").toString());
-            case "message":
-                return getQuery(resourceStr.append("GetMessages.xml").toString());
-            case "opsreport":
-                return getQuery(resourceStr.append("GetOpsReports.xml").toString());
-            case "rig":
-                return getQuery(resourceStr.append("GetRigs.xml").toString());
-            case "risk":
-                return getQuery(resourceStr.append("GetRisks.xml").toString());
-            case "sidewallcore":
-                return getQuery(resourceStr.append("GetSideWallCores.xml").toString());
-            case "surveyprogram":
-                return getQuery(resourceStr.append("GetSurveyPrograms.xml").toString());
-            case "target":
-                return getQuery(resourceStr.append("GetTargets.xml").toString());
-            case "tubular":
-                return getQuery(resourceStr.append("GetTubulars.xml").toString());
-            case "wbgeometry":
-                return getQuery(resourceStr.append("GetWbGeometrys.xml").toString());
-            case "attachment":
-                return getQuery(resourceStr.append("GetAttachments.xml").toString());
-            case "drillreport":
-                return getQuery(resourceStr.append("GetDrillReports.xml").toString());
-            case "changelog":
-                return getQuery(resourceStr.append("GetChangeLogs.xml").toString());
-            case "objectgroup":
-                return getQuery(resourceStr.append("GetObjectGroups.xml").toString());
-            case "stimjob":
-                return getQuery(resourceStr.append("GetStimJobs.xml").toString());
-            case "dtsinstalledsystem":
-                return getQuery(resourceStr.append("GetDtsInstalledSystems.xml").toString());
-            case "realtimes":
-                return getQuery(resourceStr.append("GetRealTimes.xml").toString());
-            case "dtsmeasurement":
-                return getQuery(resourceStr.append("GetDtsMeasurements.xml").toString());
-            case "wellLog":
-                return getQuery(resourceStr.append("GetWellLogs.xml").toString());
-            case "trajectorystation":
-                return getQuery(resourceStr.append("GetTrajectoryStations.xml").toString());
-        }
-        return null;
+        return getQuery(resourceStr.append(ObjectType.valueOf(objectType.toUpperCase()).toString()).toString());
     }
 
     private void handleBulkRequest(WitsmlQuery witsmlQuery) {

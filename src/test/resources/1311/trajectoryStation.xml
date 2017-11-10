@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="../stylesheets/trajectoryStation.xsl" type="text/xsl" media="screen"?>
+<!--   		Example of trajectoryStation data 	-->
+<trajectoryStations 
+	xmlns="http://www.witsml.org/schemas/131" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.witsml.org/schemas/131  ../obj_trajectoryStation.xsd" 
+	version="1.3.1.1">
+	<documentInfo>
+		<DocumentName>mudLog</DocumentName>
+		<FileCreationInformation>
+			<FileCreationDate>2001-10-31T08:15:00.000Z</FileCreationDate>
+			<SoftwareName>WITSML 1.3.0.0 Server</SoftwareName>
+			<FileCreator>John Smith</FileCreator>
+		</FileCreationInformation>
+	</documentInfo>
+	<trajectoryStation uidWell="W-12" uidWellbore="B-01" uidTrajectory="pe84e" uid="34ht5">
+		<nameWell>6507/7-A-42</nameWell>
+		<nameWellbore>A-42</nameWellbore>
+		<nameTrajectory>Plan #1</nameTrajectory>
+		<target uidRef="tg3e">Target #2</target>
+		<dTimStn>2001-10-21T08:15:00.000</dTimStn>
+		<typeTrajStation>tie in point</typeTrajStation>
+		<md uom="ft">0</md>
+		<tvd uom="ft">0</tvd>
+		<incl uom="dega">0</incl>
+		<azi uom="dega">47.3</azi>
+		<mtf uom="dega">47.3</mtf>
+		<gtf uom="dega">0</gtf>
+		<dispNs uom="ft">0</dispNs>
+		<dispEw uom="ft">0</dispEw>
+		<vertSect uom="ft">0</vertSect>
+		<dls uom="dega/ft">0</dls>
+		<rateTurn uom="dega/ft">0</rateTurn>
+		<rateBuild uom="dega/ft">0</rateBuild>
+		<mdDelta uom="ft">0</mdDelta>
+		<tvdDelta uom="ft">0</tvdDelta>
+		<modelToolError>good gyro</modelToolError>
+		<gravTotalUncert uom="m/s2">0</gravTotalUncert>
+		<dipAngleUncert uom="dega">0</dipAngleUncert>
+		<magTotalUncert uom="nT">0</magTotalUncert>
+		<gravAccelCorUsed>false</gravAccelCorUsed>
+		<magXAxialCorUsed>false</magXAxialCorUsed>
+		<sagCorUsed>false</sagCorUsed>
+		<magDrlstrCorUsed>false</magDrlstrCorUsed>
+		<statusTrajStation>position</statusTrajStation>
+		<rawData>
+			<gravAxialRaw uom="ft/s2">0.116</gravAxialRaw>
+			<gravTran1Raw uom="ft/s2">-0.168</gravTran1Raw>
+			<gravTran2Raw uom="ft/s2">-1654</gravTran2Raw>
+			<magAxialRaw uom="nT">22.77</magAxialRaw>
+			<magTran1Raw uom="nT">22.5</magTran1Raw>
+			<magTran2Raw uom="nT">27.05</magTran2Raw>
+		</rawData>
+		<corUsed>
+			<gravAxialAccelCor uom="ft/s2">0.11</gravAxialAccelCor>
+			<gravTran1AccelCor uom="ft/s2">0.14</gravTran1AccelCor>
+			<gravTran2AccelCor uom="ft/s2">0.13</gravTran2AccelCor>
+			<magAxialDrlstrCor uom="nT">0.17</magAxialDrlstrCor>
+			<magTran1DrlstrCor uom="nT">0.16</magTran1DrlstrCor>
+			<magTran2DrlstrCor uom="nT">0.24</magTran2DrlstrCor>
+			<sagIncCor uom="dega">0</sagIncCor>
+			<sagAziCor uom="dega">0</sagAziCor>
+			<stnMagDeclUsed uom="dega">-4.038</stnMagDeclUsed>
+			<stnGridCorUsed uom="dega">-0.4917</stnGridCorUsed>
+			<dirSensorOffset uom="ft">48.3</dirSensorOffset>
+		</corUsed>
+		<valid>
+			<magTotalFieldCalc uom="nT">51.19</magTotalFieldCalc>
+			<magDipAngleCalc uom="dega">41.5</magDipAngleCalc>
+			<gravTotalFieldCalc uom="ft/s2">0.999</gravTotalFieldCalc>
+		</valid>
+		<matrixCov>
+			<varianceNN uom="ft2">0.005236</varianceNN>
+			<varianceNE uom="ft2">0.005236</varianceNE>
+			<varianceNVert uom="ft2">2.356194</varianceNVert>
+			<varianceEE uom="ft2">0.005236</varianceEE>
+			<varianceEVert uom="ft2">0.005236</varianceEVert>
+			<varianceVertVert uom="ft2">0.785398</varianceVertVert>
+			<biasN uom="ft">0</biasN>
+			<biasE uom="ft">0</biasE>
+			<biasVert uom="ft">0</biasVert>
+		</matrixCov>
+		<location uid="loc-1">
+			<wellCRS uidRef="geog1">ED50</wellCRS>
+			<latitude uom="dega">59.755300</latitude>
+			<longitude uom="dega">1.71347417</longitude>
+		</location>
+		<location uid="loc-2">
+			<wellCRS uidRef="proj1">ED50 / UTM Zone 31N</wellCRS>
+			<easting uom="m">427710.69</easting>
+			<northing uom="m">6625015.54</northing>
+		</location>
+	</trajectoryStation>
+</trajectoryStations>

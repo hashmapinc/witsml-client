@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="./stylesheets/generic.xsl" type="text/xsl" media="screen"?>
+<!--    		Example of changeLog data 		  -->
+<changeLogs 
+	xmlns="http://www.witsml.org/schemas/1series" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.witsml.org/schemas/1series  ../xsd_schemas/obj_changeLog.xsd" 
+	version="1.4.1.1">
+<!-- 
+These examples are only intended to demonstrate the type of data that can be exchanged.
+They totally artificial and are not intended to demonstrate best practices. 
+-->
+	<documentInfo>
+		<documentName>changeLog</documentName>
+		<fileCreationInformation>
+			<fileCreationDate>2001-10-31T08:15:00.000Z</fileCreationDate> 
+			<fileCreator>John Smith</fileCreator>
+		</fileCreationInformation>
+	</documentInfo>
+	<changeLog uidWell="W-12" uidWellbore="B-01" uidObject="f34a" uid="56hg">
+		<nameWell>6507/7-A-42</nameWell>
+		<nameWellbore>A-42</nameWellbore>
+		<nameObject>L001</nameObject>
+		<objectType>log</objectType>
+		<lastChangeType>update</lastChangeType>
+		<lastChangeInfo>Modified the "Mud Flow in Avg" values between 505.03m and 508.01m.</lastChangeInfo>
+		<changeHistory>
+			<dTimChange>2003-11-24T08:15:00.000Z</dTimChange>
+			<changeType>add</changeType>
+			<changeInfo>Added object.</changeInfo>
+		</changeHistory>
+		<changeHistory>
+			<dTimChange>2003-11-24T08:17:00.000Z</dTimChange>
+			<changeType>update</changeType>
+			<changeInfo>Modified the "Mud Flow in Avg" values between 505.03 m and 508.01 m.</changeInfo>
+			<startIndex uom="m">505.03</startIndex>
+			<endIndex uom="m">508.01</endIndex>
+			<mnemonics>Mud Flow in Avg</mnemonics>
+		</changeHistory>
+		<commonData>
+			<dTimCreation>2003-11-24T08:15:00.000Z</dTimCreation>
+			<dTimLastChange>2003-11-24T08:17:00.000Z</dTimLastChange>
+		</commonData>
+	</changeLog>
+</changeLogs>

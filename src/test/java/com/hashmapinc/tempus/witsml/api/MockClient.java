@@ -14,7 +14,6 @@ import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjMessages;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjMudLogs;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjOpsReports;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjRigs;
-import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjRisk;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjRisks;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjSidewallCores;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjSurveyPrograms;
@@ -31,6 +30,7 @@ import org.apache.logging.log4j.Logger;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.rmi.RemoteException;
 import java.util.List;
@@ -123,7 +123,7 @@ public class MockClient implements WitsmlClient {
      */
     @Override
     public String getVersion(){
-        return supportedApiVersions;
+        return version.toString();
     }
 
     /**
@@ -155,7 +155,7 @@ public class MockClient implements WitsmlClient {
 
     @Override
     public String getObjectQuery(String objectType) throws IOException {
-        return "";
+        return getReturnData(MockObjectType.valueOf(objectType.toUpperCase()).toString());
     }
 
     @Override
@@ -164,13 +164,12 @@ public class MockClient implements WitsmlClient {
         String optionsIn = "";
         try {
             query = getObjectQuery(witsmlQuery.getObjectType());
-            query = witsmlQuery.apply(query);
         } catch (IOException e) {
             String error = "Could not find or access the query template for getWells " + e.getMessage();
             log.error(error);
             throw new FileNotFoundException(error);
         }
-        return executeObjectQuery(witsmlQuery.getObjectType(), query, optionsIn, "");
+        return new com.hashmapinc.tempus.witsml.client.WitsmlResponse(query, "", (short)0);
     }
 
     /**
@@ -183,7 +182,9 @@ public class MockClient implements WitsmlClient {
     @Override
     public ObjWells getWellsAsObj(WitsmlQuery witsmlQuery) throws Exception {
         WitsmlResponse wellsResponse = getObjectData(witsmlQuery);
-        return WitsmlMarshal.deserialize(wellsResponse.getXmlOut(), ObjWells.class);
+        String wells = convertVersion(wellsResponse.getXmlOut());
+        if (wells == null || wells.equals("")) return null;
+        return WitsmlMarshal.deserialize(wells, ObjWells.class);
     }
 
     /**
@@ -197,7 +198,9 @@ public class MockClient implements WitsmlClient {
     @Override
     public ObjWellbores getWellboresForWellAsObj(WitsmlQuery witsmlQuery) throws Exception {
         WitsmlResponse wellboresResponse = getObjectData(witsmlQuery);
-        return WitsmlMarshal.deserialize(wellboresResponse.getXmlOut(), ObjWellbores.class);
+        String wellbores = convertVersion(wellboresResponse.getXmlOut());
+        if (wellbores == null || wellbores.equals("")) return null;
+        return WitsmlMarshal.deserialize(wellbores, ObjWellbores.class);
     }
 
     /**
@@ -217,7 +220,9 @@ public class MockClient implements WitsmlClient {
     @Override
     public ObjLogs getLogsAsObj(WitsmlQuery witsmlQuery) throws Exception {
         WitsmlResponse logsResponse = getObjectData(witsmlQuery);
-        return WitsmlMarshal.deserialize(logsResponse.getXmlOut(), ObjLogs.class);
+        String logs = convertVersion(logsResponse.getXmlOut());
+        if (logs == null || logs.equals("")) return null;
+        return WitsmlMarshal.deserialize(logs, ObjLogs.class);
     }
 
     /**
@@ -231,7 +236,9 @@ public class MockClient implements WitsmlClient {
     @Override
     public ObjMudLogs getMudLogsAsObj(WitsmlQuery witsmlQuery) throws Exception {
         WitsmlResponse mudLogsResponse = getObjectData(witsmlQuery);
-        return WitsmlMarshal.deserialize(mudLogsResponse.getXmlOut(), ObjMudLogs.class);
+        String mudLogs = convertVersion(mudLogsResponse.getXmlOut());
+        if (mudLogs == null || mudLogs.equals("")) return null;
+        return WitsmlMarshal.deserialize(mudLogs, ObjMudLogs.class);
     }
 
     /**
@@ -245,7 +252,9 @@ public class MockClient implements WitsmlClient {
     @Override
     public ObjTrajectorys getTrajectorysAsObj(WitsmlQuery witsmlQuery) throws Exception {
         WitsmlResponse trajectorysResponse = getObjectData(witsmlQuery);
-        return WitsmlMarshal.deserialize(trajectorysResponse.getXmlOut(), ObjTrajectorys.class);
+        String trajectorys = convertVersion(trajectorysResponse.getXmlOut());
+        if (trajectorys == null || trajectorys.equals("")) return null;
+        return WitsmlMarshal.deserialize(trajectorys, ObjTrajectorys.class);
     }
 
     /**
@@ -259,7 +268,9 @@ public class MockClient implements WitsmlClient {
     @Override
     public ObjBhaRuns getBhaRunsAsObj(WitsmlQuery witsmlQuery) throws Exception {
         WitsmlResponse bhaRunsResponse = getObjectData(witsmlQuery);
-        return WitsmlMarshal.deserialize(bhaRunsResponse.getXmlOut(), ObjBhaRuns.class);
+        String bhaRuns = convertVersion(bhaRunsResponse.getXmlOut());
+        if (bhaRuns == null || bhaRuns.equals("")) return null;
+        return WitsmlMarshal.deserialize(bhaRuns, ObjBhaRuns.class);
     }
 
     /**
@@ -272,8 +283,10 @@ public class MockClient implements WitsmlClient {
      */
     @Override
     public ObjCementJobs getCementJobsAsObj(WitsmlQuery witsmlQuery) throws Exception {
-        WitsmlResponse cementJobResponse = getObjectData(witsmlQuery);
-        return WitsmlMarshal.deserialize(cementJobResponse.getXmlOut(), ObjConvCores.class);
+        WitsmlResponse cementJobsResponse = getObjectData(witsmlQuery);
+        String cementJobs = convertVersion(cementJobsResponse.getXmlOut());
+        if (cementJobs == null || cementJobs.equals("")) return null;
+        return WitsmlMarshal.deserialize(cementJobs, ObjCementJobs.class);
     }
 
     /**
@@ -287,7 +300,9 @@ public class MockClient implements WitsmlClient {
     @Override
     public ObjConvCores getConvCoresAsObj(WitsmlQuery witsmlQuery) throws Exception {
         WitsmlResponse convCoresResponse = getObjectData(witsmlQuery);
-        return WitsmlMarshal.deserialize(convCoresResponse.getXmlOut(), ObjConvCores.class);
+        String convCores = convertVersion(convCoresResponse.getXmlOut());
+        if (convCores == null || convCores.equals("")) return null;
+        return WitsmlMarshal.deserialize(convCores, ObjConvCores.class);
     }
 
     /**
@@ -301,7 +316,9 @@ public class MockClient implements WitsmlClient {
     @Override
     public ObjDtsInstalledSystems getDtsInstalledSystemsAsObj(WitsmlQuery witsmlQuery) throws Exception {
         WitsmlResponse dtsInstalledSystemsResponse = getObjectData(witsmlQuery);
-        return WitsmlMarshal.deserialize(dtsInstalledSystemsResponse.getXmlOut(), ObjDtsInstalledSystems.class);
+        String dtsInstalledSystems = dtsInstalledSystemsResponse.getXmlOut();
+        if (dtsInstalledSystems == null || dtsInstalledSystems.equals("")) return null;
+        return WitsmlMarshal.deserialize(dtsInstalledSystems, ObjDtsInstalledSystems.class);
     }
 
     /**
@@ -315,7 +332,9 @@ public class MockClient implements WitsmlClient {
     @Override
     public ObjFluidsReports getFluidsReportsAsObj(WitsmlQuery witsmlQuery) throws Exception {
         WitsmlResponse fluidsReportsResponse = getObjectData(witsmlQuery);
-        return WitsmlMarshal.deserialize(fluidsReportsResponse.getXmlOut(), ObjFluidsReports.class);
+        String fluidsReports = convertVersion(fluidsReportsResponse.getXmlOut());
+        if (fluidsReports == null || fluidsReports.equals("")) return null;
+        return WitsmlMarshal.deserialize(fluidsReports, ObjFluidsReports.class);
     }
 
     /**
@@ -329,7 +348,9 @@ public class MockClient implements WitsmlClient {
     @Override
     public ObjFormationMarkers getFormationMarkersAsObj(WitsmlQuery witsmlQuery) throws Exception {
         WitsmlResponse formationMarkersResponse = getObjectData(witsmlQuery);
-        return WitsmlMarshal.deserialize(formationMarkersResponse.getXmlOut(), ObjFormationMarkers.class);
+        String formationMarkers = convertVersion(formationMarkersResponse.getXmlOut());
+        if (formationMarkers == null || formationMarkers.equals("")) return null;
+        return WitsmlMarshal.deserialize(formationMarkers, ObjFormationMarkers.class);
     }
 
     /**
@@ -343,7 +364,9 @@ public class MockClient implements WitsmlClient {
     @Override
     public ObjMessages getMessagesAsObj(WitsmlQuery witsmlQuery) throws Exception {
         WitsmlResponse messagesResponse = getObjectData(witsmlQuery);
-        return WitsmlMarshal.deserialize(messagesResponse.getXmlOut(), ObjMessages.class);
+        String messages = convertVersion(messagesResponse.getXmlOut());
+        if (messages == null || messages.equals("")) return null;
+        return WitsmlMarshal.deserialize(messages, ObjMessages.class);
     }
 
     /**
@@ -357,7 +380,9 @@ public class MockClient implements WitsmlClient {
     @Override
     public ObjOpsReports getOpsReportsAsObj(WitsmlQuery witsmlQuery) throws Exception {
         WitsmlResponse opsReportsResponse = getObjectData(witsmlQuery);
-        return WitsmlMarshal.deserialize(opsReportsResponse.getXmlOut(), ObjOpsReports.class);
+        String opsReports = convertVersion(opsReportsResponse.getXmlOut());
+        if (opsReports == null || opsReports.equals("")) return null;
+        return WitsmlMarshal.deserialize(opsReports, ObjOpsReports.class);
     }
 
     /**
@@ -371,7 +396,9 @@ public class MockClient implements WitsmlClient {
     @Override
     public ObjRigs getRigsAsObj(WitsmlQuery witsmlQuery) throws Exception {
         WitsmlResponse rigsResponse = getObjectData(witsmlQuery);
-        return WitsmlMarshal.deserialize(rigsResponse.getXmlOut(), ObjRigs.class);
+        String rigs = convertVersion(rigsResponse.getXmlOut());
+        if (rigs == null || rigs.equals("")) return null;
+        return WitsmlMarshal.deserialize(rigs, ObjRigs.class);
     }
 
     /**
@@ -385,7 +412,9 @@ public class MockClient implements WitsmlClient {
     @Override
     public ObjRisks getRisksAsObj(WitsmlQuery witsmlQuery) throws Exception {
         WitsmlResponse risksResponse = getObjectData(witsmlQuery);
-        return WitsmlMarshal.deserialize(risksResponse.getXmlOut(), ObjRisks.class);
+        String risks = convertVersion(risksResponse.getXmlOut());
+        if (risks == null || risks.equals("")) return null;
+        return WitsmlMarshal.deserialize(risks, ObjRisks.class);
     }
 
     /**
@@ -399,7 +428,9 @@ public class MockClient implements WitsmlClient {
     @Override
     public ObjSidewallCores getSideWallCoresAsObj(WitsmlQuery witsmlQuery) throws Exception {
         WitsmlResponse sideWallCoresResponse = getObjectData(witsmlQuery);
-        return WitsmlMarshal.deserialize(sideWallCoresResponse.getXmlOut(), ObjSidewallCores.class);
+        String sideWallCores = convertVersion(sideWallCoresResponse.getXmlOut());
+        if (sideWallCores == null || sideWallCores.equals("")) return null;
+        return WitsmlMarshal.deserialize(sideWallCores, ObjSidewallCores.class);
     }
 
     /**
@@ -412,8 +443,10 @@ public class MockClient implements WitsmlClient {
      */
     @Override
     public ObjSurveyPrograms getSurveyProgramsAsObj(WitsmlQuery witsmlQuery) throws Exception {
-        WitsmlResponse sideWallCoresResponse = getObjectData(witsmlQuery);
-        return WitsmlMarshal.deserialize(sideWallCoresResponse.getXmlOut(), ObjSurveyPrograms.class);
+        WitsmlResponse surveyProgramsResponse = getObjectData(witsmlQuery);
+        String surveyPrograms = convertVersion(surveyProgramsResponse.getXmlOut());
+        if (surveyPrograms == null || surveyPrograms.equals("")) return null;
+        return WitsmlMarshal.deserialize(surveyPrograms, ObjSurveyPrograms.class);
     }
 
     /**
@@ -427,7 +460,9 @@ public class MockClient implements WitsmlClient {
     @Override
     public ObjTargets getTargetsAsObj(WitsmlQuery witsmlQuery) throws Exception {
         WitsmlResponse targetsResponse = getObjectData(witsmlQuery);
-        return WitsmlMarshal.deserialize(targetsResponse.getXmlOut(), ObjTargets.class);
+        String targets = convertVersion(targetsResponse.getXmlOut());
+        if (targets == null || targets.equals("")) return null;
+        return WitsmlMarshal.deserialize(targets, ObjTargets.class);
     }
 
     /**
@@ -441,7 +476,9 @@ public class MockClient implements WitsmlClient {
     @Override
     public ObjTubulars getTubularsAsObj(WitsmlQuery witsmlQuery) throws Exception {
         WitsmlResponse tubularsResponse = getObjectData(witsmlQuery);
-        return WitsmlMarshal.deserialize(tubularsResponse.getXmlOut(), ObjTubulars.class);
+        String tubulars = convertVersion(tubularsResponse.getXmlOut());
+        if (tubulars == null || tubulars.equals("")) return null;
+        return WitsmlMarshal.deserialize(tubulars, ObjTubulars.class);
     }
 
     /**
@@ -455,7 +492,9 @@ public class MockClient implements WitsmlClient {
     @Override
     public ObjWbGeometrys getWbGeometrysAsObj(WitsmlQuery witsmlQuery) throws Exception {
         WitsmlResponse wbGeometrysResponse = getObjectData(witsmlQuery);
-        return WitsmlMarshal.deserialize(wbGeometrysResponse.getXmlOut(), ObjWbGeometrys.class);
+        String wbGeometrys = convertVersion(wbGeometrysResponse.getXmlOut());
+        if (wbGeometrys == null || wbGeometrys.equals("")) return null;
+        return WitsmlMarshal.deserialize(wbGeometrys, ObjWbGeometrys.class);
     }
 
     /**
@@ -469,7 +508,9 @@ public class MockClient implements WitsmlClient {
     @Override
     public ObjAttachments getAttachmentsAsObj(WitsmlQuery witsmlQuery) throws Exception {
         WitsmlResponse attachmentsResponse = getObjectData(witsmlQuery);
-        return WitsmlMarshal.deserialize(attachmentsResponse.getXmlOut(), ObjAttachments.class);
+        String attachments = attachmentsResponse.getXmlOut();
+        if (attachments == null || attachments.equals("")) return null;
+        return WitsmlMarshal.deserialize(attachments, ObjAttachments.class);
     }
 
     /**
@@ -483,7 +524,9 @@ public class MockClient implements WitsmlClient {
     @Override
     public ObjChangeLogs getChangeLogsAsObj(WitsmlQuery witsmlQuery) throws Exception {
         WitsmlResponse changeLogsResponse = getObjectData(witsmlQuery);
-        return WitsmlMarshal.deserialize(changeLogsResponse.getXmlOut(), ObjChangeLogs.class);
+        String changeLogs = changeLogsResponse.getXmlOut();
+        if (changeLogs == null || changeLogs.equals("")) return null;
+        return WitsmlMarshal.deserialize(changeLogs, ObjChangeLogs.class);
     }
 
     /**
@@ -497,7 +540,9 @@ public class MockClient implements WitsmlClient {
     @Override
     public ObjDrillReports getDrillReportsAsObj(WitsmlQuery witsmlQuery) throws Exception {
         WitsmlResponse drillReportsResponse = getObjectData(witsmlQuery);
-        return WitsmlMarshal.deserialize(drillReportsResponse.getXmlOut(), ObjDrillReports.class);
+        String drillReports = drillReportsResponse.getXmlOut();
+        if (drillReports == null || drillReports.equals("")) return null;
+        return WitsmlMarshal.deserialize(drillReports, ObjDrillReports.class);
     }
 
     /**
@@ -511,7 +556,9 @@ public class MockClient implements WitsmlClient {
     @Override
     public ObjObjectGroups getObjectGroupsAsObj(WitsmlQuery witsmlQuery) throws Exception {
         WitsmlResponse objectGroupsResponse = getObjectData(witsmlQuery);
-        return WitsmlMarshal.deserialize(objectGroupsResponse.getXmlOut(), ObjObjectGroups.class);
+        String objectGroups = objectGroupsResponse.getXmlOut();
+        if (objectGroups == null || objectGroups.equals("")) return null;
+        return WitsmlMarshal.deserialize(objectGroups, ObjObjectGroups.class);
     }
 
     /**
@@ -525,7 +572,9 @@ public class MockClient implements WitsmlClient {
     @Override
     public ObjStimJobs getStimJobsAsObj(WitsmlQuery witsmlQuery) throws Exception {
         WitsmlResponse stimJobsResponse = getObjectData(witsmlQuery);
-        return WitsmlMarshal.deserialize(stimJobsResponse.getXmlOut(), ObjStimJobs.class);
+        String stimJobs = stimJobsResponse.getXmlOut();
+        if (stimJobs == null || stimJobs.equals("")) return null;
+        return WitsmlMarshal.deserialize(stimJobs, ObjStimJobs.class);
     }
 
     /**
@@ -539,7 +588,9 @@ public class MockClient implements WitsmlClient {
     @Override
     public ObjRealtimes getRealtimesAsObj(WitsmlQuery witsmlQuery) throws Exception {
         WitsmlResponse realtimesResponse = getObjectData(witsmlQuery);
-        return WitsmlMarshal.deserialize(realtimesResponse.getXmlOut(), ObjRealtimes.class);
+        String realtimes = realtimesResponse.getXmlOut();
+        if (realtimes == null || realtimes.equals("")) return null;
+        return WitsmlMarshal.deserialize(realtimes, ObjRealtimes.class);
     }
 
     /**
@@ -553,7 +604,9 @@ public class MockClient implements WitsmlClient {
     @Override
     public ObjWellLogs getWellLogsAsObj(WitsmlQuery witsmlQuery) throws Exception {
         WitsmlResponse wellLogsResponse = getObjectData(witsmlQuery);
-        return WitsmlMarshal.deserialize(wellLogsResponse.getXmlOut(), ObjWellLogs.class);
+        String wellLogs = wellLogsResponse.getXmlOut();
+        if (wellLogs == null || wellLogs.equals("")) return null;
+        return WitsmlMarshal.deserialize(wellLogs, ObjWellLogs.class);
     }
 
     /**
@@ -567,7 +620,9 @@ public class MockClient implements WitsmlClient {
     @Override
     public ObjDtsMeasurements getDtsMeasurementsAsObj(WitsmlQuery witsmlQuery) throws Exception {
         WitsmlResponse dtsMeasurementsResponse = getObjectData(witsmlQuery);
-        return WitsmlMarshal.deserialize(dtsMeasurementsResponse.getXmlOut(), ObjDtsMeasurements.class);
+        String dtsMeasurements = dtsMeasurementsResponse.getXmlOut();
+        if (dtsMeasurements == null || dtsMeasurements.equals("")) return null;
+        return WitsmlMarshal.deserialize(dtsMeasurements, ObjDtsMeasurements.class);
     }
 
     /**
@@ -581,14 +636,39 @@ public class MockClient implements WitsmlClient {
     @Override
     public ObjTrajectoryStations getTrajectoryStationsAsObj(WitsmlQuery witsmlQuery) throws Exception {
         WitsmlResponse trajectoryStationsResponse = getObjectData(witsmlQuery);
-        return WitsmlMarshal.deserialize(trajectoryStationsResponse.getXmlOut(), ObjTrajectoryStations.class);
+        String trajectoryStations = trajectoryStationsResponse.getXmlOut();
+        if (trajectoryStations == null || trajectoryStations.equals("")) return null;
+        return WitsmlMarshal.deserialize(trajectoryStations, ObjTrajectoryStations.class);
     }
 
     private String getReturnData(String resourcePath) throws IOException {
-        InputStream stream = getClass().getResourceAsStream(resourcePath);
+        StringBuilder resourceStr = new StringBuilder();
+        if (version.toString().equals("1.3.1.1")) {
+            resourceStr.append("1311/");
+        } else {
+            resourceStr.append("1411/");
+        }
+        String path = resourceStr.append(resourcePath).toString();
+        InputStream stream = Thread.currentThread().getContextClassLoader().getResourceAsStream(path);
         BufferedReader reader = new BufferedReader(
                 new InputStreamReader(stream));
         return reader.lines().collect(Collectors.joining(
                 System.getProperty("line.separator")));
+    }
+
+    private String convertVersion(String original){
+        String converted = null;
+        if (version.toString().equals("1.3.1.1")) {
+            try {
+                converted = transform.convertVersion(original);
+            } catch (TransformerException e) {
+                log.error("error transforming the WITSML from 1.3.1.1 to 1.4.1.1: " + e.getMessage());
+            }
+        } else {
+            return original;
+        }
+        if (converted == null) return null;
+        if (converted.equals("")) return null;
+        return converted;
     }
 }

@@ -105,9 +105,9 @@ public class LogRequestTracker extends AbstractRequestTracker{
         setOptionsIn("");
         try {
             if (getVersion().toString().equals("1.3.1.1")) {
-                query = getQuery("/1311/GetLogData.xml");
+                query = getQuery("/1311/GetLogs.xml");
             } else if (getVersion().toString().equals("1.4.1.1")) {
-                query = getQuery("/1411/GetLogData.xml");
+                query = getQuery("/1411/GetLogs.xml");
                 setOptionsIn("dataVersion=1.4.1.1");
             }
         } catch (Exception ex) {

@@ -802,15 +802,6 @@ public class MyWitsmlClient {
         }
     }
 
-    private static Object PrintObjectRequest(Client c,String wellId, String wellboreId, String objectId, String objectType) {
-        ObjectRequestTracker tracker = new ObjectRequestTracker();
-        tracker.initalize(c, wellId, wellboreId );
-        tracker.setVersion(WitsmlVersion.VERSION_1311);
-        tracker.setObjectType(objectType);
-        tracker.setObjectId(objectId);
-        return tracker.ExecuteRequest();
-    }
-
     private static String prettyPrint(String xml, Boolean omitXmlDeclaration) throws IOException, SAXException, ParserConfigurationException {
 
         DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
