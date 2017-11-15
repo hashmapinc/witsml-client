@@ -43,7 +43,7 @@ import java.util.stream.Collectors;
 public class Client implements WitsmlClient {
 
     private String url;
-    private StoreSoapBindingStub witsmlClient;
+    private AbstractStoreSoapBindingStub witsmlClient;
     private Logger log;
     private WitsmlVersion version = WitsmlVersion.VERSION_1411;
 
@@ -52,6 +52,23 @@ public class Client implements WitsmlClient {
     public Client(String url){
         log = LogManager.getLogger(Client.class);
         setupClient(url);
+        try {
+            transform = new WitsmlVersionTransformer();
+        } catch (TransformerConfigurationException e) {
+            log.error("Error setting up XSLT Transformer " + e.getMessage());
+        }
+    }
+
+    /**
+     * Client Constructor for Unit testing
+     * @param storeSoapTestClient Object of MockStoreSoapBindingStub to mock the Store Soap
+     * @param url dummy url for unit test
+     *
+     */
+    public Client(AbstractStoreSoapBindingStub storeSoapTestClient, String url) {
+        log = LogManager.getLogger(Client.class);
+        this.url = url;
+        witsmlClient = storeSoapTestClient;
         try {
             transform = new WitsmlVersionTransformer();
         } catch (TransformerConfigurationException e) {
@@ -204,6 +221,8 @@ public class Client implements WitsmlClient {
     public WitsmlResponse getObjectData(WitsmlQuery witsmlQuery) throws FileNotFoundException, RemoteException {
         String query = "";
         String optionsIn = "";
+        if (version.toString().equals("1.4.1.1"))
+            optionsIn = "dataVersion=1.4.1.1";
         try {
             query = getObjectQuery(witsmlQuery.getObjectType());
             handleBulkRequest(witsmlQuery);

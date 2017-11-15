@@ -162,6 +162,8 @@ public class MockClient implements WitsmlClient {
     public WitsmlResponse getObjectData(WitsmlQuery witsmlQuery) throws FileNotFoundException, RemoteException{
         String query = "";
         String optionsIn = "";
+        if (version.toString().equals("1.4.1.1"))
+            optionsIn = "dataVersion=1.4.1.1";
         try {
             query = getObjectQuery(witsmlQuery.getObjectType());
         } catch (IOException e) {
