@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertNotNull;
 
-public class ClientTests {
+public class MockClientTests {
 
     WitsmlVersionTransformer transformer;
     MockClient client;
@@ -1103,7 +1103,6 @@ public class ClientTests {
         }
 
         String attachmentXML = getReturnData("1411/attachment.xml");
-        attachmentXML = convertVersion(attachmentXML , client.getVersion());
         ObjAttachments attachments = null;
         try {
             attachments = WitsmlMarshal.deserialize(attachmentXML, ObjAttachments.class);
@@ -1114,6 +1113,110 @@ public class ClientTests {
         assertNotNull(getAttachment);
         assertEquals(getAttachment.getAttachment().size(), attachments.getAttachment().size());
         assertEquals(getAttachment.getAttachment().get(0).getUid(), attachments.getAttachment().get(0).getUid());
+    }
+
+    @Test
+    public void TestChangeLog1411() throws IOException {
+        client.setVersion(WitsmlVersion.VERSION_1411);
+        ObjChangeLogs getChangeLog = null;
+        WitsmlQuery witsmlQuery = new WitsmlQuery();
+        witsmlQuery.setObjectType("changeLog");
+
+        try {
+            getChangeLog = client.getChangeLogsAsObj(witsmlQuery);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        String changeLogXML = getReturnData("1411/changeLog.xml");
+        ObjChangeLogs changeLogs = null;
+        try {
+            changeLogs = WitsmlMarshal.deserialize(changeLogXML, ObjChangeLogs.class);
+        } catch (JAXBException ex) {
+            ex.printStackTrace();
+        }
+
+        assertNotNull(getChangeLog);
+        assertEquals(getChangeLog.getChangeLog().size(), changeLogs.getChangeLog().size());
+        assertEquals(getChangeLog.getChangeLog().get(0).getUid(), changeLogs.getChangeLog().get(0).getUid());
+    }
+
+    @Test
+    public void TestDrillReport1411() throws IOException {
+        client.setVersion(WitsmlVersion.VERSION_1411);
+        ObjDrillReports getDrillReports = null;
+        WitsmlQuery witsmlQuery = new WitsmlQuery();
+        witsmlQuery.setObjectType("drillReport");
+
+        try {
+            getDrillReports = client.getDrillReportsAsObj(witsmlQuery);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        String drillReportXML = getReturnData("1411/drillReport.xml");
+        ObjDrillReports drillReports = null;
+        try {
+            drillReports = WitsmlMarshal.deserialize(drillReportXML, ObjDrillReports.class);
+        } catch (JAXBException ex) {
+            ex.printStackTrace();
+        }
+
+        assertNotNull(getDrillReports);
+        assertEquals(getDrillReports.getDrillReport().size(), drillReports.getDrillReport().size());
+        assertEquals(getDrillReports.getDrillReport().get(0).getUid(), drillReports.getDrillReport().get(0).getUid());
+    }
+
+    @Test
+    public void TestObjectGroup1411() throws IOException {
+        client.setVersion(WitsmlVersion.VERSION_1411);
+        ObjObjectGroups getObjectGroup = null;
+        WitsmlQuery witsmlQuery = new WitsmlQuery();
+        witsmlQuery.setObjectType("objectGroup");
+
+        try {
+            getObjectGroup = client.getObjectGroupsAsObj(witsmlQuery);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        String objectGroupXML = getReturnData("1411/objectGroup.xml");
+        ObjObjectGroups objectGroups = null;
+        try {
+            objectGroups = WitsmlMarshal.deserialize(objectGroupXML, ObjObjectGroups.class);
+        } catch (JAXBException ex) {
+            ex.printStackTrace();
+        }
+
+        assertNotNull(getObjectGroup);
+        assertEquals(getObjectGroup.getObjectGroup().size(), objectGroups.getObjectGroup().size());
+        assertEquals(getObjectGroup.getObjectGroup().get(0).getUid(), objectGroups.getObjectGroup().get(0).getUid());
+    }
+
+    @Test
+    public void TestStimJob1411() throws IOException {
+        client.setVersion(WitsmlVersion.VERSION_1411);
+        ObjStimJobs getStimJob = null;
+        WitsmlQuery witsmlQuery = new WitsmlQuery();
+        witsmlQuery.setObjectType("stimJob");
+
+        try {
+            getStimJob = client.getStimJobsAsObj(witsmlQuery);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        String stimJobXML = getReturnData("1411/stimJob.xml");
+        ObjStimJobs stimJobs = null;
+        try {
+            stimJobs = WitsmlMarshal.deserialize(stimJobXML, ObjStimJobs.class);
+        } catch (JAXBException ex) {
+            ex.printStackTrace();
+        }
+
+        assertNotNull(getStimJob);
+        assertEquals(getStimJob.getStimJob().size(), stimJobs.getStimJob().size());
+        assertEquals(getStimJob.getStimJob().get(0).getUid(), stimJobs.getStimJob().get(0).getUid());
     }
 
     private String getReturnData(String resourcePath) throws IOException {
