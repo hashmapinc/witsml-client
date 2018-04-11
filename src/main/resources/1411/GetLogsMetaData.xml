@@ -17,5 +17,8 @@
     <startDateTimeIndex />
     <endDateTimeIndex />
     <direction />
+    <logCurveInfo uid="">
+      <mnemonic />
+    </logCurveInfo>
   </log>
 </logs>

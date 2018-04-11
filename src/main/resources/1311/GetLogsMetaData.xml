@@ -13,6 +13,9 @@
     <startDateTimeIndex />
     <endDateTimeIndex />
     <direction />
+    <logCurveInfo uid="">
+      <mnemonic />
+    </logCurveInfo>
     <commonData>
       <dTimCreation/>
       <dTimLastChange/>
