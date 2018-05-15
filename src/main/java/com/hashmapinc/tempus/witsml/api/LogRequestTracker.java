@@ -3,6 +3,7 @@ package com.hashmapinc.tempus.witsml.api;
 import com.hashmapinc.tempus.WitsmlObjects.Util.WitsmlMarshal;
 import com.hashmapinc.tempus.WitsmlObjects.Util.WitsmlVersionTransformer;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.*;
+import com.hashmapinc.tempus.witsml.client.WitsmlQuery;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.transform.TransformerConfigurationException;
@@ -57,10 +58,12 @@ public class LogRequestTracker extends AbstractRequestTracker{
     @Override
     public ObjLogs ExecuteRequest()  {
         ObjLogs logs = null;
+        WitsmlResponse logResponse;
         String response;
 
         try {
-            response = executeQuery();
+            logResponse = executeQuery();
+            response = logResponse.getXmlOut();
 
             if (getVersion() == WitsmlVersion.VERSION_1311) {
                 try {
@@ -96,28 +99,32 @@ public class LogRequestTracker extends AbstractRequestTracker{
         return logs;
     }
 
-    private String executeQuery() throws RemoteException {
+    private WitsmlResponse executeQuery() throws RemoteException {
         lastQueryTime = LocalDateTime.now().atZone(ZoneId.systemDefault());
         String query = "";
         setOptionsIn("");
         try {
             if (getVersion().toString().equals("1.3.1.1")) {
-                query = getQuery("/1311/GetLogData.xml");
+                query = getQuery("/1311/GetLogs.xml");
             } else if (getVersion().toString().equals("1.4.1.1")) {
-                query = getQuery("/1411/GetLogData.xml");
+                query = getQuery("/1411/GetLogs.xml");
                 setOptionsIn("dataVersion=1.4.1.1");
             }
         } catch (Exception ex) {
             System.out.println("Error in getQuery ex : " + ex);
         }
-        query = query.replace("%uidWell%", wellId);
-        query = query.replace("%uidWellbore%", wellboreId);
-        query = query.replace("%uidLog%", logId);
-        query = query.replace("%startIndex%", getQueryStartDepth());
-        query = query.replace("%startDateTimeIndex%", getQueryStartTime());
+        WitsmlQuery witsmlQuery = new WitsmlQuery();
+        witsmlQuery.setBulkData(true);
+        witsmlQuery.setObjectType("log");
+        witsmlQuery.addAttributeConstraint("log", "uidWell", wellId);
+        witsmlQuery.addAttributeConstraint("log", "uidWellbore", wellboreId);
+        witsmlQuery.addAttributeConstraint("log", "uid", logId);
+        witsmlQuery.addElementConstraint("startIndex", getQueryStartDepth());
+        witsmlQuery.addElementConstraint("startDateTimeIndex", getQueryStartTime());
+        query = witsmlQuery.apply(query);
         setQuery(query);
         setCapabilitesIn("");
-        return witsmlClient.executeLogQuery(getQuery(), getOptionsIn(), getCapabilitiesIn());
+        return witsmlClient.executeObjectQuery(witsmlQuery.getObjectType(), getQuery(), getOptionsIn(), getCapabilitiesIn());
     }
 
     private String getQueryStartDepth(){

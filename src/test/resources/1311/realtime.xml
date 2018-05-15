@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="../stylesheets/realtime.xsl" type="text/xsl" media="screen"?>
+<!--   		Example of Realtime data 	-->
+<realtimes 
+	xmlns="http://www.witsml.org/schemas/131" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.witsml.org/schemas/131  ../obj_realtime.xsd" 
+	version="1.3.1.1">
+	<realtime uidWell="w-12" uidWellbore="B-01" idSub="XSERV::12">
+		<dTim>2003-01-01T00:00:05Z</dTim>
+		<md uom="ft">5000.5</md>
+		<sequence>1</sequence>
+		<activityCode>drilling</activityCode>
+		<realtimeHeader>
+			<nameWell>6507/7-A-42</nameWell>
+			<nameWellbore>A-42</nameWellbore>
+			<serviceCompany>BHI</serviceCompany>
+			<runNumber>1</runNumber>
+			<creationDate>2003-01-01T00:00:00Z</creationDate>
+			<description>Realtime stream for subscription XSERV::12.</description>
+			<groupDefinition>
+				<id>group A</id>
+				<multiplexed>false</multiplexed>
+				<channelDefinition>
+					<mnemonic>MYHKLD</mnemonic>
+					<dataType>double</dataType>
+					<classWitsml>hookload (average)</classWitsml>
+					<description>Hookload</description>
+					<mnemAlias>hkldAv</mnemAlias>
+					<sensorOffset uom="ft">3.1</sensorOffset>
+					<dataSource>this can be a tool type</dataSource>
+					<interval>
+						<type>time</type>
+						<method>average</method>
+						<timeInterval uom="min">3</timeInterval>
+					</interval>
+				</channelDefinition>
+			</groupDefinition>
+			<groupDefinition>
+				<id>group B</id>
+				<multiplexed>true</multiplexed>
+				<channelDefinition>
+					<mnemonic>MYSHALLOWRES</mnemonic>
+					<classWitsml>resistivity</classWitsml>
+					<columnIndex>1</columnIndex>
+					<unit>ohm.m</unit>
+				</channelDefinition>
+				<channelDefinition>
+					<mnemonic>MYDEEPRES</mnemonic>
+					<classWitsml>resistivity</classWitsml>
+					<columnIndex>2</columnIndex>
+					<unit>ohm.m</unit>
+				</channelDefinition>
+			</groupDefinition>
+		</realtimeHeader>
+		<channel>
+			<id>group A</id>
+			<mnemonic>MYHKLD</mnemonic>
+			<dTim>2003-01-01T00:03:00Z</dTim>
+			<md uom="ft">4980.3</md>
+			<value uom="klbf">123.4</value>
+			<densData uom="1/ft">3</densData>
+			<qualData>good</qualData>
+			<fet uom="s">55.4</fet>
+		</channel>
+		<record>
+			<id>group B</id>
+			<seq>1</seq>
+			<md uom="ft">4980.3</md>
+			<value>456.7,890.1</value>
+		</record>
+	</realtime>
+	<realtime uidWell="w-12" uidWellbore="B-02" idSub="XSERV::12">
+		<dTim>2003-01-01T00:00:10Z</dTim>
+		<sequence>2</sequence>
+		<activityCode>drilling</activityCode>
+		<channel>
+			<id>group A</id>
+			<mnemonic>MYHKLD</mnemonic>
+			<value uom="klbf">123.4</value>
+		</channel>
+		<record>
+			<id>group B</id>
+			<seq>2</seq>
+			<md uom="ft">4980.3</md>
+			<value>457.7,891.1</value>
+		</record>
+	</realtime>
+</realtimes>

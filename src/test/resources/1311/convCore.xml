@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="../stylesheets/convCore.xsl" type="text/xsl" media="screen"?>
+<!--    		Example of Conventional Core data 		  -->
+<convCores 
+	xmlns="http://www.witsml.org/schemas/131" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.witsml.org/schemas/131  ../obj_convCore.xsd" 
+	version="1.3.1.1">
+	<documentInfo>
+		<DocumentName>convCore</DocumentName>
+		<FileCreationInformation>
+			<FileCreationDate>2001-10-31T08:15:00.000</FileCreationDate>
+			<SoftwareName>WITSML 1.3.0.0 Server</SoftwareName>
+			<FileCreator>John Smith</FileCreator>
+		</FileCreationInformation>
+	</documentInfo>
+	<convCore uidWell="W-12" uidWellbore="B-01" uid="56hg">
+		<nameWell>6507/7-A-42</nameWell>
+		<nameWellbore>A-42</nameWellbore>
+		<name>001</name>
+		<mdCoreTop uom="ft">5000</mdCoreTop>
+		<mdCoreBottom uom="ft">5090</mdCoreBottom>
+		<dTimCoreStart>2001-07-31T08:09:00.000</dTimCoreStart>
+		<dTimCoreEnd>2001-07-31T18:35:00.000</dTimCoreEnd>
+		<coreReference>Prev Csg Shoe @ 4300ft</coreReference>
+		<coringContractor>Clean Coring Co.</coringContractor>
+		<analysisContractor>Corelab</analysisContractor>
+		<coreBarrel>Fiberglass</coreBarrel>
+		<innerBarrelUsed>false</innerBarrelUsed>
+		<innerBarrelType>NA</innerBarrelType>
+		<lenBarrel uom="ft">90</lenBarrel>
+		<coreBitType>PDC</coreBitType>
+		<diaBit uom="in">8.5</diaBit>
+		<diaCore uom="in">2</diaCore>
+		<lenCored uom="ft">90</lenCored>
+		<lenRecovered uom="ft">87</lenRecovered>
+		<recoverPc uom="%">96.7</recoverPc>
+		<inclHole uom="dega">45</inclHole>
+		<coreOrientation>false</coreOrientation>
+		<coreMethod>Conventional</coreMethod>
+		<coreTreatmentMethod>6ft sect. sealed in wax at rig</coreTreatmentMethod>
+		<coreFluidUsed>LTOBM</coreFluidUsed>
+		<nameFormation>Rotliegende</nameFormation>
+		<geologyInterval uid="GI-001">
+			<typeLithology>core</typeLithology>
+			<mdTop uom="ft">5000</mdTop>
+			<mdBottom uom="ft">5030</mdBottom>
+			<dTim>2001-07-31T08:15:00.000</dTim>
+			<tvdTop uom="ft">4675</tvdTop>
+			<tvdBase uom="ft">4690</tvdBase>
+			<ropAv uom="ft/h">12</ropAv>
+			<ropMn uom="ft/h">10</ropMn>
+			<ropMx uom="ft/h">15</ropMx>
+			<wobAv uom="klbf">6</wobAv>
+			<tqAv uom="lbf.ft">600</tqAv>
+			<rpmAv uom="rpm">120</rpmAv>
+			<wtMudAv uom="lbm/ft3">10.5</wtMudAv>
+			<ecdTdAv uom="lbm/ft3">10.6</ecdTdAv>
+			<dxcAv>0.95</dxcAv>
+			<lithology uid="Lith001">
+				<type>Sandstone</type>
+				<codeLith>SS</codeLith>
+				<lithPc uom="%">100</lithPc>
+				<description>Sandstone: vf -f, clr-frost, mod srt, gd vis por</description>
+				<lithClass>Quartz Arenite</lithClass>
+				<grainType>Quartz</grainType>
+				<dunhamClass>NA</dunhamClass>
+				<color>Buff</color>
+				<texture>Friable</texture>
+				<hardness>Mod Hd</hardness>
+				<sizeGrain>Fine</sizeGrain>
+				<roundness>Mod Rnd</roundness>
+				<sorting>Good</sorting>
+				<matrixCement>Quartz</matrixCement>
+				<porosityVisible>Mod</porosityVisible>
+				<permeability>Moderate</permeability>
+				<densShale uom="lbm/ft3">2.66</densShale>
+				<qualifier uid="MLQ-001">
+					<type>Pyrite</type>
+					<description>Mica, tr. Pyrite</description>
+				</qualifier>
+				<qualifier uid="MLQ-002">
+					<type>Microfossils</type>
+					<description>Microfoss</description>
+				</qualifier>
+			</lithology>
+			<show>
+				<showRat>good</showRat>
+				<stainColor>Brown</stainColor>
+				<stainDistr>Even</stainDistr>
+				<stainPc uom="%">50</stainPc>
+				<natFlorColor>Yel-Brn</natFlorColor>
+				<natFlorPc uom="%">25</natFlorPc>
+				<natFlorLevel>bright</natFlorLevel>
+				<natFlorDesc>Yellow</natFlorDesc>
+				<cutColor>Red-Amber</cutColor>
+				<cutSpeed>fast</cutSpeed>
+				<cutStrength>Strong</cutStrength>
+				<cutForm>streaming</cutForm>
+				<cutLevel>Bright</cutLevel>
+				<cutFlorColor>Yellow</cutFlorColor>
+				<cutFlorSpeed>instantaneous</cutFlorSpeed>
+				<cutFlorStrength>bright</cutFlorStrength>
+				<cutFlorForm>blooming</cutFlorForm>
+				<cutFlorLevel>bright</cutFlorLevel>
+				<residueColor>brown</residueColor>
+				<showDesc>Good show, oil in mud</showDesc>
+				<impregnatedLitho>Impregnated Litho</impregnatedLitho>
+				<odor>Fair</odor>
+			</show>
+			<chromatograph>
+				<dTim>2001-08-31T08:15:00.000</dTim>
+				<mdTop uom="ft">5000</mdTop>
+				<mdBottom uom="ft">5030</mdBottom>
+				<wtMudIn uom="lbm/galUS">10.5</wtMudIn>
+				<wtMudOut uom="lbm/galUS">10.5</wtMudOut>
+				<chromType>FID</chromType>
+				<eTimChromCycle uom="s">30</eTimChromCycle>
+				<chromIntRpt>2001-08-31T08:15:00.000</chromIntRpt>
+				<methAv uom="ppm">600</methAv>
+				<methMn uom="ppm">500</methMn>
+				<methMx uom="ppm">700</methMx>
+				<ethAv uom="ppm">120</ethAv>
+				<ethMn uom="ppm">100</ethMn>
+				<ethMx uom="ppm">130</ethMx>
+				<propAv uom="ppm">45</propAv>
+				<propMn uom="ppm">40</propMn>
+				<propMx uom="ppm">70</propMx>
+				<ibutAv uom="ppm">10</ibutAv>
+				<ibutMn uom="ppm">5</ibutMn>
+				<ibutMx uom="ppm">15</ibutMx>
+				<nbutAv uom="ppm">10</nbutAv>
+				<nbutMn uom="ppm">10</nbutMn>
+				<nbutMx uom="ppm">10</nbutMx>
+				<ipentAv uom="ppm">1</ipentAv>
+				<ipentMn uom="ppm">1</ipentMn>
+				<ipentMx uom="ppm">1</ipentMx>
+				<npentAv uom="ppm">1</npentAv>
+				<npentMn uom="ppm">.099</npentMn>
+				<npentMx uom="ppm">.099</npentMx>
+				<epentAv uom="ppm">.099</epentAv>
+				<epentMn uom="ppm">.099</epentMn>
+				<epentMx uom="ppm">.099</epentMx>
+				<ihexAv uom="ppm">.099</ihexAv>
+				<ihexMn uom="ppm">.099</ihexMn>
+				<ihexMx uom="ppm">.099</ihexMx>
+				<nhexAv uom="ppm">.099</nhexAv>
+				<nhexMn uom="ppm">.099</nhexMn>
+				<nhexMx uom="ppm">.099</nhexMx>
+				<co2Av uom="ppm">.099</co2Av>
+				<co2Mn uom="ppm">.099</co2Mn>
+				<co2Mx uom="ppm">.099</co2Mx>
+				<h2sAv uom="ppm">0</h2sAv>
+				<h2sMn uom="ppm">0</h2sMn>
+				<h2sMx uom="ppm">0</h2sMx>
+				<acetylene uom="ppm">.099</acetylene>
+			</chromatograph>
+			<mudGas>
+				<gasAv uom="%">1.24</gasAv>
+				<gasPeak uom="%">1.4</gasPeak>
+				<gasPeakType>connection gas</gasPeakType>
+				<gasBackgnd uom="%">1</gasBackgnd>
+				<gasConAv uom="%">1.2</gasConAv>
+				<gasConMx uom="%">1.3</gasConMx>
+				<gasTrip uom="%">2.4</gasTrip>
+			</mudGas>
+			<densBulk uom="lbm/ft3">1.66</densBulk>
+			<densShale uom="lbm/ft3">1.65</densShale>
+			<calcite uom="%">6</calcite>
+			<dolomite uom="%">1</dolomite>
+			<cec uom="meq/g">.099</cec>
+			<calcStab uom="%">.099</calcStab>
+			<nameFormation>Rotliegende</nameFormation>
+			<lithostratigraphic>Sandstone</lithostratigraphic>
+			<chronostratigraphic>Permian</chronostratigraphic>
+			<sizeMn uom="in">.099</sizeMn>
+			<sizeMx uom="in">.099</sizeMx>
+			<lenPlug uom="in">.099</lenPlug>
+			<description>Sandstone: vf -f, clr-frost, mod srt, gd vis por</description>
+			<cuttingFluid>Chlorothene</cuttingFluid>
+			<cleaningMethod>NA - Cores sealed in wax / boxed</cleaningMethod>
+			<dryingMethod>NA - Cores sealed in wax / boxed</dryingMethod>
+			<comments>Recovery 100% through this interval</comments>
+		</geologyInterval>
+		<coreDescription>Core Description</coreDescription>
+		<commonData>
+			<itemState>actual</itemState>
+			<comments>Core was cleanly recovered and boxed at rig</comments>
+		</commonData>
+	</convCore>
+</convCores>

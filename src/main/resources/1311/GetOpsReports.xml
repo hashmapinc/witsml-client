@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <opsReports version="1.3.1.1" xmlns="http://www.witsml.org/schemas/131">
-    <opsReport uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="">
+    <opsReport uidWell="" uidWellbore="" uid="">
         <nameWell/>
         <nameWellbore/>
         <name/>

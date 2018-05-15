@@ -4,7 +4,7 @@
         xmlns="http://www.witsml.org/schemas/1series"
         xsi:schemaLocation="http://www.witsml.org/schemas/1series  ../xsd_schemas/obj_stimJob.xsd"
         version="1.4.1.1" >
-    <stimJob uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="">
+    <stimJob uidWell="" uidWellbore="" uid="">
         <nameWell/>
         <nameWellbore/>
         <name/>

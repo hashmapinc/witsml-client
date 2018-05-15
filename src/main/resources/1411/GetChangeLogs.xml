@@ -4,7 +4,7 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.witsml.org/schemas/1series  ../xsd_schemas/obj_changeLog.xsd"
         version="1.4.1.1">
-    <changeLog uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="" uidObject="">
+    <changeLog uidWell="" uidWellbore="" uid="" uidObject="">
         <nameWell/>
         <nameWellbore/>
         <nameObject/>

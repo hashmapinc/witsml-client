@@ -1,0 +1,816 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="./stylesheets/generic.xsl" type="text/xsl" media="screen"?>
+<stimJobs   
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.witsml.org/schemas/1series"
+	xsi:schemaLocation="http://www.witsml.org/schemas/1series  ../xsd_schemas/obj_stimJob.xsd" 
+	version="1.4.1.1" >
+<!-- This file is an example of the object for Performance Enhancement. -->
+  <stimJob uidWell="UIDWell" uidWellbore="UIDWellbore" uid="UIDFracJob">
+    <nameWell>#1 FRACTURED WELL</nameWell>
+    <nameWellbore>#1 FRACTURED WELLBORE</nameWellbore>
+    <name>FRAC JOB #1</name>
+    <kind>frac</kind>
+    <commodityCode>71131001</commodityCode>
+    <serviceCompany>Service Company Name</serviceCompany>
+    <supervisor>Mr. I. M. Supervisor</supervisor>
+    <apiNumber>uwi1234567</apiNumber>
+    <customerName>The Customers Name</customerName>
+    <dTimArrival>2010-02-03T15:35:22Z</dTimArrival>
+    <dTimStart>2010-02-03T22:33:22Z</dTimStart>
+    <totalPumpTime uom="min">1509</totalPumpTime>
+    <maxJobPres uom="psi">7254</maxJobPres>
+    <maxFluidRate uom="bbl/min">29</maxFluidRate>
+    <avgJobPres uom="psi">2517.13</avgJobPres>
+    <totalJobVolume uom="galUS">131068</totalJobVolume>
+    <totalProppantWt uom="lbm">106234</totalProppantWt>
+    <proppantName>White Sand #70</proppantName>
+    <perfBallCount>33</perfBallCount>
+    <totalN2StdVolume uom="Mscf(60F)">1003.6</totalN2StdVolume>
+    <totalCO2Mass uom="tonUS">176</totalCO2Mass>
+    <hhpOrdered uom="hhp">650</hhpOrdered>
+    <hhpUsed uom="hhp">667</hhpUsed>
+    <treatmentCount>1</treatmentCount>
+    <fluidEfficiency uom="%">75</fluidEfficiency>
+    <flowBackPres uom="psi">125</flowBackPres>
+    <flowBackRate uom="bbl/min">2.5</flowBackRate>
+    <flowBackVolume uom="bbl">217</flowBackVolume>
+    <treatmentIntervalCount>1</treatmentIntervalCount>
+    <bottomholeStaticTemperature uom="degF">166</bottomholeStaticTemperature>
+    <treatingBottomholeTemperature uom="degF">178</treatingBottomholeTemperature>
+    <jobInterval uid="YC0CSXNJRL3GLAAA">
+      <uidTreatmentInterval>YKVOYHMJB1S12DBA</uidTreatmentInterval>
+      <name>Treatment Interval #1</name>
+      <number>1</number>
+      <dTimStart>2010-03-04T22:45:15Z</dTimStart>
+      <formationName>Formation lower</formationName>
+      <mdFormationTop uom="ft">9300</mdFormationTop>
+      <mdFormationBottom uom="ft">9500</mdFormationBottom>
+      <tvdFormationTop uom="ft">9000</tvdFormationTop>
+      <tvdFormationBottom uom="ft">9500</tvdFormationBottom>
+      <openHoleName>Main Wellbore</openHoleName>
+      <openHoleDiameter uom="inUS">12.25</openHoleDiameter>
+      <mdOpenHoleTop uom="ftUS">9000</mdOpenHoleTop>
+      <mdOpenHoleBottom uom="ft">10000</mdOpenHoleBottom>
+      <tvdOpenHoleTop uom="ft">9000</tvdOpenHoleTop>
+      <tvdOpenHoleBottom uom="ft">10000</tvdOpenHoleBottom>
+      <totalFrictionPresLoss uom="psi">856</totalFrictionPresLoss>
+      <totalPumpTime uom="min">380</totalPumpTime>
+      <maxPresTubing uom="psi">332</maxPresTubing>
+      <maxPresAnnulus uom="psi">1956</maxPresAnnulus>
+      <maxFluidRateTubing uom="bbl/min">2.1</maxFluidRateTubing>
+      <maxFluidRateAnnulus uom="bbl/min">10.1</maxFluidRateAnnulus>
+      <avgPresTubing uom="psi">2719</avgPresTubing>
+      <avgPresCasing uom="psi">3575</avgPresCasing>
+      <breakDownPres uom="psi">3654</breakDownPres>
+      <averagePres uom="psi">3575</averagePres>
+      <avgBaseFluidReturnRate uom="bbl/min">4.26</avgBaseFluidReturnRate>
+      <avgSlurryReturnRate uom="bbl/min">12.5</avgSlurryReturnRate>
+      <avgBottomholeRate uom="bbl/min">3.5</avgBottomholeRate>
+      <totalVolume uom="galUS">189000</totalVolume>
+      <maxProppantConcSurface uom="lbm/galUS">4.6</maxProppantConcSurface>
+      <maxProppantConcBottomhole uom="lbm/galUS">14.2</maxProppantConcBottomhole>
+      <avgProppantConcSurface uom="lbm/galUS">3.98</avgProppantConcSurface>
+      <avgProppantConcBottomhole uom="lbm/galUS">1.18</avgProppantConcBottomhole>
+      <perfproppantConc uom="lbm/galUS">6.5</perfproppantConc>
+      <totalProppantMass uom="lbm">35478</totalProppantMass>
+      <totalProppantUsage uid="23434AADDFF">
+        <name>Excellent Proppant #34</name>
+        <mass uom="lbm">35269</mass>
+      </totalProppantUsage>
+      <totalProppantUsage uid="AADDFF2345A">
+        <name>Excellent Proppant #43</name>
+        <mass uom="lbm">2266</mass>
+      </totalProppantUsage>
+      <percentProppantPumped uom="%">58</percentProppantPumped>
+      <wellboreProppantMass uom="lbm">27657</wellboreProppantMass>
+      <proppantName>Most Excellent proppant #43</proppantName>
+      <proppantName>Most Excellent proppant #44</proppantName>
+      <formationProppantMass uom="lbm">125532</formationProppantMass>
+      <perfBallCount>13</perfBallCount>
+      <totalN2StdVolume uom="Mscf(60F)">1164</totalN2StdVolume>
+      <totalCO2Mass uom="tonUS">135</totalCO2Mass>
+      <fluidName>Most Excellent Frac Fluid #42</fluidName>
+      <fluidName>Most Excellent Frac Fluid #43</fluidName>
+      <fractureGradient uom="psi/ft">0.669</fractureGradient>
+      <finalFractureGradient uom="psi/ft">0.774</finalFractureGradient>
+      <initialShutinPres uom="psi">1154</initialShutinPres>
+      <shutinPres uid="AYKKKES4458XV">
+        <pres uom="psi">1000</pres>
+        <timeAfterShutin uom="min">5</timeAfterShutin>
+      </shutinPres>
+      <shutinPres uid="AYKKKES4458XW">
+        <pres uom="psi">750</pres>
+        <timeAfterShutin uom="min">10</timeAfterShutin>
+      </shutinPres>
+      <shutinPres uid="AYKKKES4458XX">
+        <pres uom="psi">500</pres>
+        <timeAfterShutin uom="min">15</timeAfterShutin>
+      </shutinPres>
+      <screenOutPres uom="psi">654</screenOutPres>
+      <hhpOrderedCO2 uom="hhp">725</hhpOrderedCO2>
+      <hhpOrderedFluid uom="hhp">750</hhpOrderedFluid>
+      <hhpUsedCO2 uom="hhp">650</hhpUsedCO2>
+      <hhpUsedFluid uom="hhp">725</hhpUsedFluid>
+      <perfBallSize uom="inUS">0.75</perfBallSize>
+      <screenedOut>true</screenedOut>
+      <avgFractureWidth uom="ftUS">18.4</avgFractureWidth>
+      <avgConductivity uom="ft/s">22.5</avgConductivity>
+      <netPres uom="psi">342</netPres>
+      <closurePres uom="psi">2285</closurePres>
+      <closureDuration uom="min">1.6</closureDuration>
+      <flowPath uid="YKVOYHMJB1S1MCCA">
+        <kind>tubing</kind>
+        <name>Treatment 1 Flowpath Tubing</name>
+        <description>This is test flowpath 1, treatment 1</description>
+        <maxTreatmentPres uom="psi">4655</maxTreatmentPres>
+        <maxSlurryRate uom="bbl/min">9.6</maxSlurryRate>
+        <maxWellheadRate uom="bbl/min">10.2</maxWellheadRate>
+        <maxN2StdRate uom="Mscf(60F)/d">10035</maxN2StdRate>
+        <maxCO2LiquidRate uom="bbl/min">4.5</maxCO2LiquidRate>
+        <maxGelRate uom="bbl/min">11.1</maxGelRate>
+        <maxOilRate uom="bbl/min">12.2</maxOilRate>
+        <maxAcidRate uom="bbl/min">2.2</maxAcidRate>
+        <maxPropConc uom="lbm/galUS">10.2</maxPropConc>
+        <maxSlurryPropConc uom="lbm/galUS">12.2</maxSlurryPropConc>
+        <avgTreatPres uom="psi">2754</avgTreatPres>
+        <avgBaseFluidRate uom="bbl/min">8.3</avgBaseFluidRate>
+        <avgSlurryRate uom="bbl/min">7.76</avgSlurryRate>
+        <avgWellheadRate uom="bbl/min">11.2</avgWellheadRate>
+        <avgN2StdRate uom="Mscf(60F)/d">1001</avgN2StdRate>
+        <avgCO2LiquidRate uom="bbl/min">9.4</avgCO2LiquidRate>
+        <avgGelRate uom="bbl/min">11.2</avgGelRate>
+        <avgOilRate uom="bbl/min">6.5</avgOilRate>
+        <avgAcidRate uom="bbl/min">2.1</avgAcidRate>
+        <avgPropConc uom="lbm/galUS">6.34</avgPropConc>
+        <avgSlurryPropConc uom="lbm/galUS">5.93</avgSlurryPropConc>
+        <avgTemperature uom="degF">125</avgTemperature>
+        <avgIntervalPhaseFraction>22</avgIntervalPhaseFraction>
+        <avgBaseFluidQuality uom="%">75</avgBaseFluidQuality>
+        <avgN2BaseFluidQuality uom="%">67</avgN2BaseFluidQuality>
+        <avgCO2BaseFluidQuality uom="%">70</avgCO2BaseFluidQuality>
+        <avgHydraulicPower uom="hhp">256</avgHydraulicPower>
+        <baseFluidVol uom="galUS">25432</baseFluidVol>
+        <slurryVol uom="galUS">24335</slurryVol>
+        <wellheadVol uom="galUS">25000</wellheadVol>
+        <stdVolN2 uom="Mscf(60F)">435000</stdVolN2>
+        <massCO2 uom="tonUS">162</massCO2>
+        <gelVol uom="galUS">2540</gelVol>
+        <oilVol uom="galUS">10200</oilVol>
+        <acidVol uom="galUS">1000</acidVol>
+        <baseFluidBypassVol uom="galUS">1200</baseFluidBypassVol>
+        <propMass uom="lbm">146785</propMass>
+        <maxPmaxPacPres uom="psi">3554</maxPmaxPacPres>
+        <maxPmaxWeaklinkPres uom="psi">2250</maxPmaxWeaklinkPres>
+        <avgPmaxPacPres uom="psi">2250</avgPmaxPacPres>
+        <avgPmaxWeaklinkPres uom="psi">1154</avgPmaxWeaklinkPres>
+        <shutinPres5Min uom="psi">532</shutinPres5Min>
+        <shutinPres10Min uom="psi">256</shutinPres10Min>
+        <shutinPres15Min uom="psi">126</shutinPres15Min>
+        <breakDownPres uom="psi">3227</breakDownPres>
+        <percentPad uom="%">14.1</percentPad>
+        <fractureGradient uom="psi/ft">0.784</fractureGradient>
+        <pipeFrictionFactor>0.774</pipeFrictionFactor>
+        <stageCount>2</stageCount>
+        <tubular uid="IIX3666X0KEE">
+          <type>Casing</type>
+          <id uom="inUS">6.5</id>
+          <od uom="inUS">7</od>
+          <weight uom="lbm/ft">31.6</weight>
+          <mdTop uom="ftUS">0</mdTop>
+          <mdBottom uom="ftUS">10000</mdBottom>
+          <volumeFactor uom="bblPft">0.165</volumeFactor>
+        </tubular>
+        <tubular uid="XX99845LL4WV">
+          <type>Tubing</type>
+          <id uom="inUS">3.875</id>
+          <od uom="inUS">4</od>
+          <weight uom="lbm/ft">15.2</weight>
+          <mdTop uom="ftUS">0</mdTop>
+          <mdBottom uom="ftUS">10000</mdBottom>
+          <volumeFactor uom="bblPft">0.226</volumeFactor>
+        </tubular>
+        <jobStage uid="YKVOYHMJB1SL2OCA">
+          <kind>proppant laden fluid</kind>
+          <name>Flush 1</name>
+          <description>IN</description>
+          <number>1</number>
+          <dTimStart>2010-02-04T22:33:44Z</dTimStart>
+          <dTimEnd>2010-02-05T10:33:53Z</dTimEnd>
+          <pumpTime uom="min">126</pumpTime>
+          <startRateSurfaceLiquid uom="bbl/min">5.6</startRateSurfaceLiquid>
+          <endRateSurfaceLiquid uom="bbl/min">7.4</endRateSurfaceLiquid>
+          <avgRateSurfaceLiquid uom="bbl/min">3.5</avgRateSurfaceLiquid>
+          <startRateSurfaceCO2 uom="bbl/min">3.4</startRateSurfaceCO2>
+          <endRateSurfaceCO2 uom="bbl/min">3.4</endRateSurfaceCO2>
+          <avgRateSurfaceCO2 uom="bbl/min">3.6</avgRateSurfaceCO2>
+          <startStdRateSurfaceN2 uom="Mscf(60F)/d">11432</startStdRateSurfaceN2>
+          <endStdRateSurfaceN2 uom="Mscf(60F)/d">11432</endStdRateSurfaceN2>
+          <avgStdRateSurfaceN2 uom="Mscf(60F)/d">1105</avgStdRateSurfaceN2>
+          <startPresSurface uom="psi">265</startPresSurface>
+          <endPresSurface uom="psi">254</endPresSurface>
+          <averagePresSurface uom="psi">1465</averagePresSurface>
+          <startPumpRateBottomhole uom="bbl/min">6.5</startPumpRateBottomhole>
+          <endPumpRateBottomhole uom="bbl/min">10.2</endPumpRateBottomhole>
+          <avgPumpRateBottomhole uom="bbl/min">8.5</avgPumpRateBottomhole>
+          <startPresBottomhole uom="psi">2254</startPresBottomhole>
+          <endPresBottomhole uom="psi">4855</endPresBottomhole>
+          <averagePresBottomhole uom="psi">4450</averagePresBottomhole>
+          <startProppantConcSurface uom="lbm/galUS">5.5</startProppantConcSurface>
+          <endProppantConcSurface uom="lbm/galUS">6.5</endProppantConcSurface>
+          <avgProppantConcSurface uom="lbm/galUS">3.5</avgProppantConcSurface>
+          <startProppantConcBottomhole uom="lbm/galUS">4.6</startProppantConcBottomhole>
+          <endProppantConcBottomhole uom="lbm/galUS">12.5</endProppantConcBottomhole>
+          <avgProppantConcBottomhole uom="lbm/galUS">5.8</avgProppantConcBottomhole>
+          <startFoamRateN2 uom="bbl/min">2.1</startFoamRateN2>
+          <endFoamRateN2 uom="bbl/min">10.4</endFoamRateN2>
+          <startFoamRateCO2 uom="bbl/min">8.5</startFoamRateCO2>
+          <endFoamRateCO2 uom="bbl/min">6.7</endFoamRateCO2>
+          <fluidVolBase uom="galUS">25433</fluidVolBase>
+          <fluidVolSlurry uom="galUS">33243</fluidVolSlurry>
+          <slurryRateBegin uom="bbl/min">7.8</slurryRateBegin>
+          <slurryRateEnd uom="bbl/min">6.3</slurryRateEnd>
+          <proppantMassWellHead uom="lbm">8000</proppantMassWellHead>
+          <proppantMass uom="lbm">7566</proppantMass>
+          <maxPres uom="psi">4321</maxPres>
+          <maxSlurryRate uom="bbl/min">9.9</maxSlurryRate>
+          <maxWellheadRate uom="bbl/min">8.9</maxWellheadRate>
+          <maxN2StdRate uom="Mscf(60F)/d">11343</maxN2StdRate>
+          <maxCO2LiquidRate uom="bbl/min">3.4</maxCO2LiquidRate>
+          <maxPropConc uom="lbm/galUS">12.6</maxPropConc>
+          <maxSlurryPropConc uom="lbm/galUS">11.8</maxSlurryPropConc>
+          <avgPropConc uom="lbm/galUS">5.6</avgPropConc>
+          <avgSlurryPropConc uom="lbm/galUS">7.5</avgSlurryPropConc>
+          <avgTemperature uom="degF">125</avgTemperature>
+          <avgInternalPhaseFraction uom="%">21.1</avgInternalPhaseFraction>
+          <avgBaseFluidQuality uom="%">75</avgBaseFluidQuality>
+          <avgN2BaseFluidQuality uom="%">54</avgN2BaseFluidQuality>
+          <avgCO2BaseFluidQuality uom="%">65</avgCO2BaseFluidQuality>
+          <avgHydraulicPower uom="hhp">554</avgHydraulicPower>
+          <avgBaseFluidRate uom="bbl/min">10.9</avgBaseFluidRate>
+          <avgSlurryRate uom="bbl/min">5.6</avgSlurryRate>
+          <avgWellheadRate uom="bbl/min">4.7</avgWellheadRate>
+          <avgN2StdRate uom="Mscf(60F)/d">734334</avgN2StdRate>
+          <avgCO2Rate uom="bbl/min">10.8</avgCO2Rate>
+          <baseFluidVol uom="galUS">22543</baseFluidVol>
+          <slurryVol uom="galUS">5543</slurryVol>
+          <wellheadVol uom="galUS">234</wellheadVol>
+          <maxPmaxPacPres uom="psi">3342</maxPmaxPacPres>
+          <maxPmaxWeaklinkPres uom="psi">5543</maxPmaxWeaklinkPres>
+          <maxGelRate uom="bbl/min">1.2</maxGelRate>
+          <maxOilRate uom="bbl/min">0.9</maxOilRate>
+          <maxAcidRate uom="bbl/min">3.5</maxAcidRate>
+          <avgGelRate uom="bbl/min">4.5</avgGelRate>
+          <avgOilRate uom="bbl/min">2.3</avgOilRate>
+          <avgAcidRate uom="bbl/min">1.1</avgAcidRate>
+          <gelVolume uom="galUS">9833</gelVolume>
+          <oilVolume uom="galUS">443</oilVolume>
+          <acidVolume uom="galUS">100</acidVolume>
+          <baseFluidBypassVol uom="galUS">2335</baseFluidBypassVol>
+          <frictionFactor>0.794</frictionFactor>
+          <stageFluid>
+            <name>Excellent Fracing Fluid #3</name>
+            <fluidVol uom="galUS">55</fluidVol>
+            <waterSource>Rig Supply</waterSource>
+            <additive uid="ABCDEFG67890">
+              <name>XPS336</name>
+              <kind>proppant stabilizer</kind>
+              <volume uom="galUS">6.3</volume>
+              <mass uom="lbm">65</mass>
+            </additive>
+            <additive uid="ABCDEFG12345">
+              <name>EPS415</name>
+              <kind>proppant stabilizer</kind>
+              <volume uom="galUS">3.1</volume>
+              <mass uom="lbm">34</mass>
+            </additive>
+            <proppant>
+              <name>Excellent proppant #65</name>
+              <kind>sand</kind>
+              <weight uom="lbm">5534</weight>
+              <sieveSize>40/70</sieveSize>
+            </proppant>
+          </stageFluid>
+        </jobStage>
+        <jobStage uid="YKVOYHMJB1SL2OCB">
+          <kind>proppant laden fluid</kind>
+          <name>DISPLACEMENT</name>
+          <description>IN</description>
+          <number>2</number>
+          <dTimStart>2010-02-04T22:33:44Z</dTimStart>
+          <dTimEnd>2010-02-05T10:33:53Z</dTimEnd>
+          <pumpTime uom="min">126</pumpTime>
+          <startRateSurfaceLiquid uom="bbl/min">5.6</startRateSurfaceLiquid>
+          <endRateSurfaceLiquid uom="bbl/min">7.4</endRateSurfaceLiquid>
+          <avgRateSurfaceLiquid uom="bbl/min">3.5</avgRateSurfaceLiquid>
+          <startRateSurfaceCO2 uom="bbl/min">3.4</startRateSurfaceCO2>
+          <endRateSurfaceCO2 uom="bbl/min">3.4</endRateSurfaceCO2>
+          <avgRateSurfaceCO2 uom="bbl/min">3.6</avgRateSurfaceCO2>
+          <startStdRateSurfaceN2 uom="Mscf(60F)/d">11432</startStdRateSurfaceN2>
+          <endStdRateSurfaceN2 uom="Mscf(60F)/d">11432</endStdRateSurfaceN2>
+          <avgStdRateSurfaceN2 uom="Mscf(60F)/d">1105</avgStdRateSurfaceN2>
+          <startPresSurface uom="psi">265</startPresSurface>
+          <endPresSurface uom="psi">254</endPresSurface>
+          <averagePresSurface uom="psi">1465</averagePresSurface>
+          <startPumpRateBottomhole uom="bbl/min">6.5</startPumpRateBottomhole>
+          <endPumpRateBottomhole uom="bbl/min">10.2</endPumpRateBottomhole>
+          <avgPumpRateBottomhole uom="bbl/min">8.5</avgPumpRateBottomhole>
+          <startPresBottomhole uom="psi">2254</startPresBottomhole>
+          <endPresBottomhole uom="psi">4855</endPresBottomhole>
+          <averagePresBottomhole uom="psi">4450</averagePresBottomhole>
+          <startProppantConcSurface uom="lbm/galUS">5.5</startProppantConcSurface>
+          <endProppantConcSurface uom="lbm/galUS">6.5</endProppantConcSurface>
+          <avgProppantConcSurface uom="lbm/galUS">3.5</avgProppantConcSurface>
+          <startProppantConcBottomhole uom="lbm/galUS">4.6</startProppantConcBottomhole>
+          <endProppantConcBottomhole uom="lbm/galUS">12.5</endProppantConcBottomhole>
+          <avgProppantConcBottomhole uom="lbm/galUS">5.8</avgProppantConcBottomhole>
+          <startFoamRateN2 uom="bbl/min">2.1</startFoamRateN2>
+          <endFoamRateN2 uom="bbl/min">10.4</endFoamRateN2>
+          <startFoamRateCO2 uom="bbl/min">8.5</startFoamRateCO2>
+          <endFoamRateCO2 uom="bbl/min">6.7</endFoamRateCO2>
+          <fluidVolBase uom="galUS">25433</fluidVolBase>
+          <fluidVolSlurry uom="galUS">33243</fluidVolSlurry>
+          <slurryRateBegin uom="bbl/min">7.8</slurryRateBegin>
+          <slurryRateEnd uom="bbl/min">6.3</slurryRateEnd>
+          <proppantMassWellHead uom="lbm">8000</proppantMassWellHead>
+          <proppantMass uom="lbm">7566</proppantMass>
+          <maxPres uom="psi">4321</maxPres>
+          <maxSlurryRate uom="bbl/min">9.9</maxSlurryRate>
+          <maxWellheadRate uom="bbl/min">8.9</maxWellheadRate>
+          <maxN2StdRate uom="Mscf(60F)/d">11343</maxN2StdRate>
+          <maxCO2LiquidRate uom="bbl/min">3.4</maxCO2LiquidRate>
+          <maxPropConc uom="lbm/galUS">12.6</maxPropConc>
+          <maxSlurryPropConc uom="lbm/galUS">11.8</maxSlurryPropConc>
+          <avgPropConc uom="lbm/galUS">5.6</avgPropConc>
+          <avgSlurryPropConc uom="lbm/galUS">7.5</avgSlurryPropConc>
+          <avgTemperature uom="degF">125</avgTemperature>
+          <avgInternalPhaseFraction uom="%">21.1</avgInternalPhaseFraction>
+          <avgBaseFluidQuality uom="%">75</avgBaseFluidQuality>
+          <avgN2BaseFluidQuality uom="%">54</avgN2BaseFluidQuality>
+          <avgCO2BaseFluidQuality uom="%">65</avgCO2BaseFluidQuality>
+          <avgHydraulicPower uom="hhp">554</avgHydraulicPower>
+          <avgBaseFluidRate uom="bbl/min">10.9</avgBaseFluidRate>
+          <avgSlurryRate uom="bbl/min">5.6</avgSlurryRate>
+          <avgWellheadRate uom="bbl/min">4.7</avgWellheadRate>
+          <avgN2StdRate uom="Mscf(60F)/d">734334</avgN2StdRate>
+          <avgCO2Rate uom="bbl/min">10.8</avgCO2Rate>
+          <baseFluidVol uom="galUS">22543</baseFluidVol>
+          <slurryVol uom="galUS">5543</slurryVol>
+          <wellheadVol uom="galUS">234</wellheadVol>
+          <maxPmaxPacPres uom="psi">3342</maxPmaxPacPres>
+          <maxPmaxWeaklinkPres uom="psi">5543</maxPmaxWeaklinkPres>
+          <maxGelRate uom="bbl/min">1.2</maxGelRate>
+          <maxOilRate uom="bbl/min">0.9</maxOilRate>
+          <maxAcidRate uom="bbl/min">3.5</maxAcidRate>
+          <avgGelRate uom="bbl/min">4.5</avgGelRate>
+          <avgOilRate uom="bbl/min">2.3</avgOilRate>
+          <avgAcidRate uom="bbl/min">1.1</avgAcidRate>
+          <gelVolume uom="galUS">9833</gelVolume>
+          <oilVolume uom="galUS">443</oilVolume>
+          <acidVolume uom="galUS">100</acidVolume>
+          <baseFluidBypassVol uom="galUS">2335</baseFluidBypassVol>
+          <frictionFactor>0.794</frictionFactor>
+          <stageFluid>
+            <name>Excellent Fracing Fluid #3</name>
+            <fluidVol uom="galUS">55</fluidVol>
+            <waterSource>Rig Supply</waterSource>
+            <additive uid="ABCDEFG12345">
+              <name>EPS415</name>
+              <kind>proppant stabilizer</kind>
+              <volume uom="galUS">3.1</volume>
+              <mass uom="lbm">204</mass>
+            </additive>
+            <additive uid="ABCDEFG12345">
+              <name>EPS415</name>
+              <kind>proppant stabilizer</kind>
+              <volume uom="galUS">3.1</volume>
+              <mass uom="lbm">204</mass>
+            </additive>
+            <proppant>
+              <name>Excellent proppant #65</name>
+              <kind>sand</kind>
+              <weight uom="lbm">5534</weight>
+              <sieveSize>40/70</sieveSize>
+            </proppant>
+          </stageFluid>
+        </jobStage>
+        <jobEvent uid="fp1event1">
+          <number>1</number>
+          <dTim>2010-02-04T22:15:33Z</dTim>
+          <comment>Started pumping</comment>
+          <numStage>1</numStage>
+        </jobEvent>
+        <jobEvent uid="fp1event2">
+          <number>2</number>
+          <dTim>2010-02-04T22:15:33Z</dTim>
+          <comment>Proppant Laden Fluid</comment>
+          <numStage>1</numStage>
+        </jobEvent>
+      </flowPath>
+      <flowPath uid="YKVOYHMJB1S1MCCB">
+        <kind>annulus</kind>
+        <name>Treatment 1 Flowpath Annulus</name>
+        <description>testflowpath 2,treatment 1</description>
+        <maxTreatmentPres uom="psi">4655</maxTreatmentPres>
+        <maxSlurryRate uom="bbl/min">9.6</maxSlurryRate>
+        <maxWellheadRate uom="bbl/min">10.2</maxWellheadRate>
+        <maxN2StdRate uom="Mscf(60F)/d">10035</maxN2StdRate>
+        <maxCO2LiquidRate uom="bbl/min">4.5</maxCO2LiquidRate>
+        <maxGelRate uom="bbl/min">11.1</maxGelRate>
+        <maxOilRate uom="bbl/min">12.2</maxOilRate>
+        <maxAcidRate uom="bbl/min">2.2</maxAcidRate>
+        <maxPropConc uom="lbm/galUS">10.2</maxPropConc>
+        <maxSlurryPropConc uom="lbm/galUS">12.2</maxSlurryPropConc>
+        <avgTreatPres uom="psi">2754</avgTreatPres>
+        <avgBaseFluidRate uom="bbl/min">8.3</avgBaseFluidRate>
+        <avgSlurryRate uom="bbl/min">7.76</avgSlurryRate>
+        <avgWellheadRate uom="bbl/min">11.2</avgWellheadRate>
+        <avgN2StdRate uom="Mscf(60F)/d">1001</avgN2StdRate>
+        <avgCO2LiquidRate uom="bbl/min">9.4</avgCO2LiquidRate>
+        <avgGelRate uom="bbl/min">11.2</avgGelRate>
+        <avgOilRate uom="bbl/min">6.5</avgOilRate>
+        <avgAcidRate uom="bbl/min">2.1</avgAcidRate>
+        <avgPropConc uom="lbm/galUS">6.34</avgPropConc>
+        <avgSlurryPropConc uom="lbm/galUS">5.93</avgSlurryPropConc>
+        <avgTemperature uom="degF">125</avgTemperature>
+        <avgIntervalPhaseFraction>22</avgIntervalPhaseFraction>
+        <avgBaseFluidQuality uom="%">75</avgBaseFluidQuality>
+        <avgN2BaseFluidQuality uom="%">67</avgN2BaseFluidQuality>
+        <avgCO2BaseFluidQuality uom="%">70</avgCO2BaseFluidQuality>
+        <avgHydraulicPower uom="hhp">256</avgHydraulicPower>
+        <baseFluidVol uom="galUS">25432</baseFluidVol>
+        <slurryVol uom="galUS">24335</slurryVol>
+        <wellheadVol uom="galUS">25000</wellheadVol>
+        <stdVolN2 uom="Mscf(60F)">435000</stdVolN2>
+        <massCO2 uom="tonUS">162</massCO2>
+        <gelVol uom="galUS">2540</gelVol>
+        <oilVol uom="galUS">10200</oilVol>
+        <acidVol uom="galUS">1000</acidVol>
+        <baseFluidBypassVol uom="galUS">1200</baseFluidBypassVol>
+        <propMass uom="lbm">146785</propMass>
+        <maxPmaxPacPres uom="psi">3554</maxPmaxPacPres>
+        <maxPmaxWeaklinkPres uom="psi">2250</maxPmaxWeaklinkPres>
+        <avgPmaxPacPres uom="psi">2250</avgPmaxPacPres>
+        <avgPmaxWeaklinkPres uom="psi">1154</avgPmaxWeaklinkPres>
+        <shutinPres5Min uom="psi">532</shutinPres5Min>
+        <shutinPres10Min uom="psi">256</shutinPres10Min>
+        <shutinPres15Min uom="psi">126</shutinPres15Min>
+        <breakDownPres uom="psi">3227</breakDownPres>
+        <percentPad uom="%">14.1</percentPad>
+        <fractureGradient uom="psi/ft">0.784</fractureGradient>
+        <pipeFrictionFactor>0.774</pipeFrictionFactor>
+        <stageCount>2</stageCount>
+        <tubular uid="XX8834XYKE">
+          <type>Casing</type>
+          <id uom="inUS">6.5</id>
+          <od uom="inUS">7</od>
+          <weight uom="lbm/ft">31.6</weight>
+          <mdTop uom="ftUS">0</mdTop>
+          <mdBottom uom="ftUS">10000</mdBottom>
+          <volumeFactor uom="bblPft">0.165</volumeFactor>
+        </tubular>
+        <jobStage uid="YKVOYHMJB1SL2OCC">
+          <kind>proppant laden fluid</kind>
+          <name>My stage name.</name>
+          <description>IN</description>
+          <number>1</number>
+          <dTimStart>2010-02-04T22:33:44Z</dTimStart>
+          <dTimEnd>2010-02-05T10:33:53Z</dTimEnd>
+          <pumpTime uom="min">126</pumpTime>
+          <startRateSurfaceLiquid uom="bbl/min">5.6</startRateSurfaceLiquid>
+          <endRateSurfaceLiquid uom="bbl/min">7.4</endRateSurfaceLiquid>
+          <avgRateSurfaceLiquid uom="bbl/min">3.5</avgRateSurfaceLiquid>
+          <startRateSurfaceCO2 uom="bbl/min">3.4</startRateSurfaceCO2>
+          <endRateSurfaceCO2 uom="bbl/min">3.4</endRateSurfaceCO2>
+          <avgRateSurfaceCO2 uom="bbl/min">3.6</avgRateSurfaceCO2>
+          <startStdRateSurfaceN2 uom="Mscf(60F)/d">11432</startStdRateSurfaceN2>
+          <endStdRateSurfaceN2 uom="Mscf(60F)/d">11432</endStdRateSurfaceN2>
+          <avgStdRateSurfaceN2 uom="Mscf(60F)/d">1105</avgStdRateSurfaceN2>
+          <startPresSurface uom="psi">265</startPresSurface>
+          <endPresSurface uom="psi">254</endPresSurface>
+          <averagePresSurface uom="psi">1465</averagePresSurface>
+          <startPumpRateBottomhole uom="bbl/min">6.5</startPumpRateBottomhole>
+          <endPumpRateBottomhole uom="bbl/min">10.2</endPumpRateBottomhole>
+          <avgPumpRateBottomhole uom="bbl/min">8.5</avgPumpRateBottomhole>
+          <startPresBottomhole uom="psi">2254</startPresBottomhole>
+          <endPresBottomhole uom="psi">4855</endPresBottomhole>
+          <averagePresBottomhole uom="psi">4450</averagePresBottomhole>
+          <startProppantConcSurface uom="lbm/galUS">5.5</startProppantConcSurface>
+          <endProppantConcSurface uom="lbm/galUS">6.5</endProppantConcSurface>
+          <avgProppantConcSurface uom="lbm/galUS">3.5</avgProppantConcSurface>
+          <startProppantConcBottomhole uom="lbm/galUS">4.6</startProppantConcBottomhole>
+          <endProppantConcBottomhole uom="lbm/galUS">12.5</endProppantConcBottomhole>
+          <avgProppantConcBottomhole uom="lbm/galUS">5.8</avgProppantConcBottomhole>
+          <startFoamRateN2 uom="bbl/min">2.1</startFoamRateN2>
+          <endFoamRateN2 uom="bbl/min">10.4</endFoamRateN2>
+          <startFoamRateCO2 uom="bbl/min">8.5</startFoamRateCO2>
+          <endFoamRateCO2 uom="bbl/min">6.7</endFoamRateCO2>
+          <fluidVolBase uom="galUS">25433</fluidVolBase>
+          <fluidVolSlurry uom="galUS">33243</fluidVolSlurry>
+          <slurryRateBegin uom="bbl/min">7.8</slurryRateBegin>
+          <slurryRateEnd uom="bbl/min">6.3</slurryRateEnd>
+          <proppantMassWellHead uom="lbm">8000</proppantMassWellHead>
+          <proppantMass uom="lbm">7566</proppantMass>
+          <maxPres uom="psi">4321</maxPres>
+          <maxSlurryRate uom="bbl/min">9.9</maxSlurryRate>
+          <maxWellheadRate uom="bbl/min">8.9</maxWellheadRate>
+          <maxN2StdRate uom="Mscf(60F)/d">11343</maxN2StdRate>
+          <maxCO2LiquidRate uom="bbl/min">3.4</maxCO2LiquidRate>
+          <maxPropConc uom="lbm/galUS">12.6</maxPropConc>
+          <maxSlurryPropConc uom="lbm/galUS">11.8</maxSlurryPropConc>
+          <avgPropConc uom="lbm/galUS">5.6</avgPropConc>
+          <avgSlurryPropConc uom="lbm/galUS">7.5</avgSlurryPropConc>
+          <avgTemperature uom="degF">125</avgTemperature>
+          <avgInternalPhaseFraction uom="%">21.1</avgInternalPhaseFraction>
+          <avgBaseFluidQuality uom="%">75</avgBaseFluidQuality>
+          <avgN2BaseFluidQuality uom="%">54</avgN2BaseFluidQuality>
+          <avgCO2BaseFluidQuality uom="%">65</avgCO2BaseFluidQuality>
+          <avgHydraulicPower uom="hhp">554</avgHydraulicPower>
+          <avgBaseFluidRate uom="bbl/min">10.9</avgBaseFluidRate>
+          <avgSlurryRate uom="bbl/min">5.6</avgSlurryRate>
+          <avgWellheadRate uom="bbl/min">4.7</avgWellheadRate>
+          <avgN2StdRate uom="Mscf(60F)/d">734334</avgN2StdRate>
+          <avgCO2Rate uom="bbl/min">10.8</avgCO2Rate>
+          <baseFluidVol uom="galUS">22543</baseFluidVol>
+          <slurryVol uom="galUS">5543</slurryVol>
+          <wellheadVol uom="galUS">234</wellheadVol>
+          <maxPmaxPacPres uom="psi">3342</maxPmaxPacPres>
+          <maxPmaxWeaklinkPres uom="psi">5543</maxPmaxWeaklinkPres>
+          <maxGelRate uom="bbl/min">1.2</maxGelRate>
+          <maxOilRate uom="bbl/min">0.9</maxOilRate>
+          <maxAcidRate uom="bbl/min">3.5</maxAcidRate>
+          <avgGelRate uom="bbl/min">4.5</avgGelRate>
+          <avgOilRate uom="bbl/min">2.3</avgOilRate>
+          <avgAcidRate uom="bbl/min">1.1</avgAcidRate>
+          <gelVolume uom="galUS">9833</gelVolume>
+          <oilVolume uom="galUS">443</oilVolume>
+          <acidVolume uom="galUS">100</acidVolume>
+          <baseFluidBypassVol uom="galUS">2335</baseFluidBypassVol>
+          <frictionFactor>0.794</frictionFactor>
+          <stageFluid>
+            <name>Excellent Fracing Fluid #3</name>
+            <fluidVol uom="galUS">55</fluidVol>
+            <waterSource>Rig Supply</waterSource>
+            <additive uid="ABCDEFG12345">
+              <name>EPS415</name>
+              <kind>proppant stabilizer</kind>
+              <volume uom="galUS">3.1</volume>
+              <mass uom="lbm">204</mass>
+            </additive>
+            <additive uid="ABCDEFG12345">
+              <name>EPS415</name>
+              <kind>proppant stabilizer</kind>
+              <volume uom="galUS">3.1</volume>
+              <mass uom="lbm">204</mass>
+            </additive>
+            <proppant>
+              <name>Excellent proppant #65</name>
+              <kind>sand</kind>
+              <weight uom="lbm">5534</weight>
+              <sieveSize>40/70</sieveSize>
+            </proppant>
+          </stageFluid>
+        </jobStage>
+        <jobStage uid="YKVOYHMJB1SL2OCD">
+          <kind>proppant laden fluid</kind>
+          <name>DISPLACEMENT</name>
+          <description>IN</description>
+          <number>2</number>
+          <dTimStart>2010-02-04T22:33:44Z</dTimStart>
+          <dTimEnd>2010-02-05T10:33:53Z</dTimEnd>
+          <pumpTime uom="min">126</pumpTime>
+          <startRateSurfaceLiquid uom="bbl/min">5.6</startRateSurfaceLiquid>
+          <endRateSurfaceLiquid uom="bbl/min">7.4</endRateSurfaceLiquid>
+          <avgRateSurfaceLiquid uom="bbl/min">3.5</avgRateSurfaceLiquid>
+          <startRateSurfaceCO2 uom="bbl/min">3.4</startRateSurfaceCO2>
+          <endRateSurfaceCO2 uom="bbl/min">3.4</endRateSurfaceCO2>
+          <avgRateSurfaceCO2 uom="bbl/min">3.6</avgRateSurfaceCO2>
+          <startStdRateSurfaceN2 uom="Mscf(60F)/d">11432</startStdRateSurfaceN2>
+          <endStdRateSurfaceN2 uom="Mscf(60F)/d">11432</endStdRateSurfaceN2>
+          <avgStdRateSurfaceN2 uom="Mscf(60F)/d">1105</avgStdRateSurfaceN2>
+          <startPresSurface uom="psi">265</startPresSurface>
+          <endPresSurface uom="psi">254</endPresSurface>
+          <averagePresSurface uom="psi">1465</averagePresSurface>
+          <startPumpRateBottomhole uom="bbl/min">6.5</startPumpRateBottomhole>
+          <endPumpRateBottomhole uom="bbl/min">10.2</endPumpRateBottomhole>
+          <avgPumpRateBottomhole uom="bbl/min">8.5</avgPumpRateBottomhole>
+          <startPresBottomhole uom="psi">2254</startPresBottomhole>
+          <endPresBottomhole uom="psi">4855</endPresBottomhole>
+          <averagePresBottomhole uom="psi">4450</averagePresBottomhole>
+          <startProppantConcSurface uom="lbm/galUS">5.5</startProppantConcSurface>
+          <endProppantConcSurface uom="lbm/galUS">6.5</endProppantConcSurface>
+          <avgProppantConcSurface uom="lbm/galUS">3.5</avgProppantConcSurface>
+          <startProppantConcBottomhole uom="lbm/galUS">4.6</startProppantConcBottomhole>
+          <endProppantConcBottomhole uom="lbm/galUS">12.5</endProppantConcBottomhole>
+          <avgProppantConcBottomhole uom="lbm/galUS">5.8</avgProppantConcBottomhole>
+          <startFoamRateN2 uom="bbl/min">2.1</startFoamRateN2>
+          <endFoamRateN2 uom="bbl/min">10.4</endFoamRateN2>
+          <startFoamRateCO2 uom="bbl/min">8.5</startFoamRateCO2>
+          <endFoamRateCO2 uom="bbl/min">6.7</endFoamRateCO2>
+          <fluidVolBase uom="galUS">25433</fluidVolBase>
+          <fluidVolSlurry uom="galUS">33243</fluidVolSlurry>
+          <slurryRateBegin uom="bbl/min">7.8</slurryRateBegin>
+          <slurryRateEnd uom="bbl/min">6.3</slurryRateEnd>
+          <proppantMassWellHead uom="lbm">8000</proppantMassWellHead>
+          <proppantMass uom="lbm">7566</proppantMass>
+          <maxPres uom="psi">4321</maxPres>
+          <maxSlurryRate uom="bbl/min">9.9</maxSlurryRate>
+          <maxWellheadRate uom="bbl/min">8.9</maxWellheadRate>
+          <maxN2StdRate uom="Mscf(60F)/d">11343</maxN2StdRate>
+          <maxCO2LiquidRate uom="bbl/min">3.4</maxCO2LiquidRate>
+          <maxPropConc uom="lbm/galUS">12.6</maxPropConc>
+          <maxSlurryPropConc uom="lbm/galUS">11.8</maxSlurryPropConc>
+          <avgPropConc uom="lbm/galUS">5.6</avgPropConc>
+          <avgSlurryPropConc uom="lbm/galUS">7.5</avgSlurryPropConc>
+          <avgTemperature uom="degF">125</avgTemperature>
+          <avgInternalPhaseFraction uom="%">21.1</avgInternalPhaseFraction>
+          <avgBaseFluidQuality uom="%">75</avgBaseFluidQuality>
+          <avgN2BaseFluidQuality uom="%">54</avgN2BaseFluidQuality>
+          <avgCO2BaseFluidQuality uom="%">65</avgCO2BaseFluidQuality>
+          <avgHydraulicPower uom="hhp">554</avgHydraulicPower>
+          <avgBaseFluidRate uom="bbl/min">10.9</avgBaseFluidRate>
+          <avgSlurryRate uom="bbl/min">5.6</avgSlurryRate>
+          <avgWellheadRate uom="bbl/min">4.7</avgWellheadRate>
+          <avgN2StdRate uom="Mscf(60F)/d">734334</avgN2StdRate>
+          <avgCO2Rate uom="bbl/min">10.8</avgCO2Rate>
+          <baseFluidVol uom="galUS">22543</baseFluidVol>
+          <slurryVol uom="galUS">5543</slurryVol>
+          <wellheadVol uom="galUS">234</wellheadVol>
+          <maxPmaxPacPres uom="psi">3342</maxPmaxPacPres>
+          <maxPmaxWeaklinkPres uom="psi">5543</maxPmaxWeaklinkPres>
+          <maxGelRate uom="bbl/min">1.2</maxGelRate>
+          <maxOilRate uom="bbl/min">0.9</maxOilRate>
+          <maxAcidRate uom="bbl/min">3.5</maxAcidRate>
+          <avgGelRate uom="bbl/min">4.5</avgGelRate>
+          <avgOilRate uom="bbl/min">2.3</avgOilRate>
+          <avgAcidRate uom="bbl/min">1.1</avgAcidRate>
+          <gelVolume uom="galUS">9833</gelVolume>
+          <oilVolume uom="galUS">443</oilVolume>
+          <acidVolume uom="galUS">100</acidVolume>
+          <baseFluidBypassVol uom="galUS">2335</baseFluidBypassVol>
+          <frictionFactor>0.794</frictionFactor>
+          <stageFluid>
+            <name>Excellent Fracing Fluid #3</name>
+            <fluidVol uom="galUS">55</fluidVol>
+            <waterSource>Rig Supply</waterSource>
+            <additive uid="ABCDEFG12345">
+              <name>EPS415</name>
+              <kind>proppant stabilizer</kind>
+              <volume uom="galUS">3.1</volume>
+              <mass uom="lbm">204</mass>
+            </additive>
+            <additive uid="ABCDEFG12345">
+              <name>EPS415</name>
+              <kind>proppant stabilizer</kind>
+              <volume uom="galUS">3.1</volume>
+              <mass uom="lbm">204</mass>
+            </additive>
+            <proppant>
+              <name>Excellent proppant #65</name>
+              <kind>sand</kind>
+              <weight uom="lbm">5534</weight>
+              <sieveSize>40/70</sieveSize>
+            </proppant>
+          </stageFluid>
+        </jobStage>
+      </flowPath>
+      <pdatSession uid="ABCOID123456">
+        <name>Pump Diagnostics Test #1</name>
+        <description>PDat step down and leak off</description>
+        <number>1</number>
+        <dTimPumpOn>2010-02-04T15:06:55Z</dTimPumpOn>
+        <dTimPumpOff>2010-02-04T15:20:44Z</dTimPumpOff>
+        <dTimWellShutin>2010-02-04T15:18:17Z</dTimWellShutin>
+        <dTimFractureClose>2010-02-04T15:21:55Z</dTimFractureClose>
+        <pumpDuration uom="min">16.7</pumpDuration>
+        <avgBottomholeTreatmentPres uom="psi">4556</avgBottomholeTreatmentPres>
+        <bottomholeHydrostaticPres uom="psi">4335</bottomholeHydrostaticPres>
+        <bubblePointPres uom="psi">2000</bubblePointPres>
+        <fractureClosePres uom="psi">4811</fractureClosePres>
+        <frictionPres uom="psi">1428</frictionPres>
+        <initialShutinPres uom="psi">5552</initialShutinPres>
+        <porePres uom="psi">857</porePres>
+        <avgBottomholeTreatmentRate uom="bbl/min">1.5</avgBottomholeTreatmentRate>
+        <fluidDensity uom="lbm/galUS">8.22</fluidDensity>
+        <baseFluidVol uom="galUS">1080</baseFluidVol>
+        <wellboreVolume uom="galUS">1083</wellboreVolume>
+        <mdSurface uom="ftUS">0</mdSurface>
+        <mdBottomhole uom="ftUS">9955</mdBottomhole>
+        <mdMidPerforation uom="ftUS">9952.5</mdMidPerforation>
+        <tvdMidPerforation uom="ftUS">9952</tvdMidPerforation>
+        <surfaceTemperature uom="degF">65</surfaceTemperature>
+        <bottomholeTemperature uom="degF">212</bottomholeTemperature>
+        <surfaceFluidTemperature uom="degF">65</surfaceFluidTemperature>
+        <fluidCompressibility uom="1/psi">3E-06</fluidCompressibility>
+        <reservoirTotalCompressibility uom="1/psi">0.000255</reservoirTotalCompressibility>
+        <fluidNprimeFactor>1</fluidNprimeFactor>
+        <fluidKprimeFactor>6E-06</fluidKprimeFactor>
+        <fluidSpecificHeat uom="Btu/lbm.degF">0.971</fluidSpecificHeat>
+        <fluidThermalConductivity uom="Btu/hr.ft.degF">0.402</fluidThermalConductivity>
+        <fluidThermalExpansionCoefficient uom="1/degF">0.001204</fluidThermalExpansionCoefficient>
+        <fluidEfficiency uom="%">37.7</fluidEfficiency>
+        <foamQuality uom="%">10</foamQuality>
+        <percentPad uom="%">43.81</percentPad>
+        <temperatureCorrectionApplied>false</temperatureCorrectionApplied>
+        <stepRateTest uid="YKC1235XXXXE">
+          <presMeasurement>
+            <pres uom="psi">7019</pres>
+            <bottomholeRate uom="bbl/min">3.3</bottomholeRate>
+          </presMeasurement>
+          <presMeasurement>
+            <pres uom="psi">5398</pres>
+            <bottomholeRate uom="bbl/min">3</bottomholeRate>
+          </presMeasurement>
+          <presMeasurement>
+            <pres uom="psi">2329</pres>
+            <bottomholeRate uom="bbl/min">2</bottomholeRate>
+          </presMeasurement>
+          <fractureExtensionPres uom="psi">1271</fractureExtensionPres>
+        </stepRateTest>
+        <fluidEfficiencyTest uid="ACCK5679994">
+          <dTimStart>2010-02-04T23:10:00Z</dTimStart>
+          <dTimEnd>2010-02-04T23:15:52Z</dTimEnd>
+          <endPdlDuration uom="min">1.94</endPdlDuration>
+          <fractureCloseDuration uom="min">1.05</fractureCloseDuration>
+          <fractureClosePres uom="psi">4596</fractureClosePres>
+          <fractureExtensionPres uom="psi">5523</fractureExtensionPres>
+          <netPres uom="psi">15</netPres>
+          <porePres uom="psi">3644</porePres>
+          <pseudoRadialPres uom="psi">4530</pseudoRadialPres>
+          <fractureLength uom="ftUS">88.2</fractureLength>
+          <fractureWidth uom="ftUS">92.12</fractureWidth>
+          <fluidEfficiency uom="%">10.2</fluidEfficiency>
+          <pdlCoef>0.004</pdlCoef>
+          <residualPermeability uom="mD">0.03</residualPermeability>
+        </fluidEfficiencyTest>
+        <pumpFlowBackTest uid="ABCDEFG12345">
+          <fractureCloseDuration uom="min">1.92</fractureCloseDuration>
+          <fractureClosePres uom="psi">4591</fractureClosePres>
+        </pumpFlowBackTest>
+        <stepDownTest uid="LLIEV9993">
+          <initialShutinPres uom="psi">5642</initialShutinPres>
+          <bottomholeFluidDensity uom="lbm/galUS">9.8</bottomholeFluidDensity>
+          <diameterEntryHole uom="inUS">0.875</diameterEntryHole>
+          <perforationCount>15</perforationCount>
+          <dischargeCoefficient>0.775</dischargeCoefficient>
+          <effectivePerfs>0.886</effectivePerfs>
+          <step uid="9876543">
+            <number>1</number>
+            <bottomholeRate uom="bbl/min">2</bottomholeRate>
+            <pres uom="psi">3200</pres>
+            <pipeFriction uom="psi">974</pipeFriction>
+            <entryFriction uom="psi">35.6</entryFriction>
+            <perfFriction uom="psi">1428</perfFriction>
+            <nearWellboreFriction uom="psi">44.2</nearWellboreFriction>
+          </step>
+          <step uid="345678910">
+            <number>2</number>
+            <bottomholeRate uom="bbl/min">1.5</bottomholeRate>
+            <pres uom="psi">2500</pres>
+            <pipeFriction uom="psi">750</pipeFriction>
+            <entryFriction uom="psi">20</entryFriction>
+            <perfFriction uom="psi">1200</perfFriction>
+            <nearWellboreFriction uom="psi">30</nearWellboreFriction>
+          </step>
+        </stepDownTest>
+      </pdatSession>
+      <reservoirInterval uid="ADDE489903CCB">
+        <mdLithTop uom="ftUS">9950</mdLithTop>
+        <mdLithBottom uom="ftUS">9952</mdLithBottom>
+        <lithFormationPermeability uom="mD">0.13</lithFormationPermeability>
+        <lithYoungsModulus uom="psi">6000000</lithYoungsModulus>
+        <lithPorePres uom="psi">954</lithPorePres>
+        <lithNetPayThickness uom="ftUS">4.8</lithNetPayThickness>
+        <lithName>Lith Sand Top</lithName>
+        <mdGrossPayTop uom="ftUS">9949</mdGrossPayTop>
+        <mdGrossPayBottom uom="ftUS">9954</mdGrossPayBottom>
+        <grossPayThickness uom="ftUS">5</grossPayThickness>
+        <netPayThickness uom="ftUS">5</netPayThickness>
+        <netPayPorePres uom="psi">800</netPayPorePres>
+        <netPayFluidCompressibility uom="1/psi">0.000255</netPayFluidCompressibility>
+        <netPayFluidViscosity uom="cP">0.01</netPayFluidViscosity>
+        <netPayName>Net Pay Name</netPayName>
+        <netPayFormationPermeability uom="mD">0.09</netPayFormationPermeability>
+        <lithPoissonsRatio uom="Euc">0.21</lithPoissonsRatio>
+        <netPayFormationPorosity uom="%">0.13</netPayFormationPorosity>
+        <formationPermeability uom="mD">0.01</formationPermeability>
+        <formationPorosity uom="%">0.15</formationPorosity>
+        <nameFormation>Formation Nice Sand</nameFormation>
+      </reservoirInterval>
+      <perforationInterval uid="ABCDEF098765">
+        <type>Chem Jet</type>
+        <mdPerforationsTop uom="ftUS">9950</mdPerforationsTop>
+        <mdPerforationsBottom uom="ftUS">9954</mdPerforationsBottom>
+        <tvdPerforationsTop uom="ftUS">9950</tvdPerforationsTop>
+        <tvdPerforationsBottom uom="ftUS">9954</tvdPerforationsBottom>
+        <perforationCount>8</perforationCount>
+        <size uom="inUS">0.875</size>
+        <densityPerforation uom="1/ft">1.5</densityPerforation>
+        <phasingPerforation uom="dega">180</phasingPerforation>
+        <frictionFactor>0.687</frictionFactor>
+        <frictionPres uom="psi">1000</frictionPres>
+        <dischargeCoefficient>0.054</dischargeCoefficient>
+      </perforationInterval>
+    </jobInterval>
+  </stimJob>
+</stimJobs>

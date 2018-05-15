@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="./stylesheets/generic.xsl" type="text/xsl" media="screen"?>
+<!--   		Example of Formation Marker data 	-->
+<formationMarkers 
+	xmlns="http://www.witsml.org/schemas/1series" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.witsml.org/schemas/1series  ../xsd_schemas/obj_formationMarker.xsd" 
+	version="1.4.1.1">
+<!-- 
+These examples are only intended to demonstrate the type of data that can be exchanged.
+They totally artificial and are not intended to demonstrate best practices. 
+-->
+	<documentInfo>
+		<documentName>formationMarker</documentName>
+		<fileCreationInformation>
+			<fileCreationDate>2001-10-31T08:15:00.000Z</fileCreationDate> 
+			<fileCreator>John Smith</fileCreator>
+		</fileCreationInformation>
+	</documentInfo>
+	<formationMarker uidWell="W-12" uidWellbore="B-01" uid="m67">
+		<nameWell>6507/7-A-42</nameWell>
+		<nameWellbore>A-42</nameWellbore>
+		<name>Rotliegende</name>
+		<mdPrognosed uom="ft">4990</mdPrognosed>
+		<tvdPrognosed uom="ft">4685</tvdPrognosed>
+		<mdTopSample uom="ft">5000</mdTopSample>
+		<tvdTopSample uom="ft">4695</tvdTopSample>
+		<thicknessBed uom="ft">200</thicknessBed>
+		<thicknessApparent uom="ft">260</thicknessApparent>
+		<thicknessPerpen uom="ft">185</thicknessPerpen>
+		<mdLogSample uom="ft">4997</mdLogSample>
+		<tvdLogSample uom="ft">4692</tvdLogSample>
+		<dip uom="dega">10</dip>
+		<dipDirection uom="dega">200</dipDirection>
+		<lithostratigraphic kind="formation">Rotliegende</lithostratigraphic> 
+		<chronostratigraphic kind="period">Permian</chronostratigraphic>
+		<description>Top Reservior</description>
+		<commonData>
+			<itemState>actual</itemState>
+			<comments>Waiting on wireline GR to confirm pick</comments>
+		</commonData>
+	</formationMarker>
+</formationMarkers>
