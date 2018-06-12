@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../stylesheets/dtsMeasurement.xsl"?>
+
+<dtsMeasurements 
+	xmlns="http://www.witsml.org/schemas/131" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.witsml.org/schemas/131  ../obj_dtsMeasurement.xsd"
+	version="1.3.1.1">
+
+	<documentInfo>
+		<DocumentName>dtsMeasurement</DocumentName>
+		<FileCreationInformation>
+			<FileCreationDate>2005-10-08T14:32:16.223Z</FileCreationDate>
+			<FileCreator>Joe's Well Service</FileCreator>
+		</FileCreationInformation>
+	</documentInfo>
+	<dtsMeasurement uidWell="D88CA733F" uidWellbore="82996A3B" uid="1FO19-120050603-1">
+		<nameWell>1FO19</nameWell>
+		<nameWellbore>1FO19-1</nameWellbore>
+		<name>Wellbore 1FO19-1 measurement 8Oct2005</name>
+		<runDuration uom="s">600</runDuration>
+		<installedSystemUsed uidRef="1FO19-1-1">Hole 1FO19-1 installation 1</installedSystemUsed>
+		<dataInWellLog uidRef="8CA290B22">Wellbore 1FO19-1 measurement 8Oct2005</dataInWellLog>
+		<fiberEndConnected uidRef="A6">C-1</fiberEndConnected>
+		<fiberDefinedPoint uid="I2">
+			<lengthAlongFiber uom="m">127</lengthAlongFiber>
+			<type>wellhead junction box</type>
+		</fiberDefinedPoint>
+	</dtsMeasurement>
+</dtsMeasurements>

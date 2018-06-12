@@ -21,8 +21,10 @@ import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjTubulars;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjWbGeometrys;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjWellbores;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjWells;
+import com.hashmapinc.tempus.witsml.client.WitsmlQuery;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.rmi.RemoteException;
 
 public interface WitsmlClient {
@@ -44,135 +46,67 @@ public interface WitsmlClient {
 
     String getCapabilities() throws RemoteException;
 
-    String getWells() throws FileNotFoundException, RemoteException, Exception;
+    String getObjectQuery(String objectType) throws IOException;
 
-    String getWells(String uid, String status) throws FileNotFoundException, RemoteException, Exception;
+    WitsmlResponse getObjectData(WitsmlQuery witsmlQuery) throws FileNotFoundException, RemoteException;
 
-    ObjWells getWellsAsObj() throws Exception;
+    ObjWells getWellsAsObj(WitsmlQuery witsmlQuery) throws Exception;
 
-    ObjWells getWellsAsObj(String uid, String status) throws Exception;
+    ObjWellbores getWellboresForWellAsObj(WitsmlQuery witsmlQuery) throws Exception;
 
-    String getWellboresForWell(String wellId, String wellboreUid) throws FileNotFoundException, RemoteException, Exception;
+    WitsmlResponse executeObjectQuery(String objectType, String query, String optionsIn, String capabilitiesIn) throws RemoteException;
 
-    String getWellboresForWell(String wellId) throws FileNotFoundException, RemoteException, Exception;
+    ObjLogs getLogsAsObj(WitsmlQuery witsmlQuery) throws Exception;
 
-    ObjWellbores getWellboresForWellAsObj(String wellId) throws Exception;
+    ObjMudLogs getMudLogsAsObj(WitsmlQuery witsmlQuery) throws Exception;
 
-    ObjWellbores getWellboresForWellAsObj(String wellId, String wellboreId) throws Exception;
+    ObjTrajectorys getTrajectorysAsObj(WitsmlQuery witsmlQuery) throws Exception;
 
-    String getLogMetadata(String wellId, String wellboreId) throws Exception;
+    ObjBhaRuns getBhaRunsAsObj(WitsmlQuery witsmlQuery) throws Exception;
 
-    String getMudLogs(String wellId, String wellboreId) throws Exception;
+    ObjCementJobs getCementJobsAsObj(WitsmlQuery witsmlQuery) throws Exception;
 
-    String getTrajectorys(String wellId, String wellboreId) throws Exception;
+    ObjConvCores getConvCoresAsObj(WitsmlQuery witsmlQuery) throws Exception;
 
-    String getBhaRuns(String wellId, String wellboreId) throws Exception;
+    ObjDtsInstalledSystems getDtsInstalledSystemsAsObj(WitsmlQuery witsmlQuery) throws Exception;
 
-    String getCementJobs(String wellId, String wellboreId) throws Exception;
+    ObjFluidsReports getFluidsReportsAsObj(WitsmlQuery witsmlQuery) throws Exception;
 
-    String getConvCores(String wellId, String wellboreId) throws Exception;
+    ObjFormationMarkers getFormationMarkersAsObj(WitsmlQuery witsmlQuery) throws Exception;
 
-    String getDtsInstalledSystems(String wellId, String wellboreId) throws Exception;
+    ObjMessages getMessagesAsObj(WitsmlQuery witsmlQuery) throws Exception;
 
-    String getFluidsReports(String wellId, String wellboreId) throws Exception;
+    ObjOpsReports getOpsReportsAsObj(WitsmlQuery witsmlQuery) throws Exception;
 
-    String getFormationMarkers(String wellId, String wellboreId) throws Exception;
+    ObjRigs getRigsAsObj(WitsmlQuery witsmlQuery) throws Exception;
 
-    String getMessages(String wellId, String wellboreId) throws Exception;
+    ObjRisks getRisksAsObj(WitsmlQuery witsmlQuery) throws Exception;
 
-    String getOpsReports(String wellId, String wellboreId) throws Exception;
+    ObjSidewallCores getSideWallCoresAsObj(WitsmlQuery witsmlQuery) throws Exception;
 
-    String getRigs(String wellId, String wellboreId) throws Exception;
+    ObjSurveyPrograms getSurveyProgramsAsObj(WitsmlQuery witsmlQuery) throws Exception;
 
-    String getRisks(String wellId, String wellboreId) throws Exception;
+    ObjTargets getTargetsAsObj(WitsmlQuery witsmlQuery) throws Exception;
 
-    String getSideWallCores(String wellId, String wellboreId) throws Exception;
+    ObjTubulars getTubularsAsObj(WitsmlQuery witsmlQuery) throws Exception;
 
-    String getSurveyPrograms(String wellId, String wellboreId) throws Exception;
+    ObjWbGeometrys getWbGeometrysAsObj(WitsmlQuery witsmlQuery) throws Exception;
 
-    String getTargets(String wellId, String wellboreId) throws Exception;
+    ObjAttachments getAttachmentsAsObj(WitsmlQuery witsmlQuery) throws Exception;
 
-    String getTubulars(String wellId, String wellboreId) throws Exception;
+    ObjChangeLogs getChangeLogsAsObj(WitsmlQuery witsmlQuery) throws Exception;
 
-    String getWbGeometrys(String wellId, String wellboreId) throws Exception;
+    ObjDrillReports getDrillReportsAsObj(WitsmlQuery witsmlQuery) throws Exception;
 
-    String getAttachments(String wellId, String wellboreId) throws Exception;
+    ObjObjectGroups getObjectGroupsAsObj(WitsmlQuery witsmlQuery) throws Exception;
 
-    String getChangeLogs(String wellId, String wellboreId) throws Exception;
+    ObjStimJobs getStimJobsAsObj(WitsmlQuery witsmlQuery) throws Exception;
 
-    String getObjectGroups(String wellId, String wellboreId) throws Exception;
+    ObjRealtimes getRealtimesAsObj(WitsmlQuery witsmlQuery) throws Exception;
 
-    String getStimJobs(String wellId, String wellboreId) throws Exception;
+    ObjWellLogs getWellLogsAsObj(WitsmlQuery witsmlQuery) throws Exception;
 
-    String getDrillReports(String wellId, String wellboreId) throws Exception;
+    ObjDtsMeasurements getDtsMeasurementsAsObj(WitsmlQuery witsmlQuery) throws Exception;
 
-    String getRealtimes(String wellId, String wellboreId) throws Exception;
-
-    String getWellLogs(String wellId, String wellboreId) throws Exception;
-
-    String getDtsMeasurements(String wellId, String wellboreId) throws Exception;
-
-    String getTrajectoryStations(String wellId, String wellboreId, String trajectoryId) throws Exception;
-
-    String executeLogQuery(String query, String optionsIn, String capabilitiesIn) throws RemoteException;
-
-    String executeMudlogQuery(String query, String optionsIn, String capabilitiesIn) throws RemoteException;
-
-    String executeObjectQuery(String objectType, String query, String optionsIn, String capabilitiesIn) throws RemoteException;
-
-    String executeTrajectoryQuery(String query, String optionsIn, String capabilitiesIn) throws RemoteException;
-
-    ObjLogs getLogMetadataAsObj(String wellId, String wellboreId) throws Exception;
-
-    ObjMudLogs getMudLogsAsObj(String wellId, String wellboreId) throws Exception;
-
-    ObjTrajectorys getTrajectorysAsObj(String wellId, String wellboreId) throws Exception;
-
-    ObjBhaRuns getBhaRunsAsObj(String wellId, String wellboreId) throws Exception;
-
-    ObjCementJobs getCementJobsAsObj(String wellId, String wellboreId) throws Exception;
-
-    ObjConvCores getConvCoresAsObj(String wellId, String wellboreId) throws Exception;
-
-    ObjDtsInstalledSystems getDtsInstalledSystemsAsObj(String wellId, String wellboreId) throws Exception;
-
-    ObjFluidsReports getFluidsReportsAsObj(String wellId, String wellboreId) throws Exception;
-
-    ObjFormationMarkers getFormationMarkersAsObj(String wellId, String wellboreId) throws Exception;
-
-    ObjMessages getMessagesAsObj(String wellId, String wellboreId) throws Exception;
-
-    ObjOpsReports getOpsReportsAsObj(String wellId, String wellboreId) throws Exception;
-
-    ObjRigs getRigsAsObj(String wellId, String wellboreId) throws Exception;
-
-    ObjRisks getRisksAsObj(String wellId, String wellboreId) throws Exception;
-
-    ObjSidewallCores getSideWallCoresAsObj(String wellId, String wellboreId) throws Exception;
-
-    ObjSurveyPrograms getSurveyProgramsAsObj(String wellId, String wellboreId) throws Exception;
-
-    ObjTargets getTargetsAsObj(String wellId, String wellboreId) throws Exception;
-
-    ObjTubulars getTubularsAsObj(String wellId, String wellboreId) throws Exception;
-
-    ObjWbGeometrys getWbGeometrysAsObj(String wellId, String wellboreId) throws Exception;
-
-    ObjAttachments getAttachmentsAsObj(String wellId, String wellboreId) throws Exception;
-
-    ObjChangeLogs getChangeLogsAsObj(String wellId, String wellboreId) throws Exception;
-
-    ObjDrillReports getDrillReportsAsObj(String wellId, String wellboreId) throws Exception;
-
-    ObjObjectGroups getObjectGroupsAsObj(String wellId, String wellboreId) throws Exception;
-
-    ObjStimJobs getStimJobsAsObj(String wellId, String wellboreId) throws Exception;
-
-    ObjRealtimes getRealtimesAsObj(String wellId, String wellboreId) throws Exception;
-
-    ObjWellLogs getWellLogsAsObj(String wellId, String wellboreId) throws Exception;
-
-    ObjDtsMeasurements getDtsMeasurementsAsObj(String wellId, String wellboreId) throws Exception;
-
-    ObjTrajectoryStations getTrajectoryStationsAsObj(String wellId, String wellboreId, String trajectoryId) throws Exception;
+    ObjTrajectoryStations getTrajectoryStationsAsObj(WitsmlQuery witsmlQuery) throws Exception;
 }

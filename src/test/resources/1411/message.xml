@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="./stylesheets/generic.xsl" type="text/xsl" media="screen"?>
+<!--   		Example of Message data 		-->
+<messages 
+	xmlns="http://www.witsml.org/schemas/1series" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.witsml.org/schemas/1series  ../xsd_schemas/obj_message.xsd" 
+	version="1.4.1.1">
+<!-- 
+These examples are only intended to demonstrate the type of data that can be exchanged.
+They totally artificial and are not intended to demonstrate best practices. 
+-->
+	<documentInfo>
+		<documentName>message</documentName>
+		<fileCreationInformation>
+			<fileCreationDate>2001-05-31T08:15:00.000Z</fileCreationDate> 
+			<fileCreator>John Smith</fileCreator>
+		</fileCreationInformation>
+	</documentInfo>
+	<message uidWell="W-12" uidWellbore="B-01" uid="366">
+		<nameWell>6507/7-A-42</nameWell>
+		<nameWellbore>A-42</nameWellbore>
+		<name>message 35</name>
+		<dTim>2001-05-31T08:14:00.000Z</dTim>
+		<activityCode>drilling</activityCode>
+		<md uom="ft">3000</md>
+		<mdBit uom="ft">2980</mdBit>
+		<typeMessage>warning</typeMessage>
+		<messageText>Message with the message document</messageText>
+		<param index="1" name="msgName">100</param>
+		<severity>minor</severity>
+		<warnProbability>low</warnProbability>
+		<commonData>
+			<itemState>plan</itemState>
+			<comments>These are the comments associated with the message data object.</comments>
+		</commonData>
+	</message>
+	<message uidWell="W-12" uidWellbore="B-01" uid="367">
+		<nameWell>6507/7-A-42</nameWell>
+		<nameWellbore>A-42</nameWellbore>
+		<name>message 36</name>
+		<dTim>2001-05-31T08:15:00.000Z</dTim>
+		<activityCode>drilling</activityCode>
+		<md uom="ft">3002</md>
+		<mdBit uom="ft">2982</mdBit>
+		<typeMessage>warning</typeMessage>
+		<messageText>Message with the message document</messageText>
+		<param index="1" name="msgName">100</param>
+		<severity>minor</severity>
+		<warnProbability>low</warnProbability>
+		<commonData>
+			<itemState>plan</itemState>
+			<comments>These are the comments associated with the message data object.</comments>
+		</commonData>
+	</message>
+</messages>

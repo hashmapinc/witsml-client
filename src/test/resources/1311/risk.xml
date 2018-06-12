@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="../stylesheets/risk.xsl" type="text/xsl" media="screen"?>
+<!--   		Example of Risk data 		-->
+<risks 
+	xmlns="http://www.witsml.org/schemas/131" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.witsml.org/schemas/131  ../obj_risk.xsd"
+	version="1.3.1.1">
+	<risk uidWell="W-12" uidWellbore="B-01v" uid="risk-234934">
+		<nameWell>6507/7-A-42</nameWell>
+		<nameWellbore>W>A-42</nameWellbore>
+		<name>Wilcox Kick Risk</name>
+		<objectReference object="trajectory" uidRef="pe84e">Plan #2</objectReference>
+		<type>risk</type>
+		<category>hydraulics</category>
+		<subCategory>gas kick</subCategory>
+		<mdHoleStart uom="ftUS">12000</mdHoleStart>
+		<mdHoleEnd uom="ftUS">12500</mdHoleEnd>
+		<tvdHoleStart uom="ftUS">9000</tvdHoleStart>
+		<tvdHoleEnd uom="ftUS">9200</tvdHoleEnd>
+		<diaHole uom="in">8.5</diaHole>
+		<severityLevel>4</severityLevel>
+		<probabilityLevel>3</probabilityLevel>
+		<summary>Possible gas kick exiting the Wilcox formation @ 9000 
+		TVD, 12000 MD</summary>
+		<details>6 of the last 10 wells drilled through the wilcox 
+		encountered severe gas kicks on exiting the bottom of the formation.</details>
+		<identification>A large connection gas influx was experienced as 
+		we entered this formation on an offset well, Watch for increase 
+		in connection gas, cavings, or change in resistivity.</identification>
+		<mitigation>Increase mud weght to 14.7 lbs/gal 100 ft prior to 
+		exiting the formation, Maintain mud wt > 14.7lbs/gal</mitigation>
+	</risk>
+</risks>
+

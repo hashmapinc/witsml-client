@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="./stylesheets/generic.xsl" type="text/xsl" media="screen"?>
+<!--   		Example of Wellbore Geometry data 		-->
+<wbGeometrys 
+	xmlns="http://www.witsml.org/schemas/1series" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.witsml.org/schemas/1series  ../xsd_schemas/obj_wbGeometry.xsd" 
+	version="1.4.1.1">
+<!-- 
+These examples are only intended to demonstrate the type of data that can be exchanged.
+They totally artificial and are not intended to demonstrate best practices. 
+-->
+	<documentInfo>
+		<documentName>wbGeometry</documentName>
+		<fileCreationInformation>
+			<fileCreationDate>2001-10-31T08:15:00.000Z</fileCreationDate> 
+			<fileCreator>John Smith</fileCreator>
+		</fileCreationInformation>
+	</documentInfo>
+	<wbGeometry uidWell="W-12" uidWellbore="B-01" uid="23wbg51">
+		<nameWell>6507/7-A-42</nameWell>
+		<nameWellbore>A-42</nameWellbore>
+		<name>WB Geometry ABC</name>
+		<dTimReport>2001-10-31T08:15:00.000Z</dTimReport>
+		<mdBottom uom="ft">8000.00</mdBottom>
+		<gapAir uom="ft">50.00</gapAir>
+		<depthWaterMean uom="ft">1000.00</depthWaterMean>
+		<wbGeometrySection uid="wbsection-001">
+			<typeHoleCasing>casing</typeHoleCasing>
+			<mdTop uom="ft">3000.00</mdTop>
+			<mdBottom uom="ft">4000.00</mdBottom>
+			<tvdTop uom="ft">2500.00</tvdTop>
+			<tvdBottom uom="ft">2800.00</tvdBottom>
+			<idSection uom="in">8.00</idSection>
+			<odSection uom="in">10.00</odSection>
+			<wtPerLen uom="lbm/ft">30.00</wtPerLen>
+			<grade>E</grade>
+			<curveConductor>false</curveConductor>
+			<diaDrift uom="in">7.50</diaDrift>
+			<factFric>0.60</factFric>
+		</wbGeometrySection>
+		<commonData>
+			<itemState>plan</itemState>
+			<comments>These are the comments associated with the Wellbore Geometrydata object.</comments>
+		</commonData>
+	</wbGeometry>
+	<wbGeometry uidWell="W-12" uidWellbore="B-02" uid="23wbg52">
+		<nameWell>6507/7-A-42</nameWell>
+		<nameWellbore>A-42</nameWellbore>
+		<name>WB Geometry ABCD</name>
+		<dTimReport>2001-10-31T08:15:00.000Z</dTimReport>
+		<mdBottom uom="ft">8000.00</mdBottom>
+		<gapAir uom="ft">50.00</gapAir>
+		<depthWaterMean uom="ft">1000.00</depthWaterMean>
+		<wbGeometrySection uid="wbsection-001">
+			<typeHoleCasing>casing</typeHoleCasing>
+			<mdTop uom="ft">4000.00</mdTop>
+			<mdBottom uom="ft">5000.00</mdBottom>
+			<tvdTop uom="ft">3500.00</tvdTop>
+			<tvdBottom uom="ft">3800.00</tvdBottom>
+			<idSection uom="in">8.00</idSection>
+			<odSection uom="in">10.00</odSection>
+			<wtPerLen uom="lbm/ft">30.00</wtPerLen>
+			<grade>E</grade>
+			<curveConductor>false</curveConductor>
+			<diaDrift uom="in">7.50</diaDrift>
+			<factFric>0.60</factFric>
+		</wbGeometrySection>
+		<commonData>
+			<itemState>plan</itemState>
+			<comments>These are the comments associated with the Wellbore Geometrydata object.</comments>
+		</commonData>
+	</wbGeometry>
+</wbGeometrys>

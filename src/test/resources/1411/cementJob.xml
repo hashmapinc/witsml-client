@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="./stylesheets/generic.xsl" type="text/xsl" media="screen"?>
+<!--   		Example of cementJob data 	-->
+<cementJobs 
+	xmlns="http://www.witsml.org/schemas/1series" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.witsml.org/schemas/1series  ../xsd_schemas/obj_cementJob.xsd" 
+	version="1.4.1.1">
+<!-- 
+These examples are only intended to demonstrate the type of data that can be exchanged.
+They totally artificial and are not intended to demonstrate best practices. 
+-->
+	<documentInfo>
+		<documentName>cementJob</documentName>
+		<fileCreationInformation>
+			<fileCreationDate>2001-10-31T08:15:00.000Z</fileCreationDate> 
+			<fileCreator>John Smith</fileCreator>
+		</fileCreationInformation>
+	</documentInfo>
+	<cementJob uidWell="W-12" uidWellbore="B-01" uid="su78c">
+		<nameWell>6507/7-A-42</nameWell>
+		<nameWellbore>A-42</nameWellbore>
+		<name>Squeeze Int Csg 1</name>
+		<jobType>squeeze</jobType>
+		<jobConfig>Job configuration desc.</jobConfig>
+		<dTimJob>2001-10-29T08:30:00.000Z</dTimJob>
+		<nameCementedString>Intermediate Casing 1</nameCementedString>
+		<nameWorkString>workString ID</nameWorkString>
+		<contractor>Halliburton</contractor>
+		<cementEngr>Halliburton</cementEngr>
+		<offshoreJob>false</offshoreJob>
+		<mdWater uom="ft">0</mdWater>
+		<returnsToSeabed>false</returnsToSeabed>
+		<reciprocating>false</reciprocating>
+		<woc uom="h">1</woc>
+		<mdPlugTop uom="ft">0</mdPlugTop>
+		<mdPlugBot uom="ft">0</mdPlugBot>
+		<mdHole uom="ft">0</mdHole>
+		<mdShoe uom="ft">10240</mdShoe>
+		<tvdShoe uom="ft">10240</tvdShoe>
+		<mdStringSet uom="ft">10240</mdStringSet>
+		<tvdStringSet uom="ft">10240</tvdStringSet>
+		<cementStage uid="cs1">
+			<numStage>1</numStage>
+			<typeStage>Secondary cement</typeStage>
+			<dTimMixStart>2001-10-29T18:50:00.000Z</dTimMixStart>
+			<dTimPumpStart>2001-10-29T19:17:00.000Z</dTimPumpStart>
+			<dTimPumpEnd>2001-10-29T21:00:00.000Z</dTimPumpEnd>
+			<dTimDisplaceStart>2001-10-29T19:00:00.000Z</dTimDisplaceStart>
+			<mdTop uom="ft">10320</mdTop>
+			<mdBottom uom="ft">10500</mdBottom>
+			<volExcess uom="bbl">0</volExcess>
+			<flowrateDisplaceAv uom="bbl/min">2.50</flowrateDisplaceAv>
+			<flowrateDisplaceMx uom="bbl/min">3.00</flowrateDisplaceMx>
+			<presDisplace uom="psi">400</presDisplace>
+			<volReturns uom="bbl">0</volReturns>
+			<eTimMudCirculation uom="h">1</eTimMudCirculation>
+			<flowrateMudCirc uom="bbl/min">130</flowrateMudCirc>
+			<presMudCirc uom="psi">700</presMudCirc>
+			<flowrateEnd uom="bbl/min">130</flowrateEnd>
+			<cementingFluid>
+				<typeFluid>Cement</typeFluid>
+				<fluidIndex>1</fluidIndex>
+				<descFluid>Squeeze Slurry</descFluid>
+				<purpose>Squeeze Slurry</purpose>
+				<classSlurryDryBlend>G</classSlurryDryBlend>
+				<mdFluidTop uom="ft">0</mdFluidTop>
+				<mdFluidBottom uom="ft">0</mdFluidBottom>
+				<sourceWater>Drill water</sourceWater>
+				<volWater uom="bbl">26.9</volWater>
+				<volCement uom="galUS">200</volCement>
+				<ratioMixWater uom="bbl/tonUS">5</ratioMixWater>
+				<volFluid uom="bbl">51.3</volFluid>
+				<cementPumpSchedule>
+					<eTimPump uom="min">20</eTimPump>
+					<ratePump uom="galUS/min">0</ratePump>
+					<volPump uom="bbl">0</volPump>
+					<strokePump>20</strokePump>
+					<presBack uom="psi">200</presBack>
+					<eTimShutdown uom="min">5</eTimShutdown>
+					<comments>No comments</comments>
+				</cementPumpSchedule>
+				<excessPc uom="%">1.0</excessPc>
+				<volYield uom="bbl/tonUS">1.44</volYield>
+				<density uom="lbm/galUS">16.5</density>
+				<solidVolumeFraction uom="%">0</solidVolumeFraction>
+				<volPumped uom="bbl">52.2</volPumped>
+				<volOther uom="bbl">0</volOther>
+				<fluidRheologicalModel>Bingham</fluidRheologicalModel>
+				<vis uom="cP">45</vis>
+				<yp uom="lbf/100ft2">33</yp>
+				<n uom="%">0</n>
+				<k uom="%">0</k>
+				<gel10SecReading uom="dega">0</gel10SecReading>
+				<gel10SecStrength uom="lbf/100ft2">0</gel10SecStrength>
+				<gel1MinReading uom="dega">0</gel1MinReading>
+				<gel1MinStrength uom="lbf/100ft2">0</gel1MinStrength>
+				<gel10MinReading uom="dega">0</gel10MinReading>
+				<gel10MinStrength uom="lbf/100ft2">0</gel10MinStrength>
+				<typeBaseFluid>Fresh water</typeBaseFluid>
+				<densBaseFluid uom="lbm/galUS">0</densBaseFluid>
+				<dryBlendName>No blend name</dryBlendName>
+				<dryBlendDescription>No blend description</dryBlendDescription>
+				<massDryBlend uom="lbm">0</massDryBlend>
+				<densDryBlend uom="lbm/galUS">0</densDryBlend>
+				<massSackDryBlend uom="lbm">0</massSackDryBlend>
+				<cementAdditive uid="ca1">
+					<nameAdd>Silica Flour</nameAdd>
+					<typeAdd>Strengthener</typeAdd>
+					<formAdd>Wet</formAdd>
+					<densAdd uom="g/cm3">0</densAdd>
+					<typeConc>Not specified</typeConc>
+					<concentration uom="%">35</concentration>
+					<additive uom="lbm">23.5</additive>
+				</cementAdditive>
+				<foamUsed>false</foamUsed>
+				<typeGasFoam>None</typeGasFoam>
+				<volGasFoam uom="bbl">0</volGasFoam>
+				<ratioConstGasMethodAv uom="%">0</ratioConstGasMethodAv>
+				<densConstGasMethod uom="lbm/galUS">0</densConstGasMethod>
+				<ratioConstGasMethodStart uom="%">0</ratioConstGasMethodStart>
+				<ratioConstGasMethodEnd uom="%">0</ratioConstGasMethodEnd>
+				<densConstGasFoam uom="lbm/galUS">0</densConstGasFoam>
+				<eTimThickening uom="h">5.07</eTimThickening>
+				<tempThickening uom="degC">235</tempThickening>
+				<presTestThickening uom="psi">0</presTestThickening>
+				<consTestThickening uom="Euc">33</consTestThickening>
+				<pcFreeWater uom="mL/mL">235</pcFreeWater>
+				<tempFreeWater uom="degC">52</tempFreeWater>
+				<volTestFluidLoss uom="cm3">0</volTestFluidLoss>
+				<tempFluidLoss uom="degC">58</tempFluidLoss>
+				<presTestFluidLoss uom="psi">250</presTestFluidLoss>
+				<timeFluidLoss uom="min">30</timeFluidLoss>
+				<volAPIFluidLoss uom="cm3">0</volAPIFluidLoss>
+				<eTimComprStren1 uom="h">12</eTimComprStren1>
+				<eTimComprStren2 uom="h">24</eTimComprStren2>
+				<presComprStren1 uom="psi">1500</presComprStren1>
+				<presComprStren2 uom="psi">2400</presComprStren2>
+				<tempComprStren1 uom="degC">235</tempComprStren1>
+				<tempComprStren2 uom="degC">235</tempComprStren2>
+				<densAtPres uom="lbm/galUS">0</densAtPres>
+				<volReserved uom="bbl">0</volReserved>
+				<volTotSlurry uom="bbl">0</volTotSlurry>
+			</cementingFluid>
+			<afterFlowAnn>false</afterFlowAnn>
+			<squeezeObj>Not stated</squeezeObj>
+			<squeezeObtained>true</squeezeObtained>
+			<mdString uom="ft">10500</mdString>
+			<mdTool uom="ft">10500</mdTool>
+			<mdCoilTbg uom="ft">0</mdCoilTbg>
+			<volCsgIn uom="bbl">0</volCsgIn>
+			<volCsgOut uom="bbl">0</volCsgOut>
+			<tailPipeUsed>true</tailPipeUsed>
+			<diaTailPipe uom="in">3.73</diaTailPipe>
+			<tailPipePerf>false</tailPipePerf>
+			<presTbgStart uom="psi">0</presTbgStart>
+			<presTbgEnd uom="psi">0</presTbgEnd>
+			<presCsgStart uom="psi">0</presCsgStart>
+			<presCsgEnd uom="psi">0</presCsgEnd>
+			<presBackPressure uom="psi">0</presBackPressure>
+			<presCoilTbgStart uom="psi">0</presCoilTbgStart>
+			<presCoilTbgEnd uom="psi">0</presCoilTbgEnd>
+			<presBreakDown uom="psi">0</presBreakDown>
+			<flowrateBreakDown uom="bbl/min">0</flowrateBreakDown>
+			<presSqueezeAv uom="psi">0</presSqueezeAv>
+			<presSqueezeEnd uom="psi">0</presSqueezeEnd>
+			<presSqueezeHeld>false</presSqueezeHeld>
+			<presSqueeze uom="psi">0</presSqueeze>
+			<eTimPresHeld uom="min">0</eTimPresHeld>
+			<flowrateSqueezeAv uom="galUS/min">0</flowrateSqueezeAv>
+			<flowrateSqueezeMx uom="galUS/min">0</flowrateSqueezeMx>
+			<flowratePumpStart uom="galUS/min">0</flowratePumpStart>
+			<flowratePumpEnd uom="galUS/min">0</flowratePumpEnd>
+			<pillBelowPlug>true</pillBelowPlug>
+			<plugCatcher>false</plugCatcher>
+			<mdCircOut uom="ft">10300</mdCircOut>
+			<volCircPrior uom="bbl">0</volCircPrior>
+			<typeOriginalMud>LSND/WBM</typeOriginalMud>
+			<wtMud uom="lbm/galUS">13.5</wtMud>
+			<visFunnelMud uom="s">40</visFunnelMud>
+			<pvMud uom="cP">19</pvMud>
+			<ypMud uom="lbf/100ft2">10</ypMud>
+			<gel10Sec uom="lbf/100ft2">4</gel10Sec>
+			<gel10Min uom="lbf/100ft2">11</gel10Min>
+			<tempBHCT uom="degC">45</tempBHCT>
+			<tempBHST uom="degC">46</tempBHST>
+			<volExcessMethod>None</volExcessMethod>
+			<mixMethod>Recirc</mixMethod>
+			<densMeasBy>Densometer</densMeasBy>
+			<annFlowAfter>false</annFlowAfter>
+			<topPlug>true</topPlug>
+			<botPlug>true</botPlug>
+			<botPlugNumber>1</botPlugNumber>
+			<plugBumped>false</plugBumped>
+			<presPriorBump uom="psi">0</presPriorBump>
+			<presBump uom="psi">0</presBump>
+			<presHeld uom="psi">0</presHeld>
+			<floatHeld>false</floatHeld>
+			<volMudLost uom="bbl">0</volMudLost>
+			<fluidDisplace>Old Mud</fluidDisplace>
+			<densDisplaceFluid uom="lbm/galUS">13.5</densDisplaceFluid>
+			<volDisplaceFluid uom="bbl">239.1</volDisplaceFluid>
+		</cementStage>
+		<cementTest>
+			<presTest uom="psi">700</presTest>
+			<eTimTest uom="min">20</eTimTest>
+			<cementShoeCollar>true</cementShoeCollar>
+			<cetRun>false</cetRun>
+			<cetBondQual>false</cetBondQual>
+			<cblRun>true</cblRun>
+			<cblBondQual>false</cblBondQual>
+			<cblPres uom="psi">0</cblPres>
+			<tempSurvey>true</tempSurvey>
+			<eTimCementLog uom="h">2</eTimCementLog>
+			<formPit uom="psi/ft">350</formPit>
+			<toolCompanyPit>SLB</toolCompanyPit>
+			<eTimPitStart uom="h">3</eTimPitStart>
+			<mdCementTop uom="ft">10240</mdCementTop>
+			<topCementMethod>Top cement method desc.</topCementMethod>
+			<tocOK>true</tocOK>
+			<jobRating>Very good</jobRating>
+			<remedialCement>false</remedialCement>
+			<numRemedial>0</numRemedial>
+			<failureMethod>None</failureMethod>
+			<linerTop uom="ft">10200</linerTop>
+			<linerLap uom="ft">120</linerLap>
+			<eTimBeforeTest uom="h">1.5</eTimBeforeTest>
+			<testNegativeTool>Neg. tool test desc.</testNegativeTool>
+			<testNegativeEmw uom="lbm/galUS">25</testNegativeEmw>
+			<testPositiveTool>Pos. tool test desc.</testPositiveTool>
+			<testPositiveEmw uom="lbm/galUS">32</testPositiveEmw>
+			<cementFoundOnTool>false</cementFoundOnTool>
+			<mdDVTool uom="ft">10350</mdDVTool>
+		</cementTest>
+		<typePlug>Type of plug desc.</typePlug>
+		<nameCementString>None</nameCementString>
+		<dTimPlugSet>2001-10-29T10:30:00.000Z</dTimPlugSet>
+		<cementDrillOut>true</cementDrillOut>
+		<dTimCementDrillOut>2001-10-29T09:30:00.000Z</dTimCementDrillOut>
+		<typeSqueeze>Squeeze type desc.</typeSqueeze>
+		<mdSqueeze uom="ft">10240</mdSqueeze>
+		<dTimSqueeze>2001-10-29T09:30:00.000Z</dTimSqueeze>
+		<toolCompany>Halliburton</toolCompany>
+		<typeTool>Tool desc.</typeTool>
+		<dTimPipeRotStart>2001-10-29T09:35:00.000Z</dTimPipeRotStart>
+		<dTimPipeRotEnd>2001-10-29T16:30:00.000Z</dTimPipeRotEnd>
+		<rpmPipe uom="rpm">5</rpmPipe>
+		<tqInitPipeRot uom="ft.lbf">400</tqInitPipeRot>
+		<tqPipeAv uom="ft.lbf">350</tqPipeAv>
+		<tqPipeMx uom="ft.lbf">500</tqPipeMx>
+		<dTimRecipStart>2001-10-29T10:35:00.000Z</dTimRecipStart>
+		<dTimRecipEnd>2001-10-29T13:30:00.000Z</dTimRecipEnd>
+		<overPull uom="klbf">0</overPull>
+		<slackOff uom="klbf">0</slackOff>
+		<rpmPipeRecip uom="rpm">0</rpmPipeRecip>
+		<lenPipeRecipStroke uom="ft">0</lenPipeRecipStroke>
+		<coilTubing>false</coilTubing>
+		<commonData>
+			<itemState>plan</itemState>
+			<comments>These are the comments associated with the cementJob data object.</comments>
+		</commonData>
+	</cementJob>
+</cementJobs>

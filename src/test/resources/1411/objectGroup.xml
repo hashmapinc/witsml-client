@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="./stylesheets/generic.xsl" type="text/xsl" media="screen"?>
+<!--
+        This example is non-normative and is only intended to demonstrate the type of data that can be exchanged.
+        It is totally artificial and is not intended to demonstrate best practices. 
+        The data values were generically assigned based on their underlying type.
+        Enumerated values were randomly chosen from the allowed list.
+        Most (but not necessarily all) elements with a uid attribute can recur.
+-->
+<objectGroups 
+	xmlns="http://www.witsml.org/schemas/1series" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.witsml.org/schemas/1series ../xsd_schemas/obj_objectGroup.xsd" 
+	version="1.4.1.1">
+   <objectGroup uidWell="x21345abc" uidWellbore="x21345abc" uid="x21345abc">
+      <nameWell>ABCD</nameWell>
+      <nameWellbore>ABCD</nameWellbore>
+      <name>ABCD</name>
+      <groupType>drilling</groupType>
+      <sequence>1234</sequence>
+      <description>ABCD</description>
+      <param index="1234" name="abcd" uom="uom" description="ABCD" uid="x21345abc">abcd</param>
+      <memberObject uid="x21345abc">
+         <objectReference object="ABCD" uidRef="x21345abc">ABCD</objectReference>
+         <indexType>date time</indexType>
+         <sequence1 description="ABCD">1</sequence1>
+         <sequence2 description="ABCD">1</sequence2>
+         <sequence3 description="ABCD">1</sequence3>
+         <rangeMin uom="uom">12.345678</rangeMin>
+         <rangeMax uom="uom">12.345678</rangeMax>
+         <rangeDateTimeMin>2008-12-12T00:00:00Z</rangeDateTimeMin>
+         <rangeDateTimeMax>2008-12-12T00:00:00Z</rangeDateTimeMax>
+         <mnemonicList>ABCD</mnemonicList>
+         <referenceDepth uom="m" datum="ABCD">12.345678</referenceDepth>
+         <referenceDateTime>2008-12-12T00:00:00Z</referenceDateTime>
+         <param index="1234" name="abcd" uom="uom" description="ABCD" uid="x21345abc">abcd</param>
+         <extensionNameValue uid="x21345abc">
+            <name>abcd</name>
+            <value uom="uom">ABCD</value>
+            <dataType>string</dataType>
+            <dTim>2008-12-12T00:00:00Z</dTim>
+            <md uom="m" datum="ABCD">12.345678</md>
+            <index>1234</index>
+            <measureClass>abcd</measureClass>
+            <description>ABCD</description>
+         </extensionNameValue>
+      </memberObject>
+      <commonData>
+         <sourceName>ABCD</sourceName>
+         <dTimCreation>2008-12-12T00:00:00Z</dTimCreation>
+         <dTimLastChange>2008-12-12T00:00:00Z</dTimLastChange>
+         <itemState>actual</itemState>
+         <serviceCategory>abcd</serviceCategory>
+         <comments>ABCD</comments>
+         <acquisitionTimeZone dTim="2008-12-12T00:00:00Z">Z</acquisitionTimeZone>
+         <defaultDatum uidRef="x21345abc">ABCD</defaultDatum>
+         <privateGroupOnly>true</privateGroupOnly>
+         <extensionAny />
+         <extensionNameValue uid="x21345abc">
+            <name>abcd</name>
+            <value uom="uom">ABCD</value>
+            <dataType>string</dataType>
+            <dTim>2008-12-12T00:00:00Z</dTim>
+            <md uom="m" datum="ABCD">12.345678</md>
+            <index>1234</index>
+            <measureClass>abcd</measureClass>
+            <description>ABCD</description>
+         </extensionNameValue>
+      </commonData>
+      <customData />
+   </objectGroup>
+</objectGroups>

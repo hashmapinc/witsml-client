@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="./stylesheets/generic.xsl" type="text/xsl" media="screen"?>
+<!--   			Example of Survey Program data 		-->
+<surveyPrograms 
+	xmlns="http://www.witsml.org/schemas/1series" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.witsml.org/schemas/1series  ../xsd_schemas/obj_surveyProgram.xsd" 
+	version="1.4.1.1">
+<!-- 
+These examples are only intended to demonstrate the type of data that can be exchanged.
+They totally artificial and are not intended to demonstrate best practices. 
+-->
+	<documentInfo>
+		<documentName>surveyProgram</documentName>
+		<fileCreationInformation>
+			<fileCreationDate>2001-10-31T08:15:00.000Z</fileCreationDate> 
+			<fileCreator>John Smith</fileCreator>
+		</fileCreationInformation>
+	</documentInfo>
+	<surveyProgram uidWell="W-12" uidWellbore="B-01" uid="jh56e">
+		<nameWell>6507/7-A-42</nameWell>
+		<nameWellbore>A-42</nameWellbore>
+  		<name>final</name>
+		<surveyVer>1</surveyVer>
+		<dTimTrajProg>2001-10-31T08:15:00.000Z</dTimTrajProg>
+		<engineer>J. Belaskie</engineer>
+		<final>no</final>
+		<surveySection uid="ss-1">
+			<sequence>1</sequence>
+			<name>NS Gyro single shots</name>
+			<mdStart uom="ft">567.8</mdStart>
+			<mdEnd uom="ft">2132.5</mdEnd>
+			<nameSurveyCompany>ABC Company</nameSurveyCompany>
+			<nameTool>Survey tool name</nameTool>
+			<typeTool>NS-GYRO-SS</typeTool>
+			<modelError>good gyro</modelError>
+			<overwrite>true</overwrite>
+			<frequencyMx uom="ft">100</frequencyMx>
+			<itemState>actual</itemState>
+			<comments>These are the comments associated with the survey section 1.</comments>
+		</surveySection>
+		<surveySection uid="ss-2">
+			<sequence>2</sequence>
+			<name>MWD - Standard</name>
+			<mdStart uom="ft">2132.5</mdStart>
+			<mdEnd uom="ft">7657.5</mdEnd>
+			<nameSurveyCompany>ABC Company</nameSurveyCompany>
+			<nameTool>Survey tool name</nameTool>
+			<typeTool>MWD</typeTool>
+			<modelError>good mag</modelError>
+			<overwrite>true</overwrite>
+			<frequencyMx uom="ft">30</frequencyMx>
+			<itemState>actual</itemState>
+			<comments>These are the comments associated with the survey section 2.</comments>
+		</surveySection>
+		<surveySection uid="ss-3">
+			<sequence>3</sequence>
+			<name>EMS - Standard</name>
+			<mdStart uom="ft">2624.7</mdStart>
+			<mdEnd uom="ft">7657.5</mdEnd>
+			<nameSurveyCompany>ABC Company</nameSurveyCompany>
+			<nameTool>Survey tool name</nameTool>
+			<typeTool>EMS</typeTool>
+			<modelError>good gyro</modelError>
+			<overwrite>true</overwrite>
+			<frequencyMx uom="ft">50</frequencyMx>
+			<itemState>actual</itemState>
+			<comments>These are the comments associated with the survey section 3.</comments>
+		</surveySection>
+		<surveySection uid="ss-4">
+			<sequence>4</sequence>
+			<name>MWD + SAG correction</name>
+			<mdStart uom="ft">7657.5</mdStart>
+			<mdEnd uom="ft">13123.4</mdEnd>
+			<nameSurveyCompany>ABC Company</nameSurveyCompany>
+			<nameTool>Survey tool name</nameTool>
+			<typeTool>MWD + SAG</typeTool>
+			<modelError>good mag</modelError>
+			<overwrite>true</overwrite>
+			<frequencyMx uom="ft">30</frequencyMx>
+			<itemState>actual</itemState>
+			<comments>These are the comments associated with the survey section 4.</comments>
+		</surveySection>
+		<surveySection uid="ss-5">
+			<sequence>5</sequence>
+			<name>Continuous Casing M/S</name>
+			<mdStart uom="ft">567.8</mdStart>
+			<mdEnd uom="ft">13123.4</mdEnd>
+			<nameSurveyCompany>gyrodata</nameSurveyCompany>
+			<nameTool>Survey tool name</nameTool>
+			<typeTool>MS</typeTool>
+			<modelError>good gyro</modelError>
+			<overwrite>true</overwrite>
+			<frequencyMx uom="ft">50</frequencyMx>
+			<itemState>actual</itemState>
+			<comments>These are the comments associated with the survey section 5.</comments>
+		</surveySection>
+		<commonData>
+			<itemState>actual</itemState>
+			<comments>These are the comments associated with the Survey Program data object.</comments>
+		</commonData>
+	</surveyProgram>
+</surveyPrograms>

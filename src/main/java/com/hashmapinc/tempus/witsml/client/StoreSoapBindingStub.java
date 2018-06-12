@@ -2,7 +2,6 @@ package com.hashmapinc.tempus.witsml.client;
 
 import org.apache.axis.AxisFault;
 import org.apache.axis.client.Call;
-import org.apache.axis.client.Stub;
 import org.apache.axis.constants.Style;
 import org.apache.axis.constants.Use;
 import org.apache.axis.description.OperationDesc;
@@ -14,7 +13,7 @@ import java.net.URL;
 import java.rmi.RemoteException;
 import java.util.Vector;
 
-public class StoreSoapBindingStub extends Stub implements StoreSoapPort_PortType {
+public class StoreSoapBindingStub extends AbstractStoreSoapBindingStub {
     static OperationDesc[] _operations;
 
     static {

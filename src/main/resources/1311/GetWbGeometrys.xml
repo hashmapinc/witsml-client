@@ -4,7 +4,7 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.witsml.org/schemas/131  ../obj_wbGeometry.xsd"
         version="1.3.1.1">
-    <wbGeometry uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="">
+    <wbGeometry uidWell="" uidWellbore="" uid="">
         <nameWell/>
         <nameWellbore/>
         <name/>

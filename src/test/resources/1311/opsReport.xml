@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="../stylesheets/opsReport.xsl" type="text/xsl" media="screen"?>
+<!--    		Example of Operations Report data 	  -->
+<opsReports 
+	xmlns="http://www.witsml.org/schemas/131" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.witsml.org/schemas/131  ../obj_opsReport.xsd" 
+	version="1.3.1.1">
+	<documentInfo>
+		<DocumentName>opsReport</DocumentName>
+		<FileCreationInformation>
+			<FileCreationDate>2001-11-01T08:15:00.000Z</FileCreationDate>
+			<SoftwareName>WITSML 1.3.0.0 Server</SoftwareName>
+			<FileCreator>John Smith</FileCreator>
+		</FileCreationInformation>
+	</documentInfo>
+	<opsReport uidWell="W-12" uidWellbore="B-01" uid="h45a">
+		<nameWell>6507/7-A-42</nameWell>
+		<nameWellbore>A-42</nameWellbore>
+		<name>19</name>
+		<rig uidRef="H56p">Big Rig #5</rig>
+		<dTim>2001-11-01T08:15:00.000Z</dTim>
+		<eTimStart uom="d">19</eTimStart>
+		<eTimSpud uom="d">18</eTimSpud>
+		<eTimLoc uom="d">20</eTimLoc>
+		<mdReport uom="m">2339.0</mdReport>
+		<tvdReport uom="m">2113.4</tvdReport>
+		<distDrill uom="m">46</distDrill>
+		<eTimDrill uom="h">120</eTimDrill>
+		<mdPlanned uom="m">2640</mdPlanned>
+		<ropAv uom="m/h">17.8</ropAv>
+		<ropCurrent uom="m/h">14.6</ropCurrent>
+		<supervisor>Mike Taylor</supervisor>
+		<engineer>Anton Gerbrady</engineer>
+		<geologist>Andrew Williams</geologist>
+		<eTimDrillRot uom="h">12</eTimDrillRot>
+		<eTimDrillSlid uom="h">0</eTimDrillSlid>
+		<eTimCirc uom="h">3</eTimCirc>
+		<eTimReam uom="h">0</eTimReam>
+		<eTimHold uom="h">0</eTimHold>
+		<eTimSteering uom="h">0</eTimSteering>
+		<distDrillRot uom="m">46</distDrillRot>
+		<distDrillSlid uom="m">0</distDrillSlid>
+		<distReam uom="m">0</distReam>
+		<distHold uom="m">0</distHold>
+		<distSteering uom="m">0</distSteering>
+		<numPob>99</numPob>
+		<numContract>48</numContract>
+		<numOperator>1</numOperator>
+		<numService>50</numService>
+		<activity uid="act-1">
+			<dTimStart>2001-10-24T06:00:00.000</dTimStart>
+			<dTimEnd>2001-10-31T09:15:00.000</dTimEnd>
+			<duration uom="h">3.25</duration>
+			<phase>Int2</phase>
+			<activityCode>tripping</activityCode>
+			<detailActivity>No detail</detailActivity>
+			<typeActivityClass>planned</typeActivityClass>
+			<mdHoleStart uom="ft">7000</mdHoleStart>
+			<tvdHoleStart uom="m">6999</tvdHoleStart>
+			<mdHoleEnd uom="ft">7000</mdHoleEnd>
+			<tvdHoleEnd uom="ft">6999</tvdHoleEnd>
+			<mdBitStart uom="ft">6999</mdBitStart>
+			<mdBitEnd uom="ft">0</mdBitEnd>
+			<state>F</state>
+			<operator>Petoc Resources</operator>
+			<optimum>false</optimum>
+			<productive>true</productive>
+			<itemState>actual</itemState>
+			<comments>Continued pulling and racking BHA in derrick. Break off bit.</comments>
+		</activity>
+		<drillingParams uid="dp-1">
+			<eTimOpBit uom="h">2.25</eTimOpBit>
+			<mdHoleStart uom="ft">6000.00</mdHoleStart>
+			<mdHoleStop uom="ft">7000.00</mdHoleStop>
+			<tubular uidRef="TUB-23">12.25-R6</tubular>
+			<hkldRot uom="tonfUS">150000.00</hkldRot>
+			<overPull uom="tonfUS">220000.00</overPull>
+			<slackOff uom="tonfUS">180000.00</slackOff>
+			<hkldUp uom="tonfUS">200000.00</hkldUp>
+			<hkldDn uom="tonfUS">200000.00</hkldDn>
+			<tqOnBotAv uom="ft.lbf">3000.00</tqOnBotAv>
+			<tqOnBotMx uom="ft.lbf">3500.00</tqOnBotMx>
+			<tqOnBotMn uom="ft.lbf">2800.00</tqOnBotMn>
+			<tqOffBotAv uom="ft.lbf">2000.00</tqOffBotAv>
+			<tqDhAv uom="ft.lbf">3000.00</tqDhAv>
+			<wtAboveJar uom="lbf">100000.00</wtAboveJar>
+			<wtBelowJar uom="lbf">100000.00</wtBelowJar>
+			<wtMud uom="lbm/ft3">1.24</wtMud>
+			<flowratePump uom="ft3/h">400.00</flowratePump>
+			<powBit uom="hp">500.0</powBit>
+			<velNozzleAv uom="ft/s">15</velNozzleAv>
+			<presDropBit uom="psi">500</presDropBit>
+			<cTimHold uom="h">.30</cTimHold>
+			<cTimSteering uom="h">1.50</cTimSteering>
+			<cTimDrillRot uom="h">2.25</cTimDrillRot>
+			<cTimDrillSlid uom="h">.45</cTimDrillSlid>
+			<cTimCirc uom="h">2.30</cTimCirc>
+			<cTimReam uom="h">1.25</cTimReam>
+			<distDrillRot uom="ft">300.00</distDrillRot>
+			<distDrillSlid uom="ft">200.00</distDrillSlid>
+			<distReam uom="ft">50.00</distReam>
+			<distHold uom="ft">100.00</distHold>
+			<distSteering uom="ft">200.00</distSteering>
+			<rpmAv uom="rpm">100.00</rpmAv>
+			<rpmMx uom="rpm">110.00</rpmMx>
+			<rpmMn uom="rpm">80.00</rpmMn>
+			<rpmAvDh uom="rpm">80.00</rpmAvDh>
+			<ropAv uom="ft/h">80.00</ropAv>
+			<ropMx uom="ft/h">90.00</ropMx>
+			<ropMn uom="ft/h">70.00</ropMn>
+			<wobAv uom="tonfUS">12.50</wobAv>
+			<wobMx uom="tonfUS">15</wobMx>
+			<wobMn uom="tonfUS">11</wobMn>
+			<wobAvDh uom="tonfUS">8.5</wobAvDh>
+			<reasonTrip>Coring point</reasonTrip>
+			<objectiveBha>Drilling</objectiveBha>
+			<aziTop uom="dega">30.00</aziTop>
+			<aziBottom uom="dega">45.00</aziBottom>
+			<inclStart uom="dega">0.00</inclStart>
+			<inclMx uom="dega">20.00</inclMx>
+			<inclMn uom="dega">0.00</inclMn>
+			<inclStop uom="dega">10.00</inclStop>
+			<tempMudDhMx uom="degC">92.00</tempMudDhMx>
+			<presPumpAv uom="psi">1000.00</presPumpAv>
+			<flowrateBit uom="bbl/min">60.00</flowrateBit>
+			<comments>Hi TQ spikes through stringers</comments>
+		</drillingParams>
+		<dayCost uid="dc-1">
+			<numAFE>1234-5678</numAFE>
+			<costGroup>NA</costGroup>
+			<costClass>TAN</costClass>
+			<costCode>2</costCode>
+			<costSubCode>13</costSubCode>
+			<costItemDescription>Rig dayrate</costItemDescription>
+			<costPerItem currency="USD">10000</costPerItem>
+			<itemKind>day</itemKind>
+			<itemSize>1</itemSize>
+			<qtyItem>1</qtyItem>
+			<costAmount currency="USD">10000</costAmount>
+			<numInvoice>23-261001</numInvoice>
+			<numPO>1-570012</numPO>
+			<numTicket>12345</numTicket>
+			<isCarryOver>true</isCarryOver>
+			<isRental>false</isRental>
+			<numSerial>12345</numSerial>
+			<nameVendor>Transocean Sedco-Forex</nameVendor>
+			<numVendor>98765</numVendor>
+			<pool>NA</pool>
+			<estimated>true</estimated>
+		</dayCost>
+		<dayCost uid="dc-1">
+			<numAFE>1234-5678</numAFE>
+			<costGroup>NA</costGroup>
+			<costClass>TAN</costClass>
+			<costCode>2</costCode>
+			<costSubCode>14</costSubCode>
+			<costItemDescription>Rig fuel cost</costItemDescription>
+			<costPerItem currency="USD">1.42</costPerItem>
+			<itemKind>gal</itemKind>
+			<itemSize>1000</itemSize>
+			<qtyItem>1</qtyItem>
+			<costAmount currency="USD">1420</costAmount>
+			<numInvoice>261002</numInvoice>
+			<numPO>570013</numPO>
+			<numTicket>None</numTicket>
+			<isCarryOver>false</isCarryOver>
+			<isRental>false</isRental>
+			<numSerial>N/A</numSerial>
+			<nameVendor>Offshore Gas Supply</nameVendor>
+			<numVendor>98730</numVendor>
+			<pool>NA</pool>
+			<estimated>true</estimated>
+		</dayCost>
+		<trajectoryStation uid="34ht5">
+			<dTimStn>2001-10-21T08:15:00.000</dTimStn>
+			<typeTrajStation>tie in point</typeTrajStation>
+			<md uom="ft">6000</md>
+			<tvd uom="ft">5556</tvd>
+			<incl uom="dega">10</incl>
+			<azi uom="dega">47.3</azi>
+			<mtf uom="dega">47.3</mtf>
+			<gtf uom="dega">0</gtf>
+			<dispNs uom="ft">200</dispNs>
+			<dispEw uom="ft">345</dispEw>
+			<vertSect uom="ft">378</vertSect>
+			<dls uom="dega/ft">1.5</dls>
+			<rateTurn uom="dega/ft">0.8</rateTurn>
+			<rateBuild uom="dega/ft">1.9</rateBuild>
+			<mdDelta uom="ft">30</mdDelta>
+			<tvdDelta uom="ft">29.9</tvdDelta>
+			<modelToolError>good gyro</modelToolError>
+			<gravTotalUncert uom="m/s2">0</gravTotalUncert>
+			<dipAngleUncert uom="dega">0.10</dipAngleUncert>
+			<magTotalUncert uom="nT">0</magTotalUncert>
+			<gravAccelCorUsed>false</gravAccelCorUsed>
+			<magXAxialCorUsed>false</magXAxialCorUsed>
+			<sagCorUsed>false</sagCorUsed>
+			<magDrlstrCorUsed>false</magDrlstrCorUsed>
+			<statusTrajStation>position</statusTrajStation>
+			<rawData>
+				<gravAxialRaw uom="ft/s2">0.116</gravAxialRaw>
+				<gravTran1Raw uom="ft/s2">-0.168</gravTran1Raw>
+				<gravTran2Raw uom="ft/s2">-1654</gravTran2Raw>
+				<magAxialRaw uom="nT">22.77</magAxialRaw>
+				<magTran1Raw uom="nT">22.5</magTran1Raw>
+				<magTran2Raw uom="nT">27.05</magTran2Raw>
+			</rawData>
+			<corUsed>
+				<gravAxialAccelCor uom="ft/s2">0.11</gravAxialAccelCor>
+				<gravTran1AccelCor uom="ft/s2">0.14</gravTran1AccelCor>
+				<gravTran2AccelCor uom="ft/s2">0.13</gravTran2AccelCor>
+				<magAxialDrlstrCor uom="nT">0.17</magAxialDrlstrCor>
+				<magTran1DrlstrCor uom="nT">0.16</magTran1DrlstrCor>
+				<magTran2DrlstrCor uom="nT">0.24</magTran2DrlstrCor>
+				<sagIncCor uom="dega">0</sagIncCor>
+				<sagAziCor uom="dega">0</sagAziCor>
+				<stnMagDeclUsed uom="dega">-4.038</stnMagDeclUsed>
+				<stnGridCorUsed uom="dega">-0.4917</stnGridCorUsed>
+				<dirSensorOffset uom="ft">48.3</dirSensorOffset>
+			</corUsed>
+			<valid>
+				<magTotalFieldCalc uom="nT">51.19</magTotalFieldCalc>
+				<magDipAngleCalc uom="dega">41.5</magDipAngleCalc>
+				<gravTotalFieldCalc uom="ft/s2">0.999</gravTotalFieldCalc>
+			</valid>
+			<matrixCov>
+				<varianceNN uom="ft2">100</varianceNN>
+				<varianceNE uom="ft2">144</varianceNE>
+				<varianceNVert uom="ft2">121</varianceNVert>
+				<varianceEE uom="ft2">144</varianceEE>
+				<varianceEVert uom="ft2">121</varianceEVert>
+				<varianceVertVert uom="ft2">100</varianceVertVert>
+				<biasN uom="ft">8</biasN>
+				<biasE uom="ft">4</biasE>
+				<biasVert uom="ft">2</biasVert>
+			</matrixCov>
+			<location uid="location-1">
+				<wellCRS uidRef="crs2">Adindian</wellCRS>
+				<latitude uom="dega">93</latitude>
+				<longitude uom="dega">42</longitude>
+			</location>
+			<location uid="location-2">
+				<wellCRS uidRef="crs1">AlbersEqualArea</wellCRS>
+				<projectedX uom="ft">500</projectedX>
+				<projectedY uom="ft">300</projectedY>
+			</location>
+		</trajectoryStation>
+		<fluid uid="fluid-1">
+			<type>oil based</type>
+			<locationSample>Pit</locationSample>
+			<density uom="g/L">1.26</density>
+			<visFunnel uom="s">55</visFunnel>
+			<tempVis uom="degC">28</tempVis>
+			<pv uom="cP">50</pv>
+			<yp uom="lbf/100ft2">30</yp>
+			<gel10Sec uom="lbf/100ft2">14</gel10Sec>
+			<gel10Min uom="lbf/100ft2">24</gel10Min>
+			<gel30Min uom="lbf/100ft2">27</gel30Min>
+			<filterCakeLtlp uom="in/32">1</filterCakeLtlp>
+			<filtrateLtlp uom="mL">2.3</filtrateLtlp>
+			<tempHthp uom="degF">200</tempHthp>
+			<presHthp uom="psi">500</presHthp>
+			<filtrateHthp uom="mL">2.4</filtrateHthp>
+			<filterCakeHthp uom="in/32">1</filterCakeHthp>
+			<solidsPc uom="%">6.1</solidsPc>
+			<waterPc uom="%">32</waterPc>
+			<oilPc uom="%">53</oilPc>
+			<sandPc uom="%">0.3</sandPc>
+			<solidsLowGravPc uom="%">6.1</solidsLowGravPc>
+			<solidsCalcPc uom="%">7.5</solidsCalcPc>
+			<baritePc uom="%">5.0</baritePc>
+			<lcm uom="lbm/bbl">10</lcm>
+			<mbt uom="meq/g">0.3</mbt>
+			<ph>10.5</ph>
+			<tempPh uom="degC">28</tempPh>
+			<pm uom="mL">0.9</pm>
+			<pmFiltrate uom="mL">1.3</pmFiltrate>
+			<mf uom="mL">1.0</mf>
+			<alkalinityP1 uom="mL">1.1</alkalinityP1>
+			<alkalinityP2 uom="mL">1.2</alkalinityP2>
+			<chloride uom="mg/L">18750</chloride>
+			<calcium uom="mg/L">7000</calcium>
+			<magnesium uom="mg/L">104.5</magnesium>
+			<rheometer uid="rheometer-1">
+				<tempRheom uom="degC">25</tempRheom>
+				<presRheom uom="psi">14.5</presRheom>
+				<vis3Rpm>10</vis3Rpm>
+				<vis6Rpm>12</vis6Rpm>
+				<vis100Rpm>40</vis100Rpm>
+				<vis200Rpm>61</vis200Rpm>
+				<vis300Rpm>80</vis300Rpm>
+				<vis600Rpm>130</vis600Rpm>
+			</rheometer>
+			<rheometer uid="rheometer-2">
+				<tempRheom uom="degC">26</tempRheom>
+				<presRheom uom="psi">14.5</presRheom>
+				<vis3Rpm>11</vis3Rpm>
+				<vis6Rpm>13</vis6Rpm>
+				<vis100Rpm>42</vis100Rpm>
+				<vis200Rpm>63</vis200Rpm>
+				<vis300Rpm>83</vis300Rpm>
+				<vis600Rpm>135</vis600Rpm>
+			</rheometer>
+			<brinePc uom="%">20</brinePc>
+			<lime uom="lbm/bbl">3.2</lime>
+			<electStab uom="V">360</electStab>
+			<calciumChloride uom="mg/L">5000</calciumChloride>
+			<company>Baker Hughes INTEQ</company>
+			<engineer>Doug Bullivant/Andy Duncombe</engineer>
+			<asg>.0275</asg>
+			<solidsHiGravPc uom="%">7.22</solidsHiGravPc>
+			<polymer uom="%">2.5</polymer>
+			<polyType>XCD POLYMER</polyType>
+			<solCorPc uom="%">3.53</solCorPc>
+			<oilCtg uom="g/kg">110.3</oilCtg>
+			<hardnessCa uom="ppm">3200</hardnessCa>
+			<sulfide uom="g/L">10.5</sulfide>
+			<comments>Base oil, fluid loss additive and viscosifier to active and reserve mud.</comments>
+		</fluid>
+		<scr uid="scr-1">
+			<dTim>2001-10-25T06:00:00.000</dTim>
+			<pump uidRef="PUMP-1">1</pump>
+			<typeScr>string annulus</typeScr>
+			<rateStroke uom="rpm">20</rateStroke>
+			<presRecorded uom="psi">200</presRecorded>
+			<mdBit uom="ft">7000</mdBit>
+		</scr>
+		<scr uid="scr-2">
+			<dTim>2001-10-25T14:00:00.000</dTim>
+			<pump uidRef="PUMP-2">2</pump>
+			<typeScr>string annulus</typeScr>
+			<rateStroke uom="rpm">30</rateStroke>
+			<presRecorded uom="psi">310</presRecorded>
+			<mdBit uom="ft">7000</mdBit>
+		</scr>
+		<pitVolume uid="pv-1">
+			<pit uidRef="Active-1">1</pit>
+			<dTim>2001-10-25T06:00:00.000</dTim>
+			<volPit uom="bbl">155</volPit>
+			<densFluid uom="lbm/galUS">10.8</densFluid>
+			<descFluid>Mud</descFluid>
+			<visFunnel uom="s">37</visFunnel>
+		</pitVolume>
+		<pitVolume uid="pv-2">
+			<pit uidRef="Active-2">2</pit>
+			<dTim>2001-10-25T06:05:00.000</dTim>
+			<volPit uom="bbl">160</volPit>
+			<densFluid uom="lbm/galUS">10.9</densFluid>
+			<descFluid>Mud</descFluid>
+			<visFunnel uom="s">36</visFunnel>
+		</pitVolume>
+		<mudVolume>
+			<volTotMudStart uom="bbl">275</volTotMudStart>
+			<volMudDumped uom="bbl">0</volMudDumped>
+			<volMudReceived uom="bbl">45</volMudReceived>
+			<volMudReturned uom="bbl">70</volMudReturned>
+			<mudLosses>
+				<volLostShakerSurf uom="bbl">2</volLostShakerSurf>
+				<volLostMudCleanerSurf uom="bbl">0.25</volLostMudCleanerSurf>
+				<volLostPitsSurf uom="bbl">0</volLostPitsSurf>
+				<volLostTrippingSurf uom="bbl">1</volLostTrippingSurf>
+				<volLostOtherSurf uom="bbl">0</volLostOtherSurf>
+				<volTotMudLostSurf uom="bbl">3.25</volTotMudLostSurf>
+				<volLostCircHole uom="bbl">5</volLostCircHole>
+				<volLostCsgHole uom="bbl">0</volLostCsgHole>
+				<volLostCmtHole uom="bbl">0</volLostCmtHole>
+				<volLostBhdCsgHole uom="bbl">0</volLostBhdCsgHole>
+				<volLostAbandonHole uom="bbl">0</volLostAbandonHole>
+				<volLostOtherHole uom="bbl">0</volLostOtherHole>
+				<volTotMudLostHole uom="bbl">5</volTotMudLostHole>
+			</mudLosses>
+			<volMudBuilt uom="bbl">0</volMudBuilt>
+			<volMudString uom="bbl">30</volMudString>
+			<volMudCasing uom="bbl">100</volMudCasing>
+			<volMudHole uom="bbl">65</volMudHole>
+			<volMudRiser uom="bbl">15</volMudRiser>
+			<volTotMudEnd uom="bbl">310</volTotMudEnd>
+		</mudVolume>
+		<mudInventory uid="mi-1">
+			<name>ANCO ZAN D</name>
+			<itemWtPerUnit uom="kg">25</itemWtPerUnit>
+			<pricePerUnit currency="USD">100</pricePerUnit>
+			<qtyStart>40</qtyStart>
+			<qtyAdjustment>-2</qtyAdjustment>
+			<qtyReceived>40</qtyReceived>
+			<qtyReturned>0</qtyReturned>
+			<qtyUsed>10</qtyUsed>
+			<costItem currency="USD">1000</costItem>
+			<qtyOnLocation>68</qtyOnLocation>
+		</mudInventory>
+		<bulk uid="bulk-1">
+			<name>Heli Fuel</name>
+			<itemVolPerUnit uom="L">1</itemVolPerUnit>
+			<pricePerUnit currency="USD">2.50</pricePerUnit>
+			<qtyStart>8585</qtyStart>
+			<qtyAdjustment>0</qtyAdjustment>
+			<qtyReceived>0</qtyReceived>
+			<qtyReturned>0</qtyReturned>
+			<qtyUsed>9</qtyUsed>
+			<costItem currency="USD">250</costItem>
+			<qtyOnLocation>8576</qtyOnLocation>
+		</bulk>
+		<rigResponse>
+			<anchorTension index="1" name="Anchor1" uom="lbf">200</anchorTension>
+			<anchorTension index="2" name="Anchor2" uom="lbf">205</anchorTension>
+			<anchorTension index="3" name="Anchor3" uom="lbf">203</anchorTension>
+			<anchorTension index="4" name="Anchor4" uom="lbf">210</anchorTension>
+			<anchorAngle index="1" name="AnchorAngle1" uom="dega">30</anchorAngle>
+			<anchorAngle index="2" name="AnchorAngle2" uom="dega">30</anchorAngle>
+			<anchorAngle index="3" name="AnchorAngle3" uom="dega">30</anchorAngle>
+			<anchorAngle index="4" name="AnchorAngle4" uom="dega">30</anchorAngle>
+			<rigHeading uom="dega">100</rigHeading>
+			<rigHeave uom="ft">12</rigHeave>
+			<rigPitchAngle uom="dega">6</rigPitchAngle>
+			<rigRollAngle uom="dega">3</rigRollAngle>
+			<riserAngle uom="dega">3</riserAngle>
+			<riserDirection uom="dega">10</riserDirection>
+			<riserTension uom="klbf">10</riserTension>
+			<variableDeckLoad uom="klbf">99</variableDeckLoad>
+			<totalDeckLoad uom="klbf">222</totalDeckLoad>
+			<guideBaseAngle uom="dega">100</guideBaseAngle>
+			<ballJointAngle uom="dega">0</ballJointAngle>
+			<ballJointDirection uom="dega">100</ballJointDirection>
+			<offsetRig uom="ft">1</offsetRig>
+			<loadLeg1 uom="klbf">0</loadLeg1>
+			<loadLeg2 uom="klbf">0</loadLeg2>
+			<loadLeg3 uom="klbf">0</loadLeg3>
+			<loadLeg4 uom="klbf">0</loadLeg4>
+			<penetrationLeg1 uom="ft">1.5</penetrationLeg1>
+			<penetrationLeg2 uom="ft">1.5</penetrationLeg2>
+			<penetrationLeg3 uom="ft">1.5</penetrationLeg3>
+			<penetrationLeg4 uom="ft">1.5</penetrationLeg4>
+			<dispRig uom="ft">12</dispRig>
+			<meanDraft uom="ft">32</meanDraft>
+		</rigResponse>
+		<pumpOp uid="po-1">
+			<dTim>2001-10-25T06:00:00.000</dTim>
+			<pump uidRef="Pump-1">1</pump>
+			<typeOperation>drilling</typeOperation>
+			<idLiner uom="in">7</idLiner>
+			<lenStroke uom="in">14</lenStroke>
+			<rateStroke uom="rpm">55</rateStroke>
+			<pressure uom="psi">2100</pressure>
+			<pcEfficiency uom="%">97</pcEfficiency>
+			<pumpOutput uom="galUS/min">200</pumpOutput>
+			<mdBit uom="m">7000</mdBit>
+		</pumpOp>
+		<shakerOp uid="so-1">
+			<shaker uidRef="shaker-1">Shale shaker 1</shaker>
+			<mdHole uom="m">7000</mdHole>
+			<dTim>2001-10-25T06:00:00.000</dTim>
+			<hoursRun uom="h">8</hoursRun>
+			<pcScreenCovered uom="%">2</pcScreenCovered>
+			<shakerScreen >
+				<dTimStart>2001-10-25T06:00:00.000Z</dTimStart>
+				<dTimEnd>2001-10-26T16:00:00.000Z</dTimEnd>
+				<numDeck>1</numDeck>
+				<meshX uom="mm">100</meshX>
+				<meshY uom="mm">80</meshY>
+				<manufacturer>Thule</manufacturer>
+				<model>Th100</model>
+				<cutPoint uom="mm">98</cutPoint>
+			</shakerScreen>
+		</shakerOp>
+		<hse>
+			<daysIncFree uom="d">0</daysIncFree>
+			<incident uid="inc-1">
+				<dTim>2001-11-01T08:15:00.000</dTim>
+				<reporter>Joe Bloggs</reporter>
+				<numMinorInjury>2</numMinorInjury>
+				<numMajorInjury>2</numMajorInjury>
+				<numFatality>1</numFatality>
+				<isNearMiss>false</isNearMiss>
+				<descLocation>Pipe deck</descLocation>
+				<descAccident>Rough seas, casing strapped to pipe deck became loose and rolled into working deck crew.</descAccident>
+				<remedialActionDesc>Planned regular inspection of all restraining straps, chains, etc.</remedialActionDesc>
+				<causeDesc>Restraining chain snapped</causeDesc>
+				<eTimLostGross uom="h">2000</eTimLostGross>
+				<costLostGross currency="USD">2000000</costLostGross>
+				<responsibleCompany>LowCost Chains Inc.</responsibleCompany>
+			</incident>
+			<lastCsgPresTest>2001-06-01T08:15:00.000</lastCsgPresTest>
+			<presLastCsg uom="psi">5000</presLastCsg>
+			<lastBopPresTest>2001-06-01T08:15:00.000</lastBopPresTest>
+			<nextBopPresTest>2001-11-08T08:15:00.000</nextBopPresTest>
+			<presStdPipe uom="psi">5000</presStdPipe>
+			<presKellyHose uom="psi">5000</presKellyHose>
+			<presDiverter uom="psi">5000</presDiverter>
+			<presAnnular uom="psi">5000</presAnnular>
+			<presRams uom="psi">5000</presRams>
+			<presChokeLine uom="psi">5000</presChokeLine>
+			<presChokeMan uom="psi">5000</presChokeMan>
+			<lastFireBoatDrill>2001-06-01T08:15:00.000</lastFireBoatDrill>
+			<lastAbandonDrill>2001-06-01T08:15:00.000</lastAbandonDrill>
+			<lastRigInspection>2001-06-01T08:15:00.000</lastRigInspection>
+			<lastSafetyMeeting>2001-06-01T08:15:00.000</lastSafetyMeeting>
+			<lastSafetyInspection>2001-06-01T08:15:00.000</lastSafetyInspection>
+			<lastTripDrill>2001-06-01T08:15:00.000</lastTripDrill>
+			<lastDiverterDrill>2001-06-01T08:15:00.000</lastDiverterDrill>
+			<lastBopDrill>2001-06-01T08:15:00.000</lastBopDrill>
+			<regAgencyInsp>false</regAgencyInsp>
+			<nonComplianceIssued>false</nonComplianceIssued>
+			<numStopCards>1</numStopCards>
+			<fluidDischarged uom="bbl">0</fluidDischarged>
+			<volCtgDischarged uom="bbl">25</volCtgDischarged>
+			<volOilCtgDischarge uom="bbl">1.5</volOilCtgDischarge>
+			<wasteDischarged uom="bbl">0</wasteDischarged>
+			<comments>No comments</comments>
+		</hse>
+		<personnel uid="per-1">
+			<company>Exlog</company>
+			<typeService>Mud log</typeService>
+			<numPeople>4</numPeople>
+			<totalTime uom="h">48</totalTime>
+		</personnel>
+		<personnel uid="per-2">
+			<company>The Log Analyzers</company>
+			<typeService>Analyze logs</typeService>
+			<numPeople>2</numPeople>
+			<totalTime uom="h">24</totalTime>
+		</personnel>
+		<supportCraft uid="boat-1">
+			<name>Grampian-Provider</name>
+			<typeSuppCraft>standby boat</typeSuppCraft>
+			<dTimArrived>2001-11-01T08:15:00.000</dTimArrived>
+			<dTimDeparted>2001-11-05T08:15:00.000</dTimDeparted>
+			<comments>Onsite until 11/5/2001</comments>
+		</supportCraft>
+		<weather uid="w-1">
+			<dTim>2001-11-01T08:15:00.000</dTim>
+			<agency>Grampain Met Services</agency>
+			<barometricPressure uom="mbar">811</barometricPressure>
+			<beaufortScaleNumber>0</beaufortScaleNumber>
+			<tempSurfaceMn uom="degC">4.9</tempSurfaceMn>
+			<tempSurfaceMx uom="degC">6</tempSurfaceMx>
+			<tempWindChill uom="degC">0</tempWindChill>
+			<tempsea uom="degC">2</tempsea>
+			<visibility uom="km">2</visibility>
+			<aziWave uom="dega">16</aziWave>
+			<htWave uom="m">4.4</htWave>
+			<periodWave uom="s">6.9</periodWave>
+			<aziWind uom="dega">16</aziWind>
+			<velWind uom="m/s">11</velWind>
+			<typePrecip>snow</typePrecip>
+			<amtPrecip uom="in">1</amtPrecip>
+			<coverCloud>Full</coverCloud>
+			<ceilingCloud uom="ft">3000</ceilingCloud>
+			<currentSea uom="m/h">1.4</currentSea>
+			<aziCurrentSea uom="dega">100</aziCurrentSea>
+			<comments>None</comments>
+		</weather>
+		<numAFE>FVNI/2000/07</numAFE>
+		<costDay currency="USD">140535</costDay>
+		<costDayMud currency="USD">2615</costDayMud>
+		<diaHole uom="in">12.25</diaHole>
+		<conditionHole>Good</conditionHole>
+		<lithology>Sandstone</lithology>
+		<nameFormation>Rotliegende</nameFormation>
+		<diaCsgLast uom="in">13.375</diaCsgLast>
+		<mdCsgLast uom="m">1797.4</mdCsgLast>
+		<tvdCsgLast uom="m">1699</tvdCsgLast>
+		<tvdLot uom="m">1703.4</tvdLot>
+		<presLotEmw uom="g/L">1.55</presLotEmw>
+		<presKickTol uom="psi">200</presKickTol>
+		<volKickTol uom="bbl">65</volKickTol>
+		<maasp uom="psi">3513</maasp>
+		<tubular uidRef="45t12">TubAssy001</tubular>
+		<sum24Hr>Drilled 12-1/4" hole to core point</sum24Hr>
+		<forecast24Hr>Tag bottom with core assembly and cut core.</forecast24Hr>
+		<statusCurrent>RIH with coring assembly.</statusCurrent>
+		<commonData>
+			<itemState>actual</itemState>
+			<comments>Send 50bbl base oil back to base o/b Edda Fram</comments>
+		</commonData>
+	</opsReport>
+</opsReports>
