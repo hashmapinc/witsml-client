@@ -143,6 +143,6 @@ Can be used with the following maven dependancy
          <dependency>
             <groupId>com.hashmapinc.tempus</groupId>
             <artifactId>witsml-client</artifactId>
-            <version>1.0.1</version>
+            <version>1.1.0</version>
         </dependency>
 ```

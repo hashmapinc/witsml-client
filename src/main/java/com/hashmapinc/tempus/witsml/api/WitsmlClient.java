@@ -38,6 +38,8 @@ public interface WitsmlClient {
 
     void setPassword(String password);
 
+    String getPassword();
+
     void setVersion(WitsmlVersion version);
 
     String getVersion();

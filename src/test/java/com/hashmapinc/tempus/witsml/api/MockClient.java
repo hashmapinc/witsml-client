@@ -109,6 +109,15 @@ public class MockClient implements WitsmlClient {
     }
 
     /**
+     * Gets the password for the WITSML API requests (sent as HTTP Basic)
+     * @return  password The password to use
+     */
+    @Override
+    public String getPassword() {
+        return this.password;
+    }
+
+    /**
      * Sets the version that will be used for querying
      * @param version The version string that will be used
      */

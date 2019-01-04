@@ -1,21 +1,21 @@
 package com.hashmapinc.tempus.witsml.example;
 
 import com.hashmapinc.tempus.WitsmlObjects.v1311.*;
-import com.hashmapinc.tempus.WitsmlObjects.v1411.*;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.CsGeologyInterval;
-import com.hashmapinc.tempus.WitsmlObjects.v1411.CsTrajectoryStation;
-import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjRisks;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.CsLogData;
-import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjOpsReports;
-import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjFluidsReports;
+import com.hashmapinc.tempus.WitsmlObjects.v1411.CsTrajectoryStation;
+import com.hashmapinc.tempus.WitsmlObjects.v1411.*;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjBhaRuns;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjCementJobs;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjConvCores;
+import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjFluidsReports;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjFormationMarkers;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjLogs;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjMessages;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjMudLogs;
+import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjOpsReports;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjRigs;
+import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjRisks;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjSidewallCores;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjSurveyPrograms;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjTargets;
@@ -24,12 +24,12 @@ import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjTubulars;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjWbGeometrys;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjWellbores;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjWells;
-import com.hashmapinc.tempus.witsml.api.*;
-import com.hashmapinc.tempus.witsml.client.Client;
+import com.hashmapinc.tempus.witsml.api.LogRequestTracker;
+import com.hashmapinc.tempus.witsml.api.MudlogRequestTracker;
+import com.hashmapinc.tempus.witsml.api.TrajectoryRequestTracker;
 import com.hashmapinc.tempus.witsml.api.WitsmlVersion;
+import com.hashmapinc.tempus.witsml.client.Client;
 import com.hashmapinc.tempus.witsml.client.WitsmlQuery;
-import com.sun.org.apache.xml.internal.serialize.OutputFormat;
-import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -38,7 +38,16 @@ import javax.xml.bind.JAXBException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.*;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.StringReader;
+import java.io.StringWriter;
 import java.rmi.RemoteException;
 import java.util.List;
 import java.util.Map;
@@ -56,9 +65,9 @@ public class MyWitsmlClient {
 
         try {
             System.out.println("Supported Caps:");
-            System.out.println(prettyPrint(c.getCapabilities(), true));
+            System.out.println(prettyPrint(c.getCapabilities()));
         }
-        catch (SAXException | ParserConfigurationException | IOException e) {
+        catch (SAXException | ParserConfigurationException | IOException | TransformerException e) {
             System.out.println("Error executing get capabilities: " + e.getMessage());
         }
 
@@ -802,21 +811,16 @@ public class MyWitsmlClient {
         }
     }
 
-    private static String prettyPrint(String xml, Boolean omitXmlDeclaration) throws IOException, SAXException, ParserConfigurationException {
+    private static String prettyPrint(String xml) throws IOException, SAXException, ParserConfigurationException, TransformerException {
 
+        Transformer transformer = TransformerFactory.newInstance().newTransformer();
+        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+        StreamResult result = new StreamResult(new StringWriter());
         DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
         Document doc = db.parse(new InputSource(new StringReader(xml)));
-
-        OutputFormat format = new OutputFormat(doc);
-        format.setIndenting(true);
-        format.setIndent(2);
-        format.setOmitXMLDeclaration(omitXmlDeclaration);
-        format.setLineWidth(Integer.MAX_VALUE);
-        Writer outxml = new StringWriter();
-        XMLSerializer serializer = new XMLSerializer(outxml, format);
-        serializer.serialize(doc);
-
-        return outxml.toString();
-
+        DOMSource source = new DOMSource(doc);
+        transformer.transform(source, result);
+        return result.getWriter().toString();
     }
 }

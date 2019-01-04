@@ -1,21 +1,23 @@
 package com.hashmapinc.tempus.witsml.client;
 
-import javax.xml.rpc.holders.StringHolder;
+import com.hashmapinc.tempus.witsml.message._120.*;
+
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 public interface StoreSoapPort_PortType extends Remote {
-    public short WMLS_AddToStore(String WMLtypeIn, String XMLin, String optionsIn, String capabilitiesIn, StringHolder suppMsgOut) throws RemoteException;
 
-    public short WMLS_DeleteFromStore(String WMLtypeIn, String queryIn, String optionsIn, String capabilitiesIn, StringHolder suppMsgOut) throws RemoteException;
+    WMLSGetFromStoreResponse wMLS_GetFromStore(WMLSGetFromStore wMLS_GetFromStore) throws RemoteException;
 
-    public String WMLS_GetBaseMsg(short returnValueIn) throws RemoteException;
+    WMLSGetBaseMsgResponse wMLS_GetBaseMsg(WMLSGetBaseMsg wMLS_GetBaseMsg) throws RemoteException;
 
-    public short WMLS_GetCap(String optionsIn, StringHolder capabilitiesOut, StringHolder suppMsgOut) throws RemoteException;
+    WMLSGetVersionResponse wMLS_GetVersion(WMLSGetVersion wMLS_GetVersion) throws RemoteException;
 
-    public short WMLS_GetFromStore(String WMLtypeIn, String queryIn, String optionsIn, String capabilitiesIn, StringHolder XMLout, StringHolder suppMsgOut) throws RemoteException;
+    WMLSDeleteFromStoreResponse wMLS_DeleteFromStore(WMLSDeleteFromStore wMLS_DeleteFromStore) throws RemoteException;
 
-    public String WMLS_GetVersion() throws RemoteException;
+    WMLSGetCapResponse wMLS_GetCap(WMLSGetCap wMLS_GetCap) throws RemoteException;
 
-    public short WMLS_UpdateInStore(String WMLtypeIn, String XMLin, String optionsIn, String capabilitiesIn, StringHolder suppMsgOut) throws RemoteException;
+    WMLSAddToStoreResponse wMLS_AddToStore(WMLSAddToStore wMLS_AddToStore) throws RemoteException;
+
+    WMLSUpdateInStoreResponse wMLS_UpdateInStore(WMLSUpdateInStore wMLS_UpdateInStore) throws RemoteException;
 }
