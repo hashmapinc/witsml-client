@@ -1,9 +1,8 @@
 package com.hashmapinc.tempus.witsml.api;
 
 import com.hashmapinc.tempus.witsml.client.AbstractStoreSoapBindingStub;
-import com.sun.org.apache.regexp.internal.RE;
+import com.hashmapinc.tempus.witsml.message._120.*;
 
-import javax.xml.rpc.holders.StringHolder;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,52 +12,64 @@ import java.util.stream.Collectors;
 
 public class MockStoreSoapBindingStub extends AbstractStoreSoapBindingStub {
 
-    public short WMLS_AddToStore(String WMLtypeIn, String XMLin, String optionsIn, String capabilitiesIn, StringHolder suppMsgOut) throws RemoteException {
-        return 0;
+    public WMLSAddToStoreResponse wMLS_AddToStore(WMLSAddToStore wMLS_AddToStore) throws RemoteException {
+        WMLSAddToStoreResponse wmlsAddToStoreResponse = new WMLSAddToStoreResponse();
+        wmlsAddToStoreResponse.setResult((short)0);
+        return wmlsAddToStoreResponse;
     }
 
-    public short WMLS_DeleteFromStore(String WMLtypeIn, String queryIn, String optionsIn, String capabilitiesIn, StringHolder suppMsgOut) throws RemoteException {
-        return 0;
+    public WMLSDeleteFromStoreResponse wMLS_DeleteFromStore(WMLSDeleteFromStore wMLS_DeleteFromStore) throws RemoteException {
+        WMLSDeleteFromStoreResponse wmlsDeleteFromStoreResponse = new WMLSDeleteFromStoreResponse();
+        wmlsDeleteFromStoreResponse.setResult((short)0);
+        return wmlsDeleteFromStoreResponse;
     }
 
-    public String WMLS_GetBaseMsg(short returnValueIn) throws RemoteException {
-        return null;
+    public WMLSGetBaseMsgResponse wMLS_GetBaseMsg(WMLSGetBaseMsg wMLS_GetBaseMsg) throws RemoteException {
+        return new WMLSGetBaseMsgResponse();
     }
 
-    public short WMLS_GetCap(String optionsIn, StringHolder capabilitiesOut, StringHolder suppMsgOut) throws RemoteException {
+    public WMLSGetCapResponse wMLS_GetCap(WMLSGetCap wMLS_GetCap) throws RemoteException {
+        WMLSGetCapResponse wmlsGetCapResponse = new WMLSGetCapResponse();
         try {
-            if (optionsIn.equals("dataVersion=1.4.1.1")) {
-                capabilitiesOut.value = getReturnData("caps1411.xml", "1.4.1.1");
-                return 1;
+            if (wMLS_GetCap.getOptionsIn().equals("dataVersion=1.4.1.1")) {
+                wmlsGetCapResponse.setCapabilitiesOut(getReturnData("caps1411.xml", "1.4.1.1"));
+                wmlsGetCapResponse.setResult((short) 1);
             } else {
-                capabilitiesOut.value = getReturnData("caps1311.xml", "1.3.1.1");
-                return 1;
+                wmlsGetCapResponse.setCapabilitiesOut(getReturnData("caps1311.xml", "1.3.1.1"));
+                wmlsGetCapResponse.setResult((short) 1);
             }
         } catch (IOException ex) {
-            return -1;
+            wmlsGetCapResponse.setResult((short) -1);
         }
+        return wmlsGetCapResponse;
     }
 
-    public short WMLS_GetFromStore(String WMLtypeIn, String queryIn, String optionsIn, String capabilitiesIn, StringHolder XMLout, StringHolder suppMsgOut) throws RemoteException {
-        try {
-            if (optionsIn.equals("dataVersion=1.4.1.1")) {
-                XMLout.value = getReturnData(MockObjectType.valueOf(WMLtypeIn.toUpperCase()).toString(), "1.4.1.1");
-                return 1;
+    public WMLSGetFromStoreResponse wMLS_GetFromStore(WMLSGetFromStore wMLS_GetFromStore) throws RemoteException {
+        WMLSGetFromStoreResponse wmlsGetFromStoreResponse = new WMLSGetFromStoreResponse();
+        try{
+            if(wMLS_GetFromStore.getOptionsIn().equals("dataVersion=1.4.1.1")) {
+                wmlsGetFromStoreResponse.setXMLout(getReturnData(MockObjectType.valueOf(wMLS_GetFromStore.getWMLtypeIn().toUpperCase()).toString(), "1.4.1.1"));
+                wmlsGetFromStoreResponse.setResult((short) 1);
             } else {
-                XMLout.value = getReturnData(MockObjectType.valueOf(WMLtypeIn.toUpperCase()).toString(), "1.3.1.1");
-                return 1;
+                wmlsGetFromStoreResponse.setXMLout(getReturnData(MockObjectType.valueOf(wMLS_GetFromStore.getWMLtypeIn().toUpperCase()).toString(), "1.3.1.1"));
+                wmlsGetFromStoreResponse.setResult((short) 1);
             }
         } catch (IOException ex) {
-            return -1;
+            wmlsGetFromStoreResponse.setResult((short) -1);
         }
+        return wmlsGetFromStoreResponse;
     }
 
-    public String WMLS_GetVersion() throws RemoteException {
-        return "1.3.1.1,1.4.1.1";
+    public WMLSGetVersionResponse wMLS_GetVersion(WMLSGetVersion wMLS_GetVersion) throws RemoteException {
+        WMLSGetVersionResponse wmlsGetVersionResponse = new WMLSGetVersionResponse();
+        wmlsGetVersionResponse.setResult("1.3.1.1,1.4.1.1");
+        return wmlsGetVersionResponse;
     }
 
-    public short WMLS_UpdateInStore(String WMLtypeIn, String XMLin, String optionsIn, String capabilitiesIn, StringHolder suppMsgOut) throws RemoteException {
-        return 0;
+    public WMLSUpdateInStoreResponse wMLS_UpdateInStore(WMLSUpdateInStore wMLS_UpdateInStore) throws RemoteException {
+        WMLSUpdateInStoreResponse wmlsUpdateInStoreResponse = new WMLSUpdateInStoreResponse();
+        wmlsUpdateInStoreResponse.setResult((short) 0);
+        return wmlsUpdateInStoreResponse;
     }
 
     private String getReturnData(String resourcePath, String version) throws IOException {

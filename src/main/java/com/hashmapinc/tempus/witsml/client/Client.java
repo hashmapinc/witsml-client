@@ -1,5 +1,7 @@
 package com.hashmapinc.tempus.witsml.client;
 
+import com.hashmapinc.tempus.WitsmlObjects.Util.WitsmlMarshal;
+import com.hashmapinc.tempus.WitsmlObjects.Util.WitsmlVersionTransformer;
 import com.hashmapinc.tempus.WitsmlObjects.v1311.*;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.*;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjBhaRuns;
@@ -24,14 +26,14 @@ import com.hashmapinc.tempus.WitsmlObjects.v1411.ObjWells;
 import com.hashmapinc.tempus.witsml.api.ObjectType;
 import com.hashmapinc.tempus.witsml.api.WitsmlClient;
 import com.hashmapinc.tempus.witsml.api.WitsmlVersion;
-import com.hashmapinc.tempus.WitsmlObjects.Util.WitsmlMarshal;
-import com.hashmapinc.tempus.WitsmlObjects.Util.WitsmlVersionTransformer;
+import com.hashmapinc.tempus.witsml.message._120.*;
+import org.apache.axis2.client.Options;
+import org.apache.axis2.transport.http.HTTPConstants;
+import org.apache.axis2.transport.http.impl.httpclient4.HttpTransportPropertiesImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.xml.bind.JAXBException;
-import javax.xml.rpc.ServiceException;
-import javax.xml.rpc.holders.StringHolder;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
@@ -86,7 +88,7 @@ public class Client implements WitsmlClient {
         locator.setStoreSoapPortEndpointAddress(url);
         try {
             witsmlClient = (StoreSoapBindingStub) locator.getStoreSoapPort();
-        } catch (ServiceException e) {
+        } catch (Exception e) {
             log.error("Error in setupClient in api.Client " + e.getMessage());
         }
     }
@@ -116,6 +118,15 @@ public class Client implements WitsmlClient {
     @Override
     public String getUserName(){
         return witsmlClient.getUsername();
+    }
+
+    /**
+     * Gets the password for the WITSML API requests (sent as HTTP Basic)
+     * @return  password The password being used to execute WITSML STORE API Requests
+     */
+    @Override
+    public String getPassword(){
+        return witsmlClient.getPassword();
     }
 
     /**
@@ -152,7 +163,7 @@ public class Client implements WitsmlClient {
     @Override
     public String getVersion(){
         try {
-            return witsmlClient.WMLS_GetVersion();
+            return witsmlClient.wMLS_GetVersion(new WMLSGetVersion()).getResult();
         } catch (RemoteException e) {
             log.error("Error in getVersion of api.Client " + e.getMessage());
             return null;
@@ -164,6 +175,15 @@ public class Client implements WitsmlClient {
      */
     @Override
     public void connect() {
+        if(getUserName() != null && !getUserName().isEmpty() && getPassword() != null && !getPassword().isEmpty()) {
+            Options options = witsmlClient._getServiceClient().getOptions();
+            HttpTransportPropertiesImpl.Authenticator auth = new HttpTransportPropertiesImpl.Authenticator();
+            auth.setPreemptiveAuthentication(true);
+            auth.setUsername(getUserName());
+            auth.setPassword(getPassword());
+            options.setProperty(HTTPConstants.AUTHENTICATE, auth);
+        }
+
         String supportedVersions = getVersion();
         String versions[] = supportedVersions.split(",");
         List<String> supportedVer = Arrays.asList(versions);
@@ -179,13 +199,14 @@ public class Client implements WitsmlClient {
      */
     @Override
     public String getCapabilities() throws RemoteException {
-        StringHolder capabilities = new StringHolder();
-        StringHolder suppMsgOut = new StringHolder();
         String optionsIn = "";
         if (version.toString().equals("1.4.1.1"))
             optionsIn = "dataVersion=1.4.1.1";
-        witsmlClient.WMLS_GetCap(optionsIn, capabilities, suppMsgOut);
-        return capabilities.value;
+
+        WMLSGetCap wmlsGetCap = new WMLSGetCap();
+        wmlsGetCap.setOptionsIn(optionsIn);
+        WMLSGetCapResponse wmlsGetCapResponse = witsmlClient.wMLS_GetCap(wmlsGetCap);
+        return wmlsGetCapResponse.getCapabilitiesOut();
     }
 
     public String getObjectQuery(String objectType) throws IOException {
@@ -277,10 +298,13 @@ public class Client implements WitsmlClient {
      */
     @Override
     public WitsmlResponse executeObjectQuery(String objectType, String query, String optionsIn, String capabilitiesIn) throws RemoteException {
-        StringHolder xmlOut = new StringHolder();
-        StringHolder suppMsgOut = new StringHolder();
-        short responseCode = witsmlClient.WMLS_GetFromStore(objectType, query, optionsIn, capabilitiesIn,  xmlOut, suppMsgOut);
-        return new WitsmlResponse(xmlOut.value, suppMsgOut.value, responseCode);
+        WMLSGetFromStore wmlsGetFromStore = new WMLSGetFromStore();
+        wmlsGetFromStore.setWMLtypeIn(objectType);
+        wmlsGetFromStore.setQueryIn(query);
+        wmlsGetFromStore.setOptionsIn(optionsIn);
+        wmlsGetFromStore.setCapabilitiesIn(capabilitiesIn);
+        WMLSGetFromStoreResponse wmlsGetFromStoreResponse = witsmlClient.wMLS_GetFromStore(wmlsGetFromStore);
+        return new WitsmlResponse(wmlsGetFromStoreResponse.getXMLout(), wmlsGetFromStoreResponse.getSuppMsgOut(), wmlsGetFromStoreResponse.getResult());
     }
 
     /**
