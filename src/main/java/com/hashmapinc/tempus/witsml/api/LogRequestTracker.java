@@ -2,6 +2,7 @@ package com.hashmapinc.tempus.witsml.api;
 
 import com.hashmapinc.tempus.WitsmlObjects.Util.WitsmlMarshal;
 import com.hashmapinc.tempus.WitsmlObjects.Util.WitsmlVersionTransformer;
+import com.hashmapinc.tempus.WitsmlObjects.Util.log.LogIndexType;
 import com.hashmapinc.tempus.WitsmlObjects.v1411.*;
 import com.hashmapinc.tempus.witsml.client.WitsmlQuery;
 
@@ -26,7 +27,7 @@ public class LogRequestTracker extends AbstractRequestTracker{
     private WitsmlClient witsmlClient;
     private ZonedDateTime lastQueryTime = null;
     private ZonedDateTime lastLogTime = null;
-    private LogIndexType indexType = null;
+    private String indexType = null;
     private double lastLogDepth = -1;
     private WitsmlVersionTransformer transformer;
     private String wellId;
@@ -83,12 +84,12 @@ public class LogRequestTracker extends AbstractRequestTracker{
                 indexType = logs.getLog().get(0).getIndexType();
 
             switch (indexType) {
-                case MEASURED_DEPTH:
-                case VERTICAL_DEPTH: {
+                case "measured depth":
+                case "vertical depth": {
                     lastLogDepth = getMinOfMaxDepth(logs.getLog().get(0));
                     break;
                 }
-                case DATE_TIME: {
+                case "date time": {
                     lastLogTime = getMinOfMaxTime(logs.getLog().get(0));
                 }
             }
@@ -108,7 +109,6 @@ public class LogRequestTracker extends AbstractRequestTracker{
                 query = getQuery("/1311/GetLogs.xml");
             } else if (getVersion().toString().equals("1.4.1.1")) {
                 query = getQuery("/1411/GetLogs.xml");
-                setOptionsIn("dataVersion=1.4.1.1");
             }
         } catch (Exception ex) {
             System.out.println("Error in getQuery ex : " + ex);
@@ -178,7 +178,6 @@ public class LogRequestTracker extends AbstractRequestTracker{
         InputStream stream = getClass().getResourceAsStream(resourcePath);
         BufferedReader reader = new BufferedReader(
                 new InputStreamReader(stream));
-        return reader.lines().collect(Collectors.joining(
-                System.getProperty("line.separator")));
+        return reader.lines().collect(Collectors.joining());
     }
 }

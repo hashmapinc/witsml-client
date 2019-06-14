@@ -87,11 +87,13 @@ public class MyWitsmlClient {
         if (wells != null) {
             System.out.println("Found " + wells.getWell().size() + " wells.");
             wells.getWell().forEach(well -> {
-                System.out.println("Well Name: " + well.getName());
-                System.out.println("Well Legal: " + well.getNameLegal());
-                System.out.println("Well Id : " + well.getUid());
-                System.out.println("Well Status : " + well.getStatusWell());
-                PrintWellbores(c, well.getUid());
+                if (well.getUid().equals("HM_01e30d7b-7d06-4cc4-afd6-39e06b1a68c1")) {
+                    System.out.println("Well Name: " + well.getName());
+                    System.out.println("Well Legal: " + well.getNameLegal());
+                    System.out.println("Well Id : " + well.getUid());
+                    System.out.println("Well Status : " + well.getStatusWell());
+                    PrintWellbores(c, well.getUid());
+                }
             });
         }
     }
@@ -153,15 +155,19 @@ public class MyWitsmlClient {
         witsmlQuery.setObjectType("log");
         witsmlQuery.includeElement("uid");
         witsmlQuery.includeElement("name");
+        witsmlQuery.includeElement("indexType");
         witsmlQuery.addAttributeConstraint("log","uidWell", wellId);
         witsmlQuery.addAttributeConstraint("log", "uidWellbore", wellboreId);
         try {
             ObjLogs logs = c.getLogsAsObj(witsmlQuery);
             System.out.println("Found " + logs.getLog().size() + " Logs");
             logs.getLog().forEach(log -> {
-                System.out.println("Log Name: " + log.getName());
-                System.out.println("Log Id: " + log.getUid());
-//                PrintLogRequest(c, wellId, wellboreId, log.getUid());
+                if (log.getUid().equals("L-12345")) {
+                    System.out.println("Log Name: " + log.getName());
+                    System.out.println("Log Id: " + log.getUid());
+                    System.out.println("Log Index Type: " + log.getIndexType());
+                    PrintLogRequest(c, wellId, wellboreId, log.getUid());
+                }
             });
         } catch (Exception e) {
             e.printStackTrace();

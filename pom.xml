@@ -186,7 +186,7 @@
         <dependency>
             <groupId>com.hashmapinc.tempus</groupId>
             <artifactId>WitsmlObjects</artifactId>
-            <version>1.0.6</version>
+            <version>1.1.33</version>
         </dependency>
         <dependency>
             <groupId>org.jdom</groupId>

@@ -8,45 +8,14 @@
     <nameWell />
     <nameWellbore />
     <name />
-    <objectGrowing />
-    <dataUpateRate/>
-    <curveSensorsAligned/>
-    <dataGroup/>
-    <serviceCompany />
-    <runNumber />
-    <bhaRunNumber/>
-    <pass />
-    <creationDate />
-    <description />
-    <dataDelimiter/>
-    <indexType />
-    <startIndex uom="" />
-    <endIndex uom="" />
-    <stepIncrement uom="" numerator="" denominator="" />
-    <startDateTimeIndex />
-    <endDateTimeIndex />
-    <direction />
-    <indexCurve columnIndex="" />
-    <nullValue />
-    <logParam index="" name="" uom="" description="" />
     <logCurveInfo uid="">
       <mnemonic />
-      <classWitsml />
-      <classIndex/>
       <unit />
-      <mnemAlias />
       <nullValue />
-      <alternateIndex/>
-      <wellDatum/>
       <minIndex uom="" />
       <maxIndex uom="" />
       <minDateTimeIndex />
       <maxDateTimeIndex />
-      <curveDescription />
-      <sensorOffset uom="" />
-      <dataSource/>
-      <densData/>
-      <traceState />
       <typeLogData />
     </logCurveInfo>
     <logData>
